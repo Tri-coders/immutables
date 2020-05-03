@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+$main-color: #0079D7;
+$white : #ffffff;
+mat-toolbar{
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.16);;
+    background-color: $white;
+    a{
+        text-decoration: none;
+        margin: 10px;
+        color: $main-color;
+    }
+    a:hover{
+        opacity: 0.5;
+    }
+}
