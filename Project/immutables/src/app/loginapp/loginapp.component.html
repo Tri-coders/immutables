@@ -1,35 +1,35 @@
 <div>
-  <mat-card style="margin-left: 33%;margin-right: 33%;margin-top: 5%;border-radius: 8%;">
+  <mat-card>
     <mat-card-title>
-      <div class="mat-display-2 text-primary" style="text-align: center;">
+      <div class="mat-display-2 text-primary" >
         Registration
       </div>
     </mat-card-title>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="text-align: center;">
       <mat-card-content>
         <div>
-          <mat-form-field appearance="outline" style="width: 80%;font-size: medium;">
+          <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">Email is required</div>
-              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              <mat-hint *ngIf="f.email.errors.required">Email is required</mat-hint>
+              <mat-hint *ngIf="f.email.errors.email">Email must be a valid email address</mat-hint>
           </div>
           </mat-form-field>
         </div>
           <div>
-          <mat-form-field appearance="outline" style="width: 80%;font-size: medium;">
+          <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password">
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">Password is required</div>
-              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+              <mat-hint *ngIf="f.password.errors.required">Password is required</mat-hint>
+              <mat-hint *ngIf="f.password.errors.minlength">Password must be at least 6 characters</mat-hint>
           </div>
           </mat-form-field>
         </div>
         <div style="text-align: center;margin-bottom: 10%;margin-top: 5%;">
           <mat-card-actions>
-            <button type="submit" class="btn btn-primary" style="width: 25%;padding: 0;">
+            <button mat-raised-button type="submit" class="button">
               <p class="mat-title" style="margin-bottom: 0;">Register</p>
             </button>
           </mat-card-actions>
