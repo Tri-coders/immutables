@@ -1,2 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+mat-toolbar {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px 10%;
+}
+
+mat-toolbar li, mat-toolbar a, mat-toolbar button {
+  font-size: 18px;
+  text-decoration: none;
+  color: #0079D7;
+}
+
+mat-toolbar ul {
+  list-style: none;
+}
+
+mat-toolbar ul li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+mat-toolbar ul li a {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+mat-toolbar ul li a:hover {
+  opacity: 0.5;
+}
 /*# sourceMappingURL=styles.css.map */
