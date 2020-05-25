@@ -1,1 +1,25 @@
-<p>quiz works!</p>
+<div class="container">
+   
+    <h1>Topic Name</h1>
+    <p id="question"><span id="question_no">Q. </span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit perferendis reiciendis nulla nostrum!
+    Vero earum impedit adipisci dolore unde dolores necessitatibus corrupti! Vero inventore doloremque facilis cum autem
+    fugit suscipit!</p>
+        <div class="options">
+            <!-- Code For Dynamic Options -->
+            <!-- <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                [(ngModel)]="favoriteSeason">
+                <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                    {{season}}
+                </mat-radio-button>
+            </mat-radio-group> -->
+        <mat-radio-group>
+            <mat-radio-button value="1" id="option1">Option 1</mat-radio-button><br><br> 
+            <mat-radio-button value="2" id="option2">Option 2</mat-radio-button><br><br> 
+            <mat-radio-button value="3" id="option3">Option 3</mat-radio-button><br><br> 
+            <mat-radio-button value="4" id="option4">Option 4</mat-radio-button><br><br> 
+        </mat-radio-group>
+    </div>    
+        
+</div>

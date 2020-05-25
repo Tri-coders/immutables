@@ -1,0 +1,33 @@
+@import '../base';
+
+.container{
+    height: calc(100vh - 70px);
+    width: 50%;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 20px;
+    z-index: -1;
+    text-align: center;
+
+    h1{
+        font-weight: bold;
+        color: $main-color;
+    }
+
+    p{
+        text-align: left;
+    }
+
+    .options{
+        text-align: left;
+
+        ::ng-deep .mat-ripple-element{
+            background-color: $main-color;
+        }
+
+    }
+}
+
+
+
+

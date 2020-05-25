@@ -1,3 +1,5 @@
+@import 'base';
+
 $main-color: #0079D7;
 $white : #ffffff;
 mat-toolbar{
@@ -7,8 +9,10 @@ mat-toolbar{
     justify-content: center;
     align-items: center;
     padding: 30px 10%;
+    z-index: 1;
+    position: relative;
     li, a, button {
-        font-size: 18px;
+        font-size: 1.2rem;
         text-decoration: none;
         color: $main-color;
     }
