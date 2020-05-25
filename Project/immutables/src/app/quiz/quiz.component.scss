@@ -1,11 +1,12 @@
 @import '../base';
 
 .container{
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
+    height: fit-content;
     width: 50%;
     margin: 0 auto;
     background-color: $white;
-    padding: 20px;
+    padding: 40px;
     z-index: -1;
     text-align: center;
 
@@ -25,6 +26,12 @@
             background-color: $main-color;
         }
 
+    }
+
+    button{
+        margin-left: 20px;
+        background-color: $main-color;
+        color: $white;
     }
 }
 
