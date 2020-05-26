@@ -63,10 +63,6 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  public handleClick(){
-    this.sques = qConst[+1];
-  }
-
   constructor() { }
 
   ngOnInit(): void {
