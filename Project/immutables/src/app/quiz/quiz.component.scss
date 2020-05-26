@@ -1,10 +1,45 @@
 @import '../base';
 
+.outer_container{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.side_panel{
+    width: 25vw;
+    .question_no_links{
+        margin: 200px auto;
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-end;
+        align-items: flex-start;
+        min-width:150px;
+        max-width:150px;
+        width: 150px;
+    }
+
+    button{
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        border-radius: 50%;
+        border: 1px solid $main-color;
+        background-color: $white;
+    }
+    button:hover{
+        opacity: 0.5;
+    }
+    button:active{
+        background-color: $main-color;
+        color: $white;
+    }
+}
 .container{
-    min-height: calc(100vh - 70px);
+    position: absolute;
+    min-height: calc(100vh - 65px);
     height: fit-content;
-    width: 50%;
-    margin: 0 auto;
+    margin: 0 calc(100vw - 75%);
+    width: 50vw;
     background-color: $white;
     padding: 40px;
     z-index: -1;
