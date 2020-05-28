@@ -8,7 +8,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { QuizComponent} from './quiz/quiz.component';
 
 const routes: Routes = [
-  {path: 'Home', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path: 'Home', component: HomeComponent},
   {path: 'Login', component: LoginappComponent},
   {path: 'Register', component: RegistrationappComponent},
   {path: 'Quiz', component: QuizComponent}
