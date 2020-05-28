@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-title>
       <div class="mat-display-2 text-primary" >
-        Registration
+        Login
       </div>
     </mat-card-title>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="text-align: center;">
@@ -10,7 +10,7 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <input matInput placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="credentials.email">
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
               <mat-hint *ngIf="f.email.errors.required">Email is required</mat-hint>
               <mat-hint *ngIf="f.email.errors.email">Email must be a valid email address</mat-hint>
@@ -20,7 +20,7 @@
           <div>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password">
+            <input matInput type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" [(ngModel)]="credentials.password">
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
               <mat-hint *ngIf="f.password.errors.required">Password is required</mat-hint>
               <mat-hint *ngIf="f.password.errors.minlength">Password must be at least 6 characters</mat-hint>
@@ -30,7 +30,7 @@
         <div style="text-align: center;margin-bottom: 10%;margin-top: 5%;">
           <mat-card-actions>
             <button mat-raised-button type="submit" class="button">
-              <p class="mat-title" style="margin-bottom: 0;">Register</p>
+              <p class="mat-title" style="margin-bottom: 0;">Login</p>
             </button>
           </mat-card-actions>
         </div>
