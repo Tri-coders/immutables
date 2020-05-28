@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 11, 2020 at 08:59 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1
+-- Generation Time: May 28, 2020 at 01:41 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -149,21 +149,6 @@ CREATE TABLE `session` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_details`
---
-
-CREATE TABLE `student_details` (
-  `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `password` varchar(10) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `class` varchar(2) NOT NULL,
-  `branch` varchar(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `subject_details`
 --
 
@@ -197,6 +182,30 @@ CREATE TABLE `topic_details` (
   `topic_name` varchar(30) NOT NULL,
   `subject_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `class` varchar(20) DEFAULT NULL,
+  `branch` varchar(20) DEFAULT NULL,
+  `createdAt` date NOT NULL,
+  `updatedAt` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `class`, `branch`, `createdAt`, `updatedAt`) VALUES
+(0, 'pra', 'pra@gmail.com', '$2a$08$Zk1x6r5PFrPXDN2K9zlSlOf9zfIJONOpvppLHlyZonu', NULL, NULL, '2020-05-28', '2020-05-28');
 
 -- --------------------------------------------------------
 
@@ -263,12 +272,6 @@ ALTER TABLE `session`
   ADD KEY `Foreign key` (`student_id`);
 
 --
--- Indexes for table `student_details`
---
-ALTER TABLE `student_details`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `subject_details`
 --
 ALTER TABLE `subject_details`
@@ -288,6 +291,12 @@ ALTER TABLE `sub_topic_details`
 ALTER TABLE `topic_details`
   ADD PRIMARY KEY (`topic_id`),
   ADD KEY `Foreign key 2` (`subject_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `video`
@@ -310,12 +319,6 @@ ALTER TABLE `faculty_details`
 --
 ALTER TABLE `session`
   MODIFY `session_id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `student_details`
---
-ALTER TABLE `student_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sub_topic_details`
