@@ -1,1 +1,42 @@
-<p>quiz works!</p>
+<div class="outer_container">
+    <div class="side_panel">
+        <div class="question_no_links">
+            <button id="question_no_link1" (click)="select(0)" class="question_no_button" active>1</button>
+            <button id="question_no_link2" (click)="select(1)" class="question_no_button">2</button>
+            <button id="question_no_link3" (click)="select(2)" class="question_no_button">3</button>
+            <button id="question_no_link4" (click)="select(3)" class="question_no_button">4</button>
+            <button id="question_no_link5" class="question_no_button">5</button>
+            <button id="question_no_link6" class="question_no_button">6</button>
+            <button id="question_no_link7" class="question_no_button">7</button>
+            <button id="question_no_link8" class="question_no_button">8</button>
+            <button id="question_no_link9" class="question_no_button">9</button>
+            <button id="question_no_link10" class="question_no_button">10</button>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="sques">
+        <h1>Topic Name</h1>
+        <p id="question"><span id="question_no">Q.{{sques.qNo}} </span>{{sques.q}}</p>
+            <div class="options">
+                <!-- Code For Dynamic Options -->
+                <!-- <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="favoriteSeason">
+                    <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                        {{season}}
+                    </mat-radio-button>
+                </mat-radio-group> -->
+            <mat-radio-group>
+                <mat-radio-button value="1" id="option1">{{sques.o1}}</mat-radio-button><br><br> 
+                <mat-radio-button value="2" id="option2">{{sques.o2}}</mat-radio-button><br><br> 
+                <mat-radio-button value="3" id="option3">{{sques.o3}}</mat-radio-button><br><br> 
+                <mat-radio-button value="4" id="option4">{{sques.o4}}</mat-radio-button><br><br> 
+            </mat-radio-group>
+        </div>    
+
+        <button mat-raised-button id="back_button" style="display: none;">Back</button>
+        <button mat-raised-button id="next_button" >Next</button>
+            
+    </div>
+</div>

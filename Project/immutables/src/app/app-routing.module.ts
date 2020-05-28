@@ -5,11 +5,14 @@ import { LoginappComponent } from './loginapp/loginapp.component';
 import { RegistrationappComponent } from './registrationapp/registrationapp.component';
 import { AuthGuardService } from './auth-guard.service';
 
+import { QuizComponent} from './quiz/quiz.component';
 
 const routes: Routes = [
   {path: 'Home', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'Login', component: LoginappComponent},
-  {path: 'Register', component: RegistrationappComponent}
+  {path: 'Register', component: RegistrationappComponent},
+  {path: 'Quiz', component: QuizComponent},
+  {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -17,4 +20,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent]
+export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent]
