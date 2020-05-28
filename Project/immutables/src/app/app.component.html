@@ -6,6 +6,7 @@
     <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
     <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Register</a></li>
     <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
+    <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Quiz">Quiz</a></li>
     <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="auth.logout()">Logout</a></li>
   </ul>
 </mat-toolbar>
