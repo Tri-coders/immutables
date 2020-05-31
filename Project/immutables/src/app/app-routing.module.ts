@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'Home', component: HomeComponent},
   {path: 'Login', component: LoginappComponent},
   {path: 'Register', component: RegistrationappComponent},
-  {path: 'Quiz', component: QuizComponent}
+  {path: 'Quiz', component: QuizComponent},
+  {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
 @NgModule({
