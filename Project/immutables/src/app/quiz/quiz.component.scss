@@ -1,13 +1,14 @@
 @import '../base';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .outer_container{
     display: flex;
 }
 .left_panel{
-    width: 20%;
+    width: 15%;
     height: calc(100vh - 65px);
     background-color: $white;
-    padding: 20px;
+    padding: 15px;
     padding-bottom: 100px;
 
     .question_no_links{
@@ -28,6 +29,7 @@
             border: 1px solid $dark-grey;
             background-color: $white;
             color: $dark-grey;
+            outline: none;
         }
 
         button:hover{
@@ -39,7 +41,86 @@
 
 }
 .quiz_container{
-    width: 80%;
+    width: 85%;
+    padding: 0 50px;
+    padding-right: 150px;
+    .question_container{
+        margin: 50px auto;
+        
+        p{
+            color: $text-color;
+            font-size: 1.7rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            line-height: 2.4rem;
+        }
+
+        .options{
+            margin: 50px  0;
+            display: flex;
+            flex-flow: row wrap;
+
+            input{
+                // visibility: hidden;
+                display: none;
+            }
+            .inputGroup {
+                margin: 25px;
+            }
+
+            label {
+                background-color: #fff;
+                display: inline-block;
+                padding: 10px 5px;
+                padding-right: 20px;
+                text-align: left;
+                color: #000;
+                cursor: pointer;
+                position: relative;
+                border-radius: 500px;
+                border: 1px solid $white;
+                min-width: 400px;
+                max-width: max-content;
+                font-size: 1.05rem;
+                vertical-align: middle;
+
+                svg{
+                    height: 2rem;
+                    position: relative;
+                    vertical-align: middle;
+                    margin-right: 10px;
+
+                }
+            }
+            
+            input:checked ~ label{
+                color: $main-color;
+                border: 1px solid $main-color;
+                
+                .svg_alpha, .svg_circle {fill: $main-color;}
+            }
+        }
+
+    }
+
+    button{
+        margin-top: 100px;
+        height: 100px;
+        width: 100px;
+        outline: none;
+        border: none;
+        background-repeat: no-repeat;
+        background-color: rgba($color: #000000, $alpha: 0);
+        cursor: pointer;
+    }
+    button:hover{
+        opacity: 0.5;
+    }
+    #next_button{
+        float: right;
+    }
+
+
 }
 
 
