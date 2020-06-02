@@ -6,13 +6,14 @@ import { AppRoutingModule, routingcomponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuizComponent } from './quiz/quiz.component';
 import { RegistrationappComponent } from './registrationapp/registrationapp.component'
 import { LoginappComponent } from './loginapp/loginapp.component'
 import { HomeComponent } from './home/home.component'
 import { AuthenticationService } from './authentication.service'
-import { AuthGuardService } from './auth-guard.service'
+import { AuthGuardService } from './auth-guard.service';
+import { ContactusComponent } from './contactus/contactus.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthGuardService } from './auth-guard.service'
     QuizComponent,
     RegistrationappComponent,
     LoginappComponent,
-    HomeComponent
+    HomeComponent,
+    ContactusComponent
     
   ],
   imports: [
@@ -30,6 +32,7 @@ import { AuthGuardService } from './auth-guard.service'
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [AuthGuardService, AuthenticationService],

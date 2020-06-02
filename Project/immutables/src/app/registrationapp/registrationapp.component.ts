@@ -24,6 +24,7 @@ export class RegistrationappComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
+            name: ['',[Validators.required]],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', Validators.required]
@@ -43,11 +44,16 @@ export class RegistrationappComponent implements OnInit {
             return;
         }
         this.auth.register(this.credentials).subscribe(
-            ()=>{
-                this.router.navigateByUrl('/Home')
+            (data)=>{
+                if(data.error){
+                    alert(data.error)
+                }else{
+                    this.router.navigateByUrl('/Home')
+                }
             },
-            err=>{
-                console.error(err)
+            error=>{
+                
+                console.error(error)
             }
         )
 

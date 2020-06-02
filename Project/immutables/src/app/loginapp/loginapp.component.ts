@@ -39,10 +39,13 @@ export class LoginappComponent implements OnInit {
           return;
       }
       this.auth.login(this.credentials).subscribe(
-        ()=>{
-            alert('SUCCESS!!');
-            this.router.navigateByUrl('/Home')
-        },
+        (data)=>{
+            if(data.token){
+              this.router.navigateByUrl('/Home')
+            }else{
+              alert(data.error)
+            }
+          },
         err=>{
             console.error(err)
         }

@@ -10,8 +10,8 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="password" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" [(ngModel)]="credentials.name" >
+            <input matInput type="text" formControlName="name" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted }" placeholder="Name" [(ngModel)]="credentials.name" >
           </mat-form-field>
         </div>
         <div>

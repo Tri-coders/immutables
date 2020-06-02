@@ -1,0 +1,95 @@
+<div class="split left">
+
+    <div style="margin-left: 10%; margin-top: 2%">
+        <div class="mat-display-3">
+          <!-- <b>Drop a Line</b> -->
+          Drop a Line
+        </div>
+      
+        <div class="mat-headline" style="display: inline-block;margin-right: 2%;float: left;">
+          <mat-icon> chat_bubble_outline</mat-icon>
+        </div>
+      
+        <div class="mat-headline" style="display: inline-block;font-style: italic;">
+          <p>Dont't hesitate to contact us</p>
+        </div>
+      
+        <div class="mat-headline" style="margin-top: 2%;">
+          <p>Ready for offers and cooperation</p>
+        </div>
+      
+        <!-- <div class="mat-headline" style="margin-top: 2%; margin-bottom: 0%;">
+          Phone: (91)12234 56478
+        </div>
+      
+        <div class="mat-headline">
+          <p>Email: Iwanttorock@gmail.com</p>
+        </div> -->
+      
+      
+        <form  [formGroup]="contactus" (ngSubmit)="onSubmit()">
+          <div style="display: inline-block;margin-right: 2%;margin-top: 2%;">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input id="name" matInput placeholder="Name" formControlName="name" [ngClass]="{ 'is-invalid': submitted }" [(ngModel)]="credentials.name">
+                <mat-icon matSuffix style="color: #0079D7;">person</mat-icon>
+              </mat-form-field>
+            </div>
+            <div style="display: inline-block;">
+              <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input matInput type="tel" formControlName="phone" placeholder="Phone" [(ngModel)]="credentials.phone">
+                <mat-icon matSuffix style="color: #0079D7;">phone</mat-icon>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="outline" style="width: 69%;">
+                <mat-label>Email</mat-label>
+                <input id="email" matInput type="email" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="credentials.email">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <mat-hint *ngIf="f.email.errors.required" style="color: red;">Email is required</mat-hint>
+                  <mat-hint *ngIf="f.email.errors.email" style="color: red;">Email must be a valid email address</mat-hint>
+                </div>
+                <mat-icon matSuffix style="color: #0079D7;">email</mat-icon>
+              </mat-form-field>
+            </div>
+          
+            <div style="height: 30%;">
+              <mat-form-field appearance="outline" style="width: 69%;">
+                <mat-label>Message</mat-label>
+                <textarea matInput formControlName="message" [ngClass]="{ 'is-invalid': submitted && f.message.errors }" [(ngModel)]="credentials.message"></textarea>
+                <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                  <mat-hint *ngIf="f.message.errors.required" style="color: red;">Type message you want to give us</mat-hint>
+                </div>
+                <mat-icon matSuffix style="color: #0079D7;">message</mat-icon>
+              </mat-form-field>
+            </div>
+          
+            <div>
+              <button mat-raised-button type="submit" class="button" style="background-color: #0079D7;margin-left: 20%;">
+                <p class="mat-title" style="margin-bottom: 0;">Send Message</p>
+              </button>
+            </div>
+      
+        </form>
+      </div>
+</div>
+
+<div class="split right" >
+    <div style=" margin-top: 2%">
+        <div class="mat-display-3">
+            How to Find Us
+        </div>
+
+        <div class="mat-subheading-2" style="width: 50%;color: #0079D7;">
+            <p>If you have any questions, just fill in the contact form, and we will answer you shortly. If you live in mumbai, you can visit to our headquarter DBIT, Kurla west.</p>
+        </div>
+
+        <div style="color: #0079D7;">
+            Telephone: 01234-56789
+        </div>
+        <div style="color: #0079D7;">
+            Email: wewillrock@gmail.com
+        </div>
+    </div>
+</div>

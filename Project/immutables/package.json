@@ -21,7 +21,9 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "@sendgrid/mail": "^7.1.1",
     "bcryptjs": "^2.4.3",
+    "fs": "0.0.1-security",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

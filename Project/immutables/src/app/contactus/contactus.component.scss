@@ -1,0 +1,54 @@
+.mat-display-3{
+    color:#0079D7;
+    margin-bottom: 3%;
+    font-family: "Arial";
+}
+
+.mat-headline{
+    font-family: "Arial";
+    color:#0079D7;
+}
+
+mat-icon{
+    font-size: xx-large;
+    border: 0;
+    background-size: 100% 100%;
+    width: 5%;
+    background-color: white;
+}
+
+
+.material-icons { 
+    font-size: 205%;
+    border-width: 0%;
+}
+
+.mat-headline{
+    font-family: "Arial";
+    
+}
+::ng-deep {
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+       color: #0079D7;
+    }
+    mat-form-field {
+       .mat-hint, input, ::placeholder, .mat-form-field-label {
+          color: #0079D7;
+       }
+    }
+ }
+
+ .split {
+    height: 100%;
+    width: 50%;
+    display: inline-block;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    right: 0;
+    float: right;
+  }

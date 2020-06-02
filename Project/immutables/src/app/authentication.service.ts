@@ -19,11 +19,23 @@ interface TokenResponse {
   
 }
 
+interface EmailResponse {
+  message: string
+  error: string
+}
+
 export interface TokenPayload{
   id: number
   name: string
   email: string
   password: string
+}
+
+export interface EmailData{
+  phone: number
+  name: string
+  email: string
+  message: string
 }
 
 @Injectable()
@@ -72,8 +84,6 @@ export class AuthenticationService {
         map((data: TokenResponse)=>{
           if(data.token){
             this.saveToken(data.token)
-          }else{
-            alert(data.error)
           }
           return data
         })
@@ -97,14 +107,28 @@ export class AuthenticationService {
       return request
     }
 
-    // public profile(): Observable<any>{
-    //   return this.http.get(`/users/profile`, {
-    //     headers: { Authorization: `${this.getToken()}` }
-    //   })
-    // }
     public logout(): void{  
       this.token = ''
       window.localStorage.removeItem("userToken")
       this.router.navigateByUrl('/')
     }
+
+    public email(user: EmailData): Observable<any>{
+      // console.log("AYA")
+      const base = this.http.post('/users/email', user)
+      
+      const request = base.pipe(
+        map((data:EmailResponse) => {
+          if(data.message){
+            return data
+          }
+          return data
+        })
+      )
+
+      return request
+    }
+
+
+
 }
