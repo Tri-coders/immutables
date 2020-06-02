@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 30, 2020 at 10:06 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1
+-- Generation Time: Jun 02, 2020 at 01:47 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -193,7 +193,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `class` varchar(20) DEFAULT NULL,
   `branch` varchar(20) DEFAULT NULL,
   `createdAt` date NOT NULL,
@@ -205,7 +205,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `class`, `branch`, `createdAt`, `updatedAt`) VALUES
-(0, 'pra', 'pra@gmail.com', '$2a$08$Zk1x6r5PFrPXDN2K9zlSlOf9zfIJONOpvppLHlyZonu', NULL, NULL, '2020-05-28', '2020-05-28');
+(1, 'pra', 'pra@gmail.com', '$2a$10$AFXdArlBl.kCpseemuPVLumpXB.xDbYHnucbnKZzk.GNkDg2AD74m', NULL, NULL, '2020-06-02', '2020-06-02');
 
 -- --------------------------------------------------------
 
@@ -269,7 +269,7 @@ ALTER TABLE `log_4`
 --
 ALTER TABLE `session`
   ADD PRIMARY KEY (`session_id`),
-  ADD KEY `Foreign key 10` (`student_id`);
+  ADD KEY `Foreign key` (`student_id`);
 
 --
 -- Indexes for table `subject_details`
@@ -328,6 +328,12 @@ ALTER TABLE `sub_topic_details`
   MODIFY `sub_topic_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -365,7 +371,7 @@ ALTER TABLE `log_4`
 -- Constraints for table `session`
 --
 ALTER TABLE `session`
-  ADD CONSTRAINT `Foreign key 10` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Foreign key` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subject_details`
