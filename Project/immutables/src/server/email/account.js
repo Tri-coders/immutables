@@ -1,6 +1,6 @@
 const sgMail = require('@sendgrid/mail')
 
-sgMail.setApiKey("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")
+sgMail.setApiKey("")
 
 const sendWelcomeEmail = async (email, name, msg)=>{
     console.log("Ala")
