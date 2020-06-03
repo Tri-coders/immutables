@@ -1,14 +1,24 @@
 <mat-toolbar role="heading">
   <ul>
-    <!-- <li><a href="/">Home</a></li> -->
-    <!-- <li><a href="#Activity">Activity</a></li>
-        <li><a href="#Login">Login</a></li> -->
     <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
-    <li><a routerLink="/Quiz">Quiz</a></li>
+    <!-- <li><a routerLink="/Quiz">Quiz</a></li> -->
     <li><a routerLink="/ContactUs">Contact</a></li>
+    <li><a routerLink="/Document">Document</a></li>
     <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Register</a></li>
     <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
     <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="auth.logout()">Logout</a></li>
   </ul>
 </mat-toolbar>
+<ng-sidebar-container>
+  <ng-sidebar [opened]="opened">
+    <button class="close-sidebar" (click)="togglesidebar()"><span class="material-icons">close</span></button>
+    <ul>
+      <li><a routerLink="/Quiz">Quiz</a></li>
+    </ul>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+    <button class="open-sidebar" (click)="togglesidebar()"><span class="material-icons">
+      keyboard_arrow_right</span></button>
+  </div>
+</ng-sidebar-container>
 <router-outlet></router-outlet>

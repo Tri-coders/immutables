@@ -13,7 +13,8 @@ import { LoginappComponent } from './loginapp/loginapp.component'
 import { HomeComponent } from './home/home.component'
 import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service';
-import { ContactusComponent } from './contactus/contactus.component'
+import { ContactusComponent } from './contactus/contactus.component';
+import {SidebarModule} from 'ng-sidebar';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ContactusComponent } from './contactus/contactus.component'
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SidebarModule.forRoot()
   ],
   providers: [AuthGuardService, AuthenticationService],
   bootstrap: [AppComponent]
