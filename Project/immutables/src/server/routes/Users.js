@@ -55,7 +55,7 @@ users.post('/login', async (req, res) => {
     res.json({error: 'Invalid Crediential email'})
   } else {
     console.log(user.password)
-    const isMatch = await bcrypt.compare('pra123', user.password)
+    const isMatch = await bcrypt.compare(req.body.password, user.password)
     console.log(typeof(user.password))
     console.log(isMatch)
     if (!isMatch) {
