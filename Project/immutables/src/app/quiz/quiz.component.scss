@@ -81,6 +81,7 @@
                 border: 1px solid $white;
                 min-width: 400px;
                 max-width: max-content;
+                // width: 100%;
                 font-size: 1.05rem;
                 vertical-align: middle;
 
@@ -111,6 +112,7 @@
         border: none;
         background-repeat: no-repeat;
         background-color: rgba($color: #000000, $alpha: 0);
+        background-image: url("icon-left.svg");
         cursor: pointer;
     }
     button:hover{
@@ -118,6 +120,8 @@
     }
     #next_button{
         float: right;
+        background-image: url("icon-right.svg");
+
     }
 
 

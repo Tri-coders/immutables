@@ -9,5 +9,10 @@ import { AuthenticationService } from './authentication.service'
 export class AppComponent {
   title = 'immutables';
   constructor(public auth: AuthenticationService) {  }
+  
+  opened = false;
 
+  togglesidebar(){
+    this.opened = !this.opened;
+  }
 }
