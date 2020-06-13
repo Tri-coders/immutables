@@ -1,0 +1,12 @@
+<ng-sidebar-container id="ngs">
+    <ng-sidebar [opened]="opened">
+      <button class="close-sidebar" (click)="togglesidebar()"><span class="material-icons">close</span></button>
+      <ul>
+        <li><a routerLink="/Quiz">Quiz</a></li>
+      </ul>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+      <button class="open-sidebar" (click)="togglesidebar()" (click)="sidefull()"><span class="material-icons">
+        keyboard_arrow_right</span></button>
+    </div>
+  </ng-sidebar-container>
