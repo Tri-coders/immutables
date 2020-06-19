@@ -11,22 +11,53 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // togglesidebar(){
-  //   this.opened = !this.opened;
-  // }  
+  togglesidebar(){
+    // this.opened = !this.opened;
+
+    if (this.opened) {
+      console.log("opened");
+      this.onClose();
+    } else {
+      console.log("Closed");
+      this.onOpen();
+    }
+  }  
 
   onClose(){
     this.opened = false;
 
     setTimeout( () => { var x = document.getElementById("ngs");
-    x.style.width = "35px"; }, 250 );
+    //x.style.transform = "translateX(" + (-300) + "px) ";
+    x.style.width = "35px";
+    
+    //y.style.marginLeft = "-25px";
 
+    }, 250 );
+    var y = document.getElementById("open-sidebar");
+    y.style.transform = "translateX(" + (0) + "px) ";
+    
+    var arrowOpen = document.getElementById("arrow-Open");
+    arrowOpen.style.display = "";
+    var arrowClose = document.getElementById("arrow-Close");
+    arrowClose.style.display = "none";
+    
   }
 
   onOpen(){
     this.opened = true;
     var x = document.getElementById("ngs");
+    //x.style.transform = "translateX(" + (300) + "px) ";
     x.style.width = "100%";
+
+    var y = document.getElementById("open-sidebar");
+    y.style.transform = "translateX(" + (300) + "px) ";
+    //y.style.marginLeft = "275px";
+    
+    var arrowOpen = document.getElementById("arrow-Open");
+    arrowOpen.style.display = "none";
+    var arrowClose = document.getElementById("arrow-Close");
+    arrowClose.style.display = "";
+
   }
 
 }

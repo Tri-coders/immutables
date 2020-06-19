@@ -10,10 +10,9 @@ ng-sidebar-container{
     button{
         color: $white;
         background-color: $main-color;
+        cursor: pointer;
     }
-    button:hover{
-        opacity: 0.5;
-    }  
+ 
     .close-sidebar{
         height: 50px;
         width: 50px;
@@ -28,10 +27,21 @@ ng-sidebar-container{
         width: 50px;
         border: 0;
         border-radius: 100px;
-        padding-left: 12px;
-        padding-right: 0;
+        // padding-left: 12px;
+        // padding-right: 0;
         margin-left: -25px;
         box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+        transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+        z-index: 999;
+        position: relative;
+    }
+    .open-sidebar:hover{
+        background-color: $white;
+        color: $main-color;
+    }
+    #arrow-Open{
+        margin-left: 12px;
+        margin-right: 0;
     }
     p{
         margin-top: 20%;        

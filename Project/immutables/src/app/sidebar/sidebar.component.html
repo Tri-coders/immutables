@@ -1,6 +1,6 @@
 <ng-sidebar-container id="ngs">
     <ng-sidebar [opened]="opened" id="side">
-      <button class="close-sidebar" (click)="onClose()"><span class="material-icons">close</span></button>
+      <!-- <button class="close-sidebar" (click)="onClose()"><span class="material-icons">close</span></button> -->
       <p>Topics</p>
       <ul>
         <li><a routerLink="/Quiz">Quiz</a></li>
@@ -11,7 +11,9 @@
       </ul>
     </ng-sidebar>
     <div ng-sidebar-content>
-      <button class="open-sidebar" (click)="onOpen()"><span class="material-icons">
+      <button class="open-sidebar" id="open-sidebar"  (click)="togglesidebar()"><span id="arrow-Close" style="display: none;" class="material-icons">
+        keyboard_arrow_left
+        </span><span id="arrow-Open" class="material-icons">
         keyboard_arrow_right</span></button>
     </div>
   </ng-sidebar-container>
