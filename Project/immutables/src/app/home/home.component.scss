@@ -14,14 +14,36 @@
 }
 .heading{
     font-size: 2rem;
+    margin-top: 1rem;
+    font-weight: bolder;
 }
 .para-one{
-    margin-top: 4rem;
-    font-size: 1.2rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: lighter;
+    letter-spacing: 0.2rem;
 }
 .paras{
     margin: 2rem 2rem auto;
     line-height: 2rem;
+}
+.paras-container{
+    margin-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+   //border: 1px solid red ;
+    img{
+        max-width: 100%;
+        width: 200px;
+        height: 200px;
+        margin-right: 30px;
+        border: 1px solid $main-color;
+    }
+    p{
+        margin: 0 2rem;
+        line-height: 2rem;
+    }
 }
 
 .fab{
@@ -36,6 +58,8 @@
     border-radius: 50%;
     box-shadow: 0 3px 5px 0 gray;
     color: $white;
+    border: 0;
+    outline: 0;
     cursor: pointer;
     transition: all 0.3s;
     span{
@@ -74,6 +98,8 @@
     border-radius: 50%;
     background-color: $main-color;
     color: $white;
+    border: 0;
+    outline: 0;
     span{
         position: absolute;
         font-size: 1.2rem;
