@@ -11,7 +11,7 @@ quiz.get('/sample2', (req, res) => {
     //console.log(req.body);
     const results = [];
 
-    fs.createReadStream('src/server/quiz/data.csv')
+    fs.createReadStream('Project/immutables/src/server/quiz/data.csv')
         .pipe(csv())
         .on('data', (data) => results.push(data))
         .on('end', () => {
