@@ -55,52 +55,52 @@
             line-height: 2.4rem;
         }
 
-        .options{
-            margin: 50px  0;
-            display: flex;
-            flex-flow: row wrap;
+        // .options{
+        //     margin: 50px  0;
+        //     display: flex;
+        //     flex-flow: row wrap;
 
-            input{
-                // visibility: hidden;
-                display: none;
-            }
-            .inputGroup {
-                margin: 25px;
-            }
+        //     input{
+        //         // visibility: hidden;
+        //         display: none;
+        //     }
+        //     .inputGroup {
+        //         margin: 25px;
+        //     }
 
-            label {
-                background-color: #fff;
-                display: inline-block;
-                padding: 10px 5px;
-                padding-right: 20px;
-                text-align: left;
-                color: #000;
-                cursor: pointer;
-                position: relative;
-                border-radius: 500px;
-                border: 1px solid $white;
-                min-width: 400px;
-                max-width: max-content;
-                // width: 100%;
-                font-size: 1.05rem;
-                vertical-align: middle;
+        //     label {
+        //         background-color: #fff;
+        //         display: inline-block;
+        //         padding: 10px 5px;
+        //         padding-right: 20px;
+        //         text-align: left;
+        //         color: #000;
+        //         cursor: pointer;
+        //         position: relative;
+        //         border-radius: 500px;
+        //         border: 1px solid $white;
+        //         min-width: 400px;
+        //         max-width: max-content;
+        //         // width: 100%;
+        //         font-size: 1.05rem;
+        //         vertical-align: middle;
 
-                svg{
-                    height: 2rem;
-                    position: relative;
-                    vertical-align: middle;
-                    margin-right: 10px;
+        //         svg{
+        //             height: 2rem;
+        //             position: relative;
+        //             vertical-align: middle;
+        //             margin-right: 10px;
 
-                }
-            }
+        //         }
+        //     }
             
-            input:checked ~ label{
-                color: $main-color;
-                border: 1px solid $main-color;
+        //     input:checked ~ label{
+        //         color: $main-color;
+        //         border: 1px solid $main-color;
                 
-                .svg_alpha, .svg_circle {fill: $main-color;}
-            }
-        }
+        //         .svg_alpha, .svg_circle {fill: $main-color;}
+        //     }
+        // }
 
     }
 
