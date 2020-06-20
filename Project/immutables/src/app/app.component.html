@@ -1,4 +1,4 @@
-<mat-toolbar role="heading">
+<mat-toolbar role="heading" class="row">
   <ul>
     <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
     <!-- <li><a routerLink="/Quiz">Quiz</a></li> -->
@@ -8,17 +8,8 @@
     <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
     <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="auth.logout()">Logout</a></li>
   </ul>
+  <ul>
+    <li *ngIf="!auth.isLoggedIn()"><a class="profile-icon" routerLink="/Login"><span class="material-icons">person</span></a></li>
+  </ul>
 </mat-toolbar>
-<ng-sidebar-container>
-  <ng-sidebar [opened]="opened">
-    <button class="close-sidebar" (click)="togglesidebar()"><span class="material-icons">close</span></button>
-    <ul>
-      <li><a routerLink="/Quiz">Quiz</a></li>
-    </ul>
-  </ng-sidebar>
-  <div ng-sidebar-content>
-    <button class="open-sidebar" (click)="togglesidebar()"><span class="material-icons">
-      keyboard_arrow_right</span></button>
-  </div>
-</ng-sidebar-container>
 <router-outlet></router-outlet>
