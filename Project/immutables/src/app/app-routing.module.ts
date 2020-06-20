@@ -4,8 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginappComponent } from './loginapp/loginapp.component';
 import { RegistrationappComponent } from './registrationapp/registrationapp.component';
 import { ContactusComponent } from './contactus/contactus.component'
+import { SidebarComponent } from './sidebar/sidebar.component'
 import { AuthGuardService } from './auth-guard.service';
-
 import { QuizComponent} from './quiz/quiz.component';
 
 const routes: Routes = [
@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'Register', component: RegistrationappComponent},
   {path: 'Quiz', component: QuizComponent},
   {path: 'ContactUs', component: ContactusComponent},
+  {path: 'Sidebar', component:SidebarComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
@@ -22,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent]
+export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent, SidebarComponent]
