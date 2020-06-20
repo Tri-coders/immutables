@@ -1,0 +1,71 @@
+Timestamp,Question,Question Type,Answers,Options,Question Tag 1,Question Tag 2,Name
+5/24/2020 12:18:47,"public class VariableExample{
+   int myVariable;
+   static int data = 30;
+   
+   void sam() {
+       System.out.println(""myVariable 1 "" + myVariable);      // Line 1
+       VariableExample obj1 = new VariableExample();
+       System.out.println(""myVariable 2 "" + obj1.myVariable); // Line 2
+   }
+   
+   public static void main(String args[]){
+      VariableExample obj = new VariableExample();
+      
+      System.out.println(""myVariable 3 ""+obj.myVariable);    // Line 3
+      System.out.println(""Value of static variable: ""+VariableExample.data);
+      obj.sam();
+      System.out.println(""myVariable 4 "" + myVariable);      // Line 4
+   }
+}",MCQ,[Line 4],"[Line 1,Line2,Line 3,Line 4]",Classes and Objects,Variables,Sanket
+5/19/2020 20:17:35,What is OOPS?,SCQ,[Object Oriented Programming System],"[Object Oriented Programming Structure,Object Oriented Processing System,Object Oriented Persenal Structure,Object Oriented Programming System]",Classes and Objects,Variables,Afif
+5/19/2020 20:21:10,What is an object?,SCQ,[instance of a class],"[instance of a object,instance of a method,instance of a class]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 20:24:58,How many arguments a ternary operator takes ?,SCQ,[Three],"[One,Two,Three,Four]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 20:31:43,In argument value passed will get modified only inside the function is called,SCQ,[Call by Reference],"[Call by Value,Call by function,Call by Variable,Call by Reference]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 20:36:52,Which constructor has no parameters?,SCQ,[Default Constructor],"[Null Constructor,Parametric Constructor,Copy Constructor,Default Constructor]",Classes and Objects,Constructor,Afif
+5/19/2020 20:40:00,A virtual function can be declared as Pure by using the…,SCQ,[operator =0],"[operator =1,operator =2,operator =3,operator =0]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 20:44:23,Which operators cannot be overloaded?,SCQ,[Scope Resolution Operator],"[Ternary Operator,Bitwise Operator,Assignment Operator,Scope Resolution Operator]",Classes and Objects,Variables,Afif
+5/19/2020 20:45:15,We always require parameter for constructors.,T/F,[False],"[True,False]",Classes and Objects,Constructor,Afif
+5/19/2020 20:56:24,Static method use non static members.,T/F,[False],"[True,False]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 20:57:36,"Which class is the most generalized class , and it is said to be a root class.",SCQ,[Sub class],"[Super class,Sub class,Child class,Sibling class]",Classes and Objects,Super Class,Afif
+5/19/2020 21:16:58,Which is the parent class from which another class inherits.,SCQ,[Super class],"[Sub class,Child class,Sibling class,Super class]",Classes and Objects,Super Class,Afif
+5/19/2020 21:18:03,How many instances can be created for an abstract class?,SCQ,[0],"[1,5,0,3]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 21:19:28,Which keyword can be used for overloading?,SCQ,[Operator keyword],"[This Keyword,Super Keyword,Static Keyword,Operator keyword]",Classes and Objects,Objects (or classes),Afif
+5/19/2020 21:20:27,Which OOPS concept exposes only necessary information to the calling functions?,SCQ,[Encapsualtion],"[Polymorphism,Inheritence,Encapsualtion,Abstraction]",Classes and Objects,Objects (or classes),Afif
+5/20/2020 12:22:33,Which one is a template for creating different objects ? ,SCQ,[A class],"[An Array,A class,Interface,Method]",Classes and Objects,Objects (or classes),Prabodh
+5/20/2020 12:25:01,Which one is true about a constructor ? ,MCQ,[All of the above],"[A constructor must have the same name as the class it is declared within.,A constructor is used to create objects.,A constructor may be declared private,All of the above]",Classes and Objects,Constructor,Prabodh
+5/20/2020 12:28:58,Which of the following are not Java modifiers? ,SCQ,[friendly],"[public,private,friendly,transient]",Classes and Objects,Objects (or classes),Prabodh
+5/20/2020 12:31:40,How to access a private member function of a class?,SCQ,[Using address of member function],"[Using object of class,Using object pointer,Using address of member function,Using class address]",Classes and Objects,Objects (or classes),Prabodh
+5/20/2020 12:34:46,A private function of a derived class can be accessed by the parent class.,True or False,[False],"[True,False]",Classes and Objects,Super Class,Prabodh
+,,,,,,,
+5/24/2020 15:46:38,"In an object model, there are major and minor elements. Which one of the following is true?",MCQ,"Abstraction, Encapsulation and Hierarchy are the major elements. ","Abstraction, Encapsulation and Persistence are the major elements. 
+Hierarchy, Concurrency and Typing are the major elements. 
+Typing is the major element. ",Classes and Objects,Objects (or classes),Afif
+5/24/2020 15:47:27,Which of the following is not a part of OOP?,MCQ,Multitasking ,"Information hiding 
+Polymorphism
+Type checking ",Classes and Objects,Objects (or classes),Afif
+5/24/2020 15:48:19,Which one of the following is the first fully Object-oriented language?,MCQ,Java.,"Simula. 
+C++. 
+Javascript. ",Classes and Objects,Objects (or classes),Afif
+5/24/2020 15:51:01,Programming without inheritance,MCQ,is programming with abstract data types,"is not object oriented 
+can be object oriented 
+none of the above ",Inheritance,Super Class,Afif
+5/24/2020 15:51:57,Which one of the following terms must relate to "polymorphism",MCQ,Dynamic binding. ,"Static allocation.
+Static typing.
+Dynamic allocation. ",Polymorphism,Variables,Afif
+5/24/2020 15:53:18,"Providing access to an object only through its member functions, while keeping the details private is called .",MCQ, information hiding.,"encapsulation.
+modularity
+inheritance",Classes and Objects,Objects (or classes),Afif
+5/24/2020 15:54:02,The concept of derived classes is involved in,MCQ,inheritance.,"encapsulation.
+data hiding.
+abstract data types.",Classes and Objects,Super Class,Afif
+5/24/2020 15:55:48,Which of the following statements is true in C++?,MCQ,"If a constructor for a class is not specified, a default constructor is used.","An object can be a class.
+A class can be an object.
+A class must have at least one member function. ",Classes and Objects,Constructor,Afif
+5/24/2020 15:56:35,A member function,MCQ,can be public or private,"is always public
+is always private
+cannot be defined.",Classes and Objects,Super Class,Afif
+5/24/2020 16:01:38,Inheritance is a way to,MCQ,add features to existing classes without rewriting them.,"organize data.
+pass arguments to objects of classes
+improve data-hiding and encapsulation.",Inheritance,Super Class,Afif
+5/25/2020 10:51:52,"When an object of a class is created, the class is said to be",SCQ,[Instantiated],"[Instantiated, Initiated, Invoked, Declared]",Classes and Objects,Objects (or classes),Sanket

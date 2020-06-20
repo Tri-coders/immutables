@@ -24,6 +24,11 @@ interface EmailResponse {
   error: string
 }
 
+interface quizResponse{
+  quizes: JSON
+  error: string
+}
+
 export interface TokenPayload{
   id: number
   name: string
@@ -129,6 +134,15 @@ export class AuthenticationService {
       return request
     }
 
+    public quiz(): Observable<any>{
+      const base = this.http.get('/quiz/sample2')
+      
+      const request = base.pipe(
+        map((data: quizResponse)=>{
+          return data
+        })
+      )
 
-
+      return request
+    }
 }
