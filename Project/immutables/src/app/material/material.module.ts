@@ -6,7 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio'
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
@@ -14,7 +14,8 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatRadioModule
+  MatRadioModule,
+  MatTooltipModule
 ]
 
 @NgModule({

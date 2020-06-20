@@ -1,19 +1,45 @@
 <div class="container">
 
     <p style="text-align: center;" class="heading">OOP</p>
-    <p style="text-align: center;" class="para-one"><b> OOP stands for Object-Oriented Programming</b></p>
+    <p style="text-align: center;" class="para-one">OOP stands for Object-Oriented Programming</p>
         
+    <div class="paras-container">
+        <p class="paras">
+            Procedural programming is about writing procedures or methods that perform operations on the data, while object-oriented programming is about creating objects that contain both data and methods.Object-oriented programming has several advantages over procedural programming:
+            OOP is faster and easier to execute.
+        </p>    
+        <img src="..//..//assets/oop.jpg" alt="referece diagram for oops">
+    </div>
     <p class="paras">
-        Procedural programming is about writing procedures or methods that perform operations on the data, while object-oriented programming is about creating objects that contain both data and methods.
-        
-        Object-oriented programming has several advantages over procedural programming:
-        
-        OOP is faster and easier to execute.
-        OOP provides a clear structure for the programs.
-        OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug.
-        OOP makes it possible to create full reusable applications with less code and shorter development time
+        OOP provides a clear structure for the programs. <br>
+
+        OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug.<br>
+        OOP makes it possible to create full reusable applications with less code and shorter development time<br>
         
         Note: The "Don't Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it
     </p>
 
 </div>
+<div class="fab" (click)="toggleFab()">
+    <div class="action">
+        <!-- <span class="material-icons">add</span> -->
+        <span class="material-icons" id="add">more_vert</span>
+        <span class="material-icons" id="remove" style="display: none;">close</span>
+    </div>
+    <div class="btns">
+        <a class="btn" routerLink="/Quiz" matTooltip="Let's Study"
+        [matTooltipPosition]="'left'">
+            <span class="material-icons">menu_book</span>
+        </a>
+        <a class="btn" routerLink="/Quiz"  matTooltip="Let's Quiz"
+        [matTooltipPosition]="'left'">
+            <span class="material-icons">question_answer</span>
+        </a>
+        <a class="btn" routerLink="/ContactUs"  matTooltip="QNA"
+        [matTooltipPosition]="'left'">
+            <span class="material-icons">help_outline</span>
+
+        </a>
+    </div>
+</div>
+<app-sidebar></app-sidebar>

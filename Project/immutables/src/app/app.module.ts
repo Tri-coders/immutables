@@ -15,6 +15,7 @@ import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service';
 import { ContactusComponent } from './contactus/contactus.component';
 import {SidebarModule} from 'ng-sidebar';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {SidebarModule} from 'ng-sidebar';
     RegistrationappComponent,
     LoginappComponent,
     HomeComponent,
-    ContactusComponent
+    ContactusComponent,
+    SidebarComponent
     
   ],
   imports: [
