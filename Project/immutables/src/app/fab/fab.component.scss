@@ -1,0 +1,76 @@
+@import '../base';
+
+.fab{
+    position: fixed;
+    right: 10px;
+    top: 80px;
+}
+.action{
+    background-color: $main-color;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 3px 5px 0 gray;
+    color: $white;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    span{
+        position: absolute;
+        //color: $white;
+        // left: 20%;
+        // top: 20%;
+        transform: translate(30%, 30%);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+.action:hover{
+    background-color: $white;
+    color: $main-color;
+}
+
+.btns{
+    position: absolute;
+    top: 0;
+    margin-top: 10px;
+    height: 45px;
+    width: 45px;
+    transform: translateX(10%);
+    transition: 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.btns.open{
+    top: 50px;
+}
+.btn{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: $main-color;
+    color: $white;
+    border: 0;
+    outline: 0;
+    span{
+        position: absolute;
+        font-size: 1.2rem;
+        //left: 50%;
+        //bottom: 50%;
+        transform: translate(55%, 55%);
+
+    }
+}
+.btn:hover{
+    background-color: $white;
+    color: $main-color;
+    box-shadow: 0 3px 5px 0 gray;
+}
+::ng-deep .mat-tooltip {
+    /* your own custom styles here */ 
+    /* e.g. */
+    color: white;
+    background-color: $main-color;
+}
