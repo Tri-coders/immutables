@@ -23,12 +23,21 @@
     margin-top: 2rem;
     font-size: 1.5rem;
     font-weight: lighter;
-    //letter-spacing: 0.2rem;
+    letter-spacing: 0.05rem;
 }
 .paras{
     font-family: $content-font;
     margin: 2rem 2rem auto;
     line-height: 2rem;
+    font-size: 1.05em;
+}
+.closing-para{
+    font-family: $sub-heading-font;
+    margin: 2rem 2rem 0;
+    line-height: 1.7rem;
+    padding: 1em;
+    border-radius: .5em;
+    background-color: $bg;
 }
 .paras-container{
     margin-top: 2rem;

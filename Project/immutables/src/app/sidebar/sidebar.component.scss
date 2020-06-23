@@ -49,12 +49,14 @@ ng-sidebar-container{
         margin-top: 20%;        
         text-align: center;
         color: $main-color;
-        font-size: 1.5rem;
-        font-weight: 500;
+        font-size: 2rem;
+        font-family: $heading2-font;
+        font-weight: 700;
     }
     ul{
         padding: 2em 3em; 
         font-size: 1.2rem;
+        font-family: $content-font;
         color: $main-color;
         li{ 
             margin-top: 20px;
