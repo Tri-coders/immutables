@@ -1,9 +1,16 @@
 //define all the the code here which is going to be used repeatedly
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500&family=Istok+Web:wght@400;700&family=Lora:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
 $main-color: #0079D7;
 $white : #ffffff;
 $bg: #F3F6FB;
 $dark-grey: #A3BACC;
 $text-color: #7A7E81;
+
+$heading-font: 'Montserrat', sans-serif;
+$heading2-font: 'Istok Web', sans-serif;
+$sub-heading-font: 'Lora', serif; 
+$content-font: 'Hind Madurai', sans-serif;
 
 *{
     box-sizing: border-box;

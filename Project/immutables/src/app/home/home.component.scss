@@ -13,17 +13,20 @@
     font-size: 1rem;
 }
 .heading{
+    font-family: $heading2-font;
     font-size: 2rem;
     margin-top: 1rem;
     font-weight: bolder;
 }
 .para-one{
+    font-family: $sub-heading-font;
     margin-top: 2rem;
     font-size: 1.5rem;
     font-weight: lighter;
-    letter-spacing: 0.2rem;
+    //letter-spacing: 0.2rem;
 }
 .paras{
+    font-family: $content-font;
     margin: 2rem 2rem auto;
     line-height: 2rem;
 }
