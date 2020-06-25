@@ -39,7 +39,7 @@
     <!-- <h1>Topic Name</h1> -->
 
     <div class="question_container">
-      <p id="question"><span id="question_no">Q </span>{{sques.q}}{{sques.Question}}</p>
+      <p id="question"><span id="question_no">Q </span>{{sques.q}}. {{sques.Question}}</p>
       
       <div class="options" *ngIf="sques.Question_Type === 'SCQ' || sques.Question_Type === 'T/F'">
         <div class="inputGroup" id="1" *ngFor="let option of sques.o1; let count = index;">

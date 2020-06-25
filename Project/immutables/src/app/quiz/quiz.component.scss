@@ -5,14 +5,17 @@
     display: flex;
 }
 .left_panel{
-    width: 15%;
-    height: calc(100vh - 65px);
+    display: flex;
+    align-items: flex-start;
+    width: 18%;
+    min-height: calc(100vh - 65px);
+    height: auto;
     background-color: $white;
     padding: 15px;
-    padding-bottom: 100px;
-
+    border-right: 1px solid $bg;
+    padding-top: 100px;
     .question_no_links{
-        height: 100%;
+        //height: 100%;
         width: 100%;
         display: flex;
         flex-flow: row wrap;
@@ -30,6 +33,7 @@
             background-color: $white;
             color: $dark-grey;
             outline: none;
+            font-family: $content-font;
         }
 
         button:hover{
@@ -48,11 +52,11 @@
         margin: 50px auto;
         
         p{
-            color: $text-color;
-            font-size: 1.7rem;
-            font-family: 'Montserrat', sans-serif;
+            color: $main-color;
+            font-size: 1.2rem;
             font-weight: 400;
-            line-height: 2.4rem;
+            line-height: 1.8rem;
+            letter-spacing: 0.005rem;
         }
 
         .options{
@@ -78,7 +82,7 @@
                 cursor: pointer;
                 position: relative;
                 border-radius: 500px;
-                border: 1px solid $white;
+                border: 1px solid $bg;
                 min-width: 400px;
                 max-width: max-content;
                 // width: 100%;
@@ -106,17 +110,18 @@
 
     button{
         margin-top: 100px;
-        height: 100px;
-        width: 100px;
+        height: 75px;
+        width: 75px;
         outline: none;
         border: none;
         background-repeat: no-repeat;
         background-color: rgba($color: #000000, $alpha: 0);
         background-image: url("icon-left.svg");
         cursor: pointer;
+        opacity: 0.5;
     }
     button:hover{
-        opacity: 0.5;
+        opacity: 1;
     }
     #next_button{
         float: right;
