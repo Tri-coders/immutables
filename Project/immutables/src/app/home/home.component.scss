@@ -3,7 +3,8 @@
 .container{
     min-height: calc(100vh - 70px);
     height: fit-content;
-    width: 50%;
+    width: 70%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 40px;
     color: $main-color;
@@ -14,27 +15,30 @@
 }
 .heading{
     font-family: $heading2-font;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-top: 1rem;
     font-weight: bolder;
 }
 .para-one{
     font-family: $sub-heading-font;
-    margin-top: 2rem;
-    font-size: 1.5rem;
+    margin-top: 4rem;
+    font-size: 2rem;
     font-weight: lighter;
     letter-spacing: 0.05rem;
+    line-height: 1em;
+
 }
 .paras{
     font-family: $content-font;
     margin: 2rem 2rem auto;
-    line-height: 2rem;
-    font-size: 1.05em;
+    line-height: 1.8em;
+    font-size: 1.4em;
 }
 .closing-para{
     font-family: $sub-heading-font;
+    font-size: 1.3em;
+    line-height: 2em;
     margin: 2rem 2rem 0;
-    line-height: 1.7rem;
     padding: 1em;
     border-radius: .5em;
     background-color: #cde0ff28;
@@ -47,14 +51,13 @@
    //border: 1px solid red ;
     img{
         max-width: 100%;
-        width: 200px;
-        height: 200px;
+        width: 300px;
+        height: 300px;
         margin-right: 30px;
         border: 1px solid $main-color;
     }
     p{
         margin: 0 2rem;
-        line-height: 2rem;
     }
 }
 
