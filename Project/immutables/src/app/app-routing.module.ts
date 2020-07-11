@@ -1,3 +1,4 @@
+import { DocumentComponent } from './document/document.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'Quiz', component: QuizComponent},
   {path: 'ContactUs', component: ContactusComponent},
   {path: 'Sidebar', component:SidebarComponent},
+  {path: 'Document', component:DocumentComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
