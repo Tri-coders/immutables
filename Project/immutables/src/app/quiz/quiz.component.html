@@ -1,8 +1,8 @@
 <div class="outer_container">
   <div class="left_panel">
     <div class="question_no_links">
-      <button id="question_no_link1" (click)="select(0)" class="question_no_button" active>1</button>
-      <button id="question_no_link2" (click)="select(1)" class="question_no_button">2</button>
+      <button *ngFor="let option of ques; let count = index;" id="question_no_link{{count+1}}" (click)="select(count)" class="question_no_button" style="display: inline-block;">{{count+1}}</button>
+      <!-- <button id="question_no_link2" (click)="select(1)" class="question_no_button">2</button>
       <button id="question_no_link3" (click)="select(2)" class="question_no_button">3</button>
       <button id="question_no_link4" (click)="select(3)" class="question_no_button">4</button>
       <button id="question_no_link5" class="question_no_button">5</button>
@@ -30,7 +30,7 @@
       <button id="question_no_link27" class="question_no_button">27</button>
       <button id="question_no_link28" class="question_no_button">28</button>
       <button id="question_no_link29" class="question_no_button">29</button>
-      <button id="question_no_link30" class="question_no_button">30</button>
+      <button id="question_no_link30" class="question_no_button">30</button> -->
 
     </div>
   </div>
@@ -39,7 +39,7 @@
     <!-- <h1>Topic Name</h1> -->
 
     <div class="question_container">
-      <p id="question"><span id="question_no">Q </span>{{sques.q}}{{sques.Question}}</p>
+      <p id="question"><span id="question_no" [innerHTML]="pra">Q </span></p>
       <div class="options" *ngIf="sques.Question_Type === 'SCQ' || sques.Question_Type === 'T/F'">
         <div class="inputGroup" id="1" *ngFor="let option of sques.o1; let count = index;">
           <input value="1" id="option{{count+1}}" name="radio" type="radio" >
@@ -56,7 +56,7 @@
                 </g>
                 <text class="svg_alpha" id="Text_A" data-name="Text A" transform="translate(1115 409)" font-size="22"
                   font-family="Montserrat-Regular, Montserrat">
-                  <tspan x="0" y="22">A</tspan>
+                  <tspan x="0" y="22">{{numToSSColumn(count+1)}}</tspan>
                 </text>
               </g>
             </svg>
@@ -81,7 +81,7 @@
                 </g>
                 <text class="svg_alpha" id="Text_A" data-name="Text A" transform="translate(1115 409)" font-size="22"
                   font-family="Montserrat-Regular, Montserrat">
-                  <tspan x="0" y="22">A</tspan>
+                  <tspan x="0" y="22">{{numToSSColumn(count+1)}}</tspan>
                 </text>
               </g>
             </svg>
@@ -91,7 +91,7 @@
       </div>
     </div>
 
-    <button id="back_button" style="display: none;"><img src="icon-left.svg" alt="Back"></button>
+    <button id="back_button" (click)="prevque()"><img src="icon-left.svg" alt="Back"></button>
     <button id="next_button" (click)="nextque()"><img src="icon-right.svg" alt="Next"></button>
   </div>
 </div>

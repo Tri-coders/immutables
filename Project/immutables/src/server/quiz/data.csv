@@ -36,8 +36,7 @@ Timestamp,Question,Question Type,Answers,Options,Question Tag 1,Question Tag 2,N
 5/20/2020 12:25:01,Which one is true about a constructor ? ,MCQ,[All of the above],"[A constructor must have the same name as the class it is declared within.,A constructor is used to create objects.,A constructor may be declared private,All of the above]",Classes and Objects,Constructor,Prabodh
 5/20/2020 12:28:58,Which of the following are not Java modifiers? ,SCQ,[friendly],"[public,private,friendly,transient]",Classes and Objects,Objects (or classes),Prabodh
 5/20/2020 12:31:40,How to access a private member function of a class?,SCQ,[Using address of member function],"[Using object of class,Using object pointer,Using address of member function,Using class address]",Classes and Objects,Objects (or classes),Prabodh
-5/20/2020 12:34:46,A private function of a derived class can be accessed by the parent class.,True or False,[False],"[True,False]",Classes and Objects,Super Class,Prabodh
-,,,,,,,
+5/20/2020 12:34:46,A private function of a derived class can be accessed by the parent class.,T/F,[False],"[True,False]",Classes and Objects,Super Class,Prabodh
 5/24/2020 15:46:38,"In an object model, there are major and minor elements. Which one of the following is true?",MCQ,"Abstraction, Encapsulation and Hierarchy are the major elements. ","Abstraction, Encapsulation and Persistence are the major elements. 
 Hierarchy, Concurrency and Typing are the major elements. 
 Typing is the major element. ",Classes and Objects,Objects (or classes),Afif

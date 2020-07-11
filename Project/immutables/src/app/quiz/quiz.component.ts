@@ -50,6 +50,7 @@ const qConst : QuestionFormat[] = []
 })
 export class QuizComponent implements OnInit {
 
+  pra: any;
   ques = qConst;
   k = 0;
   sques = {
@@ -63,6 +64,50 @@ export class QuizComponent implements OnInit {
   constructor(private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    if(this.ques.length==0){
+      this.from_csv()
+    }else{
+      this.sques = qConst[this.k];
+            
+      //console.log(this.sques.Question)
+      this.sques.Question = this.replaceAll(this.sques.Question,"\n","<br>&nbsp;&nbsp;")
+      this.pra = this.sques.Question
+    }
+    
+  }
+
+  replaceAll(string, search, replace) {
+    string = string.split(search).join(replace);
+    var k=0;
+    var str = ""
+    var str2 = ""
+    var i = 0
+    while(i<string.length){
+      if(string[i]=="{"){
+        k+=3
+      }else if(string[i]=="}"){
+        k-=3;
+      }
+      if(string[i]=="<" && string[i+1]=="b" && string[i+2]=="r"){
+        str+="<br>"
+        i+=4
+        for(var j=0;j<k;j++){
+          str+="&nbsp;"
+        }
+        continue
+      }else if(string[i]==" "){
+        str+="&nbsp;"
+      }else{
+        str+=string[i]
+      }
+      i+=1
+    }
+    //console.log(str2)
+    return str;
+  }
+
+  from_csv(){
+    
     this.auth.quiz().subscribe(
       (data)=>{
           if(data.error){
@@ -81,7 +126,12 @@ export class QuizComponent implements OnInit {
               j++;
             }
             this.sques = qConst[this.k];
-            alert(this.sques.Question)
+            
+            //console.log(this.sques.Question)
+            this.sques.Question = this.replaceAll(this.sques.Question,"\n","<br> &nbsp;&nbsp;&nbsp;")
+            this.pra = this.sques.Question
+            //alert(this.sques.Question)
+            
           }
       },
       error=>{
@@ -90,23 +140,49 @@ export class QuizComponent implements OnInit {
       }
     )
   }
-
-  select(qno: string | number){
-    if(qno === 0)
-    {
-      document.getElementById("back_button").style.display="none";
-      this.sques = qConst[qno];
-    }
-    else{
-      document.getElementById("back_button").style.display="";
-      this.sques = qConst[qno];
-    }
+  select(qno){
+    // if(qno === 0)
+    // {
+    //   document.getElementById("back_button").style.display="none";
+    //   this.sques = qConst[qno];
+    // }
+    // else{
+    //   document.getElementById("back_button").style.display="";
+    //   this.sques = qConst[qno];
+    // }
+    this.sques = qConst[parseInt(qno)]
+    this.pra = this.sques.Question
+    this.k = parseInt(qno)
   }
 
   nextque(){
-    this.k++;
-    this.sques = qConst[this.k];
-    alert(this.sques.Question)
+    if(this.k+1<this.ques.length){
+      this.k++;
+      this.sques = qConst[this.k];
+      this.pra = this.sques.Question
+    }
+    //console.log(this.sques.Question)
   }
 
+  prevque(){
+    if(this.k-1>=0){
+      this.k--;
+      this.sques = qConst[this.k];
+      this.pra = this.sques.Question
+    }
+    
+  }
+
+  numToSSColumn(num){
+    var s = ''
+    var t = 0;
+  
+    while (num > 0) {
+      t = (num - 1) % 26;
+      s = String.fromCharCode(65 + t) + s;
+      num = (num - t)/26 | 0;
+    }
+    return s || undefined;
+  }
+  
 }
