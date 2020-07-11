@@ -1,0 +1,22 @@
+<div class="fab" (click)="toggleFab()">
+    <div class="action">
+        <!-- <span class="material-icons">add</span> -->
+        <span class="material-icons" id="add">more_vert</span>
+        <span class="material-icons" id="remove" style="display: none;">close</span>
+    </div>
+    <div class="btns">
+        <a class="btn" routerLink="/Quiz" matTooltip="Let's Study"
+        [matTooltipPosition]="'left'">
+            <span class="material-icons">menu_book</span>
+        </a>
+        <a class="btn" routerLink="/Quiz"  matTooltip="Let's Quiz"
+        [matTooltipPosition]="'left'">
+            <span class="material-icons">question_answer</span>
+        </a>
+        <a class="btn" routerLink="/ContactUs"  matTooltip="QNA"
+        [matTooltipPosition]="'left'">
+            <span class="material-icons">help_outline</span>
+
+        </a>
+    </div>
+</div>

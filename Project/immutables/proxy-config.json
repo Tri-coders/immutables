@@ -6,5 +6,9 @@
     "/quiz": {
         "target": "http://localhost:3000",
         "secure": false
+    },
+    "/pdf": {
+        "target": "http://localhost:3000",
+        "secure": false
     }
 }

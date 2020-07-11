@@ -1,60 +1,82 @@
 @import '../base';
-
-.mat-display-3{
+.container{
+    width: 70%;
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 40px;
     color: $main-color;
-    margin-bottom: 3%;
-    font-family: "Arial";
+    background-color: $white;
+    text-align: center;
 }
 
-.mat-headline{
-    font-family: "Arial";
-    color: $main-color;
-}
-
-mat-icon{
-    font-size: xx-large;
-    border: 0;
-    background-size: 100% 100%;
-    width: 5%;
-    // background-color: white;
-}
-
-
-.material-icons { 
-    font-size: 205%;
-    border-width: 0%;
-}
-
-.mat-headline{
-    font-family: "Arial";
+.para{
+    width: fit-content;
+    margin: 0 auto;
+    p:nth-of-type(1){
+        font-size: 5em;
+        letter-spacing: 0.2;
+        font-family: $heading2-font;
+    }
+    .row{
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        margin: 40px auto 0;
+        p{
+            font-size: 2em;
+            font-style: italic;
+            margin-left: 40px;
+        }
+        mat-icon{
+            font-size: 4em;
+        }
     
+    }
+    p:nth-of-type(2){
+        font-size: 2em;
+        margin-top: 20px;
+    }
 }
-::ng-deep {
-    .mat-form-field-appearance-outline .mat-form-field-outline {
-       color: $main-color;
-    }
-    mat-form-field {
-       .mat-hint, input, ::placeholder, .mat-form-field-label {
-          color: $main-color;
-       }
-    }
- }
 
- button{
-     color: $white;
-     padding: 5px 15px;
- }
- .split {
-    // height: 100%;
-    width: 50%;
-    display: inline-block;
-  }
-  
-  .left {
-    left: 0;
-  }
-  
-  .right {
-    right: 0;
-    float: right;
-  }
+form{
+    font-family: $content-font;
+
+    .first-input-fields{
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        mat-form-field{    width: calc(75% / 2) ;}
+        mat-form-field + mat-form-field{
+            margin-left: 5px;
+        }
+        
+    }
+
+    .input-fields{
+        display: block;
+        width: 75%;
+        margin: 0 auto;
+    }
+    textarea{
+        resize: none;
+        height: 100px;
+    }
+    button{ 
+        font-family: $content-font;
+        color: $white;
+        background-color: $main-color;
+        width: 75%;
+        font-size: 1.2rem;
+    }
+    button:hover{
+        background-color: $white;
+        color: $main-color;
+    }
+}
+.contact-info{
+    max-width: 75%;
+    height: 10%;
+    margin: 20px auto 0;
+    font-size: 1.4em;
+    line-height: 1.5;
+}

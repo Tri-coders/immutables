@@ -13,10 +13,12 @@ app.use(
 
 var Users = require('./routes/Users')
 var quiz = require('./quiz/quiz')
+var pdf = require('./pdf/pdf')
+
 
 app.use("/users",Users)
 app.use("/quiz",quiz)
-
+app.use("/pdf",pdf)
 app.listen(port, ()=>{
     console.log("server started at "+ port)
 })

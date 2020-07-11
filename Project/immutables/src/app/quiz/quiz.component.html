@@ -43,7 +43,7 @@
       <div class="options" *ngIf="sques.Question_Type === 'SCQ' || sques.Question_Type === 'T/F'">
         <div class="inputGroup" id="1" *ngFor="let option of sques.o1; let count = index;">
           <input value="1" id="option{{count+1}}" name="radio" type="radio" >
-          <label for="option1">
+          <label for="option{{count+1}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
               <g id="A_Container" data-name="A Container" transform="translate(-1102 -403)">
                 <g id="BG_" data-name="BG " transform="translate(1102 403)" fill="#f3f6fb">
@@ -61,14 +61,13 @@
               </g>
             </svg>
             {{option}}</label>
-        </div>
-        
+        </div>   
       </div>
 
       <div class="options" *ngIf="sques.Question_Type === 'MCQ'">
         <div class="inputGroup" id="1" *ngFor="let option of sques.o1; let count = index;">
           <input value="1" id="option{{count+1}}" name="radio" type="checkbox" >
-          <label for="option1">
+          <label for="option{{count+1}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
               <g id="A_Container" data-name="A Container" transform="translate(-1102 -403)">
                 <g id="BG_" data-name="BG " transform="translate(1102 403)" fill="#f3f6fb">
@@ -87,8 +86,8 @@
             </svg>
             {{option}}</label>
         </div>
-        
       </div>
+
     </div>
 
     <button id="back_button" (click)="prevque()"><img src="icon-left.svg" alt="Back"></button>
