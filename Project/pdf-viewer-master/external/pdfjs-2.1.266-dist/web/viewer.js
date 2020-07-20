@@ -5149,6 +5149,7 @@ function immutables() {
         API: 'api',
         WORKER: 'worker'
       };
+      console.log("viewer.js----" + file_name_to_display);
       exports.OptionKind = OptionKind;
       var defaultOptions = {
         cursorToolOnLoad: {

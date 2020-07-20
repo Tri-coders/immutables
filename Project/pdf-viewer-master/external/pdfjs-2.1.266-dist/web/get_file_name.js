@@ -12,11 +12,11 @@ xhr.onload = function () {
     //alert("chal ja bhai")
     if (this.status == 200) {
         var temp = JSON.parse(this.responseText)
-        // alert(temp);
-        immutables();
         console.log(temp.file_name);
         file_name_to_display = temp.file_name;
         console.log("file name mil gaya =>" + file_name_to_display);
+        // alert(temp);
+        immutables();
     } else if (this.status == 400) {
         alert(temp.error)
     } else {
