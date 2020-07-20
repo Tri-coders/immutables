@@ -24,7 +24,8 @@ export class DocumentComponent implements OnInit {
     console.log(this.credentials.name);
     this.auth.pdfname(this.credentials).subscribe(
       (data)=>{
-        alert("ok")
+        var f = document.getElementById('Frame')
+        f['src']=f['src']
       },
       error=>{
         alert("problem")
