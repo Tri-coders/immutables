@@ -3,6 +3,7 @@
 
 .outer_container{
     display: flex;
+    background-color: #f3faff6e;
 }
 .left_panel{
     display: flex;
@@ -34,6 +35,7 @@
             color: $dark-grey;
             outline: none;
             font-family: $content-font;
+            cursor: pointer;
         }
 
         button:hover{
@@ -61,8 +63,8 @@
 
         .options{
             margin: 50px  0;
-            display: flex;
-            flex-flow: row wrap;
+            display: block;
+            // flex-flow: row wrap;
 
             input{
                 // visibility: hidden;

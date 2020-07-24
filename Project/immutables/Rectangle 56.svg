@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44"><defs><style>.a{fill:none;}.b{font-size:22px;font-family:Montserrat-Regular, Montserrat;}.c,.d{stroke:none;}</style></defs>
-<g transform="translate(-438 -325)"><g class="a" transform="translate(438 325)">
-<path class="c" d="M10,0H34A10,10,0,0,1,44,10V34A10,10,0,0,1,34,44H10A10,10,0,0,1,0,34V10A10,10,0,0,1,10,0Z"/>
-<path class="d" d="M 10 1 C 5.037380218505859 1 1 5.037380218505859 1 10 L 1 34 C 1 38.96261978149414 5.037380218505859 43 10 43 L 34 43 C 38.96261978149414 43 43 38.96261978149414 43 34 L 43 10 C 43 5.037380218505859 38.96261978149414 1 34 1 L 10 1 M 10 0 L 34 0 C 39.52285003662109 0 44 4.477149963378906 44 10 L 44 34 C 44 39.52285003662109 39.52285003662109 44 34 44 L 10 44 C 4.477149963378906 44 0 39.52285003662109 0 34 L 0 10 C 0 4.477149963378906 4.477149963378906 0 10 0 Z"/>
-</g>
-<text class="b" transform="translate(452 332)"><tspan x="0" y="22">{{numToSSColumn(count+1)}}</tspan></text></g></svg>
