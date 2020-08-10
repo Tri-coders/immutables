@@ -50,8 +50,14 @@
     width: 85%;
     padding: 0 50px;
     padding-right: 150px;
+    .path{
+        display: inline-block;
+        // background-color: white;
+        color: $main-color;
+        font-family: $sub-heading-font;
+    }
     .question_container{
-        margin: 50px auto;
+        margin: 30px auto;
         
         p{
             color: $main-color;
