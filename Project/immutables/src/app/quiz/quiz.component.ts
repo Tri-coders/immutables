@@ -51,9 +51,11 @@ const qConst : QuestionFormat[] = []
 export class QuizComponent implements OnInit {
 
   pra: any;
+  que_no: any;
   ques = qConst;
   k = 0;
   sques = {
+    no: 0,
     q: "",
     Question: "",
     Question_Type: "",
@@ -72,6 +74,7 @@ export class QuizComponent implements OnInit {
       //console.log(this.sques.Question)
       this.sques.Question = this.replaceAll(this.sques.Question,"\n","<br>&nbsp;&nbsp;")
       this.pra = this.sques.Question
+      this.que_no = this.sques.no
     }
     
   }
@@ -117,6 +120,7 @@ export class QuizComponent implements OnInit {
             for(var i=0;i<data.length;i++){
               var option = data[i]["Options"].split(',')
               var x = {
+                no: (i+1),
                 q:j.toString(),
                 Question: data[i]["Question"],
                 Question_Type: data[i]["Question Type"],
@@ -130,6 +134,7 @@ export class QuizComponent implements OnInit {
             //console.log(this.sques.Question)
             this.sques.Question = this.replaceAll(this.sques.Question,"\n","<br> &nbsp;&nbsp;&nbsp;")
             this.pra = this.sques.Question
+            this.que_no = this.sques.no
             //alert(this.sques.Question)
             
           }
@@ -153,6 +158,7 @@ export class QuizComponent implements OnInit {
     this.sques = qConst[parseInt(qno)]
     this.pra = this.sques.Question
     this.k = parseInt(qno)
+    this.que_no = parseInt(qno)+1
   }
 
   nextque(){
@@ -160,6 +166,7 @@ export class QuizComponent implements OnInit {
       this.k++;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
+      this.que_no=this.sques.no
     }
     //console.log(this.sques.Question)
   }
@@ -169,6 +176,7 @@ export class QuizComponent implements OnInit {
       this.k--;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
+      this.que_no=this.sques.no
     }
     
   }

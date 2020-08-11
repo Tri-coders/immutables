@@ -19,6 +19,7 @@
 // }
 
 export class QuestionFormat{
+    no: any;
     q: string;
     Question: string;
     Question_Type: string;

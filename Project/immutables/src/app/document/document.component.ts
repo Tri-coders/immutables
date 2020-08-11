@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService, pdfData } from '../authentication.service';
-import { Router } from '@angular/router'
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  AuthenticationService,
+  pdfData
+} from '../authentication.service';
+import {
+  Router
+} from '@angular/router'
 
 @Component({
   selector: 'app-document',
@@ -9,25 +17,24 @@ import { Router } from '@angular/router'
 })
 export class DocumentComponent implements OnInit {
 
-  
+
   credentials: pdfData = {
     name: ""
-}
-
-  constructor(private auth: AuthenticationService, private router: Router) { }
-
-  ngOnInit(): void {
   }
+
+  constructor(private auth: AuthenticationService, private router: Router) {}
+
+  ngOnInit(): void {}
 
   updatePdfName(id) {
     this.credentials.name = document.getElementById(id).innerHTML;
     console.log(this.credentials.name);
     this.auth.pdfname(this.credentials).subscribe(
-      (data)=>{
+      (data) => {
         var f = document.getElementById('Frame')
-        f['src']=f['src']
+        f['src'] = f['src']
       },
-      error=>{
+      error => {
         alert("problem")
       })
   }
@@ -37,4 +44,9 @@ export class DocumentComponent implements OnInit {
     console.log(this.credentials.name);
   }
 
+  //#######################################Video#####################################
+
+  
+
+  
 }
