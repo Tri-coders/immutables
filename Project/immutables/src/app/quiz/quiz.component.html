@@ -39,7 +39,7 @@
     <br>
     <h3 class="path"> <span>Topic Name</span> > <span>Sub Topic Name</span> </h3>
     <div class="question_container">
-      <p id="question">Q. <span id="question_no" [innerHTML]="pra"> </span></p>
+      <p id="question">Q<span [innerHTML]="que_no"> </span>] &nbsp;<span id="question_no" [innerHTML]="pra"> </span></p>
       <div class="options" *ngIf="sques.Question_Type === 'SCQ' || sques.Question_Type === 'T/F'">
         <div class="inputGroup" id="1" *ngFor="let option of sques.o1; let count = index;">
           <input value="1" id="option{{count+1}}" name="radio" type="radio" >
