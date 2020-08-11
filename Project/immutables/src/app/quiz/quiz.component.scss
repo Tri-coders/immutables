@@ -55,6 +55,11 @@
         // background-color: white;
         color: $main-color;
         font-family: $sub-heading-font;
+        border: 2px solid #80808052;
+        padding: 0 20px;
+        display: block;
+        margin: 0;
+        border-radius: 100px;
     }
     .question_container{
         margin: 30px auto;
