@@ -117,7 +117,7 @@ export class QuizComponent implements OnInit {
               alert(data.error)
           }else{
             var j = 1;
-            for(var i=0;i<data.length;i++){
+            for(var i=0;i<21;i++){
               var option = data[i]["Options"].split(',')
               var x = {
                 no: (i+1),
