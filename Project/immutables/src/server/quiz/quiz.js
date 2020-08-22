@@ -21,4 +21,18 @@ quiz.get('/sample2', (req, res) => {
         });
 });
 
+
+quiz.get('/videoname', (req, res) => {
+  console.log("enter");
+  //console.log(req.body);
+  const results = [];
+
+  fs.createReadStream(__dirname + '/videoData.csv')
+      .pipe(csv())
+      .on('data', (data) => results.push(data))
+      .on('end', () => {
+          res.send(results);
+      });
+});
+
 module.exports = quiz

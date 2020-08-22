@@ -46,6 +46,7 @@ export interface EmailData{
 export interface pdfData{
   name: string
 }
+
 @Injectable()
 export class AuthenticationService {
   private token: string
@@ -149,6 +150,16 @@ export class AuthenticationService {
       return request
     }
 
+    public videoname(): Observable<any>{
+      const base = this.http.get('/quiz/videoname')
+      const request = base.pipe(
+        map((data: EmailResponse)=>{
+          return data
+        })
+      )
+      return request
+    }
+
     public pdfname(name: pdfData): Observable<any>{
       const base = this.http.post('/pdf/pdfname',name)
       const request = base.pipe(
@@ -158,4 +169,6 @@ export class AuthenticationService {
       )
       return request
     }
+
+    
 }
