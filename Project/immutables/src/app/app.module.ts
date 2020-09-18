@@ -18,6 +18,7 @@ import {SidebarModule} from 'ng-sidebar';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FabComponent } from './fab/fab.component';
 import { DocumentComponent } from './document/document.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DocumentComponent } from './document/document.component';
     ContactusComponent,
     SidebarComponent,
     FabComponent,
-    DocumentComponent
+    DocumentComponent,
+    HeaderComponent
     
   ],
   imports: [

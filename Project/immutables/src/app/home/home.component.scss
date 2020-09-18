@@ -64,7 +64,8 @@
 // }
 main{
     display: grid;
-    height: 91vh;
+    gap: 10px;
+    height: 100vh;
     padding: 0 20px;
     grid-template-areas: 
     "box1 box2 box3"
@@ -74,13 +75,17 @@ main{
         font-family: $heading-font;
     }
     .box{
+        // height: 100%;
+        margin: 20px;
         padding: 20px;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        background-color: $white;
+        border-radius: 20px;
     }
     .card, .card-big{
-        background-color: $white;
-        height: 100%;
-        border-radius: 20px;
-        padding: 60px 30px;
+        // padding: 60px 30px;
         cursor: pointer;
         span{
             color: $main-color;
@@ -92,7 +97,7 @@ main{
         }
     }
     .card-big{
-        padding-top: 200px;
+        // padding-top: 200px;
         text-justify: inter-word;
         text-align: justify;
         cursor: default;

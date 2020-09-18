@@ -1,15 +1,1 @@
-<mat-toolbar role="heading" class="row">
-  <ul>
-    <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
-    <!-- <li><a routerLink="/Quiz">Quiz</a></li> -->
-    <li><a routerLink="/ContactUs">Contact</a></li>
-    <li><a routerLink="/Document">Document</a></li>
-    <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Register</a></li>
-    <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
-    <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="auth.logout()">Logout</a></li>
-  </ul>
-  <ul>
-    <li *ngIf="!auth.isLoggedIn()"><a class="profile-icon" routerLink="/Login"><span class="material-icons">person</span></a></li>
-  </ul>
-</mat-toolbar>
 <router-outlet></router-outlet>
