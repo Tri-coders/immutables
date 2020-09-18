@@ -83,10 +83,11 @@ main{
         // justify-content: center;
         background-color: $white;
         border-radius: 20px;
+        cursor: pointer;
+        transition: box-shadow .3s ease;
     }
     .card, .card-big{
         // padding: 60px 30px;
-        cursor: pointer;
         span{
             color: $main-color;
             font-size: 60px;
@@ -95,6 +96,9 @@ main{
         p{
             font-size: 1rem;
         }
+    }
+    .box:hover{
+        box-shadow: 0 3px 14px -10px gray;
     }
     .card-big{
         // padding-top: 200px;
@@ -131,6 +135,7 @@ main{
 }
 .box1{
     grid-area: box1;
+    cursor: auto !important;
 }
 .box2{
     grid-area: box2;
