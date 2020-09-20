@@ -54,7 +54,7 @@ ng-sidebar-container{
         font-weight: 700;
     }
     ul{
-        padding: 2em 3em; 
+        padding: 2em; 
         font-size: 1.2rem;
         font-family: $content-font;
         color: $main-color;
@@ -73,6 +73,16 @@ ng-sidebar-container{
 
         }
 
+    }
+
+    li {
+        ul { 
+            display: none; 
+            padding: 0.5rem 1rem;
+        }
+    }
+    li:hover > ul {
+        display: block;
     }
 
 
