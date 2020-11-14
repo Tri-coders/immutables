@@ -27,6 +27,18 @@ export class DocumentComponent implements OnInit {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
+  draggable(){
+    var x = document.getElementById("mydiv")
+    if(x.style.position === "relative"){
+      x.style.position = "absolute";
+      console.log("drag")
+    }
+    else{
+      x.style.position = "relative";
+      console.log("Dont drag")
+    }
+  }
+
   ngOnInit() {
     if(Object.keys(dic).length === 0){
       this.from_csv()

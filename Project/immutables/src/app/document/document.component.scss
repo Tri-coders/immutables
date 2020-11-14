@@ -1,15 +1,26 @@
+#Frame{
+  width: 60%;
+  min-height: 100%; 
+  position: absolute; 
+  border: none;
+  margin-left: 20%;
+}
 #mydiv {
-    position: absolute;
+    position: relative;
     z-index: 9;
     background-color: #f1f1f1;
     border: 1px solid #d3d3d3;
     text-align: center;
-  }
+    margin: 0 auto;
+    width: 600px;
+    height: 300px;
   
-  #mydivheader {
-    padding: 10px;
-    cursor: move;
-    z-index: 10;
-    background-color: #2196F3;
-    color: #fff;
-  }
+    #mydivheader {
+      padding: 10px;
+      cursor: move;
+      z-index: 10;
+      background-color: #2196F3;
+      color: #fff;
+
+    }
+}
