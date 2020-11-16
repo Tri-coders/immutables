@@ -27,15 +27,19 @@ export class DocumentComponent implements OnInit {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  draggable(){
+  onToggle(event){
     var x = document.getElementById("mydiv")
-    if(x.style.position === "relative"){
-      x.style.position = "absolute";
-      console.log("drag")
+    var y = document.getElementById("mydivheader")
+
+    if(event.checked == false){
+      x.style.position = "static";
+      y.style.display = "none";
+      console.log(x.style.position, ": Dont drag")
     }
     else{
-      x.style.position = "relative";
-      console.log("Dont drag")
+      x.style.position = "absolute";
+      y.style.display = "block";
+      console.log(x.style.position, ": Drag")
     }
   }
 
