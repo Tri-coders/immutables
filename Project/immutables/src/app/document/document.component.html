@@ -1,12 +1,13 @@
+<app-header></app-header>
 <div>
   <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
   <label id="2" (click)="updatePdfName(2)">compressed.tracemonkey-pldi-09.pdf</label><br>
   <label id="3" (click)="updateVideoName(3)">Video1</label><br>
-  <mat-slide-toggle id="draggable" (change)="onToggle($event)">Draggable</mat-slide-toggle>
 
 </div>
 
 <div id="mydiv">
+  <mat-slide-toggle id="draggable" (change)="onToggle($event)">Draggable</mat-slide-toggle>
   <div id="mydivheader">Click here to move</div>
   <iframe id="videoFrame" style="width: 900px; height: 400px;" src="">
   </iframe>
@@ -14,3 +15,6 @@
 <br><br>
 <iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
 </iframe>
+
+<!-- <app-sidebar></app-sidebar> -->
+<app-fab></app-fab>
