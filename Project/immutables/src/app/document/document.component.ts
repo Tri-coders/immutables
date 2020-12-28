@@ -27,6 +27,22 @@ export class DocumentComponent implements OnInit {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
+  onToggle(event){
+    var x = document.getElementById("mydiv")
+    var y = document.getElementById("mydivheader")
+
+    if(event.checked == false){
+      x.style.position = "static";
+      y.style.display = "none";
+      console.log(x.style.position, ": Dont drag")
+    }
+    else{
+      x.style.position = "absolute";
+      y.style.display = "block";
+      console.log(x.style.position, ": Drag")
+    }
+  }
+
   ngOnInit() {
     if(Object.keys(dic).length === 0){
       this.from_csv()

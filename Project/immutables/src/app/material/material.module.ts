@@ -8,6 +8,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 const MaterialComponents = [
   MatButtonModule,
   MatToolbarModule,
@@ -17,7 +19,8 @@ const MaterialComponents = [
   MatInputModule,
   MatRadioModule,
   MatTooltipModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSlideToggleModule
 ]
 
 @NgModule({

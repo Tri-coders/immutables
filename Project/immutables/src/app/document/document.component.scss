@@ -1,15 +1,56 @@
+#Frame{
+  width: 60%;
+  min-height: 100%; 
+  position: absolute; 
+  border: none;
+  margin-left: 20%;
+}
 #mydiv {
-    position: absolute;
+    position: relative;
     z-index: 9;
-    background-color: #f1f1f1;
-    border: 1px solid #d3d3d3;
+    // background-color: #f1f1f1;
+    // border: 1px solid #d3d3d3;
     text-align: center;
-  }
+    margin: 0 auto;
+    width: 900px;
+    height: 400px;
   
-  #mydivheader {
-    padding: 10px;
-    cursor: move;
-    z-index: 10;
-    background-color: #2196F3;
-    color: #fff;
-  }
+    #mydivheader {
+      display: none;
+      padding: 10px;
+      cursor: move;
+      z-index: 10;
+      background-color: #2196F3;
+      color: #fff;
+
+    }
+}
+
+// Toggle Switch
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: blue; /*replace with your color*/
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: skyblue;  /*replace with your color*/
+}
+
+/* CSS to change 'Primary' color */
+
+::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: green;
+}
+
+::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #ff99ff;
+}
+
+/* CSS to change 'Warn' color */
+
+::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: red;
+}
+
+::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #ffe066;
+}
