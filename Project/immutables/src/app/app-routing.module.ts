@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'Home', component: HomeComponent},
   {path: 'Login', component: LoginappComponent},
   {path: 'Register', component: RegistrationappComponent},
+  //{path: 'Quiz', component: QuizComponent,canActivate: [AuthGuardService]},
   {path: 'Quiz', component: QuizComponent},
   {path: 'ContactUs', component: ContactusComponent},
   {path: 'Sidebar', component:SidebarComponent},
