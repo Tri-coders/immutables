@@ -17,7 +17,7 @@ Timestamp,Question,Question Type,Answers,Options,Question Tag 1,Question Tag 2,N
       obj.sam();
       System.out.println(""myVariable 4 "" + myVariable);      // Line 4
    }
-}",MCQ,[Line 4],"[Line 1,Line2,Line 3,Line 4]",Classes and Objects,Variables,Sanket
+}",MCQ,Line 4,"Line 1,Line2,Line 3,Line 4",Classes and Objects,Variables,Sanket
 5/19/2020 20:17:35,What is OOPS?,SCQ,[Object Oriented Programming System],"[Object Oriented Programming Structure,Object Oriented Processing System,Object Oriented Persenal Structure,Object Oriented Programming System]",Classes and Objects,Variables,Afif
 5/19/2020 20:21:10,What is an object?,SCQ,[instance of a class],"[instance of a object,instance of a method,instance of a class]",Classes and Objects,Objects (or classes),Afif
 5/19/2020 20:24:58,How many arguments a ternary operator takes ?,SCQ,[Three],"[One,Two,Three,Four]",Classes and Objects,Objects (or classes),Afif
@@ -49,7 +49,7 @@ Javascript. ",Classes and Objects,Objects (or classes),Afif
 5/24/2020 15:51:01,Programming without inheritance,MCQ,is programming with abstract data types,"is not object oriented 
 can be object oriented 
 none of the above ",Inheritance,Super Class,Afif
-5/24/2020 15:51:57,Which one of the following terms must relate to "polymorphism",MCQ,Dynamic binding. ,"Static allocation.
+5/24/2020 15:51:57,"Which one of the following terms must relate to ""polymorphism""",MCQ,Dynamic binding. ,"Static allocation.
 Static typing.
 Dynamic allocation. ",Polymorphism,Variables,Afif
 5/24/2020 15:53:18,"Providing access to an object only through its member functions, while keeping the details private is called .",MCQ, information hiding.,"encapsulation.

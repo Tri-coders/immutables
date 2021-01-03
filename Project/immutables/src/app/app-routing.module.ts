@@ -7,6 +7,7 @@ import { RegistrationappComponent } from './registrationapp/registrationapp.comp
 import { ContactusComponent } from './contactus/contactus.component'
 import { SidebarComponent } from './sidebar/sidebar.component'
 import { AuthGuardService } from './auth-guard.service';
+import { CanDeactivateGuardService } from './can-deactivate-guard.service'
 import { QuizComponent} from './quiz/quiz.component';
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: 'Login', component: LoginappComponent},
   {path: 'Register', component: RegistrationappComponent},
   //{path: 'Quiz', component: QuizComponent,canActivate: [AuthGuardService]},
-  {path: 'Quiz', component: QuizComponent},
+  {path: 'Quiz', component: QuizComponent, canDeactivate: [CanDeactivateGuardService]},
   {path: 'ContactUs', component: ContactusComponent},
   {path: 'Sidebar', component:SidebarComponent},
   {path: 'Document', component:DocumentComponent},

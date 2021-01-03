@@ -24,4 +24,5 @@ export class QuestionFormat{
     Question: string;
     Question_Type: string;
     o1: any;
+    ans: any;
 }

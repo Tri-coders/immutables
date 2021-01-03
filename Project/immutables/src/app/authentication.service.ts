@@ -47,6 +47,7 @@ export interface pdfData{
   name: string
 }
 
+
 @Injectable()
 export class AuthenticationService {
   private token: string
@@ -170,5 +171,17 @@ export class AuthenticationService {
       return request
     }
 
-    
+    public logsdata(logsdata: any): Observable<any>{
+      if(logsdata.length!=0){
+        console.log(logsdata)
+        const base = this.http.post('/logsApi/logsdata',logsdata)
+        const request = base.pipe(
+          map((data: EmailResponse)=>{
+            return data
+          }),
+          
+        )
+        return request
+      }
+    }
 }

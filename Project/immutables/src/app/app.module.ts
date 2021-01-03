@@ -13,6 +13,7 @@ import { LoginappComponent } from './loginapp/loginapp.component'
 import { HomeComponent } from './home/home.component'
 import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service';
+import { CanDeactivateGuardService } from './can-deactivate-guard.service';
 import { ContactusComponent } from './contactus/contactus.component';
 import {SidebarModule} from 'ng-sidebar';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -45,7 +46,7 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     SidebarModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthenticationService],
+  providers: [AuthGuardService, AuthenticationService, CanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

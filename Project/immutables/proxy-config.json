@@ -10,5 +10,7 @@
     "/pdf": {
         "target": "http://localhost:3000",
         "secure": false
-    }
+    },
+    "/logsApi": "http://localhost:3000",
+    "secure": false
 }
