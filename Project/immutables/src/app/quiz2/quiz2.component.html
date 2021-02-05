@@ -1,0 +1,51 @@
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+    <a href="#">Q1</a>
+    <a href="#">Q2</a>
+    <a href="#">Q3</a>
+</div>
+
+<div id="main">
+    <app-header></app-header>
+    <button class="openbtn" (click)="openNav()">▷</button>
+    
+
+    <div cdkDropListGroup class="container">
+        <div class="example-container">
+          <h2>Q.1) Find The Missing Line of Code</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="items"
+            class="example-list"
+            cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of items" cdkDrag [cdkDragDisabled]="item.disabled">{{item.value}}</div>
+          </div>
+        </div>
+      
+        <div class="example-container">
+          <h2>To get output as 310, missing line is .....</h2>
+          
+          <div
+          cdkDropList
+          [cdkDropListData]="items2"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of items2" cdkDrag [cdkDragDisabled]="item.disabled">{{item.value}}</div>
+        </div>
+        </div>
+    
+    </div>
+
+    <div class="container">
+    
+        <h2>Q.2) Arrange in order to get output as Output : 300</h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of items" cdkDrag>{{item.value}}</div>
+        </div>
+    </div>
+      
+      
+   
+</div>
