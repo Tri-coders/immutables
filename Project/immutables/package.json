@@ -24,6 +24,7 @@
     "@sendgrid/mail": "^7.1.1",
     "bcryptjs": "^2.4.3",
     "fs": "0.0.1-security",
+    "json2csv": "^5.0.6",
     "ng-sidebar": "^9.3.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
