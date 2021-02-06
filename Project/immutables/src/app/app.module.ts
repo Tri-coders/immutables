@@ -22,6 +22,7 @@ import { DocumentComponent } from './document/document.component';
 import { HeaderComponent } from './header/header.component';
 import { Quiz2Component } from './quiz2/quiz2.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { StudyroomComponent } from './studyroom/studyroom.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FabComponent,
     DocumentComponent,
     HeaderComponent,
-    Quiz2Component
+    Quiz2Component,
+    StudyroomComponent
   ],
   imports: [
     BrowserModule,
