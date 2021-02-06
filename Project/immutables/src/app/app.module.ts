@@ -20,6 +20,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FabComponent } from './fab/fab.component';
 import { DocumentComponent } from './document/document.component';
 import { HeaderComponent } from './header/header.component';
+import { Quiz2Component } from './quiz2/quiz2.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { StudyroomComponent } from './studyroom/studyroom.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +36,13 @@ import { HeaderComponent } from './header/header.component';
     SidebarComponent,
     FabComponent,
     DocumentComponent,
-    HeaderComponent
-    
+    HeaderComponent,
+    Quiz2Component,
+    StudyroomComponent
   ],
   imports: [
     BrowserModule,
+    DragDropModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
