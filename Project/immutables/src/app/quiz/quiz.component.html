@@ -42,7 +42,8 @@
     <h3 class="path"> <span>Topic Name</span> > <span>Sub Topic Name</span> </h3>
     <div class="question_container">
       <p id="question">Q<span [innerHTML]="que_no"> </span>] &nbsp;<span id="question_no" [innerHTML]="pra"> </span></p>
-      <div class="options" *ngIf="sques.Question_Type === 'SCQ' || sques.Question_Type === 'T/F'">
+      <p><span [innerHTML]="codeText"></span></p>
+      <div class="options" *ngIf="sques.Question_Type === 'SCQ' || sques.Question_Type === 'True or False'">
         <div class="inputGroup" id="1" *ngFor="let option of sques.o1; let count = index;">
           <div *ngIf="keyexist(que_no,count)==count+1; else elseBlock1">
             <input value="1" id="option{{count+1}}" name="radio" type="radio" (change) ="handleChange(count+1)" checked>

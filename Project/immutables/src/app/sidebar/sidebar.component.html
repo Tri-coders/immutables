@@ -5,21 +5,27 @@
       <ul>
         <li><a routerLink="/Quiz">Introduction of Classes and Objects</a>
           <ul>
-            <li><a routerLink="/Quiz">Classes and Objects</a></li>
-            <li><a routerLink="/Quiz">Classes Variables</a></li>
+            <!-- <li><a routerLink="/Quiz">Classes and Objects</a></li>
+            <li><a routerLink="/Quiz">Classes Variables</a></li> -->
+            <li><a (click)="quiz('Classes and Objects')">Classes and Objects</a></li>
           </ul>
         </li>
         <li><a routerLink="/Quiz">Classes and Objects: Method</a>
           <ul>
-            <li><a routerLink="/Quiz">Classes Methods</a></li>
+            <!-- <li><a routerLink="/Quiz">Classes Methods</a></li>
             <li><a routerLink="/Quiz">Method Overloading</a></li>
-            <li><a routerLink="/Quiz">Method Overriding</a></li>
+            <li><a routerLink="/Quiz">Method Overriding</a></li> -->
+            <li><a (click)="quiz('Classes Methods')">Classes Methods</a></li>
+            <li><a (click)="quiz('Method Overloading')">Method Overloading</a></li>
+            <li><a (click)="quiz('Method Overriding')">Method Overriding</a></li>
           </ul>
         </li>
         <li><a routerLink="/Quiz">Advanced concept of OOPs</a>
             <ul>
-              <li><a routerLink="/Quiz">Inheritance</a></li>
-              <li><a routerLink="/Quiz">Polymorphism</a></li>
+              <!-- <li><a routerLink="/Quiz">Inheritance</a></li>
+              <li><a routerLink="/Quiz">Polymorphism</a></li> -->
+              <li><a (click)="quiz('Inheritance')">Inheritance</a></li>
+              <li><a (click)="quiz('Polymorphism')">Polymorphism</a></li>
             </ul>
         </li>
       </ul>

@@ -22,6 +22,7 @@ export class QuestionFormat{
     no: any;
     q: string;
     Question: string;
+    code: any;
     Question_Type: string;
     o1: any;
     ans: any;

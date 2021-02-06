@@ -52,6 +52,7 @@ const qConst : QuestionFormat[] = []
 export class QuizComponent implements OnInit {
 
   pra: any;
+  codeText: any;
   que_no: any;
   ques = qConst;
   k = 0;
@@ -59,6 +60,7 @@ export class QuizComponent implements OnInit {
     no: 0,
     q: "",
     Question: "",
+    code: "",
     Question_Type: "",
     o1: ["","","",""],
     ans: []
@@ -82,20 +84,23 @@ export class QuizComponent implements OnInit {
     this.quizStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
     this.startTime = current.getTime();
     this.Quizstatus = 0
-    if(this.ques.length==0){
-      this.from_csv()
-    }else{
-      this.sques = qConst[this.k];
-      this.sques.Question = this.replaceAll(this.sques.Question,"\n","<br>&nbsp;&nbsp;")
-      this.pra = this.sques.Question
-      this.que_no = this.sques.no
 
-      this.data.sendtoserver()
-      this.data.addlogs("session1")
-      this.data.addlogs("Overall")
-      this.data.addlogs("quiz")
-      this.data.addlogs([this.que_no,this.sques.Question_Type])
-    }
+    this.from_csv()
+    // if(this.ques.length==0){
+    //   this.from_csv()
+    // }else{
+    //   this.sques = qConst[this.k];
+    //   this.sques.code = this.replaceAll(this.sques.code,"\n","<br>&nbsp;&nbsp;")
+    //   this.codeText = this.sques.code
+    //   this.pra = this.sques.Question
+    //   this.que_no = this.sques.no
+
+    //   this.data.sendtoserver()
+    //   this.data.addlogs("session1")
+    //   this.data.addlogs("Overall")
+    //   this.data.addlogs("quiz")
+    //   this.data.addlogs([this.que_no,this.sques.Question_Type])
+    // }
     
 
   }
@@ -180,24 +185,67 @@ export class QuizComponent implements OnInit {
               alert(data.error)
           }else{
             var j = 1;
-            for(var i=0;i<this.NumberOfQuestions;i++){
-              var option = data[i]["Options"].split(',')
-              var ansoption = data[i]["Answers"].split(',')
-              var x = {
-                no: (i+1),
-                q:j.toString(),
-                Question: data[i]["Question"],
-                Question_Type: data[i]["Question Type"],
-                o1: option,
-                ans: ansoption
+            // for(var i=0;i<this.NumberOfQuestions;i++){
+            //   var option = [];
+            //   if(data[i]["A"])
+            //     option.push(data[i]["A"])
+            //   if(data[i]["B"])
+            //     option.push(data[i]["B"])
+            //   if(data[i]["C"])
+            //     option.push(data[i]["C"])
+            //   if(data[i]["D"])
+            //     option.push(data[i]["D"])
+            //   var ansoption = data[i]["Answers"].split(',')
+            //   var codetemp = this.replaceAll(data[i]["Code"],"\n","<br> &nbsp;&nbsp;&nbsp;")
+            //   var x = {
+            //     no: (i+1),
+            //     q:j.toString(),
+            //     Question: data[i]["Question"],
+            //     code: codetemp,
+            //     Question_Type: data[i]["Question Type"],
+            //     o1: option,
+            //     ans: ansoption
+            //   }
+            //   qConst.push(x);
+            //   j++;
+            // }
+            qConst.length = 0;
+            var noOfQue=this.NumberOfQuestions;
+            var i = 0;
+            alert(this.data.getQuizType())
+            while(noOfQue>0 && i<data.length){
+              if(data[i]["Question Tag"]==this.data.getQuizType()){
+                noOfQue-=1
+                var option = [];
+                if(data[i]["A"])
+                  option.push(data[i]["A"])
+                if(data[i]["B"])
+                  option.push(data[i]["B"])
+                if(data[i]["C"])
+                  option.push(data[i]["C"])
+                if(data[i]["D"])
+                  option.push(data[i]["D"])
+                var ansoption = data[i]["Answers"].split(',')
+                var codetemp = this.replaceAll(data[i]["Code"],"\n","<br> &nbsp;&nbsp;&nbsp;")
+                var x = {
+                  no: j,
+                  q:j.toString(),
+                  Question: data[i]["Question"],
+                  code: codetemp,
+                  Question_Type: data[i]["Question Type"],
+                  o1: option,
+                  ans: ansoption
+                }
+                qConst.push(x);
+                j++;
               }
-              qConst.push(x);
-              j++;
+              i++;
             }
             this.sques = qConst[this.k];
             //alert(this.sques.Question_Type)
             //console.log(this.sques.Question)
-            this.sques.Question = this.replaceAll(this.sques.Question,"\n","<br> &nbsp;&nbsp;&nbsp;")
+            this.sques.code = this.replaceAll(this.sques.code,"\n","<br> &nbsp;&nbsp;&nbsp;")
+            this.codeText = this.sques.code
             this.pra = this.sques.Question
             this.que_no = this.sques.no
             //alert(this.sques.Question)
@@ -227,6 +275,7 @@ export class QuizComponent implements OnInit {
     var temp = this.que_no
     this.sques = qConst[parseInt(qno)]
     this.pra = this.sques.Question
+    this.codeText = this.sques.code
     this.k = parseInt(qno)
     this.que_no = parseInt(qno)+1
 
@@ -247,6 +296,7 @@ export class QuizComponent implements OnInit {
       this.k++;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
+      this.codeText = this.sques.code
       this.que_no=this.sques.no
 
       var current = new Date();
@@ -264,6 +314,7 @@ export class QuizComponent implements OnInit {
       this.k--;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
+      this.codeText = this.sques.code
       this.que_no=this.sques.no
 
       var current = new Date();
@@ -298,7 +349,7 @@ export class QuizComponent implements OnInit {
           this.scqAnsSelected.get(this.que_no)[evt-1]=evt
         else
           this.scqAnsSelected.get(this.que_no)[evt-1]=0
-        this.scqAnsSelected.set(this.que_no,this.scqAnsSelected.get(this.que_no))
+          this.scqAnsSelected.set(this.que_no,this.scqAnsSelected.get(this.que_no))
       }catch(err){
         var temp = []
         for(var i=0;i<this.sques.o1.length;i++){

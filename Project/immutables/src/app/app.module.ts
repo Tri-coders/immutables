@@ -24,6 +24,7 @@ import { Quiz2Component } from './quiz2/quiz2.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StudyroomComponent } from './studyroom/studyroom.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

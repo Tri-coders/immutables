@@ -9,7 +9,18 @@ import { AuthenticationService } from './authentication.service';
 export class DatasendService{
 
   logs = [];
+  type = ""; //Quiz Type
   constructor(private auth: AuthenticationService) {  }
+
+  setQuizType(Type){
+    this.type = Type;
+  }
+
+  getQuizType(){
+    return this.type;
+  }
+
+
 
   addlogs(data) {
     this.logs.push(data);

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
+import {DatasendService} from '../datasend.service';
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit { 
-  constructor() { } 
+  constructor(private data: DatasendService, private router: Router) { } 
   opened = false;
   ngOnInit(): void {
   }
@@ -58,6 +59,11 @@ export class SidebarComponent implements OnInit {
     var arrowClose = document.getElementById("arrow-Close");
     arrowClose.style.display = "";
 
+  }
+
+  quiz(type){
+    this.data.setQuizType(type);
+    this.router.navigate(['/Quiz'])
   }
 
 }
