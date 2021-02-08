@@ -76,10 +76,11 @@
         border: 1px solid transparent;
         cursor: pointer;
         border-radius: .25rem;
+        transition:all 0.8s cubic-bezier(0, 0, 0.2, 1.5);
         
         &:hover{
             color: $main-color;
-            background-color: white;
+            background-color: transparent;
             border: 1px solid $main-color;
         }
     }

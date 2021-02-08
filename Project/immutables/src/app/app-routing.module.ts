@@ -11,6 +11,7 @@ import { CanDeactivateGuardService } from './can-deactivate-guard.service'
 import { QuizComponent} from './quiz/quiz.component';
 import { Quiz2Component} from './quiz2/quiz2.component';
 import { StudyroomComponent} from './studyroom/studyroom.component';
+import { TopicsComponent} from './topics/topics.component';
 
 const routes: Routes = [
   {path: 'Home', component: HomeComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'Sidebar', component:SidebarComponent},
   {path: 'Document', component:DocumentComponent},
   {path: 'Studyroom', component:StudyroomComponent},
+  {path: 'Topics', component:TopicsComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
@@ -31,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent, SidebarComponent, Quiz2Component, StudyroomComponent]
+export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent, SidebarComponent, Quiz2Component, StudyroomComponent, TopicsComponent]

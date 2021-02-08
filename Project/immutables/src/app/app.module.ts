@@ -23,6 +23,7 @@ import { HeaderComponent } from './header/header.component';
 import { Quiz2Component } from './quiz2/quiz2.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StudyroomComponent } from './studyroom/studyroom.component';
+import { TopicsComponent } from './topics/topics.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { StudyroomComponent } from './studyroom/studyroom.component';
     DocumentComponent,
     HeaderComponent,
     Quiz2Component,
-    StudyroomComponent
+    StudyroomComponent,
+    TopicsComponent
   ],
   imports: [
     BrowserModule,
