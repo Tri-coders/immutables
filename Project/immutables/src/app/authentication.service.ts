@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
-import { DatasendService } from './datasend.service'
+// import { DatasendService } from './datasend.service'
 
 export interface UserDetails{
   id: number
@@ -53,7 +53,7 @@ export interface pdfData{
 export class AuthenticationService {
   private token: string
 
-  constructor(private http: HttpClient, private router: Router, private data: DatasendService) {  }
+  constructor(private http: HttpClient, private router: Router) {  }
 
   private saveToken (token: string): void{
     localStorage.setItem("userToken", token)
@@ -95,7 +95,7 @@ export class AuthenticationService {
         map((data: TokenResponse)=>{
           if(data.token){
             this.saveToken(data.token)
-            this.data.setSession(data.token)
+            //this.data.setSession(data.token)
           }
           return data
         })
@@ -111,7 +111,7 @@ export class AuthenticationService {
         map((data:TokenResponse) => {
           if(data.token){
             this.saveToken(data.token)
-            this.data.setSession(data.token)
+            //this.data.setSession(data.token)
           }
           return data
         })
