@@ -31,6 +31,24 @@ main{
             font-size: 60px;
             transform: translateX(-6px);
         }
+        img{
+            width: 60px;
+            height: 60px;
+            border-radius: 150px;
+        }
+        .user {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+          
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+        .one {
+            background-image: url('../../assets/potrait.png');
+        }
         p{
             font-size: 1rem;
         }
