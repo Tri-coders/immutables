@@ -51,5 +51,6 @@ export class Quiz2Component implements OnInit {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
   }
+  
 
 }
