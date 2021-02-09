@@ -9,9 +9,11 @@ import { AuthenticationService } from './authentication.service';
 export class DatasendService{
 
   logs = [];
-  type = ""; //Quiz Type
+  type = ""; //Quiz Topic
+  session=""
   constructor(private auth: AuthenticationService) {  }
 
+  ////////////////Quiz Topic///////////////
   setQuizType(Type){
     this.type = Type;
   }
@@ -19,6 +21,32 @@ export class DatasendService{
   getQuizType(){
     return this.type;
   }
+  ////////////////Quiz Topic///////////////
+
+///////////////Session ID//////////////////
+  setSession(Session){
+    this.session = Session
+  }
+
+  getSession(){
+    return this.session
+  }
+///////////////Session ID//////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
