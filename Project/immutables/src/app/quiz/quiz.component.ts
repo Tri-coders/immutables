@@ -144,7 +144,7 @@ export class QuizComponent implements OnInit {
       score+=(tempans/qConst[i]["ans"].length)
       // alert("score "+score)
     }
-    this.data.sendtoserverQuizScore(["QuizScore","session1","topic1",score,this.Quizstatus,this.quizStartTime,quizEndTime,this.endTime-this.startTime])
+    this.data.sendtoserverQuizScore(["QuizScore",this.data.getSession(),this.data.getQuizType(),score,this.Quizstatus,this.quizStartTime,quizEndTime,this.endTime-this.startTime])
   }
 
   replaceAll(string, search, replace) {
@@ -250,8 +250,8 @@ export class QuizComponent implements OnInit {
             this.que_no = this.sques.no
             //alert(this.sques.Question)
             this.data.sendtoserver()
-            this.data.addlogs("session1")
-            this.data.addlogs("Overall")
+            this.data.addlogs(this.data.getSession())
+            this.data.addlogs(this.data.getQuizType())
             this.data.addlogs("quiz")
             this.data.addlogs([this.que_no,this.sques.Question_Type])
             
