@@ -10,7 +10,7 @@ export class DatasendService{
 
   logs = [];
   type = ""; //Quiz Topic
-  session=""
+  
   constructor(private auth: AuthenticationService) {  }
 
   ////////////////Quiz Topic///////////////
@@ -23,15 +23,7 @@ export class DatasendService{
   }
   ////////////////Quiz Topic///////////////
 
-///////////////Session ID//////////////////
-  setSession(Session){
-    this.session = Session
-  }
 
-  getSession(){
-    return this.session
-  }
-///////////////Session ID//////////////////
 
 
 

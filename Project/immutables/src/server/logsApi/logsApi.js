@@ -21,6 +21,8 @@ logs.post('/logsdata', async (req,res)=>{
         quiz(logs)
     }else if(logs[0]=="QuizScore"){
         quizScore(logs)
+    }else if(logs[0]=="SessionLogs"){
+        session(logs)
     }
     res.json({
         msg: "correct"
@@ -68,6 +70,19 @@ function quizScore(logs){
     data+="\n"
     try{
         fs.appendFileSync('./Logs Files/quiz_log.csv',data)
+    }catch(err){
+        console.log(err)
+    }   
+}
+
+function session(logs){
+    var data = ""
+    for(var i=1;i<7;i++){
+        data+=logs[i]+','
+    }
+    data+="\n"
+    try{
+        fs.appendFileSync('./Logs Files/session.csv',data)
     }catch(err){
         console.log(err)
     }   
