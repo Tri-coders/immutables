@@ -392,4 +392,21 @@ export class QuizComponent implements OnInit {
     this.Quizstatus = 1;
   }
 
+
+  openNav() {
+    document.getElementById("mySidebar").style.width = "18%";
+    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("closebtn").style.display = "block";
+    document.getElementById("openbtn").style.display = "none";
+    console.log("opened")
+  }
+  
+  closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("openbtn").style.display = "block";
+    document.getElementById("closebtn").style.display = "none";
+    console.log("closed")
+  }
+
 }

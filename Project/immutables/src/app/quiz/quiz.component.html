@@ -1,7 +1,19 @@
-<app-header></app-header>
-<a routerLink="/Document">End</a>
+<!-- <app-header></app-header> -->
+
+<mat-toolbar role="heading" class="row">
+  <ul>
+    <!-- <button class="openbtn" (click)="openNav()">▷</button>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" style="color: black;">CLose</a> -->
+    <li><a id="closebtn" class="qbtn" (click)="closeNav()">Minimize Sidebar</a></li>
+    <li><a id="openbtn" class="qbtn" (click)="openNav()" style="display: none;">Maximize Sidebar</a></li>
+  </ul>
+  <ul>
+    <li><a routerLink="/Document">End</a></li></ul>
+</mat-toolbar>
+
+<!-- <a routerLink="/Document">End</a> -->
 <div class="outer_container">
-  <div class="left_panel">
+  <div class="left_panel" id="mySidebar">
     <div class="question_no_links">
       <button *ngFor="let option of ques; let count = index;" id="question_no_link{{count+1}}" (click)="select(count)" class="question_no_button" style="display: inline-block;">{{count+1}}</button>
       <!-- <button id="question_no_link2" (click)="select(1)" class="question_no_button">2</button>
@@ -37,7 +49,7 @@
     </div>
   </div>
 
-  <div class="quiz_container">
+  <div class="quiz_container" id="main">
     <br>
     <h3 class="path"> <span>Topic Name</span> > <span>Sub Topic Name</span> </h3>
     <div class="question_container">
@@ -92,7 +104,7 @@
               {{option}}</label>
             </ng-template>
         </div>  
-        <button id="clear" (click)="clearChoices(que_no)">clear choices</button>
+        <button id="clear" class="clearChoice" (click)="clearChoices(que_no)">clear choices</button>
       </div>
 
       <div class="options" *ngIf="sques.Question_Type === 'MCQ'">
