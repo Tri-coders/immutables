@@ -13,11 +13,4 @@ pdf.post('/pdfname', (req,res)=>{
     })
 });
 
-pdf.get('/get_file_name', (req, res) => {
-    // res.cookie("file_name_to_display", "1.pdf"); 
-    // res.clearCookie("file_name_to_display");
-    console.log(req.cookies["file_name_to_display"]);
-    res.send('{"file_name":"' + req.cookies["file_name_to_display"] + '"}');
-});
-
 module.exports = pdf
