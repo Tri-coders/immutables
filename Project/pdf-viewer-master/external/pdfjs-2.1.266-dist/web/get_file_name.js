@@ -1,7 +1,7 @@
 var file_name_to_display = "1.pdf";
 
 var xhr = new XMLHttpRequest()
-url = 'http://localhost:8085/get_file_name'
+url = 'http://localhost:3000/pdf/get_file_name'
 xhr.open('GET', url);
 xhr.setRequestHeader('Content-Type', 'application/json')
 
