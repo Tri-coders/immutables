@@ -50,7 +50,7 @@ const qConst : QuestionFormat[] = []
   styleUrls: ['./quiz.component.scss']
 })
 export class QuizComponent implements OnInit {
-
+  opened = false;
   pra: any;
   codeText: any;
   que_no: any;
@@ -394,19 +394,74 @@ export class QuizComponent implements OnInit {
 
 
   openNav() {
+    this.opened = false;
     document.getElementById("mySidebar").style.width = "18%";
     document.getElementById("main").style.marginLeft = "0";
-    document.getElementById("closebtn").style.display = "block";
-    document.getElementById("openbtn").style.display = "none";
-    console.log("opened")
+    document.getElementById("arrow-Open").style.display = "none";
+    document.getElementById("arrow-Close").style.display = "block";
+    document.getElementById("mySidebar").style.marginLeft = "0";
+    console.log("closed")
   }
   
   closeNav() {
+    this.opened = true;
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
-    document.getElementById("openbtn").style.display = "block";
-    document.getElementById("closebtn").style.display = "none";
-    console.log("closed")
+    document.getElementById("arrow-Open").style.display = "block";
+    document.getElementById("arrow-Close").style.display = "none";
+    document.getElementById("mySidebar").style.marginLeft = "-30px";
+
+    console.log("opened")
+
   }
+
+  togglesidebar(){
+    // this.opened = !this.opened;
+    if (this.opened) {
+      // console.log("opened");
+      this.openNav();
+    } else {
+      // console.log("Closed");
+      this.closeNav();
+    }
+  }  
+
+  onClose(){
+    this.opened = false;
+
+    setTimeout( () => { var x = document.getElementById("ngs");
+    //x.style.transform = "translateX(" + (-300) + "px) ";
+    x.style.width = "35px";
+    
+    //y.style.marginLeft = "-25px";
+
+    }, 250 );
+    var y = document.getElementById("open-sidebar");
+    y.style.transform = "translateX(" + (0) + "px) ";
+    
+    var arrowOpen = document.getElementById("arrow-Open");
+    arrowOpen.style.display = "";
+    var arrowClose = document.getElementById("arrow-Close");
+    arrowClose.style.display = "none";
+    
+  }
+
+  onOpen(){
+    this.opened = true;
+    var x = document.getElementById("ngs");
+    //x.style.transform = "translateX(" + (300) + "px) ";
+    x.style.width = "100%";
+
+    var y = document.getElementById("open-sidebar");
+    y.style.transform = "translateX(" + (300) + "px) ";
+    //y.style.marginLeft = "275px";
+    
+    var arrowOpen = document.getElementById("arrow-Open");
+    arrowOpen.style.display = "none";
+    var arrowClose = document.getElementById("arrow-Close");
+    arrowClose.style.display = "";
+
+  }
+
 
 }
