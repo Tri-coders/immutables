@@ -9,12 +9,13 @@ import {Router} from '@angular/router'
 export class SidebarComponent implements OnInit { 
   constructor(private data: DatasendService, private router: Router) { } 
   opened = false;
+  co_opened = false;
+  cm_opened = false;
+  aoop_opened = false;
   ngOnInit(): void {
   }
 
   togglesidebar(){
-    // this.opened = !this.opened;
-
     if (this.opened) {
       console.log("opened");
       this.onClose();

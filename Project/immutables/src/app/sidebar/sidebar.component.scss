@@ -1,12 +1,12 @@
 @import '../base';
 
 ng-sidebar-container{
-    position: absolute;
+    position: fixed;
     top: 0;
-    margin-top: 50px;
     height: 100%;
     width: 35px;
     z-index: 0;
+
     button{
         color: $white;
         background-color: $main-color;
@@ -46,7 +46,7 @@ ng-sidebar-container{
         margin-right: 0;
     }
     p{
-        margin-top: 20%;        
+        margin-top: 40%;        
         text-align: center;
         color: $main-color;
         font-size: 2rem;
@@ -77,12 +77,19 @@ ng-sidebar-container{
     }
 
     li {
-        ul { 
+        ul{ 
             display: none; 
             padding: 0.5rem 1rem;
         }
     }
-    li:hover > ul {
+
+    .lis{
+        .uls{
+            display: none; 
+            padding: 0.5rem 1rem;
+        }
+    }
+    li:hover > ul, li:hover > ul > li > .uls {
         display: block;
     }
 

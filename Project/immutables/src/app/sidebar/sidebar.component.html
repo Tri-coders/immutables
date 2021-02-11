@@ -7,7 +7,12 @@
           <ul>
             <!-- <li><a routerLink="/Quiz">Classes and Objects</a></li>
             <li><a routerLink="/Quiz">Classes Variables</a></li> -->
-            <li><a (click)="quiz('Classes and Objects')">Classes and Objects</a></li>
+            <li class="lis"><a>Classes and Objects</a>
+              <ul class="uls">
+                <li><a (click)="quiz('Classes and Objects')">Quiz</a></li>
+                <li><a (click)="quiz('Classes and Objects')">Material</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a>Classes and Objects: Method</a>
@@ -15,17 +20,42 @@
             <!-- <li><a routerLink="/Quiz">Classes Methods</a></li>
             <li><a routerLink="/Quiz">Method Overloading</a></li>
             <li><a routerLink="/Quiz">Method Overriding</a></li> -->
-            <li><a (click)="quiz('Classes Methods')">Classes Methods</a></li>
-            <li><a (click)="quiz('Method Overloading')">Method Overloading</a></li>
-            <li><a (click)="quiz('Method Overriding')">Method Overriding</a></li>
+            <li class="lis"><a>Classes Methods</a>
+              <ul class="uls">
+                <li><a (click)="quiz('Classes Methods')">Quiz</a></li>
+                <li><a (click)="quiz('Classes Methods')">Material</a></li>
+              </ul>
+            </li>
+            <li><a (click)="quiz('Method Overloading')">Method Overloading</a>
+              <ul class="uls">
+                <li><a (click)="quiz('Method Overloading')">Quiz</a></li>
+                <li><a (click)="quiz('Method Overloading')">Material</a></li>
+              </ul>
+            </li>
+            <li><a (click)="quiz('Method Overriding')">Method Overriding</a>
+              <ul class="uls">
+                <li><a (click)="quiz('Method Overriding')">Quiz</a></li>
+                <li><a (click)="quiz('Method Overriding')">Material</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a>Advanced concept of OOPs</a>
             <ul>
               <!-- <li><a routerLink="/Quiz">Inheritance</a></li>
               <li><a routerLink="/Quiz">Polymorphism</a></li> -->
-              <li><a (click)="quiz('Inheritance')">Inheritance</a></li>
-              <li><a (click)="quiz('Polymorphism')">Polymorphism</a></li>
+              <li><a (click)="quiz('Inheritance')">Inheritance</a>
+                <ul class="uls">
+                  <li><a (click)="quiz('Inheritance')">Quiz</a></li>
+                  <li><a (click)="quiz('Inheritance')">Material</a></li>
+                </ul>
+              </li>
+              <li><a (click)="quiz('Polymorphism')">Polymorphism</a>
+                <ul class="uls">
+                  <li><a (click)="quiz('Polymorphism')">Quiz</a></li>
+                  <li><a (click)="quiz('Polymorphism')">Material</a></li>
+                </ul>
+              </li>
             </ul>
         </li>
       </ul>
