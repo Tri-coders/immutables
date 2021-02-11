@@ -11,9 +11,10 @@ const json2csv = require('json2csv')
 logs.use(express.static(__dirname+"../../../../../"));
 logs.use(express.static(__dirname+"../../../../../Logs Files/"));
 
+const path = require('path');
 
 logs.post('/logsdata', async (req,res)=>{
-    console.log(__dirname+"../../../../../")
+    console.log(__dirname+"/../../../../../")
     var logs = req.body;
     console.log(logs)
     if(logs[2]=="quiz"){
@@ -56,7 +57,7 @@ function quiz(logs){
     }
     console.log("ALA")
     try{
-        fs.appendFileSync('./Logs Files/question_switch_log.csv',data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs Files/question_switch_log.csv') ,data)
     }catch(err){
         console.log(err)
     }
@@ -69,7 +70,7 @@ function quizScore(logs){
     }
     data+="\n"
     try{
-        fs.appendFileSync('./Logs Files/quiz_log.csv',data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs Files/quiz_log.csv'), data)
     }catch(err){
         console.log(err)
     }   
