@@ -1,3 +1,5 @@
+@import '../base';
+
 #Frame{
   width: 60%;
   min-height: 100%; 
@@ -55,7 +57,30 @@
   background-color: #ffe066;
 }
 
+.my_menu{
+  position: absolute;
+  top: 250px;
+}
 .mat-menu-content.ng-tns-c47-0 {
-  background-color: red !important;
-  height: 10000px !important;
+  background-color: white !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 65px !important;
+  z-index: 0 !important;
+  border: 1px solid $main-color;
+  transition: all .2s ease-in-out !important;
+}
+
+.mat-menu-panel.topic {
+   overflow: hidden;
+}
+
+.cdk-overlay-container{
+  position: fixed !important;
+  top: 0 !important;
+}
+
+.mat-elevation-z4{
+  box-shadow: none !important;
+  background-color: transparent !important;
 }
