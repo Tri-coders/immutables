@@ -1,4 +1,92 @@
 <app-header></app-header>
+
+
+<!-- Menu Start -->
+<button mat-button [matMenuTriggerFor]="topic" >Topics</button>
+<!-- Main Topics -->
+<mat-menu #topic="matMenu" >
+  <button mat-menu-item [matMenuTriggerFor]="ico">Introduction of Classes and Objects</button>
+  <button mat-menu-item [matMenuTriggerFor]="cobm">Classes and Objects: Method</button>
+  <button mat-menu-item [matMenuTriggerFor]="acoop">Advanced concept of OOPs</button>
+</mat-menu>
+<!-- First Subtopic -->
+<mat-menu #ico="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="co">Classes and Objects</button>
+</mat-menu>
+
+<mat-menu #co="matMenu">
+  <button mat-menu-item >Quiz</button>
+  <button mat-menu-item [matMenuTriggerFor]="co_m">Materials</button>
+</mat-menu>
+
+<mat-menu #co_m="matMenu">
+  <button mat-menu-item>Pdf Materials</button>
+  <button mat-menu-item>Video Materials</button>
+</mat-menu>
+
+<!-- Second Subtopic -->
+<mat-menu #cobm="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="cm">Classes Methods</button>
+  <button mat-menu-item [matMenuTriggerFor]="mol">Method Overloading</button>
+  <button mat-menu-item [matMenuTriggerFor]="mor">Method Overriding</button>
+</mat-menu>
+
+<mat-menu #cm="matMenu">
+  <button mat-menu-item >Quiz</button>
+  <button mat-menu-item [matMenuTriggerFor]="cm_m">Materials</button>
+</mat-menu>
+
+<mat-menu #cm_m="matMenu">
+  <button mat-menu-item>Pdf Materials</button>
+  <button mat-menu-item>Video Materials</button>
+</mat-menu>
+
+<mat-menu #mol="matMenu">
+  <button mat-menu-item >Quiz</button>
+  <button mat-menu-item [matMenuTriggerFor]="mol_m">Materials</button>
+</mat-menu>
+
+<mat-menu #mol_m="matMenu">
+  <button mat-menu-item>Pdf Materials</button>
+  <button mat-menu-item>Video Materials</button>
+</mat-menu>
+
+<mat-menu #mor="matMenu">
+  <button mat-menu-item >Quiz</button>
+  <button mat-menu-item [matMenuTriggerFor]="mor_m">Materials</button>
+</mat-menu>
+
+<mat-menu #mor_m="matMenu">
+  <button mat-menu-item>Pdf Materials</button>
+  <button mat-menu-item>Video Materials</button>
+</mat-menu>
+
+<!-- Third Subtopic -->
+<mat-menu #acoop="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="in">Inheritance</button>
+  <button mat-menu-item [matMenuTriggerFor]="poly">Polymorphism</button>
+</mat-menu>
+
+<mat-menu #in="matMenu">
+  <button mat-menu-item >Quiz</button>
+  <button mat-menu-item [matMenuTriggerFor]="in_m">Materials</button>
+</mat-menu>
+
+<mat-menu #in_m="matMenu">
+  <button mat-menu-item>Pdf Materials</button>
+  <button mat-menu-item>Video Materials</button>
+</mat-menu>
+
+<mat-menu #poly="matMenu">
+  <button mat-menu-item >Quiz</button>
+  <button mat-menu-item [matMenuTriggerFor]="poly_m">Materials</button>
+</mat-menu>
+
+<mat-menu #poly_m="matMenu">
+  <button mat-menu-item>Pdf Materials</button>
+  <button mat-menu-item>Video Materials</button>
+</mat-menu>
+<!-- Menu Over -->
 <div>
   <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
   <label id="2" (click)="updatePdfName(2)">compressed.tracemonkey-pldi-09.pdf</label><br>
