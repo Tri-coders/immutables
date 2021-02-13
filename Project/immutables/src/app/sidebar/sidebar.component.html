@@ -1,7 +1,7 @@
 <ng-sidebar-container id="ngs">
     <ng-sidebar [opened]="opened" id="side">
       <!-- <button class="close-sidebar" (click)="onClose()"><span class="material-icons">close</span></button> -->
-      <!-- <p>Topics</p>
+      <p>Topics</p>
       <ul>
         <li><a>Introduction of Classes and Objects</a>
           <ul>
@@ -51,10 +51,10 @@
               </li>
             </ul>
         </li>
-      </ul> -->
+      </ul>
 
       <!-- Menu Start -->
-<button mat-button [matMenuTriggerFor]="topic">Topics</button>
+<!-- <button mat-button [matMenuTriggerFor]="topic">Topics</button> -->
 <!-- Main Topics -->
 <mat-menu #topic="matMenu" opened="true">
   <button mat-menu-item [matMenuTriggerFor]="ico">Introduction of Classes and Objects</button>
