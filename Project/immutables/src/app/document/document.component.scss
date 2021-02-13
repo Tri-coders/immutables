@@ -60,8 +60,23 @@
 .my_menu{
   position: absolute;
   top: 250px;
+  left: -25px;
+  color: $white;
+  background-color: $main-color;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  border: 0;
+  border-radius: 99999999999px !important;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,.5) !important;
+  transition: all 0.3s cubic-bezier(0, 0, 0.3, 1);
+  z-index: 999;
+  outline: 0;
+  min-width: 0 !important;
+  line-height: 0 !important;
+  padding-left: 20px !important;
 }
-.mat-menu-content.ng-tns-c47-0 {
+.topic > .mat-menu-content {
   background-color: white !important;
   height: 100% !important;
   position: fixed !important;
@@ -69,6 +84,8 @@
   z-index: 0 !important;
   border: 1px solid $main-color;
   transition: all .2s ease-in-out !important;
+  box-shadow: 0 5px 6px 0 rgba(0,0,0,.5) !important;
+
 }
 
 .mat-menu-panel.topic {

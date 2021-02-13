@@ -2,7 +2,11 @@
 
 
 <!-- Menu Start -->
-<button mat-button [matMenuTriggerFor]="topic" class="my_menu">Topics</button>
+<button mat-button [matMenuTriggerFor]="topic" class="my_menu" id="open-sidebar">
+  <span id="arrow-Close" style="display: none;" class="material-icons">keyboard_arrow_left</span>
+  <span id="arrow-Open" class="material-icons">keyboard_arrow_right</span>
+</button>
+<!-- <button mat-button [matMenuTriggerFor]="topic" class="my_menu">Topics</button> -->
 <!-- Main Topics -->
 <mat-menu #topic="matMenu" class="topic">
   <button mat-menu-item [matMenuTriggerFor]="ico">Introduction of Classes and Objects</button>
@@ -20,8 +24,8 @@
 </mat-menu>
 
 <mat-menu #co_m="matMenu">
-  <button mat-menu-item>Pdf Materials</button>
-  <button mat-menu-item>Video Materials</button>
+  <button (click)="updatePdfName(1)" mat-menu-item>Pdf Materials</button>
+  <button (click)="updateVideoName(3)" mat-menu-item>Video1</button>
 </mat-menu>
 
 <!-- Second Subtopic -->
@@ -37,8 +41,8 @@
 </mat-menu>
 
 <mat-menu #cm_m="matMenu">
-  <button mat-menu-item>Pdf Materials</button>
-  <button mat-menu-item>Video Materials</button>
+  <button id="2" (click)="updatePdfName(2)" mat-menu-item>Pdf Materials</button>
+  <button id="3" mat-menu-item>Video Materials</button>
 </mat-menu>
 
 <mat-menu #mol="matMenu">
@@ -87,11 +91,11 @@
   <button mat-menu-item>Video Materials</button>
 </mat-menu>
 <!-- Menu Over -->
+
 <div>
   <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
   <label id="2" (click)="updatePdfName(2)">compressed.tracemonkey-pldi-09.pdf</label><br>
   <label id="3" (click)="updateVideoName(3)">Video1</label><br>
-
 </div>
 
 <div id="mydiv">
