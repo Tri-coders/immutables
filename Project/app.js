@@ -33,6 +33,13 @@ app.get('/get_file_name', (req, res) => {
     res.send('{"file_name":"' + req.cookies["file_name_to_display"] + '"}');
 });
 
+app.get('/get_file_name', (req, res) => {
+    // res.cookie("file_name_to_display", "1.pdf"); 
+    // res.clearCookie("file_name_to_display");
+    console.log(req.cookies["file_name_to_display"]);
+    res.send('{"file_name":"' + req.cookies["file_name_to_display"] + '"}');
+});
+
 //Port Listenings
 app.listen(8085, (req, res) => {
     console.log("Listening on 8085");

@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewEncapsulation
 } from '@angular/core';
 import {
   AuthenticationService,
@@ -15,7 +16,8 @@ const dic = {}
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',
-  styleUrls: ['./document.component.scss']
+  styleUrls: ['./document.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DocumentComponent implements OnInit {
 
