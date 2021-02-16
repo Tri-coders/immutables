@@ -8,7 +8,7 @@
     margin: 0 auto;
     padding: 40px;
     // color: $main-color;
-    background-color: #cde0ff28;
+    background-color: #f5f6fe59;
     z-index: -1;
     text-align: justify;
     font-size: 1rem;
@@ -19,7 +19,7 @@
     font-size: 3rem;
     margin-top: 1rem;
     font-weight: bolder;
-    color: #0079D7;
+    color: $main-color;
 }
 .para-one{
     font-family: $sub-heading-font;
@@ -28,7 +28,7 @@
     font-weight: lighter;
     letter-spacing: 0.05rem;
     line-height: 1em;
-    color: #0079D7;
+    color: $main-color;
 }
 .paras{
     font-family: $content-font;

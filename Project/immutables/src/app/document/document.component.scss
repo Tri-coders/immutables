@@ -22,8 +22,8 @@
       padding: 10px;
       cursor: move;
       z-index: 10;
-      background-color: #2196F3;
-      color: #fff;
+      background-color: $main-color;
+      color: $white;
 
     }
 }
@@ -76,13 +76,21 @@
   line-height: 0 !important;
   padding-left: 20px !important;
 }
+.mat_icon{
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  color: $main-color;
+}
+.mat_but{
+  padding-left: 48px !important;
+}
 .topic > .mat-menu-content {
   background-color: white !important;
   height: 100% !important;
   position: fixed !important;
   top: 65px !important;
   z-index: 0 !important;
-  border: 1px solid $main-color;
   transition: all .2s ease-in-out !important;
   box-shadow: 0 5px 6px 0 rgba(0,0,0,.5) !important;
 

@@ -19,13 +19,9 @@
 </mat-menu>
 
 <mat-menu #co="matMenu">
-  <button mat-menu-item >Quiz</button>
-  <button mat-menu-item [matMenuTriggerFor]="co_m">Materials</button>
-</mat-menu>
-
-<mat-menu #co_m="matMenu">
-  <button (click)="updatePdfName(1)" mat-menu-item>Pdf Materials</button>
-  <button (click)="updateVideoName(3)" mat-menu-item>Video1</button>
+  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" (click)="updateVideoName(3)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video1</button>
 </mat-menu>
 
 <!-- Second Subtopic -->
@@ -36,33 +32,22 @@
 </mat-menu>
 
 <mat-menu #cm="matMenu">
-  <button mat-menu-item >Quiz</button>
-  <button mat-menu-item [matMenuTriggerFor]="cm_m">Materials</button>
+  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" id="2" (click)="updatePdfName(2)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" id="3" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
-<mat-menu #cm_m="matMenu">
-  <button id="2" (click)="updatePdfName(2)" mat-menu-item>Pdf Materials</button>
-  <button id="3" mat-menu-item>Video Materials</button>
-</mat-menu>
 
 <mat-menu #mol="matMenu">
-  <button mat-menu-item >Quiz</button>
-  <button mat-menu-item [matMenuTriggerFor]="mol_m">Materials</button>
-</mat-menu>
-
-<mat-menu #mol_m="matMenu">
-  <button mat-menu-item>Pdf Materials</button>
-  <button mat-menu-item>Video Materials</button>
+  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
 <mat-menu #mor="matMenu">
-  <button mat-menu-item >Quiz</button>
-  <button mat-menu-item [matMenuTriggerFor]="mor_m">Materials</button>
-</mat-menu>
-
-<mat-menu #mor_m="matMenu">
-  <button mat-menu-item>Pdf Materials</button>
-  <button mat-menu-item>Video Materials</button>
+  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
 <!-- Third Subtopic -->
@@ -72,24 +57,17 @@
 </mat-menu>
 
 <mat-menu #in="matMenu">
-  <button mat-menu-item >Quiz</button>
-  <button mat-menu-item [matMenuTriggerFor]="in_m">Materials</button>
-</mat-menu>
-
-<mat-menu #in_m="matMenu">
-  <button mat-menu-item>Pdf Materials</button>
-  <button mat-menu-item>Video Materials</button>
+  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
 <mat-menu #poly="matMenu">
-  <button mat-menu-item >Quiz</button>
-  <button mat-menu-item [matMenuTriggerFor]="poly_m">Materials</button>
+  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
-<mat-menu #poly_m="matMenu">
-  <button mat-menu-item>Pdf Materials</button>
-  <button mat-menu-item>Video Materials</button>
-</mat-menu>
 <!-- Menu Over -->
 
 <div>
