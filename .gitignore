@@ -102,7 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-Logs FIles/question_switch_log.csv
-Logs FIles/quiz_log.csv
-Logs FIles/session.csv
-*.csv
