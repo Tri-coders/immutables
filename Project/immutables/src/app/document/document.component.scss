@@ -56,8 +56,13 @@
 ::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
   background-color: #ffe066;
 }
-
+.mat-menu-item{
+  font-family: $content-font !important;
+  color: $main-color !important;
+  font-size: 1.1rem;
+}
 .my_menu{
+  font-family: $content-font !important;
   position: absolute;
   top: 250px;
   left: -25px;
@@ -89,11 +94,10 @@
   background-color: white !important;
   height: 100% !important;
   position: fixed !important;
-  top: 65px !important;
+  top: 60px !important;
   z-index: 0 !important;
   transition: all .2s ease-in-out !important;
   box-shadow: 0 5px 6px 0 rgba(0,0,0,.5) !important;
-
 }
 
 .mat-menu-panel.topic {
@@ -108,4 +112,31 @@
 .mat-elevation-z4{
   box-shadow: none !important;
   background-color: transparent !important;
+}
+.menu-heading{
+  font-size: 2rem !important;
+  font-family: $heading2-font !important;
+  text-align: center !important;
+  margin-bottom: 25px !important;
+  font-weight: 600;
+   
+  &:hover{
+    background-color: transparent !important;
+    cursor: auto !important;
+  }
+}
+
+.first-menu{
+  margin: 12px auto !important;
+}
+
+.close-but{
+  float: right;
+  margin: 10px;
+  color: $main-color;
+  cursor: pointer;
+
+  &:hover{
+    color: red;
+  }
 }
