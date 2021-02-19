@@ -2,7 +2,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  HostListener
 } from '@angular/core';
 import {
   AuthenticationService,
@@ -32,6 +33,17 @@ export class DocumentComponent implements OnInit {
 
   pdfSrc = "https://www.chili-publish.com/media/Rendro/cp_whitepaper_rendro.pdf"
 
+  
+  ///////////////////////FullScreen Exit////////////////////////
+  @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+    if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
+      //console.log("F11")
+      this.auth.logout()
+      this.router.navigateByUrl('/Home')
+    }
+  }
+  ////////////////////////////////////////////////////
   onToggle(event){
     var x = document.getElementById("mydiv")
     var y = document.getElementById("mydivheader")

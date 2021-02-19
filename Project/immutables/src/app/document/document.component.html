@@ -9,9 +9,11 @@
 <!-- <button mat-button [matMenuTriggerFor]="topic" class="my_menu">Topics</button> -->
 <!-- Main Topics -->
 <mat-menu #topic="matMenu" class="topic">
-  <button mat-menu-item [matMenuTriggerFor]="ico">Introduction of Classes and Objects</button>
-  <button mat-menu-item [matMenuTriggerFor]="cobm">Classes and Objects: Method</button>
-  <button mat-menu-item [matMenuTriggerFor]="acoop">Advanced concept of OOPs</button>
+  <span class="material-icons close-but">close</span>
+  <button mat-menu-item class="menu-heading">Topics</button>
+  <button mat-menu-item [matMenuTriggerFor]="ico" class="first-menu">Introduction of Classes and Objects</button>
+  <button mat-menu-item [matMenuTriggerFor]="cobm" class="first-menu">Classes and Objects: Method</button>
+  <button mat-menu-item [matMenuTriggerFor]="acoop" class="first-menu">Advanced concept of OOPs</button>
 </mat-menu>
 <!-- First Subtopic -->
 <mat-menu #ico="matMenu">

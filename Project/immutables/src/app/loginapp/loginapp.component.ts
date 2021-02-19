@@ -41,7 +41,9 @@ export class LoginappComponent implements OnInit {
       this.auth.login(this.credentials).subscribe(
         (data)=>{
             if(data.token){
+              this.fullscreen()
               this.router.navigateByUrl('/Home')
+              
             }else{
               alert(data.error)
             }
@@ -53,7 +55,12 @@ export class LoginappComponent implements OnInit {
       // display form values on success
       
   }
-
+  ele = document.documentElement;
+  fullscreen(){
+    if(this.ele.requestFullscreen){
+      this.ele.requestFullscreen();
+    }
+  }
   onReset() {
       this.submitted = false;
       this.registerForm.reset();
