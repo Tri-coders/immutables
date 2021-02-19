@@ -10,6 +10,7 @@ export class DatasendService{
 
   logs = [];
   type = ""; //Quiz Topic
+  userName = ""
   
   constructor(private auth: AuthenticationService) {  }
 
@@ -23,6 +24,13 @@ export class DatasendService{
   }
   ////////////////Quiz Topic///////////////
 
+  setuserName(name){
+    this.userName = name;
+  }
+
+  getuserName(){
+    return this.userName
+  }
 
 
 

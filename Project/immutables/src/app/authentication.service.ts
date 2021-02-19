@@ -132,6 +132,8 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+
+              
         
           }
           return data

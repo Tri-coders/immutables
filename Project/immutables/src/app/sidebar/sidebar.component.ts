@@ -1,13 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {DatasendService} from '../datasend.service';
 import {Router} from '@angular/router'
+import { AuthenticationService } from '../authentication.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit { 
-  constructor(private data: DatasendService, private router: Router) { } 
+  constructor(private data: DatasendService, private router: Router, private auth: AuthenticationService) { } 
+  
+  ///////////////////////FullScreen Exit////////////////////////
+  @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+    if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
+      //console.log("F11")
+      this.auth.logout()
+      this.router.navigateByUrl('/Home')
+    }
+  }
+  ////////////////////////////////////////////////////
+
   opened = false;
   co_opened = false;
   cm_opened = false;

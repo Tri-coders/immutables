@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import {QuestionFormat} from '../shared/quetions';
 
 import { AuthenticationService, TokenPayload } from '../authentication.service';
@@ -78,6 +78,18 @@ export class QuizComponent implements OnInit {
   //optionchanges = new Array();
 
   constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) { }
+
+  
+  ///////////////////////FullScreen Exit////////////////////////
+  @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+    if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
+      //console.log("F11")
+      this.auth.logout()
+      this.router.navigateByUrl('/Home')
+    }
+  }
+  ////////////////////////////////////////////////////
 
   ngOnInit() {
     var current = new Date();
@@ -385,6 +397,8 @@ export class QuizComponent implements OnInit {
     var element = <HTMLInputElement> document.getElementById(id);
     element.checked = false
     this.scqAnsSelected.delete(que)
+    this.data.addlogsAtPosition(this.data.getlength()-1,0)
+    
   
   }
 
