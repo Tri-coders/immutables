@@ -85,8 +85,14 @@
   </iframe>
 </div>
 <br><br>
-<iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
-</iframe>
+<!-- <iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
+</iframe> -->
+<pdf-viewer
+[src]="pdfSrc"
+[render-text]="true"
+style="display: block;"
+>
+</pdf-viewer>
 
 <!-- <app-sidebar></app-sidebar> -->
 <app-fab></app-fab>
