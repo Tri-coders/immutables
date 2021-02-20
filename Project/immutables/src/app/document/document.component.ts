@@ -1,5 +1,3 @@
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import {
   Component,
   OnInit,
@@ -29,21 +27,13 @@ export class DocumentComponent implements OnInit {
     name: ""
   }
 
-  constructor(private auth: AuthenticationService, private router: Router, private sanitizer: DomSanitizer) {}
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
-  //src = "https://drive.google.com/file/d/1SP8MZmtiVuH-dzZ0fMPEYiLs5YZyd6PG/view?usp=sharing"
-  base_64_string = 'this_is_where_you_put_base_64';
-    pdfSource;
+ 
+  pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
 
-    _base64ToArrayBuffer(base64) {
-        const binary_string = window.atob(base64);
-        const len = binary_string.length;
-        const bytes = new Uint8Array(len);
-        for (let i = 0; i < len; i++) {
-            bytes[i] = binary_string.charCodeAt(i);
-        }
-        return bytes.buffer;
-    }///////////////////////FullScreen Exit////////////////////////
+  
+  ///////////////////////FullScreen Exit////////////////////////
   @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
     if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
@@ -70,7 +60,6 @@ export class DocumentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pdfSource = this._base64ToArrayBuffer("https://www.tutorialspoint.com/angular2/angular2_tutorial.pdf");
     console.log(this.pdfSource)
     if(Object.keys(dic).length === 0){
       this.from_csv()
