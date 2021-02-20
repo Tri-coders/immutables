@@ -15,6 +15,7 @@ export interface UserDetails{
 
 interface TokenResponse {
   token: string
+  userName: string
   error: string
   
 }
@@ -55,7 +56,16 @@ export class AuthenticationService {
   userExsist = false
   sessionStartTime
   currentTimeMilliSec
+  userName=""
   constructor(private http: HttpClient, private router: Router) {  }
+
+  setuserName(name){
+    this.userName = name;
+  }
+
+  getuserName(){
+    return this.userName
+  }
 
   ///////////////Session ID//////////////////
   setSession(Session){
@@ -112,6 +122,7 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+            this.userName = data.userName
         
           }
           return data
@@ -132,8 +143,7 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-
-
+            this.userName = data.userName
         
           }
           return data

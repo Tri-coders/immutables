@@ -66,7 +66,8 @@ users.post('/login', async (req, res) => {
         expiresIn: 1440
       })
       res.json({
-        token: token
+        token: token,
+        username: user.name
       })
     }
   }
