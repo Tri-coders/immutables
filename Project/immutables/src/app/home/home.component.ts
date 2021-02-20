@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,13 +9,34 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  Username: any;
+  constructor(public dialog: MatDialog, public auth: AuthenticationService, private router: Router) { }
+
+  
+  ///////////////////////FullScreen Exit////////////////////////
+  @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+    if ((event.key === "F11" || event.key==="Escape")) {
+      if(this.auth.isLoggedIn()){
+        console.log("F11")
+        this.auth.logout()
+      }
+    }
+  }
+  ////////////////////////////////////////////////////
+
+  
 
   ngOnInit(): void {
-  
+    if(this.auth.isLoggedIn()){
+      var user = this.auth.getUserDetails();
+      this.Username = user.name
+    }
   }
 
   openDialog(){
     
   }
+
+  
 }

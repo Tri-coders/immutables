@@ -65,8 +65,11 @@ users.post('/login', async (req, res) => {
       let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
         expiresIn: 1440
       })
+      console.log("Login ")
+      console.log(typeof(user.name))
       res.json({
-        token: token
+        token: token,
+        userName: user.name
       })
     }
   }

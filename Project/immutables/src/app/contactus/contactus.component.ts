@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  HostListener
 } from '@angular/core';
 import {
   FormBuilder,
@@ -29,6 +30,18 @@ export class ContactusComponent implements OnInit {
     message: "",
   }
   constructor(private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {}
+
+  
+  ///////////////////////FullScreen Exit////////////////////////
+  @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+    if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
+      //console.log("F11")
+      this.auth.logout()
+      this.router.navigateByUrl('/Home')
+    }
+  }
+  ////////////////////////////////////////////////////
 
   ngOnInit(): void {
     this.contactus = this.formBuilder.group({

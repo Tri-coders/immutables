@@ -6,7 +6,7 @@
       <li><a routerLink="/Document">Document</a></li>
       <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Register</a></li>
       <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
-      <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="auth.logout()">Logout</a></li>
+      <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="logout()">Logout</a></li>
     </ul>
     <ul>
       <li *ngIf="!auth.isLoggedIn()"><a class="profile-icon" routerLink="/Login"><span class="material-icons">person</span></a></li>

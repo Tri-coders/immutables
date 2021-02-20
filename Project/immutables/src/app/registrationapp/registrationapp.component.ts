@@ -48,6 +48,7 @@ export class RegistrationappComponent implements OnInit {
                 if(data.error){
                     alert(data.error)
                 }else{
+                    this.fullscreen()
                     this.router.navigateByUrl('/Home')
                 }
             },
@@ -59,6 +60,13 @@ export class RegistrationappComponent implements OnInit {
 
       // display form values on success
         //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    }
+
+    ele = document.documentElement;
+    fullscreen(){
+        if(this.ele.requestFullscreen){
+        this.ele.requestFullscreen();
+        }
     }
 
     onReset() {

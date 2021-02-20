@@ -41,7 +41,6 @@ export class DatasendService{
 
 
 
-
   addlogs(data) {
     this.logs.push(data);
   }

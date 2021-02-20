@@ -15,6 +15,7 @@ export interface UserDetails{
 
 interface TokenResponse {
   token: string
+  userName: string
   error: string
   
 }
@@ -112,7 +113,7 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-        
+            
           }
           return data
         })
@@ -132,7 +133,7 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-        
+            
           }
           return data
         })
@@ -146,7 +147,7 @@ export class AuthenticationService {
       window.localStorage.removeItem("userToken")
       this.sendtoserver();
       this.userExsist = false;
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/Home')
     }
 
     public email(user: EmailData): Observable<any>{
@@ -229,7 +230,7 @@ export class AuthenticationService {
 
     public logsdata(logsdata: any): Observable<any>{
       if(logsdata.length!=0){
-        console.log(logsdata)
+        //console.log(logsdata)
         const base = this.http.post('/logsApi/logsdata',logsdata)
         const request = base.pipe(
           map((data: EmailResponse)=>{
