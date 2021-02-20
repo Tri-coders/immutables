@@ -133,7 +133,7 @@ export class AuthenticationService {
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
 
-              
+
         
           }
           return data
