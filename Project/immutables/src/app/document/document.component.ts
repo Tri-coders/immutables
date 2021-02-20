@@ -1,4 +1,3 @@
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {
   Component,
   OnInit,
@@ -31,7 +30,7 @@ export class DocumentComponent implements OnInit {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  pdfSrc = "https://www.chili-publish.com/media/Rendro/cp_whitepaper_rendro.pdf"
+  pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
 
   
   ///////////////////////FullScreen Exit////////////////////////

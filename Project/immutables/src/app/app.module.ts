@@ -24,7 +24,7 @@ import { Quiz2Component } from './quiz2/quiz2.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StudyroomComponent } from './studyroom/studyroom.component';
 import { TopicsComponent } from './topics/topics.component';
-import { PdfViewerModule } from 'ng2-pdf-viewer'
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 
 
 @NgModule({
