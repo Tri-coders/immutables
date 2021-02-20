@@ -25,7 +25,7 @@
             <span class="material-icons">account_circle</span>            <!-- <img src="../../assets/potrait.png" alt="Image"> -->
             <!-- <div class="user one"></div> -->
             <div *ngIf="auth.isLoggedIn(); else elseBlock1">
-                <h2 [innerHTML]="Username">Afif Shaikh</h2>
+                <h2 [innerHTML]="Username"></h2>
             </div>    
             <ng-template #elseBlock1>
                 <h2>Log IN</h2>

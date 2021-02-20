@@ -56,16 +56,7 @@ export class AuthenticationService {
   userExsist = false
   sessionStartTime
   currentTimeMilliSec
-  userName=""
   constructor(private http: HttpClient, private router: Router) {  }
-
-  setuserName(name){
-    this.userName = name;
-  }
-
-  getuserName(){
-    return this.userName
-  }
 
   ///////////////Session ID//////////////////
   setSession(Session){
@@ -122,8 +113,7 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-            this.userName = data.userName
-        
+            
           }
           return data
         })
@@ -143,8 +133,7 @@ export class AuthenticationService {
             var current = new Date()
             this.currentTimeMilliSec = current.getTime();
             this.sessionStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-            this.userName = data.userName
-        
+            
           }
           return data
         })
@@ -158,7 +147,7 @@ export class AuthenticationService {
       window.localStorage.removeItem("userToken")
       this.sendtoserver();
       this.userExsist = false;
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/Home')
     }
 
     public email(user: EmailData): Observable<any>{
@@ -241,7 +230,7 @@ export class AuthenticationService {
 
     public logsdata(logsdata: any): Observable<any>{
       if(logsdata.length!=0){
-        console.log(logsdata)
+        //console.log(logsdata)
         const base = this.http.post('/logsApi/logsdata',logsdata)
         const request = base.pipe(
           map((data: EmailResponse)=>{

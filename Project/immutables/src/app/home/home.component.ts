@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router'
-import { Key } from 'protractor';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,10 +16,11 @@ export class HomeComponent implements OnInit {
   ///////////////////////FullScreen Exit////////////////////////
   @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
-    if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
-      //console.log("F11")
-      this.auth.logout()
-      this.router.navigateByUrl('/Home')
+    if ((event.key === "F11" || event.key==="Escape")) {
+      if(this.auth.isLoggedIn()){
+        console.log("F11")
+        this.auth.logout()
+      }
     }
   }
   ////////////////////////////////////////////////////
@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit(): void {
-  
     if(this.auth.isLoggedIn()){
-      
+      var user = this.auth.getUserDetails();
+      this.Username = user.name
     }
   }
 
