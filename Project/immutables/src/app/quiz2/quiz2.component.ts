@@ -30,12 +30,12 @@ export class Quiz2Component implements OnInit {
 
   
   ///////////////////////FullScreen Exit////////////////////////
-  @HostListener('window:keyup', ['$event'])
-    keyEvent(event: KeyboardEvent) {
-    if ((event.key === "F11" || event.key==="Escape") && this.auth.isLoggedIn()) {
-      //console.log("F11")
-      this.auth.logout()
-      this.router.navigateByUrl('/Home')
+  @HostListener("document:fullscreenchange", []) 
+  fullScreen() {
+    if (document.fullscreenElement) {
+        console.log(`Entered full-screen mode.`);
+    } else {
+        this.auth.logout()
     }
   }
   ////////////////////////////////////////////////////
