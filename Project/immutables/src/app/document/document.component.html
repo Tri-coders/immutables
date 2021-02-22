@@ -71,6 +71,10 @@
 </mat-menu>
 
 <!-- Menu Over -->
+<div class="container">
+  <!-- <h1>Here are some helpful materials to study</h1> -->
+  <h2>Topic: Classes and objects</h2>
+</div>
 
 <div>
   <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
@@ -88,6 +92,13 @@
 <!-- <iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
 </iframe> -->
 <div class="container">
+  <div class="action-bar">
+    <button matTooltip="Previous page"><span class="material-icons">arrow_back_ios</span></button>
+    <button matTooltip="Zoom in"><span class="material-icons">zoom_in</span></button>
+    <input type="number" id="page_no">
+    <button matTooltip="Rotate page" ><span class="material-icons">rotate_right</span></button>
+    <button matTooltip="Next page"><span class="material-icons">arrow_forward_ios</span></button>
+  </div>
   <pdf-viewer [src]="pdfSource"
               [original-size]="false"
               [show-all]="false">
