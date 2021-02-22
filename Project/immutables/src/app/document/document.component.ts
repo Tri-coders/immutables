@@ -27,6 +27,7 @@ export class DocumentComponent implements OnInit {
     name: ""
   }
 
+  pdfPageNumber=2
   constructor(private auth: AuthenticationService, private router: Router) {}
 
  
