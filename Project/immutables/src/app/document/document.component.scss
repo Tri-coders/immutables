@@ -32,7 +32,37 @@
   width: 900px;
   max-width: 100%;
   margin: 50px auto;
-  
+  h1{
+    color: $main-color;
+    font-size: 3rem;
+    max-width: 20ch;
+    line-height: 3.5rem;
+    font-weight: 500;
+  }
+  h2{
+    max-width: 25ch;
+    // margin-top: 30px;
+    font-size: 2rem;
+    color: $main-color;
+  }
+
+
+  .action-bar{
+    display: flex;
+    justify-content: space-between;
+    button{
+      background-color: $main-color;
+      border: none;
+      outline: none;
+      color: $white;
+      padding: 5px;
+      cursor: pointer;
+    }
+    span{
+      font-size: 1.2rem;
+    }
+
+  }
   .ng2-pdf-viewer-container{
     border: 2px solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
