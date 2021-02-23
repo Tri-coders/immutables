@@ -9,7 +9,7 @@ const fs = require('fs');
 const json2csv = require('json2csv')
 
 logs.use(express.static(__dirname+"../../../../../"));
-logs.use(express.static(__dirname+"../../../../../Logs Files/"));
+logs.use(express.static(__dirname+"../../../../../Logs FIles/"));
 
 const path = require('path');
 
@@ -57,7 +57,7 @@ function quiz(logs){
     }
     console.log("ALA")
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs Files/question_switch_log.csv') ,data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/question_switch_log.csv') ,data)
     }catch(err){
         console.log(err)
     }
@@ -70,7 +70,7 @@ function quizScore(logs){
     }
     data+="\n"
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs Files/quiz_log.csv'), data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/quiz_log.csv'), data)
     }catch(err){
         console.log(err)
     }   
@@ -83,7 +83,7 @@ function session(logs){
     }
     data+="\n"
     try{
-        fs.appendFileSync('./Logs Files/session.csv',data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/session.csv'),data)
     }catch(err){
         console.log(err)
     }   
