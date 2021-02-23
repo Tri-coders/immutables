@@ -30,6 +30,7 @@ export class DocumentComponent implements OnInit {
   pdfPageNumber=1
   totalPages
   zoomPdf=1
+  rotationPdf=0
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
@@ -51,6 +52,9 @@ export class DocumentComponent implements OnInit {
     }
     this.zoomPdf-=0.5
   }
+  rotate(){
+    this.rotationPdf+=90
+  }
   Next(){
     console.log(this.totalPages)
     if(this.pdfPageNumber==this.totalPages){
@@ -58,12 +62,14 @@ export class DocumentComponent implements OnInit {
     }
     this.pdfPageNumber+=1
   }
-
   Previous(){
     if(this.pdfPageNumber==1){
       return
     }
     this.pdfPageNumber-=1
+  }
+  jumpPagePdf(evt){
+    this.pdfPageNumber=evt.target.value
   }
   //////////////////////////PDFViewer//////////////////////////////////////////
   
