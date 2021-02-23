@@ -23,6 +23,7 @@ export class FabComponent implements OnInit {
   }
   ////////////////////////////////////////////////////
 
+  display = false;
 
   ngOnInit(): void {
   }
@@ -52,4 +53,10 @@ export class FabComponent implements OnInit {
     }
   }
 
+    onPress() {
+    //this.display = true;
+
+    //To toggle the component
+    this.display = !this.display;
+  }
 }
