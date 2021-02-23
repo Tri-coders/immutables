@@ -93,6 +93,9 @@
 </iframe> -->
 <div class="container">
   <div class="action-bar">
+    
+    <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
+
     <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
     <button matTooltip="Zoom in" (click)="zoomIn()"><span class="material-icons">zoom_in</span></button>
     <input type="number" id="page_no" (keyup.enter)="jumpPagePdf($event)">
