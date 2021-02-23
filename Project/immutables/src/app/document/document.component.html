@@ -71,16 +71,17 @@
 </mat-menu>
 
 <!-- Menu Over -->
-<div class="container">
+<div class="container-1">
   <!-- <h1>Here are some helpful materials to study</h1> -->
+  <br>
   <h2>Topic: Classes and objects</h2>
 </div>
 
-<div>
+<!-- <div>
   <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
   <label id="2" (click)="updatePdfName(2)">compressed.tracemonkey-pldi-09.pdf</label><br>
   <label id="3" (click)="updateVideoName(3)">Video1</label><br>
-</div>
+</div> -->
 
 <div id="mydiv">
   <mat-slide-toggle id="draggable" (change)="onToggle($event)">Draggable</mat-slide-toggle>
@@ -91,16 +92,18 @@
 <br><br>
 <!-- <iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
 </iframe> -->
-<div class="container">
+<div class="cont">
   <div class="action-bar">
-    
-    <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
-
-    <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
-    <button matTooltip="Zoom in" (click)="zoomIn()"><span class="material-icons">zoom_in</span></button>
-    <input type="number" id="page_no" (keyup.enter)="jumpPagePdf($event)">
-    <button matTooltip="Rotate page" (click)=rotate()><span class="material-icons">rotate_right</span></button>
-    <button matTooltip="Next page" (click)="Next()"><span class="material-icons">arrow_forward_ios</span></button>
+    <div class="col">
+      <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
+      <input type="number" id="page_no" (keyup.enter)="jumpPagePdf($event)">
+    </div>
+    <div class="col">
+      <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
+      <button matTooltip="Zoom in" (click)="zoomIn()"><span class="material-icons">zoom_in</span></button>
+      <button matTooltip="Rotate page" (click)=rotate()><span class="material-icons">rotate_right</span></button>
+      <button matTooltip="Next page" (click)="Next()"><span class="material-icons">arrow_forward_ios</span></button>
+    </div>
   </div>
   <pdf-viewer [src]="pdfSource"
               [original-size]="false"
@@ -111,5 +114,6 @@
               (after-load-complete)="afterLoadComplete($event)">
   </pdf-viewer>
 </div>
+
 <!-- <app-sidebar></app-sidebar> -->
 <app-fab></app-fab>

@@ -28,10 +28,17 @@
 
     }
 }
-.container{
+.cont{
+  padding: 20px;
+  // border: 1px solid red;
+  background-color: $bg;
+  border-radius: 10px;
+}
+.cont, .container-1{
   width: 900px;
   max-width: 100%;
   margin: 50px auto;
+
   h1{
     color: $main-color;
     font-size: 3rem;
@@ -50,6 +57,23 @@
   .action-bar{
     display: flex;
     justify-content: space-between;
+    // align-items: center;
+    background-color: $bg;
+    // border: 1px solid red;
+    margin-bottom: 10px;
+    p{
+      display: inline-block;
+      // vertical-align: middle;
+    }
+    input{
+      height: 100%;
+      font-family: $content-font;
+      padding: 0 10px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      margin-left: 10px;
+    }
     button{
       background-color: $main-color;
       border: none;
@@ -57,6 +81,15 @@
       color: $white;
       padding: 5px;
       cursor: pointer;
+      margin-left: 10px;
+      border-radius: 8px;
+      height: 30px;
+      width: 30px;
+    }
+    button:nth-of-type(1){
+      span{
+        margin-left: 4px;
+      }
     }
     span{
       font-size: 1.2rem;
@@ -64,9 +97,16 @@
 
   }
   .ng2-pdf-viewer-container{
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    // border: 2px solid rgba(0, 0, 0, 0.1);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow-x: unset !important;
   }
+}
+
+.container-1{
+  margin: 0 auto;
 }
 // Toggle Switch
 // ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
@@ -112,8 +152,8 @@
 }
 .my_menu{
   font-family: $content-font !important;
-  position: absolute;
-  top: 250px;
+  position: fixed !important;
+  top: 350px;
   left: -25px;
   color: $white;
   background-color: $main-color;
@@ -129,6 +169,7 @@
   min-width: 0 !important;
   line-height: 0 !important;
   padding-left: 20px !important;
+
 }
 .mat_icon{
   position: absolute;
