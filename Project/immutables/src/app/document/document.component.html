@@ -93,15 +93,18 @@
 </iframe> -->
 <div class="container">
   <div class="action-bar">
-    <button matTooltip="Previous page"><span class="material-icons">arrow_back_ios</span></button>
-    <button matTooltip="Zoom in"><span class="material-icons">zoom_in</span></button>
+    <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
+    <button matTooltip="Zoom in" (click)="zoomIn()"><span class="material-icons">zoom_in</span></button>
     <input type="number" id="page_no">
     <button matTooltip="Rotate page" ><span class="material-icons">rotate_right</span></button>
-    <button matTooltip="Next page"><span class="material-icons">arrow_forward_ios</span></button>
+    <button matTooltip="Next page" (click)="Next()"><span class="material-icons">arrow_forward_ios</span></button>
   </div>
   <pdf-viewer [src]="pdfSource"
               [original-size]="false"
-              [show-all]="false">
+              [show-all]="false"
+              [(page)]="pdfPageNumber"
+              [zoom]="zoomPdf"
+              (after-load-complete)="afterLoadComplete($event)">
   </pdf-viewer>
 </div>
 <!-- <app-sidebar></app-sidebar> -->
