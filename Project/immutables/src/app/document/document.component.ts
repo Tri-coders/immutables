@@ -69,8 +69,10 @@ export class DocumentComponent implements OnInit {
     this.pdfPageNumber-=1
   }
   jumpPagePdf(evt){
-    this.pdfPageNumber=evt.target.value
-  }
+    if(evt.target.value<=this.totalPages)
+      this.pdfPageNumber=evt.target.value
+    return
+    }
   //////////////////////////PDFViewer//////////////////////////////////////////
   
   ///////////////////////FullScreen Exit////////////////////////
