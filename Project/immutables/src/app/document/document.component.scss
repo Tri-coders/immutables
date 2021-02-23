@@ -15,6 +15,7 @@
     text-align: center;
     margin: 0 auto;
     width: 900px;
+    max-width: 100%;
     height: 400px;
   
     #mydivheader {
@@ -27,35 +28,83 @@
 
     }
 }
+.container{
+  width: 900px;
+  max-width: 100%;
+  margin: 50px auto;
+  h1{
+    color: $main-color;
+    font-size: 3rem;
+    max-width: 20ch;
+    line-height: 3.5rem;
+    font-weight: 500;
+  }
+  h2{
+    max-width: 25ch;
+    // margin-top: 30px;
+    font-size: 2rem;
+    color: $main-color;
+  }
 
+
+  .action-bar{
+    display: flex;
+    justify-content: space-between;
+    button{
+      background-color: $main-color;
+      border: none;
+      outline: none;
+      color: $white;
+      padding: 5px;
+      cursor: pointer;
+    }
+    span{
+      font-size: 1.2rem;
+    }
+
+  }
+  .ng2-pdf-viewer-container{
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+}
 // Toggle Switch
-::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: blue; /*replace with your color*/
+// ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+//   background-color: blue; /*replace with your color*/
+// }
+
+// ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+//   background-color: skyblue;  /*replace with your color*/
+// }
+
+// /* CSS to change 'Primary' color */
+
+// ::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+//   background-color: green;
+// }
+
+// ::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+//   // background-color: #ff99ff;
+//   background-color: $main-color !important;
+// }
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+  background-color: $bg !important;
 }
 
-::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: skyblue;  /*replace with your color*/
-}
-
-/* CSS to change 'Primary' color */
-
-::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: green;
-}
-
-::ng-deep .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: #ff99ff;
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+  background-color: $main-color !important;
 }
 
 /* CSS to change 'Warn' color */
 
-::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: red;
-}
+// ::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+//   background-color: red;
+// }
 
-::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: #ffe066;
-}
+// ::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+//   background-color: #ffe066;
+// }
 .mat-menu-item{
   font-family: $content-font !important;
   color: $main-color !important;
