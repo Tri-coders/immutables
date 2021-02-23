@@ -63,11 +63,8 @@ export class DocumentComponent implements OnInit {
     }
     this.zoomPdf+=0.5
   }
-  zoomOut(){
-    if(this.zoomPdf==0){
-      return
-    }
-    this.zoomPdf-=0.5
+  resetZoom(){
+    this.zoomPdf=1
   }
   rotate(){
     this.rotationPdf+=90
