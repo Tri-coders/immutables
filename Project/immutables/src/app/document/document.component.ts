@@ -36,6 +36,23 @@ export class DocumentComponent implements OnInit {
   //////////////////////////PDFViewer//////////////////////////////////////////
   pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
 
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if(event.key=="ArrowRight"){
+      if(this.pdfPageNumber==this.totalPages){
+        return
+      }
+      this.pdfPageNumber+=1
+    }
+
+    if(event.key=="ArrowLeft"){
+      if(this.pdfPageNumber==1){
+        return
+      }
+      this.pdfPageNumber-=1
+    }
+  }
+
   afterLoadComplete(pdf): void {
     this.totalPages = pdf.numPages;
   }
