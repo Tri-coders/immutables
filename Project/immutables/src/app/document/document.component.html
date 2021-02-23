@@ -96,7 +96,7 @@
   <div class="action-bar">
     <div class="col">
       <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
-      <input type="number" id="page_no" (input)="jumpPagePdf($event)">
+      <input type="number" max={{totalPages}} min="0" id="page_no" placeholder="Page No" (input)="jumpPagePdf($event)">
     </div>
     <div class="col">
       <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
