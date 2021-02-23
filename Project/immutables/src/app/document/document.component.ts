@@ -27,12 +27,45 @@ export class DocumentComponent implements OnInit {
     name: ""
   }
 
-  pdfPageNumber=2
+  pdfPageNumber=1
+  totalPages
+  zoomPdf=1
   constructor(private auth: AuthenticationService, private router: Router) {}
 
- 
+  //////////////////////////PDFViewer//////////////////////////////////////////
   pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
 
+  afterLoadComplete(pdf): void {
+    this.totalPages = pdf.numPages;
+  }
+ 
+  zoomIn(){
+    if(this.zoomPdf==2){
+      return
+    }
+    this.zoomPdf+=0.5
+  }
+  zoomOut(){
+    if(this.zoomPdf==0){
+      return
+    }
+    this.zoomPdf-=0.5
+  }
+  Next(){
+    console.log(this.totalPages)
+    if(this.pdfPageNumber==this.totalPages){
+      return
+    }
+    this.pdfPageNumber+=1
+  }
+
+  Previous(){
+    if(this.pdfPageNumber==1){
+      return
+    }
+    this.pdfPageNumber-=1
+  }
+  //////////////////////////PDFViewer//////////////////////////////////////////
   
   ///////////////////////FullScreen Exit////////////////////////
   @HostListener("document:fullscreenchange", []) 
