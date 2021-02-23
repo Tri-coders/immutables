@@ -5,7 +5,7 @@
         <span class="material-icons" id="remove" style="display: none;">close</span>
     </div>
     <div class="btns">
-        <a class="btn" routerLink="/Quiz" matTooltip="Let's Study"
+        <a class="btn" (click)="onPress()" matTooltip="Let's Plan"
         [matTooltipPosition]="'left'">
             <span class="material-icons">menu_book</span>
         </a>
@@ -18,5 +18,50 @@
             <span class="material-icons">help_outline</span>
 
         </a>
+    </div>
+</div>
+<div id="comp-render" *ngIf="display">
+    <!-- <button class="close-modal">quit</button> -->
+    <!-- <app-planning></app-planning> -->
+    <div class="plan-cont" id="myModal">
+        <div class="modal-content">
+            <button (click)="onPress()" class="close-btn"><Span class="material-icons">close</Span></button>
+            <h1>Plan your Schedule</h1>
+            <p class="headings">Introduction</p>
+            <div class="topic">
+                <div class="subtopic">
+                    <p>Classes and objects</p>
+                    <input type="number">
+                </div>
+            </div>
+            <hr>
+            <p class="headings">Classes Methods</p>
+            <div class="topic">
+                <div class="subtopic">
+                    <p>Methods</p>
+                    <input type="number">
+                </div>
+                <div class="subtopic"> 
+                    <p>Overloading</p>
+                    <input type="number">
+                </div>
+                <div class="subtopic"> 
+                    <p>Overriding</p>
+                    <input type="number">
+                </div>
+            </div>
+            <hr>
+            <p class="headings">Advanced Concepts </p>
+            <div class="topic">
+                <div class="subtopic">
+                    <p>Inheritance</p>
+                    <input type="number">
+                </div>
+                <div class="subtopic"> 
+                    <p>Polymorphism</p>
+                    <input type="number">
+                </div>
+            </div>
+        </div>
     </div>
 </div>

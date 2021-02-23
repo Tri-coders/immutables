@@ -54,6 +54,7 @@
     color: $white;
     border: 0;
     outline: 0;
+    cursor: pointer;
     span{
         position: absolute;
         font-size: 1.2rem;
@@ -76,4 +77,63 @@
     font-family: $heading2-font;
     font-weight: 300;
     font-size: 0.9em;
+}
+
+.plan-cont{
+    position: fixed; /* Stay in place */
+    z-index: 9999999999999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+
+    .close-btn{
+        float: right;
+    }
+
+    h1{
+        text-align: center;
+        font-size: 30px;
+        font-family: $heading2-font;
+        font-weight: 600;
+    }
+
+    hr{
+        border-top: 1px solid $bg;
+    }
+    .headings{
+        font-weight: 600;
+    }
+    .topic{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin:  20px auto;
+        .subtopic{
+            
+            p{
+                margin: 0;
+            }
+
+            input{
+                padding: 5px;
+                border-radius: 5px;
+                outline: none;
+                border: 1px solid $main-color;
+            }
+        }
+    }
 }
