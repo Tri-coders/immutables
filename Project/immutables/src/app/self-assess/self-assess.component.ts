@@ -6,7 +6,7 @@ import { Component,
 } from '@angular/core';
 import { Question } from '../models/Question';
 // import { gsap } from 'gsap';
-import { questionsList } from '../helpers/questionsList';
+import { questionsList } from '../Helpers/questionsList';
 @Component({
   selector: 'app-self-assess',
   templateUrl: './self-assess.component.html',
