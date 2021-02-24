@@ -22,7 +22,9 @@
 
 <mat-menu #co="matMenu">
   <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Introduction.pdf</button>
+  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Classes Variables.pdf</button>
+  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Initialization Block.pdf</button>
   <button class="mat_but" (click)="updateVideoName(3)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video1</button>
 </mat-menu>
 
@@ -35,20 +37,20 @@
 
 <mat-menu #cm="matMenu">
   <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="2" (click)="updatePdfName(2)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Methods.pdf</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Constructor.pdf</button>
   <button class="mat_but" id="3" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
-
 <mat-menu #mol="matMenu">
   <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Method Overloading.pdf</button>
   <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
 <mat-menu #mor="matMenu">
   <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Method Overriding.pdf</button>
   <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
@@ -60,13 +62,13 @@
 
 <mat-menu #in="matMenu">
   <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Inheritance.pdf</button>
   <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
 <mat-menu #poly="matMenu">
   <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Pdf Materials</button>
+  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Polymorphism.pdf</button>
   <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
 </mat-menu>
 
@@ -96,7 +98,7 @@
   <div class="action-bar">
     <div class="col">
       <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
-      <input type="number" id="page_no" (input)="jumpPagePdf($event)">
+      <input type="number" max={{totalPages}} min="1" id="page_no" placeholder="Page No" (input)="jumpPagePdf($event)">
     </div>
     <div class="col">
       <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 02, 2020 at 01:47 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Host: localhost
+-- Generation Time: Feb 23, 2021 at 06:24 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -205,7 +205,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `class`, `branch`, `createdAt`, `updatedAt`) VALUES
-(1, 'pra', 'pra@gmail.com', '$2a$10$AFXdArlBl.kCpseemuPVLumpXB.xDbYHnucbnKZzk.GNkDg2AD74m', NULL, NULL, '2020-06-02', '2020-06-02');
+(1, 'pra', 'pra@gmail.com', '$2a$10$AFXdArlBl.kCpseemuPVLumpXB.xDbYHnucbnKZzk.GNkDg2AD74m', NULL, NULL, '2020-06-02', '2020-06-02'),
+(4, 'Sanket Deshmukh', 'meetsanket24@gmail.com', '$2a$10$OSJaG/O0BPS5dW9l.o3/9.bEgiLbci5468Nm3Reu9MChERG60oGM.', NULL, NULL, '2020-11-01', '2020-11-01'),
+(5, 'Sanket', 'sanket@gmail.com', '$2a$10$HwBnoH.Iy5LZo55Rs3Pb7ObKwGeQjwaz0n/in8/lLTPYrpLy/GPWC', NULL, NULL, '2020-12-18', '2020-12-18');
 
 -- --------------------------------------------------------
 
@@ -331,7 +333,7 @@ ALTER TABLE `sub_topic_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -366,12 +368,6 @@ ALTER TABLE `log_3`
 --
 ALTER TABLE `log_4`
   ADD CONSTRAINT `Foreign key 9` FOREIGN KEY (`session_id`) REFERENCES `session` (`session_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `session`
---
-ALTER TABLE `session`
-  ADD CONSTRAINT `Foreign key` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subject_details`

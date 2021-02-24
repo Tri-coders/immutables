@@ -94,14 +94,26 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #ffffff;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     .close-btn{
         float: right;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color: transparent;
+
+        &:hover{
+            span{
+                color: red;
+            }
+        }
     }
 
     h1{
@@ -110,12 +122,20 @@
         font-family: $heading2-font;
         font-weight: 600;
     }
-
+    h3{
+        margin: 10px auto 0;
+        font-weight: 600;
+        text-align: center;
+        font-family: $heading2-font;
+    }
     hr{
         border-top: 1px solid $bg;
     }
     .headings{
         font-weight: 600;
+    }
+    .second, .third{
+        margin-top: 10px;
     }
     .topic{
         display: flex;
