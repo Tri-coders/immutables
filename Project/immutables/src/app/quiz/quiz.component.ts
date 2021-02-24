@@ -126,7 +126,6 @@ export class QuizComponent implements OnInit {
     var current = new Date();
     var quizEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
 
-    console.log("aal")
     var score = 0;
     for(var i=0; i<3;i++){
       var tempans=0
