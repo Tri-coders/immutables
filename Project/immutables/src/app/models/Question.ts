@@ -1,4 +1,4 @@
-import { questionsList } from "../helpers/questionsList";
+import { questionsList } from "../Helpers/questionsList";
 
 export interface Question {
     id: number;
