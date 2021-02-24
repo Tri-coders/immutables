@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="questionnaire">
+    <div class="question" #questionContainer>
+      <h2 class="question__heading">Question {{ currentQuestionIndex + 1 }}</h2>
+      <div class="question__q">{{ question?.questionText }}</div>
+      <div class="question__answers" #answer>
+        <div
+          class="answer"
+          *ngFor="let answer of question.options"
+          #answerr
+          (click)="onSelect(answerr)">
+          <p>{{ answer?.text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="actions" #actions>
+      <button class="previous" (click)="prev()">
+        <svg class="icon icon-back">
+          <use href="./assets/icons.svg#icon-chevron-left"></use>
+        </svg>
+      </button>
+      <button class="next" (click)="goToNextQuestion()">Next</button>
+    </div>
+    <div class="progress__bar">
+      <div #slider class="progress__bar--slider"></div>
+    </div>
+    <div class="progress__actions" #progress>
+      <div class="p-actions-left">
+        <span>Question {{ currentQuestionIndex + 1 }}</span>
+        <span>Out Of</span>
+        <span>{{ questions.length }}</span>
+      </div>
+      <div class="p-actions-right">
+        <span>{{ progressValue }}%</span>
+      </div>
+    </div>
+</div>
