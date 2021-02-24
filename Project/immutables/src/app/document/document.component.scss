@@ -263,7 +263,7 @@
 }
 .para-one{
   font-family: $sub-heading-font;
-  margin-top: 4rem;
+  margin-top: 4rem !important;
   font-size: 2rem;
   font-weight: lighter;
   letter-spacing: 0.05rem;
@@ -272,7 +272,7 @@
 }
 .paras{
   font-family: $content-font;
-  margin: 2rem 2rem auto;
+  margin: 2rem 2rem auto !important;
   line-height: 1.8em;
   font-size: 1.4em;
 }
@@ -280,7 +280,7 @@
   font-family: $sub-heading-font;
   font-size: 1.3em;
   line-height: 2em;
-  margin: 2rem 2rem 0;
+  margin: 2rem 2rem 0 !important;
   // padding: 1em;
   border-radius: .5em;
   // background-color: #cde0ff28;
