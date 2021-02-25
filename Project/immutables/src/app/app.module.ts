@@ -25,6 +25,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StudyroomComponent } from './studyroom/studyroom.component';
 import { TopicsComponent } from './topics/topics.component';
 import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
+import { SelfAssessComponent } from './self-assess/self-assess.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
     HeaderComponent,
     Quiz2Component,
     StudyroomComponent,
-    TopicsComponent
+    TopicsComponent,
+    SelfAssessComponent
   ],
   imports: [
     BrowserModule,

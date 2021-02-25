@@ -1,0 +1,128 @@
+@import '../base';
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.questionnaire{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .question{
+        display: grid;
+        grid-template-rows: repeat(3, min-content);
+        grid-row-gap: 20px;
+
+        &__heading{
+            font-size: 40px;
+            justify-self: center;
+            font-weight: bolder;
+            font-family: $heading-font;
+        }
+        
+        &__q{
+            justify-self: center;
+            font-family: $content-font;
+            font-size: 20px;
+        }
+
+        &__answers{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,300px);
+            justify-content: center;
+            .answer{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 15px;
+                background-color: $white;
+                border: 2px solid $bg;
+                color: black;
+                height: 200px;
+                cursor: pointer;
+                border-radius: 15px;
+                transition: all 0.3s;
+                font-size: 20px;
+            }
+            .answer.selected{
+                background-color: $main-color;
+                color: $white;
+
+            }
+        }
+    }
+
+    .actions{
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+
+        button.previous{
+            background-color: $white;
+            padding: 5px 8px;
+            outline: none;
+            border-radius: 10px;
+            border: 1px solid $bg;
+            cursor: pointer;
+             .icon-back{
+                 width: 30px;
+                 height: 30px;
+                 fill: $main-color;
+             }
+        }
+
+        button.next{
+            font-family: $content-font;
+            font-size: large;
+            margin-left: 10px;
+            background-color: $main-color;
+            color: $white;
+            padding: 5px 90px;
+            outline: none;
+            border-radius: 10px;
+            border: 0;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.progress{
+    
+    &__bar{
+        margin: 40px 0;
+        height: 20px;
+        background: $bg;
+        overflow: hidden;
+        border-radius: 10px;
+        width: 400px;
+        align-self: center;
+
+        &--slider{
+        height: inherit;
+        width: 0%;
+        background-color: $main-color;
+        border-radius: 10px;
+        }
+    }
+
+    &__actions{
+        display: flex;
+        justify-content: space-between;
+        width: 400px;
+        align-self: center;
+        color: $dark-grey;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 13px;
+
+        .p-actions-left{
+            span:nth-child(2){
+                margin: 0 5px;
+            }
+        }
+
+    }
+}
+

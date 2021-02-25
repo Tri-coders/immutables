@@ -12,6 +12,8 @@ import { QuizComponent} from './quiz/quiz.component';
 import { Quiz2Component} from './quiz2/quiz2.component';
 import { StudyroomComponent} from './studyroom/studyroom.component';
 import { TopicsComponent} from './topics/topics.component';
+import { SelfAssessComponent } from './self-assess/self-assess.component';
+
 
 const routes: Routes = [
   {path: 'Home', component: HomeComponent},
@@ -25,6 +27,7 @@ const routes: Routes = [
   {path: 'Document', component:DocumentComponent},
   {path: 'Studyroom', component:StudyroomComponent},
   {path: 'Topics', component:TopicsComponent},
+  {path: 'SelfAssess', component:SelfAssessComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 

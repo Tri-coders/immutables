@@ -14,10 +14,10 @@ main{
     }
     .box{
         // height: 100%;
-        width: 450px;
-        max-width: 100%;
+        // width: 450px;
+        max-width: 450px;
         margin: 20px;
-        padding: 20px;
+        padding: 20px 35px;
         display: flex;
         align-items: center;
         // justify-content: center;
@@ -53,6 +53,7 @@ main{
         }
         p{
             font-size: 1rem;
+            // max-width: 45ch;
         }
     }
     .box:hover{
@@ -60,6 +61,7 @@ main{
     }
     .card-big{
         // padding-top: 200px;
+        // max-width: 450px;
         text-justify: inter-word;
         text-align: justify;
         cursor: default;
@@ -85,7 +87,7 @@ main{
         }
         p{
             font-size: 1.1rem;
-            max-width: 40ch;
+            // max-width: 40ch;
             line-height: 24px;
             
         }
@@ -107,3 +109,17 @@ main{
 .box5{
     grid-area: box5;
 }
+
+@media screen and (max-width: 900px) {
+    main {
+    //   background-color: lightgreen;
+      grid-template-areas: 
+      "box1 box1"
+      "box2 box3"
+      "box4 box5";
+      height: auto;
+      .box{
+        max-width: 100%;
+      }
+    }
+  }
