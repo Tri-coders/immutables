@@ -12,6 +12,7 @@ logs.use(express.static(__dirname+"../../../../../"));
 logs.use(express.static(__dirname+"../../../../../Logs FIles/"));
 
 const path = require('path');
+const { resourceUsage } = require('process');
 
 logs.post('/logsdata', async (req,res)=>{
     console.log(__dirname+"/../../../../../")
@@ -24,6 +25,10 @@ logs.post('/logsdata', async (req,res)=>{
         quizScore(logs)
     }else if(logs[0]=="SessionLogs"){
         session(logs)
+    }else if(logs[logs.length-1]=="document"){
+        document(logs)
+    }else if(logs[logs.length-1]=="Resources"){
+        resources(logs)
     }
     res.json({
         msg: "correct"
@@ -87,6 +92,41 @@ function session(logs){
     }catch(err){
         console.log(err)
     }   
+}
+
+function document(logs){
+    var data = ""
+    for(var i=0;i<logs.length-1;i++){
+        for(var j=0;j<logs[0].length;j++){
+            data+=logs[i][j]
+            data+=","
+        }
+        data+="\n"
+    }
+    console.log(data)
+    try{
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/document_log.csv'),data)
+    }catch(err){
+        console.log(err)
+    } 
+
+}
+
+function resources(logs){
+    var data=""
+    for(var i=0;i<logs.length-1;i++){
+        for(var j=0;j<logs[0].length;j++){
+            data+=logs[i][j]
+            data+=","
+        }
+        data+="\n"
+    }
+
+    try{
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/resource_log.csv'),data)
+    }catch(err){
+        console.log(err)
+    } 
 }
 
 module.exports = logs

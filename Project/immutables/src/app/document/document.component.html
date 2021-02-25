@@ -21,11 +21,11 @@
 </mat-menu>
 
 <mat-menu #co="matMenu">
-  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="1" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Introduction.pdf</button>
-  <button class="mat_but" id="2" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Classes Variables.pdf</button>
-  <button class="mat_but" id="3" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Initialization Block.pdf</button>
-  <button class="mat_but" (click)="updateVideoName(3)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video1</button>
+  <button class="mat_but" (click)="quizAttempt(1)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="1">Introduction.pdf</span></button>
+  <button class="mat_but" (click)="updatePdfName(2)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="2">Classes Variables.pdf</span></button>
+  <button class="mat_but" (click)="updatePdfName(3)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="3">Initialization Block.pdf</span></button>
+  <button class="mat_but" (click)="updateVideoName(11)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="11" >Video1</span></button>
 </mat-menu>
 
 <!-- Second Subtopic -->
@@ -36,22 +36,22 @@
 </mat-menu>
 
 <mat-menu #cm="matMenu">
-  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="4" (click)="updatePdfName(4)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Methods.pdf</button>
-  <button class="mat_but" id="5" (click)="updatePdfName(5)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Constructor.pdf</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
+  <button class="mat_but" (click)="quizAttempt(2)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(4)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="4">Methods.pdf</span></button>
+  <button class="mat_but" (click)="updatePdfName(5)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="5">Constructor.pdf</span></button>
+  <button class="mat_but" (click)="updateVideoName(12)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span><span id="12">Video Materials</span></button>
 </mat-menu>
 
 <mat-menu #mol="matMenu">
-  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="7" (click)="updatePdfName(7)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Method Overloading.pdf</button>
-  <button class="mat_but" id="8" (click)="updatePdfName(8)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
+  <button class="mat_but" (click)="quizAttempt(3)" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(7)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="7" >Method Overloading.pdf</span></button>
+  <button class="mat_but" (click)="updateVideoName(13)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="13">Video Materials</span></button>
 </mat-menu>
 
 <mat-menu #mor="matMenu">
-  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="9" (click)="updatePdfName(9)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Method Overriding.pdf</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
+  <button class="mat_but" (click)="quizAttempt(4)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(8)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="8" >Method Overriding.pdf</span></button>
+  <button class="mat_but" (click)="updateVideoName(14)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="14" >Video Materials</span></button>
 </mat-menu>
 
 <!-- Third Subtopic -->
@@ -61,15 +61,15 @@
 </mat-menu>
 
 <mat-menu #in="matMenu">
-  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="10" (click)="updatePdfName(10)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Inheritance.pdf</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
+  <button class="mat_but" (click)="quizAttempt(5)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(9)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="9" >Inheritance.pdf</span></button>
+  <button class="mat_but" (click)="updateVideoName(15)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="15" >Video Materials</span></button>
 </mat-menu>
 
 <mat-menu #poly="matMenu">
-  <button class="mat_but" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" id="11" (click)="updatePdfName(11)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf</span>Polymorphism.pdf</button>
-  <button class="mat_but" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span>Video Materials</button>
+  <button class="mat_but" (click)="quizAttempt(6)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+  <button class="mat_but" (click)="updatePdfName(10)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="10" >Polymorphism.pdf</span></button>
+  <button class="mat_but" (click)="updateVideoName(16)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="16" >Video Materials</span></button>
 </mat-menu>
 
 <!-- Menu Over -->

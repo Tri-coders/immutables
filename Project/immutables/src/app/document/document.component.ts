@@ -12,8 +12,11 @@ import {
 import {
   Router
 } from '@angular/router'
+import { DatasendService } from '../datasend.service';
 
-const dic = {}
+const dic = {
+  
+}
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',
@@ -22,6 +25,38 @@ const dic = {}
 })
 export class DocumentComponent implements OnInit {
 
+  dic2={
+    "11": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
+  "12": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
+  "13": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
+  "14": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
+  "15": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
+  "16": "https://www.youtube.com/watch?v=6V0CkJbLDCQ"
+  }
+  dicForQuiz={
+    "1": "Classes and Objects",
+    "2": "Classes Methods",
+    "3": "Method Overloading",
+    "4": "Method Overriding",
+    "5": "Inheritance",
+    "6": "Polymorphism"
+  }
+
+  dicForDoc={
+    "Introduction.pdf":["Introduction of Classes and Objects","Classes and Objects"],
+    "Classes Variables.pdf":["Introduction of Classes and Objects","Classes and Objects"],
+    "Initialization Block.pdf":["Introduction of Classes and Objects","Classes and Objects"],
+    "Methods.pdf":["Classes and Objects: Method","Classes Methods"],
+    "Constructor.pdf":["Classes and Objects: Method","Classes Methods"],
+    "Method Overriding.pdf":["Classes and Objects: Method","Method Overriding"],
+    "Method Overloading.pdf":["Classes and Objects: Method","Method Overloading"],
+    "Inheritance.pdf":["Advanced concept of OOPs","Inheritance"],
+    "Polymorphism.pdf":["Advanced concept of OOPs","Polymorphism"]
+  }
+  dicForVideo={
+    "Video1":["Introduction of Classes and Objects","Classes and Objects"],
+    "Video Materials": ["Advanced concept of OOPs","Inheritance"]
+  }
 
   credentials: pdfData = {
     name: ""
@@ -32,13 +67,19 @@ export class DocumentComponent implements OnInit {
   zoomPdf=1
   rotationPdf=0
 
-  logsData=[]
+  logsForResources=[]
   docEndTime
   docStartTime
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  pointerForDoc=[]
+  pointerForVideo=[]
+
+  logsForDocument=[]
+  pageStartTime
+
+  constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
-  pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
+  pdfSource = ""
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -79,17 +120,40 @@ export class DocumentComponent implements OnInit {
       return
     }
     this.pdfPageNumber+=1
+    var current = new Date
+    var time = current.getTime()
+    this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+    var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+    var current = new Date
+    this.pageStartTime = current.getTime()
+    this.logsForDocument.push(temp)
+
   }
   Previous(){
     if(this.pdfPageNumber==1){
       return
     }
     this.pdfPageNumber-=1
+    var current = new Date
+    var time = current.getTime()
+    this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+    var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+    var current = new Date
+    this.pageStartTime = current.getTime()
+    this.logsForDocument.push(temp)
   }
   jumpPagePdf(evt){
-    if(evt.target.value<=this.totalPages)
+    if(evt.target.value<=this.totalPages && evt.target.value>0){
       this.pdfPageNumber=evt.target.value
-    return
+      var current = new Date
+      var time = current.getTime()
+      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+      var current = new Date
+      this.pageStartTime = current.getTime()
+      this.logsForDocument.push(temp)
+    }
+    
     }
   //////////////////////////PDFViewer//////////////////////////////////////////
   
@@ -127,30 +191,152 @@ export class DocumentComponent implements OnInit {
     this.drag()
   }
 
+  ngOnDestroy(){
+    var current = new Date
+    var time = current.getTime()
+    if(this.logsForDocument.length){
+      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+      this.logsForDocument.push("document")
+      this.auth.logsdata(this.logsForDocument)
+          .subscribe(
+            (data) => {
+              if (data.error) {
+                alert(data.error)
+              } else {
+                this.logsForDocument=[]
+                //alert(data)
+              }
+            },
+            error => {
+              console.error(error)
+            }
+          )
+    }
+
+    if(this.pointerForDoc.length || this.pointerForVideo.length){
+      var current = new Date
+      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
+      if(this.pointerForDoc.length){
+        this.logsForResources[this.logsForResources.length-1][3]="NAN"
+        if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+          this.logsForResources[this.logsForResources.length-1][4]="2"
+          this.logsForResources[this.pointerForDoc[0]].push(endtime)
+          this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+        }
+      }
+      if(this.pointerForVideo.length){
+        this.logsForResources[this.logsForResources.length-1][3]="NAN"
+        if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+          this.logsForResources[this.logsForResources.length-1][4]="4"
+          this.logsForResources[this.pointerForVideo[0]].push(endtime)
+          this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+        }
+        }
+    }else{
+      var temp = [this.auth.getSession(),this.data.getQuizType(),this.data.getQuizType()+" Quiz"]
+      this.logsForResources.push(temp)
+    }
+    this.logsForResources.push("Resources")
+    this.auth.logsdata(this.logsForResources)
+    .subscribe(
+      (data) => {
+        if (data.error) {
+          alert(data.error)
+        } else {
+          this.logsForResources=[]
+          //alert(data)
+        }
+      },
+      error => {
+        console.error(error)
+      }
+    )
+    
+  }
+
   updatePdfName(id) {
     
     var f = document.getElementById('videoFrame')
-    if(this.pdfSource=="" && f['src']==""){
-      this.logsData.push(this.auth.getSession())
-      this.logsData.push("subtopic")
-      this.logsData.push(document.getElementById(id).innerHTML)
-      this.logsData.push("doc2")
-      this.logsData.push("flag")
-      this.docStartTime = new Date()
-      this.docStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      this.logsData.push(this.docStartTime)
+    
+    /////////////////Document Csv//////////////////////
+    var temp=[]
+    if(this.pdfSource==""){
+      temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
+      var current = new Date
+      this.pageStartTime = current.getTime()
+      this.logsForDocument.push(temp)
+    }else{
+      var current = new Date
+      var time = current.getTime()
+      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+      this.pdfPageNumber=1
+      temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
+      var current = new Date
+      this.pageStartTime = current.getTime()
+      this.logsForDocument.push(temp)
+    }
+    
+    /////////////////Document Csv//////////////////////
+    var temp=[]
+    console.log(this.pdfSource)
+    console.log(f['src'])
+    if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
+      temp.push(this.auth.getSession())
+      var name = document.getElementById(id).textContent
+      temp.push(this.dicForDoc[name][1])
+      temp.push(name)
+      temp.push("doc2")
+      temp.push("flag")
+      var current = new Date()
+      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      this.docStartTime = current.getTime()
+      temp.push(startTime)
+      this.logsForResources.push(temp)
+      this.pointerForDoc=[this.logsForResources.length-1,current.getTime()]
 
     }else{
-      this.logsData[3]=document.getElementById(id).innerHTML
-      this.logsData[4]="1"
+      var name = document.getElementById(id).textContent
+      this.logsForResources[this.logsForResources.length-1][3]=name
+      var current = new Date
+      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      console.log(this.logsForResources[this.logsForResources.length-1][2])
+      if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="2"
+        this.logsForResources[this.pointerForDoc[0]].push(endtime)
+        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+      }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="3"
+        this.logsForResources[this.pointerForVideo[0]].push(endtime)
+        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+      }
+      
+      this.docStartTime=current.getTime()
+      temp.push(this.auth.getSession())
+      var name = document.getElementById(id).textContent
+      console.log(name)
+      temp.push(this.dicForDoc[name][1])
+      temp.push(name)
+      temp.push("doc2")
+      temp.push("flag")
       var current = new Date()
-      this.docEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      this.logsData.push(this.docEndTime)
-      this.logsData.push(current.getTime() - this.docStartTime.getTime())
-      this.auth.logsdata(this.logsData);
+      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      this.docStartTime = current.getTime()
+      temp.push(startTime)
+      this.logsForResources.push(temp)
+      this.pointerForDoc=[this.logsForResources.length-1,startTime]
+
+      // this.logsData[3]=document.getElementById(id).value
+      // this.logsData[4]="1"
+       //var current = new Date()
+      // this.docEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      // this.logsData.push(this.docEndTime)
+      // this.logsData.push(current.getTime() - this.docStartTime.getTime())
+      // this.auth.logsdata(this.logsData);
 
     }
-    this.pdfSource = document.getElementById(id).innerHTML;
+    this.pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+      
     // this.auth.pdfname(this.credentials).subscribe(
     //   (data) => {
     //     var f = document.getElementById('Frame')
@@ -185,23 +371,58 @@ export class DocumentComponent implements OnInit {
   }
 
   updateVideoName(id){
-    if(this.pdfSource=="" && f['src']==""){
-      this.logsData.push(this.auth.getSession())
-      this.logsData.push("subtopic")
-      this.logsData.push(document.getElementById(id).innerHTML)
-      this.logsData.push("doc2")
-      this.logsData.push("flag")
-      this.docStartTime = new Date()
-      var startime = this.docStartTime.getHours()+":"+this.docStartTime.getMinutes()+":"+this.docStartTime.getSeconds();
-      this.logsData.push(startime)
-    }else{
-      
-      this.auth.logsdata(this.logsData)
-    }
-    id=document.getElementById(id).innerHTML
+    var temp=[]
+    var name=""
     var f = document.getElementById('videoFrame')
+    if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
+      temp.push(this.auth.getSession())
+      name = document.getElementById(id).textContent
+      temp.push(this.dicForVideo[name][1])
+      temp.push(name)
+      temp.push("doc2")
+      temp.push("flag")
+      var current = new Date()
+      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      this.docStartTime = current.getTime()
+      temp.push(startTime)
+      this.logsForResources.push(temp)
+      this.pointerForVideo = [this.logsForResources.length-1,this.docStartTime]
+    }else{
+      var current = new Date()
+      name = document.getElementById(id).textContent
+      this.logsForResources[this.logsForResources.length-1][3]=name
+      var current = new Date
+      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
+      if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="1"
+        this.logsForResources[this.pointerForDoc[0]].push(endtime)
+        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+      }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="4"
+        this.logsForResources[this.pointerForVideo[0]].push(endtime)
+        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+      }
+      
+      this.docStartTime=current.getTime()
+      temp.push(this.auth.getSession())
+      var name = document.getElementById(id).textContent
+      temp.push(this.dicForVideo[name][1])
+      temp.push(name)
+      temp.push("doc2")
+      temp.push("flag")
+      var current = new Date()
+      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      this.docStartTime = current.getTime()
+      temp.push(startTime)
+      this.logsForResources.push(temp)
+      this.pointerForVideo=[this.logsForResources.length-1,this.docStartTime]
+
+    }
+    
+    
     try{
-      f['src'] = dic[id]
+      f['src'] = this.dic2[id]
     }catch{
       f['src'] = ""
     }
@@ -258,4 +479,49 @@ export class DocumentComponent implements OnInit {
     }
   }
 
+  quizAttempt(id){
+
+    this.data.setQuizType(this.dicForQuiz[id])
+    if(this.pointerForDoc){
+      this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
+      var current = new Date
+      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="2"
+        this.logsForResources[this.pointerForDoc[0]].push(endtime)
+        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+        
+      }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="3"
+        this.logsForResources[this.pointerForVideo[0]].push(endtime)
+        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+      }
+      this.pointerForDoc=[]
+    }
+    if(this.pointerForVideo){
+      this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
+      var current = new Date
+      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
+      if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="4"
+        this.logsForResources[this.pointerForVideo[0]].push(endtime)
+        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+      }
+      this.pointerForVideo=[]
+    }
+    this.router.navigateByUrl('/Quiz')
+  }
+
 }
+
+
+/*
+P => V 1
+P => P 2 
+V => P 3
+V => V 4
+P => Q 5
+V => Q 6
+Q => Q (Directly jumping on quiz) 7
+*/
