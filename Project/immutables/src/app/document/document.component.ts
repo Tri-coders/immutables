@@ -31,6 +31,10 @@ export class DocumentComponent implements OnInit {
   totalPages
   zoomPdf=1
   rotationPdf=0
+
+  logsData=[]
+  docEndTime
+  docStartTime
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
@@ -124,16 +128,37 @@ export class DocumentComponent implements OnInit {
   }
 
   updatePdfName(id) {
-    this.credentials.name = document.getElementById(id).innerHTML;
-    console.log(this.credentials.name);
-    this.auth.pdfname(this.credentials).subscribe(
-      (data) => {
-        var f = document.getElementById('Frame')
-        f['src'] = f['src']
-      },
-      error => {
-        alert("problem")
-      })
+    
+    var f = document.getElementById('videoFrame')
+    if(this.pdfSource=="" && f['src']==""){
+      this.logsData.push(this.auth.getSession())
+      this.logsData.push("subtopic")
+      this.logsData.push(document.getElementById(id).innerHTML)
+      this.logsData.push("doc2")
+      this.logsData.push("flag")
+      this.docStartTime = new Date()
+      this.docStartTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      this.logsData.push(this.docStartTime)
+
+    }else{
+      this.logsData[3]=document.getElementById(id).innerHTML
+      this.logsData[4]="1"
+      var current = new Date()
+      this.docEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      this.logsData.push(this.docEndTime)
+      this.logsData.push(current.getTime() - this.docStartTime.getTime())
+      this.auth.logsdata(this.logsData);
+
+    }
+    this.pdfSource = document.getElementById(id).innerHTML;
+    // this.auth.pdfname(this.credentials).subscribe(
+    //   (data) => {
+    //     var f = document.getElementById('Frame')
+    //     f['src'] = f['src']
+    //   },
+    //   error => {
+    //     alert("problem")
+    //   })
   }
 
   from_csv() {
@@ -160,6 +185,19 @@ export class DocumentComponent implements OnInit {
   }
 
   updateVideoName(id){
+    if(this.pdfSource=="" && f['src']==""){
+      this.logsData.push(this.auth.getSession())
+      this.logsData.push("subtopic")
+      this.logsData.push(document.getElementById(id).innerHTML)
+      this.logsData.push("doc2")
+      this.logsData.push("flag")
+      this.docStartTime = new Date()
+      var startime = this.docStartTime.getHours()+":"+this.docStartTime.getMinutes()+":"+this.docStartTime.getSeconds();
+      this.logsData.push(startime)
+    }else{
+      
+      this.auth.logsdata(this.logsData)
+    }
     id=document.getElementById(id).innerHTML
     var f = document.getElementById('videoFrame')
     try{
