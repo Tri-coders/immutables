@@ -18,8 +18,8 @@
       <span id="arrow-Close" class="material-icons">keyboard_arrow_left</span>
       <span id="arrow-Open" style="display: none;" class="material-icons">keyboard_arrow_right</span>
     </button>
-    <div class="question_no_links">
-      <button *ngFor="let option of ques; let count = index;" id="question_no_link{{count+1}}" (click)="select(count)" class="" style="display: inline-block;">{{count+1}}</button>
+    <div class="question_no_links" onload="load()">
+      <button *ngFor="let option of ques; let count = index;" class="" id="question_no_link{{count+1}}" (click)="select(count)" style="display: inline-block;">{{count+1}}</button>
       <!-- <button id="question_no_link2" (click)="select(1)" class="question_no_button">2</button>
       <button id="question_no_link3" (click)="select(2)" class="question_no_button">3</button>
       <button id="question_no_link4" (click)="select(3)" class="question_no_button">4</button>

@@ -6,43 +6,7 @@ import { Router } from '@angular/router'
 import { DatasendService } from '../datasend.service';
 
 const qConst : QuestionFormat[] = []
-//   {
-//     id: '0',
-//     qNo: '1',
-//     q: 'Which of the following statements should be used to obtain a remainder after dividing 3.14 by 2.1 ?',
-//     o1: 'rem = 3.14 % 2.1;',
-//     o2: 'rem = modf(3.14, 2.1);',
-//     o3: 'rem = fmod(3.14, 2.1);',
-//     o4: 'Remainder cannot be obtain in floating point division',
-//   },
-//   {
-//     id: '1',
-//     qNo: '2',
-//     q: 'class Test { \n int i;\n } \n class Main { \n public static void main(String args[]) { \n Test t; \n     System.out.println(t.i); \n}' ,
-//     o1: 'example00',
-//     o2: 'example01',
-//     o3: 'example02',
-//     o4: 'example03',
-//   },
-//   {
-//     id: '2',
-//     qNo: '3',
-//     q: 'what is anvcbcvxbvccd',
-//     o1: 'example000',
-//     o2: 'example001',
-//     o3: 'example002',
-//     o4: 'example003',
-//   },
-//   {
-//     id: '3',
-//     qNo: '4',
-//     q: 'what is gfhfghfgh',
-//     o1: 'example0000',
-//     o2: 'example0001',
-//     o3: 'example0002',
-//     o4: 'example0003',
-//   }
-// ];
+
 
 @Component({
   selector: 'app-quiz',
@@ -98,22 +62,7 @@ export class QuizComponent implements OnInit {
     this.Quizstatus = 0
 
     this.from_csv()
-    // if(this.ques.length==0){
-    //   this.from_csv()
-    // }else{
-    //   this.sques = qConst[this.k];
-    //   this.sques.code = this.replaceAll(this.sques.code,"\n","<br>&nbsp;&nbsp;")
-    //   this.codeText = this.sques.code
-    //   this.pra = this.sques.Question
-    //   this.que_no = this.sques.no
-
-    //   this.data.sendtoserver()
-    //   this.data.addlogs("session1")
-    //   this.data.addlogs("Overall")
-    //   this.data.addlogs("quiz")
-    //   this.data.addlogs([this.que_no,this.sques.Question_Type])
-    // }
-    
+    document.getElementById("question_no_link"+this.que_no).className="active"
 
   }
   ngOnDestroy(){
@@ -223,7 +172,6 @@ export class QuizComponent implements OnInit {
             qConst.length = 0;
             var noOfQue=this.NumberOfQuestions;
             var i = 0;
-            alert(this.data.getQuizType())
             while(noOfQue>0 && i<data.length){
               if(data[i]["Question Tag"]==this.data.getQuizType()){
                 noOfQue-=1
@@ -259,6 +207,7 @@ export class QuizComponent implements OnInit {
             this.codeText = this.sques.code
             this.pra = this.sques.Question
             this.que_no = this.sques.no
+            
             //alert(this.sques.Question)
             this.data.sendtoserver()
             this.data.addlogs(this.auth.getSession())
@@ -273,6 +222,8 @@ export class QuizComponent implements OnInit {
       }
     )
   }
+
+  
   select(qno){
     // if(qno === 0)
     // {
@@ -283,6 +234,9 @@ export class QuizComponent implements OnInit {
     //   document.getElementById("back_button").style.display="";
     //   this.sques = qConst[qno];
     // }
+      if(document.getElementById("question_no_link"+this.que_no).className!="done")
+        document.getElementById("question_no_link"+this.que_no).className=""
+
     var temp = this.que_no
     this.sques = qConst[parseInt(qno)]
     this.pra = this.sques.Question
@@ -300,10 +254,14 @@ export class QuizComponent implements OnInit {
       this.startTime=this.endTime;
       this.data.addlogs([this.que_no,this.sques.Question_Type])
     }
+
+    document.getElementById("question_no_link"+this.que_no).className="active"
   }
 
   nextque(){
     if(this.k+1<this.ques.length){
+      if(document.getElementById("question_no_link"+this.que_no).className!="done")
+        document.getElementById("question_no_link"+this.que_no).className=""
       this.k++;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
@@ -315,6 +273,7 @@ export class QuizComponent implements OnInit {
       this.data.addlogs((this.endTime-this.startTime))
       this.startTime=this.endTime;
       this.data.addlogs([this.que_no,this.sques.Question_Type])
+      document.getElementById("question_no_link"+this.que_no).className="active"
 
     }
     
@@ -322,6 +281,8 @@ export class QuizComponent implements OnInit {
 
   prevque(){
     if(this.k-1>=0){
+      if(document.getElementById("question_no_link"+this.que_no).className!="done")
+        document.getElementById("question_no_link"+this.que_no).className=""
       this.k--;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
@@ -333,6 +294,8 @@ export class QuizComponent implements OnInit {
       this.data.addlogs((this.endTime-this.startTime))
       this.startTime=this.endTime;
       this.data.addlogs([this.que_no,this.sques.Question_Type])
+
+      document.getElementById("question_no_link"+this.que_no).className="active"
 
     }
     
@@ -374,6 +337,16 @@ export class QuizComponent implements OnInit {
     }else{
       this.scqAnsSelected.set(this.que_no,evt)
     }
+    console.log(this.scqAnsSelected.get(this.que_no))
+    var c=0
+    for(var i=0;i<4;i++){
+      if(this.keyexist(this.que_no,i)!=-1){
+        document.getElementById("question_no_link"+this.que_no).className="done"
+        c++
+      }
+    }
+    if(c==0)
+      document.getElementById("question_no_link"+this.que_no).className="active"
   }
 
   keyexist(que,count){
@@ -397,7 +370,7 @@ export class QuizComponent implements OnInit {
     element.checked = false
     this.scqAnsSelected.delete(que)
     this.data.addlogsAtPosition(this.data.getlength()-1,0)
-    
+    document.getElementById("question_no_link"+this.que_no).className="active"
   
   }
 

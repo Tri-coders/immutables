@@ -536,7 +536,7 @@ export class DocumentComponent implements OnInit {
   quizAttempt(id){
 
     this.data.setQuizType(this.dicForQuiz[id])
-    if(this.pointerForDoc){
+    if(this.pointerForDoc.length){
       this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
       var current = new Date
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
@@ -552,7 +552,7 @@ export class DocumentComponent implements OnInit {
       }
       this.pointerForDoc=[]
     }
-    if(this.pointerForVideo){
+    if(this.pointerForVideo.length){
       this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
       var current = new Date
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
