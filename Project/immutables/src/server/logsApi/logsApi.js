@@ -29,6 +29,8 @@ logs.post('/logsdata', async (req,res)=>{
         document(logs)
     }else if(logs[logs.length-1]=="Resources"){
         resources(logs)
+    }else if(logs[logs.length-1]=="ToicTimeLog"){
+        topicTime(logs)
     }
     res.json({
         msg: "correct"
@@ -124,6 +126,23 @@ function resources(logs){
 
     try{
         fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/resource_log.csv'),data)
+    }catch(err){
+        console.log(err)
+    } 
+}
+
+function topicTime(logs){
+    var data=""
+    for(var i=0;i<logs.length-1;i++){
+        for(var j=0;j<logs[0].length;j++){
+            data+=logs[i][j]
+            data+=","
+        }
+        data+="\n"
+    }
+
+    try{
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/topic_time_log.csv'),data)
     }catch(err){
         console.log(err)
     } 

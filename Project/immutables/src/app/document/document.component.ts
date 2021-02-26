@@ -76,6 +76,11 @@ export class DocumentComponent implements OnInit {
   logsForDocument=[]
   pageStartTime
 
+  logsForTopicSwitch=[]
+
+  logsForTopicTime = []
+  subtopic=""
+  startTopicTime
   constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
@@ -252,6 +257,31 @@ export class DocumentComponent implements OnInit {
         console.error(error)
       }
     )
+
+    ////////////////Topic_time csv////////////////////////
+    
+    if(this.startTopicTime!=undefined){
+      var n =new Date()
+      var endTime = n.getTime()
+      this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
+      this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+    }
+    this.logsForTopicTime.push("ToicTimeLog")
+    this.auth.logsdata(this.logsForTopicTime)
+    .subscribe(
+      (data) => {
+        if (data.error) {
+          alert(data.error)
+        } else {
+          this.logsForTopicTime=[]
+          //alert(data)
+        }
+      },
+      error => {
+        console.error(error)
+      }
+    )
+    ////////////////Topic_time csv////////////////////////
     
   }
 
@@ -278,20 +308,25 @@ export class DocumentComponent implements OnInit {
     }
     
     /////////////////Document Csv//////////////////////
-    var temp=[]
-    console.log(this.pdfSource)
-    console.log(f['src'])
+    /////////////////Resources Csv///////////////////////
+    var temp=[] //Resources
+    //var temp2=[] //Topic Switch
     if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
       temp.push(this.auth.getSession())
+      //temp2.push(this.auth.getSession())
       var name = document.getElementById(id).textContent
       temp.push(this.dicForDoc[name][1])
+      //temp2.push(this.dicForDoc[name][1])
       temp.push(name)
       temp.push("doc2")
       temp.push("flag")
+      // temp2.push("doc2")
+      // temp2.push("flag")
       var current = new Date()
       var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       this.docStartTime = current.getTime()
       temp.push(startTime)
+      //temp2.push(startTime)
       this.logsForResources.push(temp)
       this.pointerForDoc=[this.logsForResources.length-1,current.getTime()]
 
@@ -325,26 +360,28 @@ export class DocumentComponent implements OnInit {
       temp.push(startTime)
       this.logsForResources.push(temp)
       this.pointerForDoc=[this.logsForResources.length-1,startTime]
-
-      // this.logsData[3]=document.getElementById(id).value
-      // this.logsData[4]="1"
-       //var current = new Date()
-      // this.docEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      // this.logsData.push(this.docEndTime)
-      // this.logsData.push(current.getTime() - this.docStartTime.getTime())
-      // this.auth.logsdata(this.logsData);
-
     }
-    this.pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+    /////////////////Resources Csv///////////////////////
+    ////////////////Topic_time csv////////////////////////
+    if(this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
       
-    // this.auth.pdfname(this.credentials).subscribe(
-    //   (data) => {
-    //     var f = document.getElementById('Frame')
-    //     f['src'] = f['src']
-    //   },
-    //   error => {
-    //     alert("problem")
-    //   })
+      this.subtopic = this.dicForDoc[document.getElementById(id).textContent][1]
+      var n = new Date()
+      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      var t=[]
+      if(this.startTopicTime!=undefined){
+        var endTime = n.getTime()
+        this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
+        this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+      }
+      t=[this.auth.getSession(),this.subtopic,startTime,"",""]
+      this.startTopicTime=n.getTime()
+      this.logsForTopicTime.push(t)
+      
+    }
+    ////////////////Topic_time csv////////////////////////
+    this.pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+    
   }
 
   from_csv() {
@@ -419,7 +456,24 @@ export class DocumentComponent implements OnInit {
       this.pointerForVideo=[this.logsForResources.length-1,this.docStartTime]
 
     }
-    
+    ////////////////Topic_time csv////////////////////////
+    if(this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
+      
+      this.subtopic = this.dicForVideo[document.getElementById(id).textContent][1]
+      var n = new Date()
+      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      var t=[]
+      if(this.startTopicTime!=undefined){
+        var endTime = n.getTime()
+        this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
+        this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+      }
+      t=[this.auth.getSession(),this.subtopic,startTime,"",""]
+      this.startTopicTime=n.getTime()
+      this.logsForTopicTime.push(t)
+      
+    }
+    ////////////////Topic_time csv////////////////////////
     
     try{
       f['src'] = this.dic2[id]
