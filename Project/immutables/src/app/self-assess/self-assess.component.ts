@@ -27,7 +27,7 @@ export class SelfAssessComponent implements OnInit {
   currentQuestionIndex = 0;
   progressValue: number;
   questions = questionsList;
-
+  pv: String;
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -85,6 +85,7 @@ export class SelfAssessComponent implements OnInit {
 
   increaseProgressValue(): void {
     this.progressValue =(100 * (this.currentQuestionIndex + 1)) / this.questions.length;
+    this.pv = this.progressValue.toFixed(1);
     if (this.currentQuestionIndex === 0) {
       // gsap.to(this.slider.nativeElement, {
       //   delay: 0.7,

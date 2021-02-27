@@ -2,10 +2,10 @@
     <ul>
       <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
       <!-- <li><a routerLink="/Quiz">Quiz</a></li> -->
-      <li><a routerLink="/ContactUs">Contact</a></li>
-      <li><a routerLink="/Document">Document</a></li>
-      <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Register</a></li>
+      <li><a routerLink="/Document">Activity</a></li>
+      <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Report</a></li>
       <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
+      <li><a routerLink="/ContactUs">Contact</a></li>
       <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="logout()">Logout</a></li>
     </ul>
     <ul>

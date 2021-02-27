@@ -35,7 +35,7 @@ mat-toolbar{
     }
 
 }
-
+ 
 .outer_container{
     display: flex;
     background-color: #f3faff6e;
@@ -238,7 +238,13 @@ mat-toolbar{
     background-color: $white;
     color: $main-color;
 }
-
+.question_no_links{
+    button:first-child{
+        background-color: $main-color !important;
+        border: 1px solid $main-color !important;
+        color: $white !important;
+    }
+}
 
 
 
