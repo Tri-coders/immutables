@@ -37,6 +37,8 @@ export class QuizComponent implements OnInit {
   mcqAnsSelected= new Map();
   Quizstatus;
   
+  attempted={}
+  prev
   //variable to store options chages 
   //optionchanges=[]
   //optionchanges = new Array();
@@ -54,6 +56,21 @@ export class QuizComponent implements OnInit {
     }
   }
   ////////////////////////////////////////////////////
+
+  ngDoCheck(){
+    try{
+      for(var i=0;i<this.NumberOfQuestions;i++){
+        if(this.attempted[i]==1)
+          document.getElementById("question_no_link"+(i+1)).className="done"
+        else{
+          document.getElementById("question_no_link"+(i+1)).className="" 
+        }
+      }
+      document.getElementById("question_no_link"+this.que_no).className="active"
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   ngOnInit() {
     var current = new Date();
@@ -208,6 +225,9 @@ export class QuizComponent implements OnInit {
             this.pra = this.sques.Question
             this.que_no = this.sques.no
             
+            for(var i=0;i<this.NumberOfQuestions;i++){
+              this.attempted[i]=0
+            }
             //alert(this.sques.Question)
             this.data.sendtoserver()
             this.data.addlogs(this.auth.getSession())
@@ -234,8 +254,8 @@ export class QuizComponent implements OnInit {
     //   document.getElementById("back_button").style.display="";
     //   this.sques = qConst[qno];
     // }
-      if(document.getElementById("question_no_link"+this.que_no).className!="done")
-        document.getElementById("question_no_link"+this.que_no).className=""
+      // if(document.getElementById("question_no_link"+this.que_no).className!="done")
+      //   document.getElementById("question_no_link"+this.que_no).className=""
 
     var temp = this.que_no
     this.sques = qConst[parseInt(qno)]
@@ -255,13 +275,13 @@ export class QuizComponent implements OnInit {
       this.data.addlogs([this.que_no,this.sques.Question_Type])
     }
 
-    document.getElementById("question_no_link"+this.que_no).className="active"
+    // document.getElementById("question_no_link"+this.que_no).className="active"
   }
 
   nextque(){
     if(this.k+1<this.ques.length){
-      if(document.getElementById("question_no_link"+this.que_no).className!="done")
-        document.getElementById("question_no_link"+this.que_no).className=""
+      // if(document.getElementById("question_no_link"+this.que_no).className!="done")
+      //   document.getElementById("question_no_link"+this.que_no).className=""
       this.k++;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
@@ -273,7 +293,7 @@ export class QuizComponent implements OnInit {
       this.data.addlogs((this.endTime-this.startTime))
       this.startTime=this.endTime;
       this.data.addlogs([this.que_no,this.sques.Question_Type])
-      document.getElementById("question_no_link"+this.que_no).className="active"
+      // document.getElementById("question_no_link"+this.que_no).className="active"
 
     }
     
@@ -281,8 +301,8 @@ export class QuizComponent implements OnInit {
 
   prevque(){
     if(this.k-1>=0){
-      if(document.getElementById("question_no_link"+this.que_no).className!="done")
-        document.getElementById("question_no_link"+this.que_no).className=""
+      // if(document.getElementById("question_no_link"+this.que_no).className!="done")
+      //   document.getElementById("question_no_link"+this.que_no).className=""
       this.k--;
       this.sques = qConst[this.k];
       this.pra = this.sques.Question
@@ -295,7 +315,7 @@ export class QuizComponent implements OnInit {
       this.startTime=this.endTime;
       this.data.addlogs([this.que_no,this.sques.Question_Type])
 
-      document.getElementById("question_no_link"+this.que_no).className="active"
+      // document.getElementById("question_no_link"+this.que_no).className="active"
 
     }
     
@@ -341,12 +361,11 @@ export class QuizComponent implements OnInit {
     var c=0
     for(var i=0;i<4;i++){
       if(this.keyexist(this.que_no,i)!=-1){
-        document.getElementById("question_no_link"+this.que_no).className="done"
-        c++
+        this.attempted[this.que_no-1]=1
+        return
       }
     }
-    if(c==0)
-      document.getElementById("question_no_link"+this.que_no).className="active"
+    this.attempted[this.que_no-1]=0
   }
 
   keyexist(que,count){
@@ -370,7 +389,8 @@ export class QuizComponent implements OnInit {
     element.checked = false
     this.scqAnsSelected.delete(que)
     this.data.addlogsAtPosition(this.data.getlength()-1,0)
-    document.getElementById("question_no_link"+this.que_no).className="active"
+    
+    this.attempted[this.que_no-1]=0
   
   }
 
