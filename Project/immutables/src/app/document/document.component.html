@@ -2,148 +2,154 @@
 
 
 <!-- Menu Start -->
-<button mat-button [matMenuTriggerFor]="topic" class="my_menu" id="open-sidebar">
-  <span id="arrow-Close" style="display: none;" class="material-icons">keyboard_arrow_left</span>
-  <span id="arrow-Open" class="material-icons">keyboard_arrow_right</span>
-</button>
-<!-- <button mat-button [matMenuTriggerFor]="topic" class="my_menu">Topics</button> -->
-<!-- Main Topics -->
-<mat-menu #topic="matMenu" class="topic">
-  <span class="material-icons close-but">close</span>
-  <button mat-menu-item class="menu-heading">Topics</button>
-  <button mat-menu-item [matMenuTriggerFor]="ico" class="first-menu">Introduction of Classes and Objects</button>
-  <button mat-menu-item [matMenuTriggerFor]="cobm" class="first-menu">Classes and Objects: Method</button>
-  <button mat-menu-item [matMenuTriggerFor]="acoop" class="first-menu">Advanced concept of OOPs</button>
-</mat-menu>
-<!-- First Subtopic -->
-<mat-menu #ico="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="co">Classes and Objects</button>
-</mat-menu>
+  <button mat-button [matMenuTriggerFor]="topic" class="my_menu" id="open-sidebar">
+    <span id="arrow-Close" style="display: none;" class="material-icons">keyboard_arrow_left</span>
+    <span id="arrow-Open" class="material-icons">keyboard_arrow_right</span>
+  </button>
+  <!-- <button mat-button [matMenuTriggerFor]="topic" class="my_menu">Topics</button> -->
+  <!-- Main Topics -->
+  <mat-menu #topic="matMenu" class="topic">
+    <span class="material-icons close-but">close</span>
+    <button mat-menu-item class="menu-heading">Topics</button>
+    <button mat-menu-item [matMenuTriggerFor]="ico" class="first-menu">Introduction of Classes and Objects</button>
+    <button mat-menu-item [matMenuTriggerFor]="cobm" class="first-menu">Classes and Objects: Method</button>
+    <button mat-menu-item [matMenuTriggerFor]="acoop" class="first-menu">Advanced concept of OOPs</button>
+  </mat-menu>
+  <!-- First Subtopic -->
+  <mat-menu #ico="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="co">Classes and Objects</button>
+  </mat-menu>
 
-<mat-menu #co="matMenu">
-  <button class="mat_but" (click)="quizAttempt(1)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="1">Introduction.pdf</span></button>
-  <button class="mat_but" (click)="updatePdfName(2)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="2">Classes Variables.pdf</span></button>
-  <button class="mat_but" (click)="updatePdfName(3)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="3">Initialization Block.pdf</span></button>
-  <button class="mat_but" (click)="updateVideoName(11)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="11" >Video1</span></button>
-</mat-menu>
+  <mat-menu #co="matMenu">
+    <button class="mat_but" (click)="quizAttempt(1)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+    <button class="mat_but" (click)="updatePdfName(1)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="1">Introduction.pdf</span></button>
+    <button class="mat_but" (click)="updatePdfName(2)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="2">Classes Variables.pdf</span></button>
+    <button class="mat_but" (click)="updatePdfName(3)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="3">Initialization Block.pdf</span></button>
+    <button class="mat_but" (click)="updateVideoName(11)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="11" >Video1</span></button>
+  </mat-menu>
 
-<!-- Second Subtopic -->
-<mat-menu #cobm="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="cm">Classes Methods</button>
-  <button mat-menu-item [matMenuTriggerFor]="mol">Method Overloading</button>
-  <button mat-menu-item [matMenuTriggerFor]="mor">Method Overriding</button>
-</mat-menu>
+  <!-- Second Subtopic -->
+  <mat-menu #cobm="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="cm">Classes Methods</button>
+    <button mat-menu-item [matMenuTriggerFor]="mol">Method Overloading</button>
+    <button mat-menu-item [matMenuTriggerFor]="mor">Method Overriding</button>
+  </mat-menu>
 
-<mat-menu #cm="matMenu">
-  <button class="mat_but" (click)="quizAttempt(2)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(4)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="4">Methods.pdf</span></button>
-  <button class="mat_but" (click)="updatePdfName(5)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="5">Constructor.pdf</span></button>
-  <button class="mat_but" (click)="updateVideoName(12)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span><span id="12">Video Materials</span></button>
-</mat-menu>
+  <mat-menu #cm="matMenu">
+    <button class="mat_but" (click)="quizAttempt(2)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+    <button class="mat_but" (click)="updatePdfName(4)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="4">Methods.pdf</span></button>
+    <button class="mat_but" (click)="updatePdfName(5)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="5">Constructor.pdf</span></button>
+    <button class="mat_but" (click)="updateVideoName(12)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline</span><span id="12">Video Materials</span></button>
+  </mat-menu>
 
-<mat-menu #mol="matMenu">
-  <button class="mat_but" (click)="quizAttempt(3)" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(7)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="7" >Method Overloading.pdf</span></button>
-  <button class="mat_but" (click)="updateVideoName(13)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="13">Video Materials</span></button>
-</mat-menu>
+  <mat-menu #mol="matMenu">
+    <button class="mat_but" (click)="quizAttempt(3)" mat-menu-item ><span class="material-icons mat_icon">quiz</span>Quiz</button>
+    <button class="mat_but" (click)="updatePdfName(7)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="7" >Method Overloading.pdf</span></button>
+    <button class="mat_but" (click)="updateVideoName(13)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="13">Video Materials</span></button>
+  </mat-menu>
 
-<mat-menu #mor="matMenu">
-  <button class="mat_but" (click)="quizAttempt(4)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(8)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="8" >Method Overriding.pdf</span></button>
-  <button class="mat_but" (click)="updateVideoName(14)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="14" >Video Materials</span></button>
-</mat-menu>
+  <mat-menu #mor="matMenu">
+    <button class="mat_but" (click)="quizAttempt(4)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+    <button class="mat_but" (click)="updatePdfName(8)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="8" >Method Overriding.pdf</span></button>
+    <button class="mat_but" (click)="updateVideoName(14)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="14" >Video Materials</span></button>
+  </mat-menu>
 
-<!-- Third Subtopic -->
-<mat-menu #acoop="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="in">Inheritance</button>
-  <button mat-menu-item [matMenuTriggerFor]="poly">Polymorphism</button>
-</mat-menu>
+  <!-- Third Subtopic -->
+  <mat-menu #acoop="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="in">Inheritance</button>
+    <button mat-menu-item [matMenuTriggerFor]="poly">Polymorphism</button>
+  </mat-menu>
 
-<mat-menu #in="matMenu">
-  <button class="mat_but" (click)="quizAttempt(5)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(9)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="9" >Inheritance.pdf</span></button>
-  <button class="mat_but" (click)="updateVideoName(15)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="15" >Video Materials</span></button>
-</mat-menu>
+  <mat-menu #in="matMenu">
+    <button class="mat_but" (click)="quizAttempt(5)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+    <button class="mat_but" (click)="updatePdfName(9)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="9" >Inheritance.pdf</span></button>
+    <button class="mat_but" (click)="updateVideoName(15)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="15" >Video Materials</span></button>
+  </mat-menu>
 
-<mat-menu #poly="matMenu">
-  <button class="mat_but" (click)="quizAttempt(6)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
-  <button class="mat_but" (click)="updatePdfName(10)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="10" >Polymorphism.pdf</span></button>
-  <button class="mat_but" (click)="updateVideoName(16)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="16" >Video Materials</span></button>
-</mat-menu>
+  <mat-menu #poly="matMenu">
+    <button class="mat_but" (click)="quizAttempt(6)" mat-menu-item ><span class="material-icons mat_icon">quiz </span>Quiz</button>
+    <button class="mat_but" (click)="updatePdfName(10)" mat-menu-item><span class="material-icons mat_icon">picture_as_pdf </span><span id="10" >Polymorphism.pdf</span></button>
+    <button class="mat_but" (click)="updateVideoName(16)" mat-menu-item><span class="material-icons mat_icon">play_circle_outline </span><span id="16" >Video Materials</span></button>
+  </mat-menu>
 
 <!-- Menu Over -->
+<!-- PDF MATERIALS SECTION -->
+<div class="section1" id="section1">
+  <div class="container">
 
-<div class="container">
-
-  <p style="text-align: center;" class="heading">OOP</p>
-  <p style="text-align: center;" class="para-one">OOP stands for Object-Oriented Programming</p>
-      
-  <div class="paras-container">
-      <p class="paras">
-          Procedural programming is about writing procedures or methods that perform operations on the data, while object-oriented programming is about creating objects that contain both data and methods.Object-oriented programming has several advantages over procedural programming:
-         
-      </p>    
-      <img src="..//..//assets/oop.jpg" alt="referece diagram for oops">
-  </div>
-  <p class="paras">
-      OOP is faster and easier to execute. <br>
-      OOP provides a clear structure for the programs. <br>
-
-      OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug.<br>
-      OOP makes it possible to create full reusable applications with less code and shorter development time<br>
-  </p>
-  <p class="closing-para">
-      Note: The "Don't Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it
-  </p>
-
-  <div class="actions"><button>Start Quiz</button><button routerLink="/Topics">Start Studying</button></div>
-</div>
-
-<div class="container-1">
-  <!-- <h1>Here are some helpful materials to study</h1> -->
-  <br>
-  <h2>Topic: Classes and objects</h2>
-</div>
-
-<!-- <div>
-  <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
-  <label id="2" (click)="updatePdfName(2)">compressed.tracemonkey-pldi-09.pdf</label><br>
-  <label id="3" (click)="updateVideoName(3)">Video1</label><br>
-</div> -->
-
-<div id="mydiv">
-  <mat-slide-toggle id="draggable" (change)="onToggle($event)">Draggable</mat-slide-toggle>
-  <div id="mydivheader">Click here to move</div>
-  <iframe id="videoFrame" style="width: 900px; height: 400px;" src="">
-  </iframe>
-</div>
-<br><br>
-<!-- <iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
-</iframe> -->
-<div class="cont">
-  <div class="action-bar">
-    <div class="col">
-      <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
-      <input type="number" max={{totalPages}} min="1" id="page_no" placeholder="Page No" (input)="jumpPagePdf($event)">
+    <p style="text-align: center;" class="heading">OOP</p>
+    <p style="text-align: center;" class="para-one">OOP stands for Object-Oriented Programming</p>
+        
+    <div class="paras-container">
+        <p class="paras">
+            Procedural programming is about writing procedures or methods that perform operations on the data, while object-oriented programming is about creating objects that contain both data and methods.Object-oriented programming has several advantages over procedural programming:
+          
+        </p>    
+        <img src="..//..//assets/oop.jpg" alt="referece diagram for oops">
     </div>
-    <div class="col">
-      <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
-      <button matTooltip="Zoom in" (click)="zoomIn()"><span class="material-icons">zoom_in</span></button>
-      <button matTooltip="Reset zoom" (click)="resetZoom()"><span class="material-icons">zoom_out_map</span></button>
-      <button matTooltip="Rotate page" (click)=rotate()><span class="material-icons">rotate_right</span></button>
-      <button matTooltip="Next page" (click)="Next()"><span class="material-icons">arrow_forward_ios</span></button>
-    </div>
-  </div>
-  <pdf-viewer [src]="pdfSource"
-              [original-size]="false"
-              [show-all]="false"
-              [(page)]="pdfPageNumber"
-              [zoom]="zoomPdf"
-              [rotation]="rotationPdf"
-              (after-load-complete)="afterLoadComplete($event)">
-  </pdf-viewer>
-</div>
+    <p class="paras">
+        OOP is faster and easier to execute. <br>
+        OOP provides a clear structure for the programs. <br>
 
+        OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug.<br>
+        OOP makes it possible to create full reusable applications with less code and shorter development time<br>
+    </p>
+    <p class="closing-para">
+        Note: The "Don't Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it
+    </p>
+
+    <div class="actions"><button routerLink="/Topics">Start Quiz</button></div>
+  </div>
+
+</div>
+  <!-- <div>
+    <label id="1" (click)="updatePdfName(1)">1.pdf</label><br>
+    <label id="2" (click)="updatePdfName(2)">compressed.tracemonkey-pldi-09.pdf</label><br>
+    <label id="3" (click)="updateVideoName(3)">Video1</label><br>
+  </div> -->
+<div class="section2" id="section2" style="display: none;">
+  <div class="container-1">
+    <!-- <h1>Here are some helpful materials to study</h1> -->
+    <br>
+    <h2>Topic: Classes and objects</h2>
+  </div>
+  <div class="video-section" id="video-section" style="display: none;">
+  <div id="mydiv">
+    <mat-slide-toggle id="draggable" (change)="onToggle($event)">Draggable</mat-slide-toggle>
+    <div id="mydivheader">Click here to move</div>
+    <iframe id="videoFrame" style="width: 900px; height: 400px;" src="">
+    </iframe>
+  </div>
+  <br><br>
+</div>
+  <!-- <iframe id="Frame" src="http://localhost:8085/htmldigilocker" draggable="true" title="description">
+  </iframe> -->
+  <div class="pdf-section" id="pdf-section" style="display: none;">
+
+  <div class="cont">
+    <div class="action-bar">
+      <div class="col">
+        <p><span>Total Pages: <span [innerHTML]="pdfPageNumber"></span>/<span [innerHTML]="totalPages"></span></span></p>
+        <input type="number" max={{totalPages}} min="1" id="page_no" placeholder="Page No" (input)="jumpPagePdf($event)">
+      </div>
+      <div class="col">
+        <button matTooltip="Previous page" (click)="Previous()"><span class="material-icons">arrow_back_ios</span></button>
+        <button matTooltip="Zoom in" (click)="zoomIn()"><span class="material-icons">zoom_in</span></button>
+        <button matTooltip="Reset zoom" (click)="resetZoom()"><span class="material-icons">zoom_out_map</span></button>
+        <button matTooltip="Rotate page" (click)=rotate()><span class="material-icons">rotate_right</span></button>
+        <button matTooltip="Next page" (click)="Next()"><span class="material-icons">arrow_forward_ios</span></button>
+      </div>
+    </div>
+    <pdf-viewer [src]="pdfSource"
+                [original-size]="false"
+                [show-all]="false"
+                [(page)]="pdfPageNumber"
+                [zoom]="zoomPdf"
+                [rotation]="rotationPdf"
+                (after-load-complete)="afterLoadComplete($event)">
+    </pdf-viewer>
+  </div>
+  </div>
+</div>
 <!-- <app-sidebar></app-sidebar> -->
 <app-fab></app-fab>

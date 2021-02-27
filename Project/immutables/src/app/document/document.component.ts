@@ -382,6 +382,10 @@ export class DocumentComponent implements OnInit {
     ////////////////Topic_time csv////////////////////////
     this.pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
     
+    document.getElementById("section1").style.display = "none";
+    document.getElementById("section2").style.display = "";
+    document.getElementById("pdf-section").style.display = "";
+  
   }
 
   from_csv() {
@@ -480,6 +484,11 @@ export class DocumentComponent implements OnInit {
     }catch{
       f['src'] = ""
     }
+  
+    document.getElementById("section1").style.display = "none";
+    document.getElementById("section2").style.display = "";
+    document.getElementById("video-section").style.display = "";
+
   }
 
   //#######################################Video#####################################
