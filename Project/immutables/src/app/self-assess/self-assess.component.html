@@ -1,38 +1,82 @@
 <app-header></app-header>
 
-<div class="questionnaire">
-    <div class="question" #questionContainer>
-      <h2 class="question__heading">Question {{ currentQuestionIndex + 1 }}</h2>
-      <div class="question__q">{{ question?.questionText }}</div>
-      <div class="question__answers" #answer>
-        <div
-          class="answer"
-          *ngFor="let answer of question.options"
-          #answerr
-          (click)="onSelect(answerr)">
-          <p>{{ answer?.text }}</p>
+<div class="outer_container">
+
+  <div class="left_panel" id="mySidebar">
+    <button class="open-sidebar" id="open-sidebar"  (click)="togglesidebar()">
+      <span id="arrow-Close" class="material-icons">keyboard_arrow_left</span>
+      <span id="arrow-Open" style="display: none;" class="material-icons">keyboard_arrow_right</span>
+    </button>
+    <div class="question_no_links">
+      <!-- <button *ngFor="let option of ques; let count = index;" class="" id="question_no_link{{count+1}}" (click)="select(count)" style="display: inline-block;">{{count+1}}</button> -->
+      <!-- <button id="question_no_link2" (click)="select(1)" class="question_no_button">2</button>
+      <button id="question_no_link3" (click)="select(2)" class="question_no_button">3</button>
+      <button id="question_no_link4" (click)="select(3)" class="question_no_button">4</button>
+      <button id="question_no_link5" class="question_no_button">5</button>
+      <button id="question_no_link6" class="question_no_button">6</button>
+      <button id="question_no_link7" class="question_no_button">7</button>
+      <button id="question_no_link8" class="question_no_button">8</button>
+      <button id="question_no_link9" class="question_no_button">9</button>
+      <button id="question_no_link10" class="question_no_button">10</button>
+      <button id="question_no_link11" class="question_no_button">11</button>
+      <button id="question_no_link12" class="question_no_button">12</button>
+      <button id="question_no_link13" class="question_no_button">13</button>
+      <button id="question_no_link14" class="question_no_button">14</button>
+      <button id="question_no_link15" class="question_no_button">15</button>
+      <button id="question_no_link16" class="question_no_button">16</button>
+      <button id="question_no_link17" class="question_no_button">17</button>
+      <button id="question_no_link18" class="question_no_button">18</button>
+      <button id="question_no_link19" class="question_no_button">19</button>
+      <button id="question_no_link20" class="question_no_button">20</button>
+      <button id="question_no_link21" class="question_no_button">21</button>
+      <button id="question_no_link22" class="question_no_button">22</button>
+      <button id="question_no_link23" class="question_no_button">23</button>
+      <button id="question_no_link24" class="question_no_button">24</button>
+      <button id="question_no_link25" class="question_no_button">25</button>
+      <button id="question_no_link26" class="question_no_button">26</button>
+      <button id="question_no_link27" class="question_no_button">27</button>
+      <button id="question_no_link28" class="question_no_button">28</button>
+      <button id="question_no_link29" class="question_no_button">29</button>
+      <button id="question_no_link30" class="question_no_button">30</button> -->
+
+    </div>
+  </div>
+
+  <div class="questionnaire" id="main">
+      <div class="question" #questionContainer>
+        <h2 class="question__heading">Question {{ currentQuestionIndex + 1 }}</h2>
+        <div class="question__q">{{ question?.questionText }}</div>
+        <div class="question__answers" #answer>
+          <div
+            class="answer"
+            *ngFor="let answer of question.options"
+            #answerr
+            (click)="onSelect(answerr)">
+            <p>{{ answer?.text }}</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="actions" #actions>
-      <button class="previous" (click)="prev()">
-        <svg class="icon icon-back">
-          <use href="./assets/icons.svg#icon-chevron-left"></use>
-        </svg>
-      </button>
-      <button class="next" (click)="goToNextQuestion()">Next</button>
-    </div>
-    <div class="progress__bar">
-      <div #slider class="progress__bar--slider"></div>
-    </div>
-    <div class="progress__actions" #progress>
-      <div class="p-actions-left">
-        <span>Question {{ currentQuestionIndex + 1 }}</span>
-        <span>Out Of</span>
-        <span>{{ questions.length }}</span>
+      <div class="actions" #actions>
+        <button class="previous" (click)="prev()">
+          <svg class="icon icon-back">
+            <use href="./assets/icons.svg#icon-chevron-left"></use>
+          </svg>
+        </button>
+        <button class="next" (click)="goToNextQuestion()">Next</button>
       </div>
-      <div class="p-actions-right">
-        <span>{{ pv }}%</span>
+      <div class="progress__bar">
+        <div #slider class="progress__bar--slider"></div>
       </div>
-    </div>
+      <div class="progress__actions" #progress>
+        <div class="p-actions-left">
+          <span>Question {{ currentQuestionIndex + 1 }}</span>
+          <span>Out Of</span>
+          <span>{{ questions.length }}</span>
+        </div>
+        <div class="p-actions-right">
+          <span>{{ pv }}%</span>
+        </div>
+      </div>
+  </div>
+
 </div>

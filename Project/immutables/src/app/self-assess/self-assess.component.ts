@@ -133,4 +133,37 @@ export class SelfAssessComponent implements OnInit {
     }
   }
 
+
+  openNav() {
+    this.opened = false;
+    document.getElementById("mySidebar").style.width = "18%";
+    // document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("arrow-Open").style.display = "none";
+    document.getElementById("arrow-Close").style.display = "block";
+    document.getElementById("mySidebar").style.marginLeft = "0";
+    console.log("closed")
+  }
+  
+  closeNav() {
+    this.opened = true;
+    document.getElementById("mySidebar").style.width = "0";
+    // document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("arrow-Open").style.display = "block";
+    document.getElementById("arrow-Close").style.display = "none";
+    document.getElementById("mySidebar").style.marginLeft = "-30px";
+
+    console.log("opened")
+
+  }
+
+  togglesidebar(){
+    // this.opened = !this.opened;
+    if (this.opened) {
+      // console.log("opened");
+      this.openNav();
+    } else {
+      // console.log("Closed");
+      this.closeNav();
+    }
+  }  
 }
