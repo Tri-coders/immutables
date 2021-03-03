@@ -77,6 +77,9 @@ export class DocumentComponent implements OnInit {
   pageStartTime
 
   logsForTopicSwitch=[]
+  switchStartTime
+  pointerForDocSwitchLog=[]
+  pointerForVideoSwitchLog=[]
 
   logsForTopicTime = []
   subtopic=""
@@ -93,6 +96,13 @@ export class DocumentComponent implements OnInit {
         return
       }
       this.pdfPageNumber+=1
+      var current = new Date
+      var time = current.getTime()
+      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+      var current = new Date
+      this.pageStartTime = current.getTime()
+      this.logsForDocument.push(temp)
     }
 
     if(event.key=="ArrowLeft"){
@@ -100,6 +110,13 @@ export class DocumentComponent implements OnInit {
         return
       }
       this.pdfPageNumber-=1
+      var current = new Date
+      var time = current.getTime()
+      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+      var current = new Date
+      this.pageStartTime = current.getTime()
+      this.logsForDocument.push(temp)
     }
   }
 
@@ -258,6 +275,41 @@ export class DocumentComponent implements OnInit {
       }
     )
 
+    if(this.pointerForDocSwitchLog.length || this.pointerForVideoSwitchLog.length){
+      var current = new Date
+      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
+      if(this.pointerForDocSwitchLog.length){
+        this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]="NAN"
+        this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+        this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+        
+      }
+      if(this.pointerForVideoSwitchLog.length){
+        this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]="NAN"
+          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+      }
+    }else{
+      var temp2 = [this.auth.getSession(),this.data.getQuizType(),this.data.getQuizType()+" Quiz"]
+      this.logsForTopicSwitch.push(temp2)
+    }
+    this.logsForTopicSwitch.push("TopicSwitch")
+    this.auth.logsdata(this.logsForTopicSwitch)
+    .subscribe(
+      (data) => {
+        if (data.error) {
+          alert(data.error)
+        } else {
+          this.logsForTopicSwitch=[]
+          //alert(data)
+        }
+      },
+      error => {
+        console.error(error)
+      }
+    )
+
     ////////////////Topic_time csv////////////////////////
     
     if(this.startTopicTime!=undefined){
@@ -310,31 +362,49 @@ export class DocumentComponent implements OnInit {
     /////////////////Document Csv//////////////////////
     /////////////////Resources Csv///////////////////////
     var temp=[] //Resources
-    //var temp2=[] //Topic Switch
+    var temp2=[] //Topic Switch
     if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
       temp.push(this.auth.getSession())
-      //temp2.push(this.auth.getSession())
+      temp2.push(this.auth.getSession())//Topic Switch
       var name = document.getElementById(id).textContent
       temp.push(this.dicForDoc[name][1])
-      //temp2.push(this.dicForDoc[name][1])
+      temp2.push(this.dicForDoc[name][1])//Topic Switch
       temp.push(name)
       temp.push("doc2")
       temp.push("flag")
-      // temp2.push("doc2")
-      // temp2.push("flag")
+      temp2.push("doc2")//Topic Switch
+      temp2.push("type")//Topic Switch
       var current = new Date()
       var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       this.docStartTime = current.getTime()
+      this.switchStartTime = current.getTime()//Topic Switch
       temp.push(startTime)
-      //temp2.push(startTime)
+      temp2.push(startTime)//Topic Switch
       this.logsForResources.push(temp)
+      this.logsForTopicSwitch.push(temp2)//Topic Switch
       this.pointerForDoc=[this.logsForResources.length-1,current.getTime()]
+      this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,current.getTime()]
 
     }else{
       var name = document.getElementById(id).textContent
-      this.logsForResources[this.logsForResources.length-1][3]=name
       var current = new Date
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      ////////////////////Topic Switch/////////////////////////
+      if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
+        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
+          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
+          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+        }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
+          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
+          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+        }
+      }
+      ////////////////////Topic Switch/////////////////////////
+      
+      this.logsForResources[this.logsForResources.length-1][3]=name
+      
       console.log(this.logsForResources[this.logsForResources.length-1][2])
       if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
         this.logsForResources[this.logsForResources.length-1][4]="2"
@@ -348,18 +418,26 @@ export class DocumentComponent implements OnInit {
       
       this.docStartTime=current.getTime()
       temp.push(this.auth.getSession())
+      temp2.push(this.auth.getSession())//Topic Switch
       var name = document.getElementById(id).textContent
       console.log(name)
       temp.push(this.dicForDoc[name][1])
       temp.push(name)
       temp.push("doc2")
       temp.push("flag")
+      
+      temp2.push(this.dicForDoc[name][1])//Topic Switch
+      temp2.push("doc2")//Topic Switch
+      temp2.push("type")//Topic Switch
       var current = new Date()
       var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       this.docStartTime = current.getTime()
       temp.push(startTime)
+      temp2.push(startTime)//Topic Switch
       this.logsForResources.push(temp)
+      this.logsForTopicSwitch.push(temp2)//Topic Switch
       this.pointerForDoc=[this.logsForResources.length-1,startTime]
+      this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,startTime]//Topic Switch
     }
     /////////////////Resources Csv///////////////////////
     ////////////////Topic_time csv////////////////////////
@@ -413,27 +491,50 @@ export class DocumentComponent implements OnInit {
 
   updateVideoName(id){
     var temp=[]
+    var temp2=[]//Topic Switch
     var name=""
     var f = document.getElementById('videoFrame')
     if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
       temp.push(this.auth.getSession())
+      temp2.push(this.auth.getSession())//Topic Switch
       name = document.getElementById(id).textContent
       temp.push(this.dicForVideo[name][1])
       temp.push(name)
       temp.push("doc2")
       temp.push("flag")
+      temp2.push(this.dicForVideo[name][1])//Topic Switch
+      temp2.push("doc2")//Topic Switch
+      temp2.push("type")//Topic Switch
       var current = new Date()
       var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       this.docStartTime = current.getTime()
+      this.startTopicTime = current.getTime()
       temp.push(startTime)
+      temp2.push(startTime)//Topic Switch
       this.logsForResources.push(temp)
+      this.logsForTopicSwitch.push(temp2)//Topic Switch
       this.pointerForVideo = [this.logsForResources.length-1,this.docStartTime]
+      this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic Switch
     }else{
       var current = new Date()
       name = document.getElementById(id).textContent
       this.logsForResources[this.logsForResources.length-1][3]=name
       var current = new Date
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+
+      ////////////////////Topic Switch/////////////////////////
+      if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
+        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
+          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
+          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+        }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
+          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
+          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+        }
+      }
+      ////////////////////Topic Switch/////////////////////////
       
       if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
         this.logsForResources[this.logsForResources.length-1][4]="1"
@@ -447,18 +548,26 @@ export class DocumentComponent implements OnInit {
       
       this.docStartTime=current.getTime()
       temp.push(this.auth.getSession())
+      temp2.push(this.auth.getSession())//Topic Switch
       var name = document.getElementById(id).textContent
       temp.push(this.dicForVideo[name][1])
       temp.push(name)
       temp.push("doc2")
       temp.push("flag")
+      
+      temp2.push(this.dicForVideo[name][1])//Topic switch
+      temp2.push("doc2")//Topic switch
+      temp2.push("flag")//Topic switch
       var current = new Date()
       var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       this.docStartTime = current.getTime()
+      this.switchStartTime=current.getTime()//Topic switch
       temp.push(startTime)
+      temp2.push(startTime)//Topic switch
       this.logsForResources.push(temp)
+      this.logsForTopicSwitch.push(temp2)//Topic switch
       this.pointerForVideo=[this.logsForResources.length-1,this.docStartTime]
-
+      this.pointerForVideoSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic switch
     }
     ////////////////Topic_time csv////////////////////////
     if(this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
@@ -545,10 +654,11 @@ export class DocumentComponent implements OnInit {
   quizAttempt(id){
 
     this.data.setQuizType(this.dicForQuiz[id])
+    var current = new Date
+    var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
     if(this.pointerForDoc.length){
       this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
-      var current = new Date
-      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
       if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
         this.logsForResources[this.logsForResources.length-1][4]="2"
         this.logsForResources[this.pointerForDoc[0]].push(endtime)
@@ -561,18 +671,42 @@ export class DocumentComponent implements OnInit {
       }
       this.pointerForDoc=[]
     }
+
+    //////////////////////////Topic Switch//////////////////////
+    if(this.pointerForDocSwitchLog.length){
+      this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.data.getQuizType()+" Quiz"
+      this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+      this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+       
+      this.pointerForDocSwitchLog=[]
+    }
+    //////////////////////////Topic Switch//////////////////////
     if(this.pointerForVideo.length){
       this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
-      var current = new Date
-      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       
       if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
         this.logsForResources[this.logsForResources.length-1][4]="4"
         this.logsForResources[this.pointerForVideo[0]].push(endtime)
         this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+      }else if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+        this.logsForResources[this.logsForResources.length-1][4]="1"
+        this.logsForResources[this.pointerForDoc[0]].push(endtime)
+        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+        
       }
       this.pointerForVideo=[]
     }
+    //////////////////////////Topic Switch//////////////////////
+    if(this.pointerForVideoSwitchLog.length){
+      this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.data.getQuizType()+" Quiz"
+      this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+      this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+       
+      this.pointerForVideoSwitchLog=[]
+    }
+    //////////////////////////Topic Switch//////////////////////
+
+
     this.router.navigateByUrl('/Quiz')
   }
 
