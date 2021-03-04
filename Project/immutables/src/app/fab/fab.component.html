@@ -25,13 +25,17 @@
     <!-- <app-planning></app-planning> -->
     <div class="plan-cont" id="myModal">
         <div class="modal-content">
-            <button (click)="onPress()" class="close-btn"><Span class="material-icons">close</Span></button>
-            <h1>Plan your Schedule</h1>
-            <p class="headings first">Introduction</p>
-            <div class="topic">
-                <div class="subtopic">
+            <div class="header">
+                <button (click)="onPress()" class="close-btn"><Span class="material-icons">close</Span></button>
+                <h1>Plan your Schedule</h1>
+            </div>
+            <div class="content">
+
+                <p class="headings first">Introduction</p>
+                <div class="topic">
+                    <div class="subtopic">
                     <p>Classes and objects</p>
-                    <input placeholder="Enter No of Days" type="number" min="0">
+                    <input placeholder="Enter No of hours" type="number" min="0">
                 </div>
             </div>
             <hr>
@@ -39,15 +43,15 @@
             <div class="topic">
                 <div class="subtopic">
                     <p>Methods</p>
-                    <input placeholder="Enter No of Days" type="number" min="0">
+                    <input placeholder="Enter No of hours" type="number" min="0">
                 </div>
                 <div class="subtopic"> 
                     <p>Overloading</p>
-                    <input placeholder="Enter No of Days" type="number" min="0">
+                    <input placeholder="Enter No of hours" type="number" min="0">
                 </div>
                 <div class="subtopic"> 
                     <p>Overriding</p>
-                    <input placeholder="Enter No of Days" type="number" min="0">
+                    <input placeholder="Enter No of hours" type="number" min="0">
                 </div>
             </div>
             <hr>
@@ -55,15 +59,19 @@
             <div class="topic">
                 <div class="subtopic">
                     <p>Inheritance</p>
-                    <input placeholder="Enter No of Days" type="number" min="0">
+                    <input placeholder="Enter No of hours" type="number" min="0">
                 </div>
                 <div class="subtopic"> 
                     <p>Polymorphism</p>
-                    <input placeholder="Enter No of Days" type="number" min="0">
+                    <input placeholder="Enter No of hours" type="number" min="0">
                 </div>
             </div>
             <hr>
             <h3>Total Days: 10</h3>
+        </div>
+        <div class="footer">
+            <button (click)="onPress()">Submit</button>
+        </div>
         </div>
     </div>
 </div>

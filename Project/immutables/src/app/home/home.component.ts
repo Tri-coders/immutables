@@ -34,4 +34,10 @@ export class HomeComponent implements OnInit {
   openDialog(){
     
   }
+
+  login(){
+    if(!this.auth.isLoggedIn()){
+      this.router.navigateByUrl('/Login')
+    }
+  }
 }
