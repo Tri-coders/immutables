@@ -87,7 +87,7 @@ export class DocumentComponent implements OnInit {
   constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
-  pdfSource = ""
+  pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -403,8 +403,8 @@ export class DocumentComponent implements OnInit {
           }
         }
       }catch(err){
-        // console.log(err)
-        console.log("please chalu hoja")
+        console.log(err)
+        // console.log("please chalu hoja")
       }
       ////////////////////Topic Switch/////////////////////////
       
