@@ -155,7 +155,7 @@ export class QuizComponent implements OnInit {
       (data)=>{
           if(data.error){
               alert(data.error)
-          }else{
+          }else if(this.data.getQuizType()!="Super QUIZ"){
             var j = 1;
             // for(var i=0;i<this.NumberOfQuestions;i++){
             //   var option = [];
@@ -231,16 +231,103 @@ export class QuizComponent implements OnInit {
             this.data.addlogs("quiz")
             this.data.addlogs([this.que_no,this.sques.Question_Type])
             
+          }else{
+            var j = 1
+            qConst.length = 0;
+            var noOfQue=this.NumberOfQuestions;
+            var i = 0;
+            var cAO=[],cM=[],mOL=[],mOR=[],inh=[],poly=[]
+            while(i<data.length){
+              noOfQue-=1
+              var option = [];
+              if(data[i]["A"])
+                option.push(data[i]["A"])
+              if(data[i]["B"])
+                option.push(data[i]["B"])
+              if(data[i]["C"])
+                option.push(data[i]["C"])
+              if(data[i]["D"])
+                option.push(data[i]["D"])
+              var ansoption = data[i]["Answers"].split(',')
+              var codetemp = this.replaceAll(data[i]["Code"],"\n","<br> &nbsp;&nbsp;&nbsp;")
+              var x = {
+                no: j,
+                q:j.toString(),
+                Question: data[i]["Question"],
+                code: codetemp,
+                Question_Type: data[i]["Question Type"],
+                o1: option,
+                ans: ansoption
+              }
+              if(data[i]["Question Tag"]=="Classes and Objects"){
+                cAO.push(x)
+              }else if(data[i]["Question Tag"]=="Classes Methods"){
+                cM.push(x)
+              }else if(data[i]["Question Tag"]=="Method Overloading"){
+                mOL.push(x)
+              }else if(data[i]["Question Tag"]=="Method Overriding"){
+                mOR.push(x)
+              }else if(data[i]["Question Tag"]=="Inheritance"){
+                inh.push(x)
+              }else if(data[i]["Question Tag"]=="Polymorphism"){
+                poly.push(x)
+              }
+              j++;
+              i++;
+            }
+            
+            cAO=this.getRandomFromDiff(cAO)
+            cM=this.getRandomFromDiff(cM)
+            mOL=this.getRandomFromDiff(mOL)
+            mOR=this.getRandomFromDiff(mOR)
+            inh=this.getRandomFromDiff(inh)
+            poly=this.getRandomFromDiff(poly)
+            this.chooseFive(cAO)
+            this.chooseFive(cM)
+            this.chooseFive(mOL)
+            this.chooseFive(mOR)
+            this.chooseFive(inh)
+            this.chooseFive(poly)
+            
+            this.getRandom()
+            this.sques = qConst[this.k];
+            //alert(this.sques.Question_Type)
+            //console.log(this.sques.Question)
+            this.sques.code = this.replaceAll(this.sques.code,"\n","<br> &nbsp;&nbsp;&nbsp;")
+            this.codeText = this.sques.code
+            this.pra = this.sques.Question
+            this.que_no = this.sques.no
+            
+            for(var i=0;i<this.NumberOfQuestions;i++){
+              this.attempted[i]=0
+            }
+            //alert(this.sques.Question)
+            this.data.sendtoserver()
+            this.data.addlogs(this.auth.getSession())
+            this.data.addlogs(this.data.getQuizType())
+            this.data.addlogs("quiz")
+            this.data.addlogs([this.que_no,this.sques.Question_Type])
           }
       },
       error=>{
           console.error(error)
       }
     )
+
   }
 
-  getRandom() {
+  chooseFive(arr){
+    var end=arr.length<5?arr.length:5
+    for(var i=0;i<end;i++){
+      qConst.push(arr[i])
+    }
     console.log(qConst)
+  }
+  getRandomFromDiff(arr){
+    arr.sort( ()=>Math.random()-0.5 )
+    return arr
+  }
+  getRandom() {
     var result=qConst.sort( ()=>Math.random()-0.5 ); 
     for(var i=0;i<qConst.length;i++){
       qConst[i]["no"]=i+1;

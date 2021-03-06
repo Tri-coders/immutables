@@ -207,9 +207,9 @@ export class DocumentComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.pdfSource)
-    if(Object.keys(dic).length === 0){
-      this.from_csv()
-    }
+    // if(Object.keys(dic).length === 0){
+    //   this.from_csv()
+    // }
     this.drag()
   }
 
@@ -390,16 +390,20 @@ export class DocumentComponent implements OnInit {
       var current = new Date
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       ////////////////////Topic Switch/////////////////////////
-      if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
-        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
-          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
-          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
-          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
-        }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
-          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
-          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
-          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+      try{
+        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
+          if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
+            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
+            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+          }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
+            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
+            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+          }
         }
+      }catch(err){
+        console.log(err)
       }
       ////////////////////Topic Switch/////////////////////////
       
@@ -466,28 +470,28 @@ export class DocumentComponent implements OnInit {
   
   }
 
-  from_csv() {
+  // from_csv() {
 
-    this.auth.videoname().subscribe(
-      (data) => {
-        if (data.error) {
-          alert(data.error)
-        } else {
-            for(var i=0;i<data.length;i++){
-              try{
-                dic[data[i]["name"]] = data[i]["link"]
-              }catch{
-                continue
-              }
-            }
-        }
-      },
-      error => {
+  //   this.auth.videoname().subscribe(
+  //     (data) => {
+  //       if (data.error) {
+  //         alert(data.error)
+  //       } else {
+  //           for(var i=0;i<data.length;i++){
+  //             try{
+  //               dic[data[i]["name"]] = data[i]["link"]
+  //             }catch{
+  //               continue
+  //             }
+  //           }
+  //       }
+  //     },
+  //     error => {
 
-        console.error(error)
-      }
-    )
-  }
+  //       console.error(error)
+  //     }
+  //   )
+  // }
 
   updateVideoName(id){
     var temp=[]
@@ -523,16 +527,20 @@ export class DocumentComponent implements OnInit {
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
 
       ////////////////////Topic Switch/////////////////////////
-      if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
-        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
-          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
-          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
-          this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
-        }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
-          this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
-          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
-          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+      try{
+        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
+          if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
+            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
+            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+          }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
+            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
+            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+          }
         }
+      }catch(err){
+        console.log(err)
       }
       ////////////////////Topic Switch/////////////////////////
       

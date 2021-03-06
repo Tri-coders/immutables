@@ -14,8 +14,8 @@ export class AuthGuardService implements CanActivate{
         this.auth.userExsist = false;
       }
       ///////If login expiers then send logs to server
-      
-      this.router.navigateByUrl('/')
+      alert("You need to Login first")
+      this.router.navigateByUrl('/Login')
       return false
     }
     return true
