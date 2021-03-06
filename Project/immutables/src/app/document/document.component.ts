@@ -394,6 +394,7 @@ export class DocumentComponent implements OnInit {
       var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       ////////////////////Topic Switch/////////////////////////
       try{
+        console.log("test 1", this.logsForTopicSwitch[this.logsForTopicSwitch.length-1])
         if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
           if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
             this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
@@ -407,6 +408,7 @@ export class DocumentComponent implements OnInit {
         }
       }catch(err){
         console.log(err)
+        // console.log("please chalu hoja")
       }
       ////////////////////Topic Switch/////////////////////////
       

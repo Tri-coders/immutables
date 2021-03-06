@@ -151,5 +151,16 @@
   </div>
   </div>
 </div>
+
+<div>
+  <pdf-viewer [src]="pdfSource"
+                [original-size]="false"
+                [show-all]="false"
+                [(page)]="pdfPageNumber"
+                [zoom]="zoomPdf"
+                [rotation]="rotationPdf"
+                (after-load-complete)="afterLoadComplete($event)">
+    </pdf-viewer>
+</div>
 <!-- <app-sidebar></app-sidebar> -->
 <app-fab></app-fab>
