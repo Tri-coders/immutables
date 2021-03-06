@@ -366,7 +366,6 @@ export class DocumentComponent implements OnInit {
     /////////////////Resources Csv///////////////////////
     var temp=[] //Resources
     var temp2=[] //Topic Switch
-    alert((this.URL))//http://localhost:4200/
     if(this.pdfSource=="" && f['src']==this.URL+"/"){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
