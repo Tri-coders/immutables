@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.4",
     "@sendgrid/mail": "^7.1.1",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "fs": "0.0.1-security",
     "json2csv": "^5.0.6",
     "ng-sidebar": "^9.3.0",
@@ -32,7 +33,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.901.13",
+    "@angular-devkit/build-angular": "^0.901.14",
     "@angular/cli": "^9.1.7",
     "@angular/compiler-cli": "~9.1.4",
     "@angular/language-service": "~9.1.4",
