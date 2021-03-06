@@ -87,7 +87,7 @@ export class DocumentComponent implements OnInit {
   constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
-  pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
+  pdfSource = ""
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -351,7 +351,6 @@ export class DocumentComponent implements OnInit {
     }else{
       var current = new Date
       var time = current.getTime()
-      console.log("test1", this.logsForDocument.length)
       this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
       this.pdfPageNumber=1
       temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
