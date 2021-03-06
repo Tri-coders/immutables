@@ -84,6 +84,8 @@ export class DocumentComponent implements OnInit {
   logsForTopicTime = []
   subtopic=""
   startTopicTime
+
+  URL
   constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
@@ -211,6 +213,7 @@ export class DocumentComponent implements OnInit {
     //   this.from_csv()
     // }
     this.drag()
+    this.URL = window.location.origin
   }
 
   ngOnDestroy(){
@@ -363,7 +366,7 @@ export class DocumentComponent implements OnInit {
     /////////////////Resources Csv///////////////////////
     var temp=[] //Resources
     var temp2=[] //Topic Switch
-    if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
+    if(this.pdfSource=="" && f['src']==this.URL){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
       var name = document.getElementById(id).textContent
@@ -498,7 +501,7 @@ export class DocumentComponent implements OnInit {
     var temp2=[]//Topic Switch
     var name=""
     var f = document.getElementById('videoFrame')
-    if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
+    if(this.pdfSource=="" && f['src']==this.URL){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
       name = document.getElementById(id).textContent
