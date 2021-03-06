@@ -500,6 +500,7 @@ export class DocumentComponent implements OnInit {
     var temp2=[]//Topic Switch
     var name=""
     var f = document.getElementById('videoFrame')
+    alert(f['src'])
     if(this.pdfSource=="" && f['src']=="http://localhost:4200/"){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
