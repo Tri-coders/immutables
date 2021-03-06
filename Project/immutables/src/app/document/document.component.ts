@@ -403,7 +403,8 @@ export class DocumentComponent implements OnInit {
           }
         }
       }catch(err){
-        console.log(err)
+        // console.log(err)
+        console.log("please chalu hoja")
       }
       ////////////////////Topic Switch/////////////////////////
       
