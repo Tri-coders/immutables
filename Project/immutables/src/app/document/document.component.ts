@@ -366,7 +366,8 @@ export class DocumentComponent implements OnInit {
     /////////////////Resources Csv///////////////////////
     var temp=[] //Resources
     var temp2=[] //Topic Switch
-    if(this.pdfSource=="" && f['src']==this.URL){
+    alert((this.URL))//http://localhost:4200/
+    if(this.pdfSource=="" && f['src']==this.URL+"/"){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
       var name = document.getElementById(id).textContent
@@ -503,7 +504,7 @@ export class DocumentComponent implements OnInit {
     var temp2=[]//Topic Switch
     var name=""
     var f = document.getElementById('videoFrame')
-    if(this.pdfSource=="" && f['src']==this.URL){
+    if(this.pdfSource=="" && f['src']==this.URL+"/"){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
       name = document.getElementById(id).textContent
