@@ -351,6 +351,7 @@ export class DocumentComponent implements OnInit {
     }else{
       var current = new Date
       var time = current.getTime()
+      console.log("test1", this.logsForDocument.length)
       this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
       this.pdfPageNumber=1
       temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
