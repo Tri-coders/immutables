@@ -257,7 +257,7 @@
 .heading{
   font-family: $heading2-font;
   font-size: 3rem;
-  margin-top: 1rem;
+  margin-top: 1rem !important;
   font-weight: bolder;
   color: $main-color;
 }
@@ -272,7 +272,7 @@
 }
 .paras{
   font-family: $content-font;
-  margin: 2rem 2rem auto !important;
+  margin: 0 2rem auto !important;
   line-height: 1.8em;
   font-size: 1.4em;
 }
@@ -286,7 +286,7 @@
   // background-color: #cde0ff28;
 }
 .paras-container{
-  margin-top: 2rem;
+  margin-top: 3rem;
   display: flex;
   align-items: flex-start;
   justify-content: start;
