@@ -1,14 +1,15 @@
 <mat-toolbar role="heading" class="row">
-    <ul>
-      <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
-      <!-- <li><a routerLink="/Quiz">Quiz</a></li> -->
-      <li><a routerLink="/Document">Activity</a></li>
-      <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Report</a></li>
-      <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li>
-      <li><a routerLink="/ContactUs">Contact</a></li>
-      <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="logout()">Logout</a></li>
-    </ul>
-    <ul>
-      <li *ngIf="!auth.isLoggedIn()"><a class="profile-icon" routerLink="/Login"><span class="material-icons">person</span></a></li>
-    </ul>
+  <ul><li>MetaCognition Tracker</li></ul>
+  <ul>
+    <li><a routerLink="/Home" routerlinkActive="active">Home</a></li>
+    <!-- <li><a routerLink="/Quiz">Quiz</a></li> -->
+    <li><a routerLink="/Document">Activity</a></li>
+    <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Register">Report</a></li>
+    <!-- <li *ngIf="!auth.isLoggedIn()"><a routerLink="/Login">Login</a></li> -->
+    <li><a routerLink="/ContactUs">Contact</a></li>
+    <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="logout()">Logout</a></li>
+  </ul>
+  <ul>
+    <li *ngIf="!auth.isLoggedIn()"><a class="profile-icon" routerLink="/Login"><span class="material-icons">person</span></a></li>
+  </ul>
 </mat-toolbar>
