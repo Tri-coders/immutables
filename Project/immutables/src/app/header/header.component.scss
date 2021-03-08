@@ -42,6 +42,9 @@ mat-toolbar{
         }
 
     }
+    ul:nth-of-type(2) {
+        margin-left: -155px;
+    }
     #first {ul { display: none; }}
     #first:hover > ul {
         display: block;
