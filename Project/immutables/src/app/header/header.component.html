@@ -9,7 +9,7 @@
     <li><a routerLink="/ContactUs">Contact</a></li>
     <li *ngIf="auth.isLoggedIn()"><a routerLink="/Logout" (click)="logout()">Logout</a></li>
   </ul>
-  <ul>
+  <!-- <ul>
     <li *ngIf="!auth.isLoggedIn()"><a class="profile-icon" routerLink="/Login"><span class="material-icons">person</span></a></li>
-  </ul>
+  </ul> -->
 </mat-toolbar>
