@@ -26,12 +26,12 @@ const dic = {
 export class DocumentComponent implements OnInit {
 
   dic2={
-    "11": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
-  "12": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
-  "13": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
-  "14": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
-  "15": "https://www.youtube.com/watch?v=6V0CkJbLDCQ",
-  "16": "https://www.youtube.com/watch?v=6V0CkJbLDCQ"
+    "11": "https://www.youtube.com/embed/tgbNymZ7vqY",
+  "12": "https://www.youtube.com/embed/tgbNymZ7vqY",
+  "13": "https://www.youtube.com/embed/tgbNymZ7vqY",
+  "14": "https://www.youtube.com/embed/tgbNymZ7vqY",
+  "15": "https://www.youtube.com/embed/tgbNymZ7vqY",
+  "16": "https://www.youtube.com/embed/tgbNymZ7vqY"
   }
   dicForQuiz={
     "1": "Classes and Objects",
