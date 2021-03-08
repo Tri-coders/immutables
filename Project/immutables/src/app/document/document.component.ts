@@ -226,7 +226,7 @@ export class DocumentComponent implements OnInit {
           .subscribe(
             (data) => {
               if (data.error) {
-                alert(data.error)
+                console.log(data.error)
               } else {
                 this.logsForDocument=[]
                 //alert(data)
@@ -267,7 +267,7 @@ export class DocumentComponent implements OnInit {
     .subscribe(
       (data) => {
         if (data.error) {
-          alert(data.error)
+          console.log(data.error)
         } else {
           this.logsForResources=[]
           //alert(data)
@@ -302,7 +302,7 @@ export class DocumentComponent implements OnInit {
     .subscribe(
       (data) => {
         if (data.error) {
-          alert(data.error)
+          console.log(data.error)
         } else {
           this.logsForTopicSwitch=[]
           //alert(data)
@@ -326,7 +326,7 @@ export class DocumentComponent implements OnInit {
     .subscribe(
       (data) => {
         if (data.error) {
-          alert(data.error)
+          console.log(data.error)
         } else {
           this.logsForTopicTime=[]
           //alert(data)
@@ -366,6 +366,8 @@ export class DocumentComponent implements OnInit {
     /////////////////Resources Csv///////////////////////
     var temp=[] //Resources
     var temp2=[] //Topic Switch
+    
+    //alert(f['src'])
     if(this.pdfSource=="" && f['src']==this.URL+"/"){
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
@@ -450,7 +452,7 @@ export class DocumentComponent implements OnInit {
     }
     /////////////////Resources Csv///////////////////////
     ////////////////Topic_time csv////////////////////////
-    if(this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
+    if(this.subtopic!=undefined && this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
       
       this.subtopic = this.dicForDoc[document.getElementById(id).textContent][1]
       var n = new Date()
@@ -583,12 +585,14 @@ export class DocumentComponent implements OnInit {
       this.pointerForVideoSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic switch
     }
     ////////////////Topic_time csv////////////////////////
-    if(this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
+    if(this.subtopic!=undefined && this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
       
       this.subtopic = this.dicForVideo[document.getElementById(id).textContent][1]
       var n = new Date()
       var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
       var t=[]
+      
+      //alert(this.startTopicTime)
       if(this.startTopicTime!=undefined){
         var endTime = n.getTime()
         this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
