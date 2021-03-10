@@ -593,7 +593,7 @@ export class DocumentComponent implements OnInit {
       var t=[]
       
       //alert(this.startTopicTime)
-      if(this.startTopicTime!=undefined){
+      if(this.startTopicTime!=undefined && f['src']!=this.URL+"/"){
         var endTime = n.getTime()
         this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
         this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
