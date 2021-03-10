@@ -210,7 +210,7 @@ export class DocumentComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.pdfSource)
+    //console.log(this.pdfSource)
     // if(Object.keys(dic).length === 0){
     //   this.from_csv()
     // }
@@ -471,7 +471,7 @@ export class DocumentComponent implements OnInit {
       
     }
     ////////////////Topic_time csv////////////////////////
-    this.pdfSource = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+    this.pdfSource = this.URL+"/pdf/pdfname?name="+document.getElementById(id).textContent;
     
     document.getElementById("section1").style.display = "none";
     document.getElementById("section2").style.display = "";

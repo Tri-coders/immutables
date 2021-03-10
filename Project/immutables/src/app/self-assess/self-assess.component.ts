@@ -7,6 +7,8 @@ import { Component,
 import { Question } from '../models/Question';
 // import { gsap } from 'gsap';
 import { questionsList } from '../Helpers/questionsList';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-self-assess',
   templateUrl: './self-assess.component.html',
@@ -29,10 +31,31 @@ export class SelfAssessComponent implements OnInit {
   progressValue: number;
   questions = questionsList;
   pv: String;
-  constructor(private cdr: ChangeDetectorRef) { }
+  ques=[]
+  constructor(private cdr: ChangeDetectorRef, private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.increaseProgressValue();
+    for(var i=0;i<52;i++){
+      this.ques.push(-1)
+    }
+  }
+
+  ngDoCheck(){
+    try{
+      for(var i=0;i<this.ques.length;i++){
+        console.log(document.getElementById("question_no_link"+(i+1)).className)
+        if(this.ques[i]!=-1)
+          document.getElementById("question_no_link"+(i+1)).className="done"
+        else{
+          document.getElementById("question_no_link"+(i+1)).className="" 
+        }
+      }
+      document.getElementById("question_no_link"+(this.currentQuestionIndex+1).toString()).className="active"
+      
+    }catch(err){
+      //console.log(err)
+    }
   }
 
     increaseProgressValue(): void {
@@ -51,15 +74,25 @@ export class SelfAssessComponent implements OnInit {
     return this.questions[this.currentQuestionIndex];
   }
 
-  onSelect(answer: HTMLDivElement) {
-    this.answer.nativeElement.childNodes.forEach((node: HTMLDivElement) => {
-      if (node.classList && node.classList.contains('selected')) {
-        node.classList.remove('selected');
-      }
-    });
-    answer.classList.add('selected');
+  onSelect(answer) {
+    // this.answer.nativeElement.childNodes.forEach((node: HTMLDivElement) => {
+    //   if (node.classList && node.classList.contains('selected')) {
+    //     node.classList.remove('selected');
+    //   }
+    // });  
+    // answer.classList.add('selected');
+    this.ques[this.currentQuestionIndex]=answer
   }
 
+  keyExist(ind,opt){
+    if(this.ques[ind]==-1)
+      return -1
+    else{
+      if(this.ques[ind]==opt)
+        return 0
+      else return -1
+    }
+  }
   prev() {
     if (this.currentQuestionIndex > 0) {
             this.currentQuestionIndex--;
@@ -113,4 +146,18 @@ export class SelfAssessComponent implements OnInit {
       this.closeNav();
     }
   }  
+  Submit(){
+    this.auth.selfassesment(this.ques).subscribe(
+      (data)=>{
+        if(data.error){
+            alert(data.error)
+        }else{
+            this.router.navigateByUrl('/Home')
+        }
+    },
+    error=>{
+        console.error(error)
+    }
+    )
+  }
 }

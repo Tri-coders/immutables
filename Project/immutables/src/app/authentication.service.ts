@@ -252,7 +252,19 @@ export class AuthenticationService {
           
         )
         return request
-      }
-      
+      } 
+    }
+
+    public selfassesment(selfassesmentdata: any): Observable<any>{
+      if(selfassesmentdata.length){
+        const base = this.http.post('/inventory/answer',selfassesmentdata)
+        const request = base.pipe(
+          map((data: EmailResponse)=>{
+            return data
+          }),
+          
+        )
+        return request
+      } 
     }
 }

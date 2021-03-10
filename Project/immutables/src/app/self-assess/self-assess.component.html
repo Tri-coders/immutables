@@ -102,13 +102,19 @@
         <h2 class="question__heading">Question {{ currentQuestionIndex + 1 }}</h2>
         <div class="question__q">{{ question?.questionText }}</div>
         <div class="question__answers" #answer>
-          <div
-            class="answer"
-            *ngFor="let answer of question.options"
-            #answerr
-            (click)="onSelect(answerr)">
-            <p>{{ answer?.text }}</p>
+          <div *ngFor="let answer of question.options;let count=index">
+            <div *ngIf="keyExist(currentQuestionIndex,count)!=-1; else elseBlock1">
+              <div class="answer selected" #answerr (click)="onSelect(count)">
+                <p>{{ answer?.text }}</p>
+              </div>
+            </div>
+            <ng-template #elseBlock1>
+              <div class="answer" #answerr (click)="onSelect(count)">
+                <p>{{ answer?.text }}</p>
+              </div>
+            </ng-template>
           </div>
+          
         </div>
       </div>
       <div class="actions" #actions>
@@ -132,6 +138,9 @@
           <span>{{ pv }}%</span>
         </div>
       </div>
+  </div>
+  <div>
+    <button (click)="Submit()">Submit</button>
   </div>
 
 </div>
