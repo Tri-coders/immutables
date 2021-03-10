@@ -11,6 +11,7 @@ export class FabComponent implements OnInit {
 
   constructor(private auth: AuthenticationService, private router: Router) { }
 
+  totalDays=0
   
   ///////////////////////FullScreen Exit////////////////////////
   @HostListener("document:fullscreenchange", []) 
@@ -41,7 +42,7 @@ export class FabComponent implements OnInit {
         setTimeout(() => {
           var top = 50 * i;
           e.style.top = top + "px";
-          console.log(e);
+          //console.log(e);
         }, 100 * i);
       });
     } else {
@@ -58,5 +59,39 @@ export class FabComponent implements OnInit {
 
     //To toggle the component
     this.display = !this.display;
+  }
+
+  totaldaysChange(eve){
+    this.totalDays=(<HTMLInputElement>document.getElementById("1")).value!=""?parseInt((<HTMLInputElement>document.getElementById("1")).value):0
+    this.totalDays+=(<HTMLInputElement>document.getElementById("2")).value!=""?parseInt((<HTMLInputElement>document.getElementById("2")).value):0
+    this.totalDays+=(<HTMLInputElement>document.getElementById("3")).value!=""?parseInt((<HTMLInputElement>document.getElementById("3")).value):0
+    this.totalDays+=(<HTMLInputElement>document.getElementById("4")).value!=""?parseInt((<HTMLInputElement>document.getElementById("4")).value):0
+    this.totalDays+=(<HTMLInputElement>document.getElementById("5")).value!=""?parseInt((<HTMLInputElement>document.getElementById("5")).value):0
+    this.totalDays+=(<HTMLInputElement>document.getElementById("6")).value!=""?parseInt((<HTMLInputElement>document.getElementById("6")).value):0
+    
+  }
+
+  submitResponse(){
+    var planningdata=[0,0,0,0,0,0]
+    planningdata[0]=(<HTMLInputElement>document.getElementById("1")).value!=""?parseInt((<HTMLInputElement>document.getElementById("1")).value):0
+    planningdata[1]=(<HTMLInputElement>document.getElementById("2")).value!=""?parseInt((<HTMLInputElement>document.getElementById("2")).value):0
+    planningdata[2]=(<HTMLInputElement>document.getElementById("3")).value!=""?parseInt((<HTMLInputElement>document.getElementById("3")).value):0
+    planningdata[3]=(<HTMLInputElement>document.getElementById("4")).value!=""?parseInt((<HTMLInputElement>document.getElementById("4")).value):0
+    planningdata[4]=(<HTMLInputElement>document.getElementById("5")).value!=""?parseInt((<HTMLInputElement>document.getElementById("5")).value):0
+    planningdata[5]=(<HTMLInputElement>document.getElementById("6")).value!=""?parseInt((<HTMLInputElement>document.getElementById("6")).value):0
+    
+    this.auth.planning(planningdata)
+      .subscribe(
+        (data) => {
+          if (data.error) {
+            console.log(data.error)
+          } else {
+            this.onPress()
+          }
+        },
+        error => {
+          console.error(error)
+        }
+      )
   }
 }

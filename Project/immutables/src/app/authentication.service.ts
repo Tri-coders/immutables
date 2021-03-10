@@ -241,4 +241,18 @@ export class AuthenticationService {
         return request
       }
     }
+
+    public planning(planningdata: any): Observable<any>{
+      if(planningdata.length){
+        const base = this.http.post('/planning/planning',planningdata)
+        const request = base.pipe(
+          map((data: EmailResponse)=>{
+            return data
+          }),
+          
+        )
+        return request
+      }
+      
+    }
 }

@@ -16,12 +16,14 @@ var quiz = require('./quiz/quiz')
 var pdf = require('./pdf/pdf')
 var logsApi = require('./logsApi/logsApi')
 var selfAssess = require('./selfAssess/selfAssess')
+var planning = require('./planning/planning')
 
 app.use("/users",Users)
 app.use("/quiz",quiz)
 app.use("/pdf",pdf)
 app.use("/logsApi",logsApi)
 app.use("/inventory", selfAssess)
+app.use("/planning",planning)
 
 app.listen(port, ()=>{
     console.log("server started at "+ port)

@@ -93,32 +93,34 @@ export class DocumentComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if(event.key=="ArrowRight"){
-      if(this.pdfPageNumber==this.totalPages){
-        return
+    if(this.pdfSource!=""){
+      if(event.key=="ArrowRight"){
+        if(this.pdfPageNumber==this.totalPages){
+          return
+        }
+        this.pdfPageNumber+=1
+        var current = new Date
+        var time = current.getTime()
+        this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+        var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+        var current = new Date
+        this.pageStartTime = current.getTime()
+        this.logsForDocument.push(temp)
       }
-      this.pdfPageNumber+=1
-      var current = new Date
-      var time = current.getTime()
-      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
-      var current = new Date
-      this.pageStartTime = current.getTime()
-      this.logsForDocument.push(temp)
-    }
 
-    if(event.key=="ArrowLeft"){
-      if(this.pdfPageNumber==1){
-        return
+      if(event.key=="ArrowLeft"){
+        if(this.pdfPageNumber==1){
+          return
+        }
+        this.pdfPageNumber-=1
+        var current = new Date
+        var time = current.getTime()
+        this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+        var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+        var current = new Date
+        this.pageStartTime = current.getTime()
+        this.logsForDocument.push(temp)
       }
-      this.pdfPageNumber-=1
-      var current = new Date
-      var time = current.getTime()
-      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
-      var current = new Date
-      this.pageStartTime = current.getTime()
-      this.logsForDocument.push(temp)
     }
   }
 
@@ -139,7 +141,7 @@ export class DocumentComponent implements OnInit {
     this.rotationPdf+=90
   }
   Next(){
-    console.log(this.totalPages)
+    //console.log(this.totalPages)
     if(this.pdfPageNumber==this.totalPages){
       return
     }
@@ -409,14 +411,14 @@ export class DocumentComponent implements OnInit {
           }
         }
       }catch(err){
-        console.log(err)
+        //console.log(err)
         // console.log("please chalu hoja")
       }
       ////////////////////Topic Switch/////////////////////////
       
       this.logsForResources[this.logsForResources.length-1][3]=name
       
-      console.log(this.logsForResources[this.logsForResources.length-1][2])
+      //console.log(this.logsForResources[this.logsForResources.length-1][2])
       if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
         this.logsForResources[this.logsForResources.length-1][4]="2"
         this.logsForResources[this.pointerForDoc[0]].push(endtime)
@@ -431,7 +433,7 @@ export class DocumentComponent implements OnInit {
       temp.push(this.auth.getSession())
       temp2.push(this.auth.getSession())//Topic Switch
       var name = document.getElementById(id).textContent
-      console.log(name)
+      //console.log(name)
       temp.push(this.dicForDoc[name][1])
       temp.push(name)
       temp.push("doc2")
@@ -547,7 +549,7 @@ export class DocumentComponent implements OnInit {
           }
         }
       }catch(err){
-        console.log(err)
+        //console.log(err)
       }
       ////////////////////Topic Switch/////////////////////////
       

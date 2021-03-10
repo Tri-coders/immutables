@@ -35,7 +35,7 @@
                 <div class="topic">
                     <div class="subtopic">
                     <p>Classes and objects</p>
-                    <input placeholder="Enter No of hours" type="number" min="0">
+                    <input id="1" placeholder="Enter No of hours" type="number" (input)="totaldaysChange($event)" min="0">
                 </div>
             </div>
             <hr>
@@ -43,15 +43,15 @@
             <div class="topic">
                 <div class="subtopic">
                     <p>Methods</p>
-                    <input placeholder="Enter No of hours" type="number" min="0">
+                    <input id="2" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
                 </div>
                 <div class="subtopic"> 
                     <p>Overloading</p>
-                    <input placeholder="Enter No of hours" type="number" min="0">
+                    <input id="3" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
                 </div>
                 <div class="subtopic"> 
                     <p>Overriding</p>
-                    <input placeholder="Enter No of hours" type="number" min="0">
+                    <input id="4" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
                 </div>
             </div>
             <hr>
@@ -59,18 +59,18 @@
             <div class="topic">
                 <div class="subtopic">
                     <p>Inheritance</p>
-                    <input placeholder="Enter No of hours" type="number" min="0">
+                    <input id="5" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
                 </div>
                 <div class="subtopic"> 
                     <p>Polymorphism</p>
-                    <input placeholder="Enter No of hours" type="number" min="0">
+                    <input id="6" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
                 </div>
             </div>
             <hr>
-            <h3>Total Days: 10</h3>
+            <h3>Total Days: <span [innerHTML]="totalDays"></span></h3>
         </div>
         <div class="footer">
-            <button (click)="onPress()">Submit</button>
+            <button (click)="submitResponse()">Submit</button>
         </div>
         </div>
     </div>
