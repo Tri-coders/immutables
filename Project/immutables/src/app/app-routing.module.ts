@@ -13,6 +13,7 @@ import { Quiz2Component} from './quiz2/quiz2.component';
 import { StudyroomComponent} from './studyroom/studyroom.component';
 import { TopicsComponent} from './topics/topics.component';
 import { SelfAssessComponent } from './self-assess/self-assess.component';
+import { ActivityComponent } from './activity/activity.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'Studyroom', component:StudyroomComponent},
   {path: 'Topics', component:TopicsComponent},
   {path: 'SelfAssess', component:SelfAssessComponent},
+  {path: 'Activity', component:ActivityComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
