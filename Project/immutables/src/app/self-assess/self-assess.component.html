@@ -123,7 +123,13 @@
             <use href="./assets/icons.svg#icon-chevron-left"></use>
           </svg>
         </button>
-        <button class="next" (click)="goToNextQuestion()">Next</button>
+        <!-- <button class="next" (click)="goToNextQuestion()">Next</button> -->
+        <button class="submit" (click)="Submit()">Submit</button>
+        <button class="previous right" (click)="goToNextQuestion()">
+          <svg class="icon icon-back">
+            <use href="./assets/icons.svg#icon-chevron-left"></use>
+          </svg>
+        </button>
       </div>
       <div class="progress__bar">
         <div #slider class="progress__bar--slider"></div>
@@ -139,8 +145,8 @@
         </div>
       </div>
   </div>
-  <div>
+  <!-- <div>
     <button (click)="Submit()">Submit</button>
-  </div>
+  </div> -->
 
 </div>
