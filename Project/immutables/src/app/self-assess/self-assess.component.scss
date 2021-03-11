@@ -62,8 +62,9 @@
 
     .actions{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         margin: 10px 0;
+        gap: 15px;
 
         button.previous{
             background-color: $white;
