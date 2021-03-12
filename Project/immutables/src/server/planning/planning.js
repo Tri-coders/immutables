@@ -19,9 +19,13 @@ planning.post('/planning', (req, res)=>{
     var plan = req.body;
     var data = ""
     console.log(plan)
-    for(var i=0;i<6;i++){
-        data+=plan[i]+','
-    }
+    for(var i=0;i<7;i++){
+        if(i==6)
+            data+=plan[i]
+        else
+            data+=plan[i]+','
+    
+        }
     data+="\n"
     try{
         fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/planning.csv'), data)

@@ -13,6 +13,7 @@ const path = require('path');
 selfAssess.post('/answer', (req,res)=>{
     //console.log(req.body.name)
     var ansArr = req.body;
+    console.log(ansArr)
     var decl_know = (ansArr[5] + ansArr[10] + ansArr[12] + ansArr[16] + ansArr[17] + ansArr[20] + ansArr[32] + ansArr[46]).toString()
     var proc_know = (ansArr[3] + ansArr[14] + ansArr[27] + ansArr[33]).toString()
     var cond_know = (ansArr[15] + ansArr[18] + ansArr[26] + ansArr[29] + ansArr[35]).toString()

@@ -32,10 +32,13 @@ export class SelfAssessComponent implements OnInit {
   questions = questionsList;
   pv: String;
   ques=[]
+  attempted=0
   constructor(private cdr: ChangeDetectorRef, private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.increaseProgressValue();
+    this.ques=[]
+    this.ques.push(this.auth.getSession())
     for(var i=0;i<52;i++){
       this.ques.push(-1)
     }
@@ -43,15 +46,24 @@ export class SelfAssessComponent implements OnInit {
 
   ngDoCheck(){
     try{
+      this.attempted=0
       for(var i=0;i<this.ques.length;i++){
+        
         console.log(document.getElementById("question_no_link"+(i+1)).className)
-        if(this.ques[i]!=-1)
+        if(this.ques[i]!=-1){
+          this.attempted+=1
           document.getElementById("question_no_link"+(i+1)).className="done"
+        }
         else{
           document.getElementById("question_no_link"+(i+1)).className="" 
         }
       }
       document.getElementById("question_no_link"+(this.currentQuestionIndex+1).toString()).className="active"
+      if(this.attempted==this.ques.length){
+        (<HTMLInputElement> document.getElementById("submitSelfAssesment")).disabled = false;
+      }else{
+        (<HTMLInputElement> document.getElementById("submitSelfAssesment")).disabled = true;
+      }
       
     }catch(err){
       //console.log(err)
@@ -59,7 +71,7 @@ export class SelfAssessComponent implements OnInit {
   }
 
     increaseProgressValue(): void {
-    this.progressValue =(100 * (this.currentQuestionIndex + 1)) / this.questions.length;
+    this.progressValue =(100 * (this.attempted)) / this.questions.length;
     this.pv = this.progressValue.toFixed(1);
     if (this.currentQuestionIndex === 0) {
       this.slider.nativeElement.style.width = `${this.progressValue}%`;
@@ -82,6 +94,7 @@ export class SelfAssessComponent implements OnInit {
     // });  
     // answer.classList.add('selected');
     this.ques[this.currentQuestionIndex]=answer
+    this.attempted+=1
   }
 
   keyExist(ind,opt){

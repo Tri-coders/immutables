@@ -72,13 +72,13 @@ export class FabComponent implements OnInit {
   }
 
   submitResponse(){
-    var planningdata=[0,0,0,0,0,0]
-    planningdata[0]=(<HTMLInputElement>document.getElementById("1")).value!=""?parseInt((<HTMLInputElement>document.getElementById("1")).value):0
-    planningdata[1]=(<HTMLInputElement>document.getElementById("2")).value!=""?parseInt((<HTMLInputElement>document.getElementById("2")).value):0
-    planningdata[2]=(<HTMLInputElement>document.getElementById("3")).value!=""?parseInt((<HTMLInputElement>document.getElementById("3")).value):0
-    planningdata[3]=(<HTMLInputElement>document.getElementById("4")).value!=""?parseInt((<HTMLInputElement>document.getElementById("4")).value):0
-    planningdata[4]=(<HTMLInputElement>document.getElementById("5")).value!=""?parseInt((<HTMLInputElement>document.getElementById("5")).value):0
-    planningdata[5]=(<HTMLInputElement>document.getElementById("6")).value!=""?parseInt((<HTMLInputElement>document.getElementById("6")).value):0
+    var planningdata=[this.auth.getSession(),0,0,0,0,0,0]
+    planningdata[1]=(<HTMLInputElement>document.getElementById("1")).value!=""?parseInt((<HTMLInputElement>document.getElementById("1")).value):0
+    planningdata[2]=(<HTMLInputElement>document.getElementById("2")).value!=""?parseInt((<HTMLInputElement>document.getElementById("2")).value):0
+    planningdata[3]=(<HTMLInputElement>document.getElementById("3")).value!=""?parseInt((<HTMLInputElement>document.getElementById("3")).value):0
+    planningdata[4]=(<HTMLInputElement>document.getElementById("4")).value!=""?parseInt((<HTMLInputElement>document.getElementById("4")).value):0
+    planningdata[5]=(<HTMLInputElement>document.getElementById("5")).value!=""?parseInt((<HTMLInputElement>document.getElementById("5")).value):0
+    planningdata[6]=(<HTMLInputElement>document.getElementById("6")).value!=""?parseInt((<HTMLInputElement>document.getElementById("6")).value):0
     
     this.auth.planning(planningdata)
       .subscribe(
