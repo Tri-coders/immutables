@@ -21,7 +21,7 @@
 
             .col{
                 border: 2px solid $main-color;
-                border-radius: 5px;
+                border-radius: 10px;
                 display: flex;
                 align-items: center;
                 padding: 20px 15px;
@@ -48,4 +48,16 @@
             }
         }
     }
+
+    .tableContainer{
+
+        .table{
+
+            table {
+                width: 100%;
+              }
+        }
+    }
 }
+
+
