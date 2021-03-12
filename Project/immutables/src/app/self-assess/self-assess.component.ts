@@ -37,6 +37,8 @@ export class SelfAssessComponent implements OnInit {
 
   ngOnInit() {
     this.increaseProgressValue();
+    this.ques=[]
+    this.ques.push(this.auth.getSession())
     for(var i=0;i<52;i++){
       this.ques.push(-1)
     }
@@ -57,6 +59,11 @@ export class SelfAssessComponent implements OnInit {
         }
       }
       document.getElementById("question_no_link"+(this.currentQuestionIndex+1).toString()).className="active"
+      if(this.attempted==this.ques.length){
+        (<HTMLInputElement> document.getElementById("submitSelfAssesment")).disabled = false;
+      }else{
+        (<HTMLInputElement> document.getElementById("submitSelfAssesment")).disabled = true;
+      }
       
     }catch(err){
       //console.log(err)
