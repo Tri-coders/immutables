@@ -64,6 +64,7 @@
         display: flex;
         justify-content: center;
         margin: 10px 0;
+        gap: 15px;
 
         button.previous{
             background-color: $white;
@@ -80,18 +81,25 @@
              }
         }
 
-        button.next{
+        button.submit{
             // height: 28px;
             font-family: $content-font;
             font-size: large;
-            margin-left: 10px;
+            // margin-left: 10px;
             background-color: $main-color;
             color: $white;
-            padding: 5px 90px;
+            padding: 5px 60px;
             outline: none;
             border-radius: 5px;
             border: 0;
             cursor: pointer;
+        }
+        .right{
+            transform:rotate(180deg);
+        }
+
+        svg{
+            margin-top: 4px;
         }
     }
 
