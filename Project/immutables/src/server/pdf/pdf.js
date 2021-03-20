@@ -32,8 +32,8 @@ pdf.post('/pdfname', (req,res)=>{
     })
 });
 
-app.get('/video', function(req, res) {
-    const path = 'assets/sample.mp4'
+pdf.get('/video', function(req, res) {
+    const path = '/home/sanket/Documents/Sanket_sem_8/BE project/immutables/Videos/Object-oriented Programming.mp4'
     const stat = fileSystem.statSync(path)
     const fileSize = stat.size
     const range = req.headers.range
