@@ -33,8 +33,8 @@ pdf.post('/pdfname', (req,res)=>{
 });
 
 pdf.get('/video', function(req, res) {
-    const path = '/home/sanket/Documents/Sanket_sem_8/BE project/immutables/Videos/Object-oriented Programming.mp4'
-    const stat = fileSystem.statSync(path)
+    const path_ = path.join(__dirname, '../../../../../Videos/'+'Object-oriented Programming.mp4');
+    const stat = fileSystem.statSync(path_)
     const fileSize = stat.size
     const range = req.headers.range
     if (range) {
@@ -44,7 +44,7 @@ pdf.get('/video', function(req, res) {
         ? parseInt(parts[1], 10)
         : fileSize-1
       const chunksize = (end-start)+1
-      const file = fileSystem.createReadStream(path, {start, end})
+      const file = fileSystem.createReadStream(path_, {start, end})
       const head = {
         'Content-Range': `bytes ${start}-${end}/${fileSize}`,
         'Accept-Ranges': 'bytes',
@@ -59,7 +59,7 @@ pdf.get('/video', function(req, res) {
         'Content-Type': 'video/mp4',
       }
       res.writeHead(200, head)
-      fileSystem.createReadStream(path).pipe(res)
+      fileSystem.createReadStream(path_).pipe(res)
     }
   });
 
