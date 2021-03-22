@@ -33,7 +33,8 @@ pdf.post('/pdfname', (req,res)=>{
 });
 
 pdf.get('/video', function(req, res) {
-    const path_ = path.join(__dirname, '../../../../../Videos/'+'Object-oriented Programming.mp4');
+    var video_name = req.query.video_name
+    const path_ = path.join(__dirname, '../../../../../Videos/'+video_name);
     const stat = fileSystem.statSync(path_)
     const fileSize = stat.size
     const range = req.headers.range
