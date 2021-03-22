@@ -221,7 +221,8 @@ export class DocumentComponent implements OnInit {
   ngOnDestroy(){
     var current = new Date
     var time = current.getTime()
-    if(this.logsForDocument.length){
+    //console.log(this.logsForDocument.length)
+    if(this.logsForDocument.length!=0){
       this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
       this.logsForDocument.push("document")
       this.auth.logsdata(this.logsForDocument)

@@ -38,7 +38,6 @@ export class SelfAssessComponent implements OnInit {
   ngOnInit() {
     this.increaseProgressValue();
     this.ques=[]
-    this.ques.push(this.auth.getSession())
     for(var i=0;i<52;i++){
       this.ques.push(-1)
     }
@@ -49,15 +48,18 @@ export class SelfAssessComponent implements OnInit {
       this.attempted=0
       for(var i=0;i<this.ques.length;i++){
         
-        console.log(document.getElementById("question_no_link"+(i+1)).className)
+        //console.log(document.getElementById("question_no_link"+(i+1)).className)
         if(this.ques[i]!=-1){
           this.attempted+=1
+          console.log("aya")
           document.getElementById("question_no_link"+(i+1)).className="done"
+          console.log("aya2")
         }
         else{
           document.getElementById("question_no_link"+(i+1)).className="" 
         }
       }
+      
       document.getElementById("question_no_link"+(this.currentQuestionIndex+1).toString()).className="active"
       if(this.attempted==this.ques.length){
         (<HTMLInputElement> document.getElementById("submitSelfAssesment")).disabled = false;
@@ -66,7 +68,7 @@ export class SelfAssessComponent implements OnInit {
       }
       
     }catch(err){
-      //console.log(err)
+      console.log(err)
     }
   }
 
@@ -75,10 +77,10 @@ export class SelfAssessComponent implements OnInit {
     this.pv = this.progressValue.toFixed(1);
     if (this.currentQuestionIndex === 0) {
       this.slider.nativeElement.style.width = `${this.progressValue}%`;
-      console.log(this.progressValue.toFixed(2));
+      //console.log(this.progressValue.toFixed(2));
     } else {
       this.slider.nativeElement.style.width = `${this.progressValue}%`;
-      console.log(this.progressValue.toFixed(2));
+      //console.log(this.progressValue.toFixed(2));
     }
   }
 
@@ -160,6 +162,8 @@ export class SelfAssessComponent implements OnInit {
     }
   }  
   Submit(){
+    
+    this.ques.unshift(this.auth.getSession())
     this.auth.selfassesment(this.ques).subscribe(
       (data)=>{
         if(data.error){
