@@ -26,8 +26,8 @@ const dic = {
 export class DocumentComponent implements OnInit {
 
   dic2={
-    "11": "https://www.youtube.com/embed/tgbNymZ7vqY",
-  "12": "https://www.youtube.com/embed/tgbNymZ7vqY",
+    "11": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  "12": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
   "13": "https://www.youtube.com/embed/tgbNymZ7vqY",
   "14": "https://www.youtube.com/embed/tgbNymZ7vqY",
   "15": "https://www.youtube.com/embed/tgbNymZ7vqY",
