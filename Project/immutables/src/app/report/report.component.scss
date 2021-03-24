@@ -1,0 +1,10 @@
+@import '../base';
+
+.mat-ink-bar{
+    background-color: $main-color !important;
+}
+
+.mat-tab-label.mat-tab-label-active {
+    color: $main-color;
+    opacity: 1;
+}
