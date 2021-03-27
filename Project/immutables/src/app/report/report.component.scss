@@ -16,7 +16,7 @@
     }
     small{
         font-family: $content-font;
-        color: $main-color;
+        color: $accent-color;
         font-size: 1rem;
         line-height: 25px;
     }
@@ -57,6 +57,7 @@
                 small{
                     margin: auto;
                     margin-right: 20px;
+                    color: $accent-color;
                 }
             }
         }
@@ -98,9 +99,27 @@
 }
 
 mat-expansion-panel{
-box-shadow: none !important;
+    box-shadow: none !important;
+
+    mat-panel-title{
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+    mat-chip {
+        background-color: $main-color !important;
+    }
+
+    .mat-icon{
+        margin-left: 20px;
+        color: $text-color;
+    }
 }
 
+.mat-tab-label-content{
+    font-size: 1rem;
+    font-family: $heading-font;
+    font-weight: 600;
+}
 .mat-ink-bar{
     background-color: $main-color !important;
 }

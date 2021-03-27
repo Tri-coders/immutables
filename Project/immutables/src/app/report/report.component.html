@@ -24,10 +24,17 @@
     <mat-tab-group>
       <mat-tab label="MetaCognition Components">
         <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
-            <mat-panel-title>KNOWLEDGE ABOUT COGNITION</mat-panel-title>
+            <mat-panel-title>Knowledge about Cognition</mat-panel-title>
+            <mat-icon>assessment</mat-icon>
+            <mat-icon>keyboard_arrow_down</mat-icon>
           </mat-expansion-panel-header>
+          <mat-chip-list>
+            <mat-chip selected>Total LBS: 100%</mat-chip>
+            <mat-chip selected>Total PBS: 100%</mat-chip>
+          </mat-chip-list>
+          
           <div class="overallScoreCard">
             <div class="description">
               <p>My MetaCog Score</p>
@@ -48,9 +55,11 @@
           </div>
           
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
-            <mat-panel-title>REGULATION OF COGNITION</mat-panel-title>
+            <mat-panel-title>Regulation of Cognition</mat-panel-title>
+            <mat-icon>assessment</mat-icon>
+            <mat-icon>keyboard_arrow_down</mat-icon>
           </mat-expansion-panel-header>
         </mat-expansion-panel>
       </mat-accordion> 

@@ -14,7 +14,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips'; 
 
 const MaterialComponents = [
   MatButtonModule,
@@ -32,7 +33,8 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatSortModule,
   MatTabsModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatChipsModule
 ]
 
 @NgModule({
