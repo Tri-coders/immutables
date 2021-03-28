@@ -70,8 +70,9 @@ export class ReportComponent implements OnInit {
      ["2021", 1730]
   ];
   columns = ['Year', 'Asia'];
-  options = {};
+  options = { 
+    colors:['#0165FF']
+  };
   width = 800;
   height = 400;
-
 }
