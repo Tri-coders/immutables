@@ -1,0 +1,130 @@
+@import '../base';
+
+.reportContainer{
+    width: 1200px;
+    padding: 0 40px;
+    max-width: 100%;
+    margin: auto;
+    font-family: $heading-font;
+
+    h1{
+        font-size: 40px;
+        font-weight: 700;
+        color: $main-color;
+        font-family: $heading2-font;
+        margin: 70px 0 30px;
+    }
+    small{
+        font-family: $content-font;
+        color: $accent-color;
+        font-size: 1rem;
+        line-height: 25px;
+    }
+
+    .overallScoreCard{
+        margin: 20px 0;
+        position: relative;
+        display: flex;
+        width: 100%;
+        border-radius: 5px;
+        border: 3px solid $main-color;
+        padding: 20px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
+        .description{
+            p:nth-of-type(1){
+                font-size: 2rem;
+                font-weight: 500;
+                line-height: 40px;
+            }
+            p:nth-of-type(2){
+                max-width: 50ch;
+                color: $text-color;
+            }
+        }
+        .score{
+            .lbs, .pbs{
+                display: inline-block;
+                text-align: center;
+                margin: 0 40px 0 0;
+                p{
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    line-height: 40px;
+                    color: $main-color;
+                }
+                small{
+                    margin: auto;
+                    margin-right: 20px;
+                    color: $accent-color;
+                }
+            }
+        }
+
+        .oval{
+            position: absolute;
+            right: 0px;
+            background-color: $main-color;
+            width: 40px;
+            border-bottom-left-radius: 80px;
+            border-top-left-radius: 80px;
+            height: 80px;
+            align-self: center;
+        }
+    }
+}
+
+.main{
+    background-color: $main-color;
+    border-radius: 0;
+
+    .description.main-text{
+        color: $white;
+        p:nth-of-type(2){
+            color: $white;
+        }   
+    }
+
+
+    .score.main{
+        .lbs,.pbs{
+            p, small{color: $white;}
+        }
+    }
+
+    .oval.main{
+        background-color: $white;
+    }
+}
+
+mat-expansion-panel{
+    box-shadow: none !important;
+
+    mat-panel-title{
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+    mat-chip {
+        background-color: $main-color !important;
+    }
+
+    .mat-icon{
+        margin-left: 20px;
+        color: $text-color;
+    }
+}
+
+.mat-tab-label-content{
+    font-size: 1.2rem;
+    font-family: $heading2-font;
+    font-weight: 500;
+}
+.mat-ink-bar{
+    background-color: $main-color !important;
+}
+
+.mat-tab-label.mat-tab-label-active {
+    color: $main-color;
+    opacity: 1;
+}

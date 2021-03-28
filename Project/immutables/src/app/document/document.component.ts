@@ -26,12 +26,15 @@ const dic = {
 export class DocumentComponent implements OnInit {
 
   dic2={
-    "11": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-  "12": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-  "13": "https://www.youtube.com/embed/tgbNymZ7vqY",
-  "14": "https://www.youtube.com/embed/tgbNymZ7vqY",
-  "15": "https://www.youtube.com/embed/tgbNymZ7vqY",
-  "16": "https://www.youtube.com/embed/tgbNymZ7vqY"
+    "11": "http://142.93.210.1:3000/pdf/video?video_name=Inheritance.mp4",
+  "12": "http://142.93.210.1:3000/pdf/video?video_name=Inheritance.mp4",
+  "13": "http://142.93.210.1:3000/pdf/video?video_name=Method Overloading.mp4",
+  "14": "http://142.93.210.1:3000/pdf/video?video_name=Method Overriding.mp4",
+  "150": "http://142.93.210.1:3000/pdf/video?video_name=Inheritance.mp4",
+  "151": "http://142.93.210.1:3000/pdf/video?video_name=Single Level Inheritance.mp4",
+  "152": "http://142.93.210.1:3000/pdf/video?video_name=Multi Level Inheritance.mp4",
+  "160": "http://142.93.210.1:3000/pdf/video?video_name=Polymorphism.mp4",
+  "161": "http://142.93.210.1:3000/pdf/video?video_name=Polymorphism example.mp4"
   }
   dicForQuiz={
     "1": "Classes and Objects",
@@ -55,7 +58,15 @@ export class DocumentComponent implements OnInit {
   }
   dicForVideo={
     "Video1":["Introduction of Classes and Objects","Classes and Objects"],
-    "Video Materials": ["Advanced concept of OOPs","Inheritance"]
+    "Video Materials": ["Classes and Objects: Method","Classes Methods"],
+    "Method Overloading.mp4": ["Classes and Objects: Method","Method Overloading"],
+    "Method Overrinding.mp4": ["Classes and Objects: Method","Method Overriding"],
+    "Inheritance.mp4": ["Advanced concept of OOPs","Inheritance"],
+    "Single Level Inheritance.mp4": ["Advanced concept of OOPs","Inheritance"],
+    "Multi Level Inheritance.mp4": ["Advanced concept of OOPs","Inheritance"],
+    "Polymorphism.mp4": ["Advanced concept of OOPs","Polymorphism"],
+    "Polymorphism example.mp4": ["Advanced concept of OOPs","Polymorphism"]
+
   }
 
   credentials: pdfData = {

@@ -27,6 +27,7 @@ import { TopicsComponent } from './topics/topics.component';
 import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 import { SelfAssessComponent } from './self-assess/self-assess.component';
 import { ActivityComponent } from './activity/activity.component';
+import { ReportComponent } from './report/report.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ActivityComponent } from './activity/activity.component';
     StudyroomComponent,
     TopicsComponent,
     SelfAssessComponent,
-    ActivityComponent
+    ActivityComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

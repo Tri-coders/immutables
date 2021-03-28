@@ -14,6 +14,7 @@ import { StudyroomComponent} from './studyroom/studyroom.component';
 import { TopicsComponent} from './topics/topics.component';
 import { SelfAssessComponent } from './self-assess/self-assess.component';
 import { ActivityComponent } from './activity/activity.component';
+import { ReportComponent } from './report/report.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'Topics', component:TopicsComponent},
   {path: 'SelfAssess', component:SelfAssessComponent},
   {path: 'Activity', component:ActivityComponent},
+  {path: 'Report', component:ReportComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
