@@ -93,7 +93,15 @@
             </div>
           </div>
           <div id="kocGraphRepresentation" style="display: none;">
-            <p>Graph works</p>
+            <google-chart #chart
+              [title]="title"
+              [type]="type"
+              [data]="data"
+              [columnNames]="columnNames"
+              [options]="options"
+              [width]="width"
+              [height]="height">
+            </google-chart>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel hideToggle>

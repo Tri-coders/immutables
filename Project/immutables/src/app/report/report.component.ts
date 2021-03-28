@@ -53,4 +53,25 @@ export class ReportComponent implements OnInit {
       }
   }
 
+  //graph
+
+  title = 'Population (in millions)';
+  type = 'ColumnChart';
+  data = [
+     ["2012", 900],
+     ["2013", 1000],
+     ["2014", 1170],
+     ["2015", 1250],
+     ["2016", 1530],
+     ["2017", 930],
+     ["2018", 1230],
+     ["2019", 1930],
+     ["2020", 1330],
+     ["2021", 1730]
+  ];
+  columnNames = ['Year', 'Asia'];
+  options = {};
+  width = 1000;
+  height = 400;
+
 }

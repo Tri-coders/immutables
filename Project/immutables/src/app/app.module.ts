@@ -28,7 +28,7 @@ import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 import { SelfAssessComponent } from './self-assess/self-assess.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ReportComponent } from './report/report.component';
-
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -60,6 +60,7 @@ import { ReportComponent } from './report/report.component';
     FormsModule,
     HttpClientModule,
     PdfViewerModule,
+    GoogleChartsModule,
     SidebarModule.forRoot()
   ],
   providers: [AuthGuardService, AuthenticationService, CanDeactivateGuardService],
