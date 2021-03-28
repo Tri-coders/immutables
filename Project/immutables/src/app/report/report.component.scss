@@ -65,7 +65,7 @@
         .oval{
             position: absolute;
             right: 0px;
-            background-color: $main-color;
+            background-color: $accent-color;
             width: 40px;
             border-bottom-left-radius: 80px;
             border-top-left-radius: 80px;
@@ -110,8 +110,13 @@ mat-expansion-panel{
     }
 
     .mat-icon{
-        margin-left: 20px;
         color: $text-color;
+        cursor: pointer;
+    }
+
+    .actionBar{
+        display: flex;
+        justify-content: space-between;
     }
 }
 

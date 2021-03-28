@@ -27,40 +27,182 @@
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>Knowledge about Cognition</mat-panel-title>
-            <mat-icon>assessment</mat-icon>
             <mat-icon>keyboard_arrow_down</mat-icon>
           </mat-expansion-panel-header>
-          <mat-chip-list>
-            <mat-chip selected>Total LBS: 100%</mat-chip>
-            <mat-chip selected>Total PBS: 100%</mat-chip>
-          </mat-chip-list>
-          
-          <div class="overallScoreCard">
-            <div class="description">
-              <p>My MetaCog Score</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
-            </div>
-            <div class="score">
-              <div class="lbs">
-                <p>78%</p>
-                <small>LBS</small>
-              </div>
-              <div class="pbs">
-                <p>98%</p>
-                <small>PBS</small>
-              </div>
-            </div>
-            <span class="oval">
-            </span>
+          <div class="actionBar">  
+            <mat-chip-list>
+              <mat-chip selected>Total LBS: 100%</mat-chip>
+              <mat-chip selected>Total PBS: 100%</mat-chip>
+            </mat-chip-list>
+            <mat-icon id="kocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="kocToggle()">assessment</mat-icon>
           </div>
-          
+          <div id="kocTheoryRepresentation">
+            <div id="decKnowledge" class="overallScoreCard">
+              <div class="description">
+                <p>Declarative Knowledge</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+            <div id="proKnowledge" class="overallScoreCard">
+              <div class="description">
+                <p>Procedural knowledge</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+            <div id="conKnowledge" class="overallScoreCard">
+              <div class="description">
+                <p>Conditional knowledge</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+          </div>
+          <div id="kocGraphRepresentation" style="display: none;">
+            <p>Graph works</p>
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>Regulation of Cognition</mat-panel-title>
-            <mat-icon>assessment</mat-icon>
             <mat-icon>keyboard_arrow_down</mat-icon>
           </mat-expansion-panel-header>
+          <div class="actionBar">
+            <mat-chip-list>
+              <mat-chip selected>Total LBS: 100%</mat-chip>
+              <mat-chip selected>Total PBS: 100%</mat-chip>
+            </mat-chip-list>
+            <mat-icon id="rocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="rocToggle()">assessment</mat-icon>
+          </div>
+          <div id="rocTheoryRepresentation">
+            <div id="planning" class="overallScoreCard">
+              <div class="description">
+                <p>Planning</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+            <div id="infoMgmt" class="overallScoreCard">
+              <div class="description">
+                <p>Information Management Strategies </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+            <div id="coMonitoring" class="overallScoreCard">
+              <div class="description">
+                <p>Comprehension Monitoring</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+            <div id="debugStrat" class="overallScoreCard">
+              <div class="description">
+                <p>Debugging Strategies</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+            <div id="evaluation" class="overallScoreCard">
+              <div class="description">
+                <p>Evaluation</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque adipisci hic minus laudantium? Aspernatur</p>
+              </div>
+              <div class="score">
+                <div class="lbs">
+                  <p>78%</p>
+                  <small>LBS</small>
+                </div>
+                <div class="pbs">
+                  <p>98%</p>
+                  <small>PBS</small>
+                </div>
+              </div>
+              <span class="oval">
+              </span>
+            </div>
+          </div>
+          <div id="rocGraphRepresentation" style="display: none;">
+            <p>Graph works</p>
+          </div>
         </mat-expansion-panel>
       </mat-accordion> 
       </mat-tab>
