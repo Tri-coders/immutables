@@ -63,6 +63,8 @@
                 border-bottom: none;
             }
             mat-header-row{
+                margin-left: -1px;
+                width: 100.2%;
                 border-top-left-radius: 8px;
                 border-top-right-radius: 8px;
                 background-color: $main-color;
