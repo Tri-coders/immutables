@@ -69,9 +69,9 @@ export class ReportComponent implements OnInit {
      ["2020", 1330],
      ["2021", 1730]
   ];
-  columnNames = ['Year', 'Asia'];
+  columns = ['Year', 'Asia'];
   options = {};
-  width = 1000;
+  width = 800;
   height = 400;
 
 }
