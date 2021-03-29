@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-report',
@@ -54,30 +55,7 @@ export class ReportComponent implements OnInit {
       }
   }
 
-  //google graph
-
-  title = 'Population (in millions)';
-  type = 'ColumnChart';
-  data = [
-     ["2012", 900],
-     ["2013", 1000],
-     ["2014", 1170],
-     ["2015", 1250],
-     ["2016", 1530],
-     ["2017", 930],
-     ["2018", 1230],
-     ["2019", 1930],
-     ["2020", 1330],
-     ["2021", 1730]
-  ];
-  columns = ['Year', 'Asia'];
-  options = { 
-    colors:['#0165FF']
-  };
-  width = 800;
-  height = 400;
-
-  //ng charts
+  //ng bar chart charts
     public barChartOptions = {        
       scaleShowVerticalLines: false,
       responsive: true
@@ -109,5 +87,21 @@ export class ReportComponent implements OnInit {
       ];
     }
 
- 
+    //ng pie chart
+
+    public pieChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
+    public pieChartData = [0, 0, 0, 0];
+    public pieChartType = 'pie';
+
+    tabClick(tab) {
+        console.log(tab);
+        if(tab.index == 1){
+          setTimeout(()=>{                           //<<<---using ()=> syntax
+            this.pieChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
+            this.pieChartData = [120, 150, 180, 90];
+            this.pieChartType = 'pie';
+          }, 500);
+        }
+    }
+
 }

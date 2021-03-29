@@ -21,7 +21,7 @@
       <span class="oval main">
       </span>
     </div>
-    <mat-tab-group>
+    <mat-tab-group (selectedTabChange)="tabClick($event)">
       <mat-tab label="MetaCognition Components">
         <mat-accordion>
         <mat-expansion-panel hideToggle>
@@ -222,7 +222,15 @@
         </mat-expansion-panel>
       </mat-accordion> 
       </mat-tab>
-      <mat-tab label="Time Spent"> Content 2 </mat-tab>
+      <mat-tab label="Time Spent"> 
+        <div style="display: block;">
+          <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType">
+          </canvas>  
+      </div>
+      </mat-tab>
       <mat-tab label="Resources usage"> Content 3 </mat-tab>
       <mat-tab label="Planning"> Content 4 </mat-tab>
     </mat-tab-group>
