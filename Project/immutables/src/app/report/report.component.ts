@@ -32,6 +32,7 @@ export class ReportComponent implements OnInit {
         document.getElementById("kocTheoryRepresentation").style.display = "none"
         document.getElementById("kocGraphRepresentation").style.display = "";
         document.getElementById("kocGraphIcon").style.color = "#0165FF";
+        this.kocGraphStartAnimate();
         this.iskocOpen = true
       }
     }
@@ -53,7 +54,7 @@ export class ReportComponent implements OnInit {
       }
   }
 
-  //graph
+  //google graph
 
   title = 'Population (in millions)';
   type = 'ColumnChart';
@@ -75,4 +76,38 @@ export class ReportComponent implements OnInit {
   };
   width = 800;
   height = 400;
+
+  //ng charts
+    public barChartOptions = {        
+      scaleShowVerticalLines: false,
+      responsive: true
+    };
+  
+    public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public barChartType = 'bar';
+    public barChartLegend = true;
+  
+    public barChartData = [
+      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A'},
+      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series B'}
+    ];
+
+
+    kocGraphStartAnimate(){
+      this.barChartOptions = {
+        scaleShowVerticalLines: false,
+        responsive: true
+      };
+    
+      this.barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+      this.barChartType = 'bar';
+      this.barChartLegend = true;
+      this.barChartData = [
+        {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
+        {data: [48, 41, 20, 50, 90, 37, 30], label: 'Series C'}
+      ];
+    }
+
+ 
 }

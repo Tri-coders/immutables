@@ -93,7 +93,7 @@
             </div>
           </div>
           <div id="kocGraphRepresentation" style="display: none;">
-            <google-chart #chart
+            <!-- <google-chart #chart
               [title]="title"
               [type]="type"
               [data]="data"
@@ -101,7 +101,15 @@
               [options]="options"
               [width]="width"
               [height]="height">
-            </google-chart>
+            </google-chart> -->
+
+              <canvas baseChart
+                      [datasets]="barChartData"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptions"
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType">
+              </canvas>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel hideToggle>
