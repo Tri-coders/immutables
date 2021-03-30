@@ -29,6 +29,7 @@ import { SelfAssessComponent } from './self-assess/self-assess.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ReportComponent } from './report/report.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     HttpClientModule,
     PdfViewerModule,
     GoogleChartsModule,
+    ChartsModule,
     SidebarModule.forRoot()
   ],
   providers: [AuthGuardService, AuthenticationService, CanDeactivateGuardService],

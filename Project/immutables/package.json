@@ -24,6 +24,7 @@
     "@sendgrid/mail": "^7.1.1",
     "angular-google-charts": "^2.0.1",
     "bcryptjs": "^2.4.3",
+    "chart.js": "^2.9.4",
     "cookie-parser": "^1.4.5",
     "fs": "0.0.1-security",
     "json2csv": "^5.0.6",
