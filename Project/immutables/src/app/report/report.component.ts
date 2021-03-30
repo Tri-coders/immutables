@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-report',
@@ -12,13 +13,49 @@ export class ReportComponent implements OnInit {
 
   iskocOpen = false
   isrocOpen = false
+
+  declarativePBS
+  proceduralPBS
+  conditionalPBS
+
+  evaluationPBS
+  coMonitoringPBS
+  infoMgmtPBS
+  planningPBS
+  debugStratPBS
   
-  constructor() { }
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.setValuesPBS()
   }
 
-
+  setValuesPBS(){
+    this.auth.report()
+    .subscribe(
+      (data) => {
+        if (data.error) {
+          console.log(data.error)
+        } else {
+          console.log(data)
+          // ["decl_know","proc_know","cond_know","plan","info","comp","debug","eval"]
+          this.declarativePBS=data[0].toFixed(2).toString()+"%"
+          this.proceduralPBS=data[1].toFixed(2).toString()+"%"
+          this.conditionalPBS=data[2].toFixed(2).toString()+"%"
+          this.planningPBS=data[3].toFixed(2).toString()+"%"
+          this.infoMgmtPBS=data[4].toFixed(2).toString()+"%"
+          this.coMonitoringPBS=data[5].toFixed(2).toString()+"%"
+          this.debugStratPBS=data[6].toFixed(2).toString()+"%"
+          this.evaluationPBS=data[7].toFixed(2).toString()+"%"
+          
+          //alert(data)
+        }
+      },
+      error => {
+        console.error(error)
+      }
+    )
+  }
   kocToggle(){
     if(this.iskocOpen)
       {

@@ -267,4 +267,16 @@ export class AuthenticationService {
         return request
       } 
     }
+
+    public report(){
+      const base = this.http.get('/report/report')
+      const request = base.pipe(
+        map((data: any)=>{
+          return data
+        }),
+        
+      )
+      return request
+    }  
+    
 }

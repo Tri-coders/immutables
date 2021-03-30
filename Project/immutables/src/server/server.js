@@ -17,6 +17,7 @@ var pdf = require('./pdf/pdf')
 var logsApi = require('./logsApi/logsApi')
 var selfAssess = require('./selfAssess/selfAssess')
 var planning = require('./planning/planning')
+var report = require('./report/report')
 
 app.use("/users",Users)
 app.use("/quiz",quiz)
@@ -24,6 +25,7 @@ app.use("/pdf",pdf)
 app.use("/logsApi",logsApi)
 app.use("/inventory", selfAssess)
 app.use("/planning",planning)
+app.use("/report",report)
 
 app.listen(port, ()=>{
     console.log("server started at "+ port)
