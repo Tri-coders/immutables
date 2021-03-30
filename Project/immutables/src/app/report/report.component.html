@@ -21,7 +21,7 @@
       <span class="oval main">
       </span>
     </div>
-    <mat-tab-group>
+    <mat-tab-group (selectedTabChange)="tabClick($event)">
       <mat-tab label="MetaCognition Components">
         <mat-accordion>
         <mat-expansion-panel hideToggle>
@@ -32,7 +32,7 @@
           <div class="actionBar">  
             <mat-chip-list>
               <mat-chip selected>Total LBS: 100%</mat-chip>
-              <mat-chip selected>Total PBS: 100%</mat-chip>
+              <mat-chip selected>Total PBS: <span [innerHTML]="kocPBS"></span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="kocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="kocToggle()">assessment</mat-icon>
           </div>
@@ -48,7 +48,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="declarativePBS"> </p>
+                  <p><span  [innerHTML]="declarativePBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="proceduralPBS"> </p>
+                  <p><span [innerHTML]="proceduralPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -84,7 +84,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="conditionalPBS">98%</p>
+                  <p><span  [innerHTML]="conditionalPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -93,15 +93,13 @@
             </div>
           </div>
           <div id="kocGraphRepresentation" style="display: none;">
-            <google-chart #chart
-              [title]="title"
-              [type]="type"
-              [data]="data"
-              [columns]="columns"
-              [options]="options"
-              [width]="width"
-              [height]="height">
-            </google-chart>
+              <canvas baseChart
+                      [datasets]="kocbarChartData"
+                      [labels]="kocbarChartLabels"
+                      [options]="kocbarChartOptions"
+                      [legend]="kocbarChartLegend"
+                      [chartType]="kocbarChartType">
+              </canvas>
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel hideToggle>
@@ -112,7 +110,7 @@
           <div class="actionBar">
             <mat-chip-list>
               <mat-chip selected>Total LBS: 100%</mat-chip>
-              <mat-chip selected>Total PBS: 100%</mat-chip>
+              <mat-chip selected>Total PBS: <span [innerHTML]="rocPBS">100</span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="rocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="rocToggle()">assessment</mat-icon>
           </div>
@@ -128,7 +126,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="planningPBS">98%</p>
+                  <p><span  [innerHTML]="planningPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -146,7 +144,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="infoMgmtPBS">98%</p>
+                  <p><span  [innerHTML]="infoMgmtPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -164,7 +162,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="coMonitoringPBS">98%</p>
+                  <p><span  [innerHTML]="coMonitoringPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -182,7 +180,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="debugStratPBS">98%</p>
+                  <p><span  [innerHTML]="debugStratPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -200,7 +198,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p [innerHTML]="evaluationPBS">98%</p>
+                  <p><span  [innerHTML]="evaluationPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -209,13 +207,62 @@
             </div>
           </div>
           <div id="rocGraphRepresentation" style="display: none;">
-            <p>Graph works</p>
+            <canvas baseChart
+            [datasets]="rocbarChartData"
+            [labels]="rocbarChartLabels"
+            [options]="rocbarChartOptions"
+            [legend]="rocbarChartLegend"
+            [chartType]="rocbarChartType">
+    </canvas>
           </div>
         </mat-expansion-panel>
       </mat-accordion> 
       </mat-tab>
-      <mat-tab label="Time Spent"> Content 2 </mat-tab>
-      <mat-tab label="Resources usage"> Content 3 </mat-tab>
-      <mat-tab label="Planning"> Content 4 </mat-tab>
+      <mat-tab label="Time Spent"> 
+        <div style="display: block;">
+          <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType">
+          </canvas>  
+        </div>
+        <div class="SubPieCharts">
+          <div>
+            <canvas baseChart width="400" height="400"
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType">
+            </canvas>  
+          </div>
+          <div>
+            <canvas baseChart width="400" height="400"
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType">
+            </canvas>  
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Resources usage"> 
+        <div style="display: block;">
+          <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            [colors]="lineChartColors"
+            [chartType]="lineChartType">
+          </canvas>
+        </div>
+      </mat-tab>
+      <mat-tab label="Planning">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas> 
+      </mat-tab>
     </mat-tab-group>
 </div>
