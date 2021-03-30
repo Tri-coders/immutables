@@ -93,22 +93,12 @@
             </div>
           </div>
           <div id="kocGraphRepresentation" style="display: none;">
-            <!-- <google-chart #chart
-              [title]="title"
-              [type]="type"
-              [data]="data"
-              [columns]="columns"
-              [options]="options"
-              [width]="width"
-              [height]="height">
-            </google-chart> -->
-
               <canvas baseChart
-                      [datasets]="barChartData"
-                      [labels]="barChartLabels"
-                      [options]="barChartOptions"
-                      [legend]="barChartLegend"
-                      [chartType]="barChartType">
+                      [datasets]="kocbarChartData"
+                      [labels]="kocbarChartLabels"
+                      [options]="kocbarChartOptions"
+                      [legend]="kocbarChartLegend"
+                      [chartType]="kocbarChartType">
               </canvas>
           </div>
         </mat-expansion-panel>
@@ -217,7 +207,13 @@
             </div>
           </div>
           <div id="rocGraphRepresentation" style="display: none;">
-            <p>Graph works</p>
+            <canvas baseChart
+            [datasets]="rocbarChartData"
+            [labels]="rocbarChartLabels"
+            [options]="rocbarChartOptions"
+            [legend]="rocbarChartLegend"
+            [chartType]="rocbarChartType">
+    </canvas>
           </div>
         </mat-expansion-panel>
       </mat-accordion> 
@@ -229,9 +225,44 @@
             [labels]="pieChartLabels"
             [chartType]="pieChartType">
           </canvas>  
-      </div>
+        </div>
+        <div class="SubPieCharts">
+          <div>
+            <canvas baseChart width="400" height="400"
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType">
+            </canvas>  
+          </div>
+          <div>
+            <canvas baseChart width="400" height="400"
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType">
+            </canvas>  
+          </div>
+        </div>
       </mat-tab>
-      <mat-tab label="Resources usage"> Content 3 </mat-tab>
-      <mat-tab label="Planning"> Content 4 </mat-tab>
+      <mat-tab label="Resources usage"> 
+        <div style="display: block;">
+          <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            [colors]="lineChartColors"
+            [chartType]="lineChartType">
+          </canvas>
+        </div>
+      </mat-tab>
+      <mat-tab label="Planning">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas> 
+      </mat-tab>
     </mat-tab-group>
 </div>
