@@ -621,6 +621,8 @@ export class DocumentComponent implements OnInit {
     
     try{
       f['src'] = this.dic2[id]
+      
+      alert(f['src'])
     }catch{
       f['src'] = ""
     }

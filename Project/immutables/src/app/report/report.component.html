@@ -32,7 +32,7 @@
           <div class="actionBar">  
             <mat-chip-list>
               <mat-chip selected>Total LBS: 100%</mat-chip>
-              <mat-chip selected>Total PBS: 100%</mat-chip>
+              <mat-chip selected>Total PBS: <span [innerHTML]="kocPBS"></span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="kocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="kocToggle()">assessment</mat-icon>
           </div>
@@ -44,11 +44,11 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p>100%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="declarativePBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span [innerHTML]="proceduralPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -84,7 +84,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="conditionalPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -110,7 +110,7 @@
           <div class="actionBar">
             <mat-chip-list>
               <mat-chip selected>Total LBS: 100%</mat-chip>
-              <mat-chip selected>Total PBS: 100%</mat-chip>
+              <mat-chip selected>Total PBS: <span [innerHTML]="rocPBS">100</span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="rocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="rocToggle()">assessment</mat-icon>
           </div>
@@ -126,7 +126,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="planningPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -144,7 +144,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="infoMgmtPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -162,7 +162,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="coMonitoringPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -180,7 +180,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="debugStratPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>
@@ -198,7 +198,7 @@
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
-                  <p>98%</p>
+                  <p><span  [innerHTML]="evaluationPBS"></span>%</p>
                   <small>PBS</small>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
+import { AuthenticationService } from '../authentication.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 
 @Component({
@@ -13,13 +14,63 @@ export class ReportComponent implements OnInit {
 
   iskocOpen = false
   isrocOpen = false
+
+  declarativePBS=0
+  proceduralPBS=0
+  conditionalPBS=0
+  kocPBS=0
+
+  evaluationPBS=0
+  coMonitoringPBS=0
+  infoMgmtPBS=0
+  planningPBS=0
+  debugStratPBS=0
+  rocPBS=0
   
-  constructor() { }
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.setValuesPBS()
   }
 
+  setValuesPBS(){
+    this.auth.report()
+    .subscribe(
+      (data) => {
+        if (data.error) {
+          console.log(data.error)
+        } else {
+          console.log(data)
+          // ["decl_know","proc_know","cond_know","plan","info","comp","debug","eval"]
+          // [8,4,5,7,10,7,5,6]
+          var koc=(((data[0]*8/100) + (data[1]*4/100) + (data[2]*5/100) )*100/17)
+          this.kocPBS=parseFloat(koc.toFixed(2))
 
+          var roc = (data[3]*7/100)+(data[4]*10/100)+(data[5]*7/100)+(data[6]*5/100)+(data[7]*6/100)
+          this.rocPBS=parseFloat(roc.toFixed(2))
+          
+          this.declarativePBS=data[0].toFixed(2)
+          this.proceduralPBS=data[1].toFixed(2)
+          this.conditionalPBS=data[2].toFixed(2)
+          this.planningPBS=data[3].toFixed(2)
+          this.infoMgmtPBS=data[4].toFixed(2)
+          this.coMonitoringPBS=data[5].toFixed(2)
+          this.debugStratPBS=data[6].toFixed(2)
+          this.evaluationPBS=data[7].toFixed(2)
+
+          //declarativePBS
+          // proceduralPBS
+          // conditionalPBS
+
+          
+          //alert(data)
+        }
+      },
+      error => {
+        console.error(error)
+      }
+    )
+  }
   kocToggle(){
     if(this.iskocOpen)
       {
