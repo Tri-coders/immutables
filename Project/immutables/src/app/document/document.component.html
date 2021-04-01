@@ -120,8 +120,8 @@
   <div id="mydiv">
     <mat-slide-toggle id="draggable" (change)="onToggle($event)">Draggable</mat-slide-toggle>
     <div id="mydivheader">Click here to move</div>
-    <iframe id="videoFrame" style="width: 900px; height: 400px;" src="">
-    </iframe>
+    <video id="videoFrame" (onpause)="funct()" (onplay)="funct()" style="width: 900px; height: 400px;" src="" controls>
+    </video>  
   </div>
   <br><br>
 </div>

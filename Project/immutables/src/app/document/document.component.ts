@@ -79,10 +79,11 @@ export class DocumentComponent implements OnInit {
   rotationPdf=0
 
   logsForResources=[]
-  docEndTime
-  docStartTime
+  docEndTime=0
+  docStartTime=0
   pointerForDoc=[]
   pointerForVideo=[]
+  pointer=[-1,-1]
 
   logsForDocument=[]
   pageStartTime
@@ -97,6 +98,7 @@ export class DocumentComponent implements OnInit {
   startTopicTime
 
   URL
+  sessionID
   constructor(private auth: AuthenticationService, private router: Router, private data: DatasendService) {}
 
   //////////////////////////PDFViewer//////////////////////////////////////////
@@ -112,8 +114,8 @@ export class DocumentComponent implements OnInit {
         this.pdfPageNumber+=1
         var current = new Date
         var time = current.getTime()
-        this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-        var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+        this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
+        var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
         var current = new Date
         this.pageStartTime = current.getTime()
         this.logsForDocument.push(temp)
@@ -126,8 +128,8 @@ export class DocumentComponent implements OnInit {
         this.pdfPageNumber-=1
         var current = new Date
         var time = current.getTime()
-        this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-        var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+        this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
+        var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
         var current = new Date
         this.pageStartTime = current.getTime()
         this.logsForDocument.push(temp)
@@ -159,8 +161,8 @@ export class DocumentComponent implements OnInit {
     this.pdfPageNumber+=1
     var current = new Date
     var time = current.getTime()
-    this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-    var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+    this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
+    var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
     var current = new Date
     this.pageStartTime = current.getTime()
     this.logsForDocument.push(temp)
@@ -173,8 +175,8 @@ export class DocumentComponent implements OnInit {
     this.pdfPageNumber-=1
     var current = new Date
     var time = current.getTime()
-    this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-    var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+    this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
+    var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
     var current = new Date
     this.pageStartTime = current.getTime()
     this.logsForDocument.push(temp)
@@ -184,8 +186,8 @@ export class DocumentComponent implements OnInit {
       this.pdfPageNumber=evt.target.value
       var current = new Date
       var time = current.getTime()
-      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber]
+      this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
+      var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
       var current = new Date
       this.pageStartTime = current.getTime()
       this.logsForDocument.push(temp)
@@ -227,402 +229,494 @@ export class DocumentComponent implements OnInit {
     // }
     this.drag()
     this.URL = window.location.origin
+    this.sessionID=this.auth.getSession();
   }
 
+  // ngOnDestroy(){
+  //   var current = new Date
+  //   var time = current.getTime()
+  //   //console.log(this.logsForDocument.length)
+  //   if(this.logsForDocument.length!=0){
+  //     this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+  //     this.logsForDocument.push("document")
+  //     this.auth.logsdata(this.logsForDocument)
+  //         .subscribe(
+  //           (data) => {
+  //             if (data.error) {
+  //               console.log(data.error)
+  //             } else {
+  //               this.logsForDocument=[]
+  //               //alert(data)
+  //             }
+  //           },
+  //           error => {
+  //             console.error(error)
+  //           }
+  //         )
+  //   }
+
+  //   if(this.pointerForDoc.length || this.pointerForVideo.length){
+  //     var current = new Date
+  //     var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
+  //     if(this.pointerForDoc.length){
+  //       this.logsForResources[this.logsForResources.length-1][3]="NAN"
+  //       if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+  //         this.logsForResources[this.logsForResources.length-1][4]="2"
+  //         this.logsForResources[this.pointerForDoc[0]].push(endtime)
+  //         this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+  //       }
+  //     }
+  //     if(this.pointerForVideo.length){
+  //       this.logsForResources[this.logsForResources.length-1][3]="NAN"
+  //       if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+  //         this.logsForResources[this.logsForResources.length-1][4]="4"
+  //         this.logsForResources[this.pointerForVideo[0]].push(endtime)
+  //         this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+  //       }
+  //       }
+  //   }else{
+  //     var temp = [this.auth.getSession(),this.data.getQuizType(),this.data.getQuizType()+" Quiz"]
+  //     this.logsForResources.push(temp)
+  //   }
+  //   this.logsForResources.push("Resources")
+  //   this.auth.logsdata(this.logsForResources)
+  //   .subscribe(
+  //     (data) => {
+  //       if (data.error) {
+  //         console.log(data.error)
+  //       } else {
+  //         this.logsForResources=[]
+  //         //alert(data)
+  //       }
+  //     },
+  //     error => {
+  //       console.error(error)
+  //     }
+  //   )
+
+  //   if(this.pointerForDocSwitchLog.length || this.pointerForVideoSwitchLog.length){
+  //     var current = new Date
+  //     var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+      
+  //     if(this.pointerForDocSwitchLog.length){
+  //       this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]="NAN"
+  //       this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+  //       this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+        
+  //     }
+  //     if(this.pointerForVideoSwitchLog.length){
+  //       this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]="NAN"
+  //         this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+  //         this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+  //     }
+  //   }else{
+  //     var temp2 = [this.auth.getSession(),this.data.getQuizType(),this.data.getQuizType()+" Quiz"]
+  //     this.logsForTopicSwitch.push(temp2)
+  //   }
+  //   this.logsForTopicSwitch.push("TopicSwitch")
+  //   this.auth.logsdata(this.logsForTopicSwitch)
+  //   .subscribe(
+  //     (data) => {
+  //       if (data.error) {
+  //         console.log(data.error)
+  //       } else {
+  //         this.logsForTopicSwitch=[]
+  //         //alert(data)
+  //       }
+  //     },
+  //     error => {
+  //       console.error(error)
+  //     }
+  //   )
+
+  //   ////////////////Topic_time csv////////////////////////
+    
+  //   if(this.startTopicTime!=undefined){
+  //     var n =new Date()
+  //     var endTime = n.getTime()
+  //     this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
+  //     this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+  //   }
+  //   this.logsForTopicTime.push("ToicTimeLog")
+  //   this.auth.logsdata(this.logsForTopicTime)
+  //   .subscribe(
+  //     (data) => {
+  //       if (data.error) {
+  //         console.log(data.error)
+  //       } else {
+  //         this.logsForTopicTime=[]
+  //         //alert(data)
+  //       }
+  //     },
+  //     error => {
+  //       console.error(error)
+  //     }
+  //   )
+  //   ////////////////Topic_time csv////////////////////////
+    
+  // }
   ngOnDestroy(){
+    ////////////////////////For Document//////////////////////////
     var current = new Date
     var time = current.getTime()
     //console.log(this.logsForDocument.length)
+    try{
     if(this.logsForDocument.length!=0){
-      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+      console.log(this.logsForDocument)
+      this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
       this.logsForDocument.push("document")
       this.auth.logsdata(this.logsForDocument)
-          .subscribe(
-            (data) => {
-              if (data.error) {
-                console.log(data.error)
-              } else {
-                this.logsForDocument=[]
-                //alert(data)
-              }
-            },
-            error => {
-              console.error(error)
+        .subscribe(
+          (data) => {
+            if (data.error) {
+              console.log(data.error)
+            } else {
+              this.logsForDocument=[]
+              //alert(data)
             }
-          )
+          },
+          error => {
+            console.error(error)
+          }
+        )
     }
-
-    if(this.pointerForDoc.length || this.pointerForVideo.length){
-      var current = new Date
-      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      
-      if(this.pointerForDoc.length){
-        this.logsForResources[this.logsForResources.length-1][3]="NAN"
-        if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
-          this.logsForResources[this.logsForResources.length-1][4]="2"
-          this.logsForResources[this.pointerForDoc[0]].push(endtime)
-          this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
-        }
+  }catch(e){
+    console.log(e)
+  }
+    ////////////////////////For Document//////////////////////////
+    /////////////////////////Resources//////////////////////////
+    if(this.logsForResources.length!=0){
+      console.log(this.pointer)
+      if(this.pointer[0]!=-1 && this.logsForResources[this.pointer[0]][7]=="NAN"){
+        this.logsForResources[this.pointer[0]][7]=time-this.pointer[1]
       }
-      if(this.pointerForVideo.length){
-        this.logsForResources[this.logsForResources.length-1][3]="NAN"
-        if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
-          this.logsForResources[this.logsForResources.length-1][4]="4"
-          this.logsForResources[this.pointerForVideo[0]].push(endtime)
-          this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
-        }
-        }
-    }else{
-      var temp = [this.auth.getSession(),this.data.getQuizType(),this.data.getQuizType()+" Quiz"]
-      this.logsForResources.push(temp)
+      try{
+        this.logsForResources[this.logsForResources.length-1][7]=time-this.docEndTime
+        this.logsForResources[this.logsForResources.length-2][7]=time-this.docEndTime
+      }catch(e){
+        console.log("error")
+      }
+      this.logsForResources.push("Resources")
+      this.auth.logsdata(this.logsForResources)
+        .subscribe(
+          (data) => {
+            if (data.error) {
+              console.log(data.error)
+            } else {
+              this.logsForResources=[]
+              //alert(data)
+            }
+          },
+          error => {
+            console.error(error)
+          }
+        )
     }
-    this.logsForResources.push("Resources")
-    this.auth.logsdata(this.logsForResources)
-    .subscribe(
-      (data) => {
-        if (data.error) {
-          console.log(data.error)
-        } else {
-          this.logsForResources=[]
-          //alert(data)
-        }
-      },
-      error => {
-        console.error(error)
+    /////////////////////////Resources//////////////////////////
+    ////////////////////////Topic Switch///////////////////////
+    if(this.logsForTopicSwitch.length!=0){
+      if(this.pointer[0]!=-1 && this.logsForTopicSwitch[this.pointer[0]][6]=="NAN"){
+        this.logsForTopicSwitch[this.pointer[0]][6]=time-this.pointer[1]
       }
-    )
-
-    if(this.pointerForDocSwitchLog.length || this.pointerForVideoSwitchLog.length){
-      var current = new Date
-      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      
-      if(this.pointerForDocSwitchLog.length){
-        this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]="NAN"
-        this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
-        this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
-        
+      try{
+        this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][6]=time-this.docEndTime
+        this.logsForTopicSwitch[this.logsForTopicSwitch.length-2][6]=time-this.docEndTime
+      }catch(e){
+        console.log("error")
       }
-      if(this.pointerForVideoSwitchLog.length){
-        this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]="NAN"
-          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
-          this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
-      }
-    }else{
-      var temp2 = [this.auth.getSession(),this.data.getQuizType(),this.data.getQuizType()+" Quiz"]
-      this.logsForTopicSwitch.push(temp2)
+      this.logsForTopicSwitch.push("TopicSwitch")
+      this.auth.logsdata(this.logsForTopicSwitch)
+        .subscribe(
+          (data) => {
+            if (data.error) {
+              console.log(data.error)
+            } else {
+              this.logsForTopicSwitch=[]
+              //alert(data)
+            }
+          },
+          error => {
+            console.error(error)
+          }
+        )
     }
-    this.logsForTopicSwitch.push("TopicSwitch")
-    this.auth.logsdata(this.logsForTopicSwitch)
-    .subscribe(
-      (data) => {
-        if (data.error) {
-          console.log(data.error)
-        } else {
-          this.logsForTopicSwitch=[]
-          //alert(data)
-        }
-      },
-      error => {
-        console.error(error)
-      }
-    )
-
-    ////////////////Topic_time csv////////////////////////
-    
-    if(this.startTopicTime!=undefined){
-      var n =new Date()
-      var endTime = n.getTime()
-      this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
-      this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+    ////////////////////////Topic Switch///////////////////////
+    ////////////////////////Topic Time/////////////////////////
+    if(this.logsForTopicTime.length!=0){
+      this.logsForTopicTime[this.logsForTopicTime.length-1][4]=time-this.startTopicTime
+      this.logsForTopicTime.push("ToicTimeLog")
+      this.auth.logsdata(this.logsForTopicTime)
+        .subscribe(
+          (data) => {
+            if (data.error) {
+              console.log(data.error)
+            } else {
+              this.logsForTopicTime=[]
+              //alert(data)
+            }
+          },
+          error => {
+            console.error(error)
+          }
+        )
     }
-    this.logsForTopicTime.push("ToicTimeLog")
-    this.auth.logsdata(this.logsForTopicTime)
-    .subscribe(
-      (data) => {
-        if (data.error) {
-          console.log(data.error)
-        } else {
-          this.logsForTopicTime=[]
-          //alert(data)
-        }
-      },
-      error => {
-        console.error(error)
-      }
-    )
-    ////////////////Topic_time csv////////////////////////
-    
+    ////////////////////////Topic Time/////////////////////////
   }
 
-  updatePdfName(id) {
-    
-    var f = document.getElementById('videoFrame')
-    
-    /////////////////Document Csv//////////////////////
-    var temp=[]
-    if(this.pdfSource==""){
-      temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
-      var current = new Date
-      this.pageStartTime = current.getTime()
-      this.logsForDocument.push(temp)
-    }else{
-      var current = new Date
-      var time = current.getTime()
-      this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
-      this.pdfPageNumber=1
-      temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
-      var current = new Date
-      this.pageStartTime = current.getTime()
-      this.logsForDocument.push(temp)
-    }
-    
-    /////////////////Document Csv//////////////////////
-    /////////////////Resources Csv///////////////////////
-    var temp=[] //Resources
-    var temp2=[] //Topic Switch
-    
-    //alert(f['src'])
-    if(this.pdfSource=="" && f['src']==this.URL+"/"){
-      temp.push(this.auth.getSession())
-      temp2.push(this.auth.getSession())//Topic Switch
-      var name = document.getElementById(id).textContent
-      temp.push(this.dicForDoc[name][1])
-      temp2.push(this.dicForDoc[name][1])//Topic Switch
-      temp.push(name)
-      temp.push("doc2")
-      temp.push("flag")
-      temp2.push("doc2")//Topic Switch
-      temp2.push("type")//Topic Switch
-      var current = new Date()
-      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      this.docStartTime = current.getTime()
-      this.switchStartTime = current.getTime()//Topic Switch
-      temp.push(startTime)
-      temp2.push(startTime)//Topic Switch
-      this.logsForResources.push(temp)
-      this.logsForTopicSwitch.push(temp2)//Topic Switch
-      this.pointerForDoc=[this.logsForResources.length-1,current.getTime()]
-      this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,current.getTime()]
 
-    }else{
-      var name = document.getElementById(id).textContent
-      var current = new Date
-      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      ////////////////////Topic Switch/////////////////////////
-      try{
-        console.log("test 1", this.logsForTopicSwitch[this.logsForTopicSwitch.length-1])
-        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
-          if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
-            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
-            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
-            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
-          }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
-            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
-            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
-            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
-          }
-        }
-      }catch(err){
-        //console.log(err)
-        // console.log("please chalu hoja")
-      }
-      ////////////////////Topic Switch/////////////////////////
+  // updatePdfName1(id) {
+    
+  //   var f = document.getElementById('videoFrame')
+    
+  //   /////////////////Document Csv//////////////////////
+  //   var temp=[]
+  //   if(this.pdfSource==""){
+  //     temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
+  //     var current = new Date
+  //     this.pageStartTime = current.getTime()
+  //     this.logsForDocument.push(temp)
+  //   }else{
+  //     var current = new Date
+  //     var time = current.getTime()
+  //     this.logsForDocument[this.logsForDocument.length - 1].push(time-this.pageStartTime)
+  //     this.pdfPageNumber=1
+  //     temp = [this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber]
+  //     var current = new Date
+  //     this.pageStartTime = current.getTime()
+  //     this.logsForDocument.push(temp)
+  //   }
+    
+  //   /////////////////Document Csv//////////////////////
+  //   /////////////////Resources Csv///////////////////////
+  //   var temp=[] //Resources
+  //   var temp2=[] //Topic Switch
+    
+  //   //alert(f['src'])
+  //   if(this.pdfSource=="" && f['src']==this.URL+"/"){
+  //     temp.push(this.auth.getSession())
+  //     temp2.push(this.auth.getSession())//Topic Switch
+  //     var name = document.getElementById(id).textContent
+  //     temp.push(this.dicForDoc[name][1])
+  //     temp2.push(this.dicForDoc[name][1])//Topic Switch
+  //     temp.push(name)
+  //     temp.push("doc2")
+  //     temp.push("flag")
+  //     temp2.push("doc2")//Topic Switch
+  //     temp2.push("type")//Topic Switch
+  //     var current = new Date()
+  //     var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     this.docStartTime = current.getTime()
+  //     this.switchStartTime = current.getTime()//Topic Switch
+  //     temp.push(startTime)
+  //     temp2.push(startTime)//Topic Switch
+  //     this.logsForResources.push(temp)
+  //     this.logsForTopicSwitch.push(temp2)//Topic Switch
+  //     this.pointerForDoc=[this.logsForResources.length-1,current.getTime()]
+  //     this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,current.getTime()]
+
+  //   }else{
+  //     var name = document.getElementById(id).textContent
+  //     var current = new Date
+  //     var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     ////////////////////Topic Switch/////////////////////////
+  //     try{
+  //       console.log("test 1", this.logsForTopicSwitch[this.logsForTopicSwitch.length-1])
+  //       if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
+  //         if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
+  //           this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
+  //           this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+  //           this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+  //         }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
+  //           this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
+  //           this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+  //           this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+  //         }
+  //       }
+  //     }catch(err){
+  //       //console.log(err)
+  //       // console.log("please chalu hoja")
+  //     }
+  //     ////////////////////Topic Switch/////////////////////////
       
-      this.logsForResources[this.logsForResources.length-1][3]=name
+  //     this.logsForResources[this.logsForResources.length-1][3]=name
       
-      //console.log(this.logsForResources[this.logsForResources.length-1][2])
-      if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="2"
-        this.logsForResources[this.pointerForDoc[0]].push(endtime)
-        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
-      }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="3"
-        this.logsForResources[this.pointerForVideo[0]].push(endtime)
-        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
-      }
+  //     //console.log(this.logsForResources[this.logsForResources.length-1][2])
+  //     if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+  //       this.logsForResources[this.logsForResources.length-1][4]="2"
+  //       this.logsForResources[this.pointerForDoc[0]].push(endtime)
+  //       this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+  //     }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+  //       this.logsForResources[this.logsForResources.length-1][4]="3"
+  //       this.logsForResources[this.pointerForVideo[0]].push(endtime)
+  //       this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+  //     }
       
-      this.docStartTime=current.getTime()
-      temp.push(this.auth.getSession())
-      temp2.push(this.auth.getSession())//Topic Switch
-      var name = document.getElementById(id).textContent
-      //console.log(name)
-      temp.push(this.dicForDoc[name][1])
-      temp.push(name)
-      temp.push("doc2")
-      temp.push("flag")
+  //     this.docStartTime=current.getTime()
+  //     temp.push(this.auth.getSession())
+  //     temp2.push(this.auth.getSession())//Topic Switch
+  //     var name = document.getElementById(id).textContent
+  //     //console.log(name)
+  //     temp.push(this.dicForDoc[name][1])
+  //     temp.push(name)
+  //     temp.push("doc2")
+  //     temp.push("flag")
       
-      temp2.push(this.dicForDoc[name][1])//Topic Switch
-      temp2.push("doc2")//Topic Switch
-      temp2.push("type")//Topic Switch
-      var current = new Date()
-      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      this.docStartTime = current.getTime()
-      temp.push(startTime)
-      temp2.push(startTime)//Topic Switch
-      this.logsForResources.push(temp)
-      this.logsForTopicSwitch.push(temp2)//Topic Switch
-      this.pointerForDoc=[this.logsForResources.length-1,startTime]
-      this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,startTime]//Topic Switch
+  //     temp2.push(this.dicForDoc[name][1])//Topic Switch
+  //     temp2.push("doc2")//Topic Switch
+  //     temp2.push("type")//Topic Switch
+  //     var current = new Date()
+  //     var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     this.docStartTime = current.getTime()
+  //     temp.push(startTime)
+  //     temp2.push(startTime)//Topic Switch
+  //     this.logsForResources.push(temp)
+  //     this.logsForTopicSwitch.push(temp2)//Topic Switch
+  //     this.pointerForDoc=[this.logsForResources.length-1,startTime]
+  //     this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,startTime]//Topic Switch
+  //   }
+  //   /////////////////Resources Csv///////////////////////
+  //   ////////////////Topic_time csv////////////////////////
+  //   if(this.subtopic!=undefined && this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
+      
+  //     this.subtopic = this.dicForDoc[document.getElementById(id).textContent][1]
+  //     var n = new Date()
+  //     var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     var t=[]
+  //     if(this.startTopicTime!=undefined){
+  //       var endTime = n.getTime()
+  //       this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
+  //       this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+  //     }
+  //     t=[this.auth.getSession(),this.subtopic,startTime,"",""]
+  //     this.startTopicTime=n.getTime()
+  //     this.logsForTopicTime.push(t)
+      
+  //   }
+  //   ////////////////Topic_time csv////////////////////////
+  //   this.pdfSource = this.URL+"/pdf/pdfname?name="+document.getElementById(id).textContent;
+    
+  //   document.getElementById("section1").style.display = "none";
+  //   document.getElementById("section2").style.display = "";
+  //   document.getElementById("pdf-section").style.display = "";
+  
+  // }
+
+  updatePdfName(id){
+    var current = new Date
+    this.docStartTime = current.getTime()
+    var startTime = current.getHours().toString()+":"+current.getMinutes().toString()+":"+current.getSeconds().toString()
+    
+    /////////////////Document Csv//////////////////////
+    var tempForDoc=[this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber,"NAN"]
+    if(this.logsForDocument.length!=0){
+      this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
+      this.pdfPageNumber=1
+      this.pageStartTime=startTime
     }
+    this.logsForDocument.push(tempForDoc)
+    /////////////////Document Csv//////////////////////
+    /////////////////Resources Csv///////////////////////
+    
+    var tempForResource=["this.sessionID",this.dicForDoc[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
+    var tempForTopicSwitch=["this.sessionID",this.dicForDoc[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
+    if(this.logsForResources.length!=0){
+      var prev=this.logsForResources.length-1
+      this.logsForResources[prev][3]=document.getElementById(id).textContent
+      this.logsForTopicSwitch[prev][2]=this.dicForDoc[document.getElementById(id).textContent][1]
+      
+      if(this.logsForResources[prev][2] in this.dicForDoc){
+        this.logsForResources[prev][4]="2"  
+        this.logsForTopicSwitch[prev][3]="2"
+        this.logsForResources[prev][7]=this.docStartTime-this.docEndTime
+        this.logsForTopicSwitch[prev][6]=this.docStartTime-this.docEndTime
+      }
+      else if(this.pointer[0]!=-1){
+        this.logsForResources[prev][4]="3"
+        this.logsForTopicSwitch[prev][3]="3"
+        this.logsForResources[this.pointer[0]][7]=this.docStartTime-this.pointer[1]
+        this.logsForTopicSwitch[this.pointer[0]][6]=this.docStartTime-this.pointer[1]
+        this.pointer=[prev,this.docEndTime]
+      }else{
+        this.logsForResources[prev][4]="3"
+        this.logsForTopicSwitch[prev][3]="3"
+        this.pointer=[prev,this.docEndTime]
+      }
+    }
+    this.docEndTime=this.docStartTime
+    this.logsForResources.push(tempForResource)
+    this.logsForTopicSwitch.push(tempForTopicSwitch)
     /////////////////Resources Csv///////////////////////
     ////////////////Topic_time csv////////////////////////
-    if(this.subtopic!=undefined && this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
-      
-      this.subtopic = this.dicForDoc[document.getElementById(id).textContent][1]
-      var n = new Date()
-      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      var t=[]
-      if(this.startTopicTime!=undefined){
-        var endTime = n.getTime()
-        this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
-        this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+    if(this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
+      this.subtopic=this.dicForDoc[document.getElementById(id).textContent][1]
+      var tempForTopicTime = ["this.sessionID",this.subtopic,startTime,"NAN","NAN"]
+      if(this.logsForTopicTime.length!=0){
+        this.logsForTopicTime[this.logsForTopicTime.length-1][4]=this.docStartTime-this.startTopicTime
       }
-      t=[this.auth.getSession(),this.subtopic,startTime,"",""]
-      this.startTopicTime=n.getTime()
-      this.logsForTopicTime.push(t)
-      
+      this.startTopicTime=this.docStartTime
+      this.logsForTopicTime.push(tempForTopicTime)
     }
     ////////////////Topic_time csv////////////////////////
+    // console.log(this.logsForResources)
     this.pdfSource = this.URL+"/pdf/pdfname?name="+document.getElementById(id).textContent;
     
     document.getElementById("section1").style.display = "none";
     document.getElementById("section2").style.display = "";
     document.getElementById("pdf-section").style.display = "";
-  
   }
-
-  // from_csv() {
-
-  //   this.auth.videoname().subscribe(
-  //     (data) => {
-  //       if (data.error) {
-  //         alert(data.error)
-  //       } else {
-  //           for(var i=0;i<data.length;i++){
-  //             try{
-  //               dic[data[i]["name"]] = data[i]["link"]
-  //             }catch{
-  //               continue
-  //             }
-  //           }
-  //       }
-  //     },
-  //     error => {
-
-  //       console.error(error)
-  //     }
-  //   )
-  // }
-
+ 
   updateVideoName(id){
-    var temp=[]
-    var temp2=[]//Topic Switch
-    var name=""
     var f = document.getElementById('videoFrame')
-    if(this.pdfSource=="" && f['src']==this.URL+"/"){
-      temp.push(this.auth.getSession())
-      temp2.push(this.auth.getSession())//Topic Switch
-      name = document.getElementById(id).textContent
-      temp.push(this.dicForVideo[name][1])
-      temp.push(name)
-      temp.push("doc2")
-      temp.push("flag")
-      temp2.push(this.dicForVideo[name][1])//Topic Switch
-      temp2.push("doc2")//Topic Switch
-      temp2.push("type")//Topic Switch
-      var current = new Date()
-      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      this.docStartTime = current.getTime()
-      this.startTopicTime = current.getTime()
-      temp.push(startTime)
-      temp2.push(startTime)//Topic Switch
-      this.logsForResources.push(temp)
-      this.logsForTopicSwitch.push(temp2)//Topic Switch
-      this.pointerForVideo = [this.logsForResources.length-1,this.docStartTime]
-      this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic Switch
-    }else{
-      var current = new Date()
-      name = document.getElementById(id).textContent
-      this.logsForResources[this.logsForResources.length-1][3]=name
-      var current = new Date
-      var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-
-      ////////////////////Topic Switch/////////////////////////
-      try{
-        if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
-          if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
-            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
-            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
-            this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
-          }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
-            this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
-            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
-            this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
-          }
-        }
-      }catch(err){
-        //console.log(err)
-      }
-      ////////////////////Topic Switch/////////////////////////
-      
-      if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="1"
-        this.logsForResources[this.pointerForDoc[0]].push(endtime)
-        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
-      }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="4"
-        this.logsForResources[this.pointerForVideo[0]].push(endtime)
-        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
-      }
-      
-      this.docStartTime=current.getTime()
-      temp.push(this.auth.getSession())
-      temp2.push(this.auth.getSession())//Topic Switch
-      var name = document.getElementById(id).textContent
-      temp.push(this.dicForVideo[name][1])
-      temp.push(name)
-      temp.push("doc2")
-      temp.push("flag")
-      
-      temp2.push(this.dicForVideo[name][1])//Topic switch
-      temp2.push("doc2")//Topic switch
-      temp2.push("flag")//Topic switch
-      var current = new Date()
-      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      this.docStartTime = current.getTime()
-      this.switchStartTime=current.getTime()//Topic switch
-      temp.push(startTime)
-      temp2.push(startTime)//Topic switch
-      this.logsForResources.push(temp)
-      this.logsForTopicSwitch.push(temp2)//Topic switch
-      this.pointerForVideo=[this.logsForResources.length-1,this.docStartTime]
-      this.pointerForVideoSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic switch
-    }
-    ////////////////Topic_time csv////////////////////////
-    if(this.subtopic!=undefined && this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
-      
-      this.subtopic = this.dicForVideo[document.getElementById(id).textContent][1]
-      var n = new Date()
-      var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-      var t=[]
-      
-      //alert(this.startTopicTime)
-      if(this.startTopicTime!=undefined && f['src']!=this.URL+"/"){
-        var endTime = n.getTime()
-        this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
-        this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
-      }
-      t=[this.auth.getSession(),this.subtopic,startTime,"",""]
-      this.startTopicTime=n.getTime()
-      this.logsForTopicTime.push(t)
-      
-    }
-    ////////////////Topic_time csv////////////////////////
+    /////////////////Resources Csv///////////////////////
+    var current = new Date
+    this.docStartTime = current.getTime()
+    var startTime = current.getHours().toString()+":"+current.getMinutes().toString()+":"+current.getSeconds().toString()
     
+    var tempForResource=["this.sessionID",this.dicForVideo[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
+    var tempForTopicSwitch=["this.sessionID",this.dicForVideo[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
+    if(this.logsForResources.length!=0){
+      var prev=this.logsForResources.length-1
+      this.logsForResources[prev][3]=document.getElementById(id).textContent
+      this.logsForTopicSwitch[prev][2]=this.dicForVideo[document.getElementById(id).textContent][1]
+      
+      
+      if(this.logsForResources[prev][2] in this.dicForVideo){
+        this.logsForResources[prev][4]="4"  
+        this.logsForTopicSwitch[prev][3]="4"
+        this.logsForResources[prev][7]=this.docStartTime-this.docEndTime
+        this.logsForTopicSwitch[prev][6]=this.docStartTime-this.docEndTime
+      }
+      else if(this.pointer[0]!=-1){
+        this.logsForResources[prev][4]="1"
+        this.logsForTopicSwitch[prev][3]="1"
+        this.logsForResources[this.pointer[0]][7]=this.docStartTime-this.pointer[1]
+        this.logsForTopicSwitch[this.pointer[0]][6]=this.docStartTime-this.pointer[1]
+        this.pointer=[prev,this.docEndTime]
+      }else{
+        this.logsForResources[prev][4]="1"
+        this.logsForTopicSwitch[prev][3]="1"
+        this.pointer=[prev,this.docEndTime]
+      }
+    }
+    this.docEndTime=this.docStartTime
+    this.logsForResources.push(tempForResource)
+    this.logsForTopicSwitch.push(tempForTopicSwitch)
+    /////////////////Resources Csv///////////////////////
+     ////////////////Topic_time csv////////////////////////
+     if(this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
+      this.subtopic=this.dicForVideo[document.getElementById(id).textContent][1]
+      var tempForTopicTime = ["this.sessionID",this.subtopic,startTime,"NAN","NAN"]
+      if(this.logsForTopicTime.length!=0){
+        this.logsForTopicTime[this.logsForTopicTime.length-1][4]=this.docStartTime-this.startTopicTime
+      }
+      this.startTopicTime=this.docStartTime
+      this.logsForTopicTime.push(tempForTopicTime)
+    }
+    ////////////////Topic_time csv////////////////////////
+
     try{
       f['src'] = this.dic2[id]
-      
-      alert(f['src'])
     }catch{
       f['src'] = ""
     }
@@ -630,12 +724,188 @@ export class DocumentComponent implements OnInit {
     document.getElementById("section1").style.display = "none";
     document.getElementById("section2").style.display = "";
     document.getElementById("video-section").style.display = "";
-
   }
+
+  // updateVideoName1(id){
+  //   var temp=[]
+  //   var temp2=[]//Topic Switch
+  //   var name=""
+  //   var f = document.getElementById('videoFrame')
+  //   if(this.pdfSource=="" && f['src']==this.URL+"/"){
+  //     temp.push(this.auth.getSession())
+  //     temp2.push(this.auth.getSession())//Topic Switch
+  //     name = document.getElementById(id).textContent
+  //     temp.push(this.dicForVideo[name][1])
+  //     temp.push(name)
+  //     temp.push("doc2")
+  //     temp.push("flag")
+  //     temp2.push(this.dicForVideo[name][1])//Topic Switch
+  //     temp2.push("doc2")//Topic Switch
+  //     temp2.push("type")//Topic Switch
+  //     var current = new Date()
+  //     var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     this.docStartTime = current.getTime()
+  //     this.startTopicTime = current.getTime()
+  //     temp.push(startTime)
+  //     temp2.push(startTime)//Topic Switch
+  //     this.logsForResources.push(temp)
+  //     this.logsForTopicSwitch.push(temp2)//Topic Switch
+  //     this.pointerForVideo = [this.logsForResources.length-1,this.docStartTime]
+  //     this.pointerForDocSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic Switch
+  //   }else{
+  //     var current = new Date()
+  //     name = document.getElementById(id).textContent
+  //     this.logsForResources[this.logsForResources.length-1][3]=name
+  //     var current = new Date
+  //     var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+
+  //     ////////////////////Topic Switch/////////////////////////
+  //     try{
+  //       if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForDoc[name][1]){
+  //         if(this.dicForDoc[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]]){
+  //           this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForDoc[name][1]
+  //           this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+  //           this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+  //         }else if(this.dicForVideo[this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]][1]!=this.dicForVideo[name][1]){
+  //           this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.dicForVideo[name][1]
+  //           this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+  //           this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+  //         }
+  //       }
+  //     }catch(err){
+  //       //console.log(err)
+  //     }
+  //     ////////////////////Topic Switch/////////////////////////
+      
+  //     if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+  //       this.logsForResources[this.logsForResources.length-1][4]="1"
+  //       this.logsForResources[this.pointerForDoc[0]].push(endtime)
+  //       this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+  //     }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+  //       this.logsForResources[this.logsForResources.length-1][4]="4"
+  //       this.logsForResources[this.pointerForVideo[0]].push(endtime)
+  //       this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+  //     }
+      
+  //     this.docStartTime=current.getTime()
+  //     temp.push(this.auth.getSession())
+  //     temp2.push(this.auth.getSession())//Topic Switch
+  //     var name = document.getElementById(id).textContent
+  //     temp.push(this.dicForVideo[name][1])
+  //     temp.push(name)
+  //     temp.push("doc2")
+  //     temp.push("flag")
+      
+  //     temp2.push(this.dicForVideo[name][1])//Topic switch
+  //     temp2.push("doc2")//Topic switch
+  //     temp2.push("flag")//Topic switch
+  //     var current = new Date()
+  //     var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     this.docStartTime = current.getTime()
+  //     this.switchStartTime=current.getTime()//Topic switch
+  //     temp.push(startTime)
+  //     temp2.push(startTime)//Topic switch
+  //     this.logsForResources.push(temp)
+  //     this.logsForTopicSwitch.push(temp2)//Topic switch
+  //     this.pointerForVideo=[this.logsForResources.length-1,this.docStartTime]
+  //     this.pointerForVideoSwitchLog=[this.logsForTopicSwitch.length-1,this.switchStartTime]//Topic switch
+  //   }
+  //   ////////////////Topic_time csv////////////////////////
+  //   if(this.subtopic!=undefined && this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
+      
+  //     this.subtopic = this.dicForVideo[document.getElementById(id).textContent][1]
+  //     var n = new Date()
+  //     var startTime= current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+  //     var t=[]
+      
+  //     //alert(this.startTopicTime)
+  //     if(this.startTopicTime!=undefined && f['src']!=this.URL+"/"){
+  //       var endTime = n.getTime()
+  //       this.logsForTopicTime[this.logsForTopicTime.length-1][3]=endTime
+  //       this.logsForTopicTime[this.logsForTopicTime.length-1][4]=endTime-this.startTopicTime
+  //     }
+  //     t=[this.auth.getSession(),this.subtopic,startTime,"",""]
+  //     this.startTopicTime=n.getTime()
+  //     this.logsForTopicTime.push(t)
+      
+  //   }
+  //   ////////////////Topic_time csv////////////////////////
+    
+  //   try{
+  //     f['src'] = this.dic2[id]
+      
+  //     alert(f['src'])
+  //   }catch{
+  //     f['src'] = ""
+  //   }
+  
+  //   document.getElementById("section1").style.display = "none";
+  //   document.getElementById("section2").style.display = "";
+  //   document.getElementById("video-section").style.display = "";
+
+  // }
 
   //#######################################Video#####################################
 
-  //
+  quizAttempt(id){
+
+    this.data.setQuizType(this.dicForQuiz[id])
+    // var current = new Date
+    // var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
+    // if(this.pointerForDoc.length){
+    //   this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
+      
+    //   if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+    //     this.logsForResources[this.logsForResources.length-1][4]="2"
+    //     this.logsForResources[this.pointerForDoc[0]].push(endtime)
+    //     this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+        
+    //   }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+    //     this.logsForResources[this.logsForResources.length-1][4]="3"
+    //     this.logsForResources[this.pointerForVideo[0]].push(endtime)
+    //     this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+    //   }
+    //   this.pointerForDoc=[]
+    // }
+
+    // //////////////////////////Topic Switch//////////////////////
+    // if(this.pointerForDocSwitchLog.length){
+    //   this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.data.getQuizType()+" Quiz"
+    //   this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
+    //   this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
+       
+    //   this.pointerForDocSwitchLog=[]
+    // }
+    // //////////////////////////Topic Switch//////////////////////
+    // if(this.pointerForVideo.length){
+    //   this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
+      
+    //   if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
+    //     this.logsForResources[this.logsForResources.length-1][4]="4"
+    //     this.logsForResources[this.pointerForVideo[0]].push(endtime)
+    //     this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
+    //   }else if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
+    //     this.logsForResources[this.logsForResources.length-1][4]="1"
+    //     this.logsForResources[this.pointerForDoc[0]].push(endtime)
+    //     this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
+        
+    //   }
+    //   this.pointerForVideo=[]
+    // }
+    // //////////////////////////Topic Switch//////////////////////
+    // if(this.pointerForVideoSwitchLog.length){
+    //   this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.data.getQuizType()+" Quiz"
+    //   this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
+    //   this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
+       
+    //   this.pointerForVideoSwitchLog=[]
+    // }
+    // //////////////////////////Topic Switch//////////////////////
+
+    this.router.navigateByUrl('/Quiz')
+  }
+
+  
   drag() {
     dragElement(document.getElementById("mydiv"));
 
@@ -684,65 +954,9 @@ export class DocumentComponent implements OnInit {
     }
   }
 
-  quizAttempt(id){
-
-    this.data.setQuizType(this.dicForQuiz[id])
-    var current = new Date
-    var endtime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
-    if(this.pointerForDoc.length){
-      this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
-      
-      if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="2"
-        this.logsForResources[this.pointerForDoc[0]].push(endtime)
-        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
-        
-      }else if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="3"
-        this.logsForResources[this.pointerForVideo[0]].push(endtime)
-        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
-      }
-      this.pointerForDoc=[]
-    }
-
-    //////////////////////////Topic Switch//////////////////////
-    if(this.pointerForDocSwitchLog.length){
-      this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.data.getQuizType()+" Quiz"
-      this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(endtime)
-      this.logsForTopicSwitch[this.pointerForDocSwitchLog[0]].push(current.getTime()-this.pointerForDocSwitchLog[1])
-       
-      this.pointerForDocSwitchLog=[]
-    }
-    //////////////////////////Topic Switch//////////////////////
-    if(this.pointerForVideo.length){
-      this.logsForResources[this.logsForResources.length-1][3]=this.data.getQuizType()+" Quiz"
-      
-      if(this.dicForVideo[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="4"
-        this.logsForResources[this.pointerForVideo[0]].push(endtime)
-        this.logsForResources[this.pointerForVideo[0]].push(current.getTime()-this.pointerForVideo[1])
-      }else if(this.dicForDoc[this.logsForResources[this.logsForResources.length-1][2]]){
-        this.logsForResources[this.logsForResources.length-1][4]="1"
-        this.logsForResources[this.pointerForDoc[0]].push(endtime)
-        this.logsForResources[this.pointerForDoc[0]].push(current.getTime()-this.pointerForDoc[1])
-        
-      }
-      this.pointerForVideo=[]
-    }
-    //////////////////////////Topic Switch//////////////////////
-    if(this.pointerForVideoSwitchLog.length){
-      this.logsForTopicSwitch[this.logsForTopicSwitch.length-1][2]=this.data.getQuizType()+" Quiz"
-      this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(endtime)
-      this.logsForTopicSwitch[this.pointerForVideoSwitchLog[0]].push(current.getTime()-this.pointerForVideoSwitchLog[1])
-       
-      this.pointerForVideoSwitchLog=[]
-    }
-    //////////////////////////Topic Switch//////////////////////
-
-
-    this.router.navigateByUrl('/Quiz')
+  funct(){
+    alert("ALA")
   }
-
 }
 
 
