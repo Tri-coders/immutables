@@ -2,9 +2,10 @@
     <div class="box1 box">
         <div class="card-big">
             <h1>MetaCognition</h1>
-            <button>Know More</button>
             <p>An increasingly useful mechanism to enhance student learning, both for immediate outcomes and for helping students to understand their own learning processes.
             </p>
+            <button (click) = "login()">Login</button>
+            <button>Know More</button>
             <div class="social-icons">
                 <a href=""></a>
                 <a href=""></a>
@@ -20,19 +21,12 @@
             <p>Want to learn something? We have variety of materials for you to study.</p>
         </div>    
     </div>
-    <div class="box3 box" (click)="login()">
+    <div class="box3 box" routerLink="/SelfAssess">
         <div class="card">
-            <span class="material-icons">account_circle</span>            <!-- <img src="../../assets/potrait.png" alt="Image"> -->
-            <!-- <div class="user one"></div> -->
-            <div *ngIf="auth.isLoggedIn(); else elseBlock1">
-                <h2 [innerHTML]="Username"></h2>
-            </div>    
-            <ng-template #elseBlock1>
-                <h2>Log IN</h2>
-            </ng-template>
-            <p>Let's sign in to start interacting with our site</p>
+            <span class="material-icons">local_library</span>
+                <h2>Self Assess Test</h2>
+            <p>What do you think about your own metacognitive processes?</p>
         </div>
-
     </div>
     <div class="box4 box" routerLink="/Report">
         <div class="card">
