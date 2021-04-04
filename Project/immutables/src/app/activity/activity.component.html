@@ -36,21 +36,21 @@
                 </ng-container>
             
                 <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                  <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                <ng-container matColumnDef="Topic">
+                  <mat-header-cell mat-sort-header *matHeaderCellDef> Topic </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.Topic}} </mat-cell>
                 </ng-container>
             
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                  <mat-header-cell mat-sort-header *matHeaderCellDef> Weight </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                <!-- Score Column -->
+                <ng-container matColumnDef="Score">
+                  <mat-header-cell mat-sort-header *matHeaderCellDef> Score </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.Score}} </mat-cell>
                 </ng-container>
             
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                  <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                <!-- Date Column -->
+                <ng-container matColumnDef="Date">
+                  <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.Date}} </mat-cell>
                 </ng-container>
             
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

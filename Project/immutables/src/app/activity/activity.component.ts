@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
-
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -12,7 +11,7 @@ import { MatSort } from '@angular/material/sort';
 
 export class ActivityComponent implements OnInit {
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'Topic', 'Score', 'Date'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -21,38 +20,38 @@ export class ActivityComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
+ 
   ngOnInit() {
   }
 
 }
 
 export interface Element {
-  name: string;
+  Topic: string;
   position: number;
-  weight: number;
-  symbol: string;
+  Score: number;
+  Date: string;
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+  {position: 1, Topic: 'Inheritance', Score: 25, Date: '3/3/2021'},
+  {position: 2, Topic: 'Clases and Objects', Score: 36, Date: '21/2/2021'},
+  {position: 3, Topic: 'Polymorphism', Score: 26, Date: '10/2/2021'},
+  {position: 4, Topic: 'Classes Methods', Score: 28, Date: '1/2/2021'},
+  {position: 5, Topic: 'Method Overloading', Score: 10, Date: '25/1/2021'},
+  {position: 6, Topic: 'Method Overriding', Score: 12, Date: '20/1/2021'},
+  {position: 7, Topic: 'Polymorphism', Score: 14, Date: '15/1/2021'},
+  {position: 8, Topic: 'Clases and Objects', Score: 15, Date: '11/1/2021'},
+  {position: 9, Topic: 'Inheritance', Score: 18, Date: '1/1/2021'},
+  {position: 10, Topic: 'Method Overriding', Score: 20, Date: '30/12/2020'},
+  {position: 11, Topic: 'Polymorphism', Score: 22, Date: '24/12/2020'},
+  {position: 12, Topic: 'Method Overloading', Score: 24, Date: '20/12/2020'},
+  {position: 13, Topic: 'Inheritance', Score: 26, Date: '18/12/2020'},
+  {position: 14, Topic: 'Classes Methods', Score: 28, Date: '14/12/2020'},
+  {position: 15, Topic: 'Method Overriding', Score: 30, Date: '10/12/2020'},
+  {position: 16, Topic: 'Inheritance', Score: 32, Date: '1/12/2020'},
+  {position: 17, Topic: 'Clases and Objects', Score: 35, Date: '23/11/2020'},
+  {position: 18, Topic: 'Polymorphism', Score: 39, Date: '15/11/2020'},
+  {position: 19, Topic: 'Classes Methods', Score: 39, Date: '12/11/2020'},
+  {position: 20, Topic: 'Method Overriding', Score: 40, Date: '1/11/2020'},
 ];
