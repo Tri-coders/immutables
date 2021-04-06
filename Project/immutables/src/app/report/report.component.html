@@ -31,8 +31,8 @@
           </mat-expansion-panel-header>
           <div class="actionBar">  
             <mat-chip-list>
-              <mat-chip selected>Total LBS: 100%</mat-chip>
-              <mat-chip selected>Total PBS: <span [innerHTML]="kocPBS"></span>%</mat-chip>
+              <mat-chip selected>Total LBS: 70%</mat-chip>
+              <mat-chip selected>Total PBS: 76%<span [innerHTML]="kocPBS"></span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="kocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="kocToggle()">assessment</mat-icon>
           </div>
@@ -109,8 +109,8 @@
           </mat-expansion-panel-header>
           <div class="actionBar">
             <mat-chip-list>
-              <mat-chip selected>Total LBS: 100%</mat-chip>
-              <mat-chip selected>Total PBS: <span [innerHTML]="rocPBS">100</span>%</mat-chip>
+              <mat-chip selected>Total LBS: 82%</mat-chip>
+              <mat-chip selected>Total PBS: 79%<span [innerHTML]="rocPBS">100</span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="rocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="rocToggle()">assessment</mat-icon>
           </div>
@@ -219,7 +219,8 @@
       </mat-accordion> 
       </mat-tab>
       <mat-tab label="Time Spent"> 
-        <div style="display: block;">
+        <div style="display: block;" class="mainTopicPie">
+          <h1>Topics</h1>
           <canvas baseChart
             [data]="pieChartData"
             [labels]="pieChartLabels"
@@ -228,17 +229,21 @@
         </div>
         <div class="SubPieCharts">
           <div>
-            <canvas baseChart width="400" height="400"
-              [data]="pieChartData"
-              [labels]="pieChartLabels"
-              [chartType]="pieChartType">
+            <h1>Subtopics</h1>
+            <canvas baseChart height="500"
+              [data]="subpieChartData"
+              [labels]="subpieChartLabels"
+              [colors]="subpieChartColors"
+              [chartType]="subpieChartType">
             </canvas>  
           </div>
           <div>
-            <canvas baseChart width="400" height="400"
-              [data]="pieChartData"
-              [labels]="pieChartLabels"
-              [chartType]="pieChartType">
+            <h1>Resources</h1>
+            <canvas baseChart height="500"
+            [data]="respieChartData"
+            [labels]="respieChartLabels"
+            [colors]="respieChartColors"
+            [chartType]="respieChartType">
             </canvas>  
           </div>
         </div>
@@ -261,6 +266,7 @@
           [labels]="barChartLabels"
           [options]="barChartOptions"
           [legend]="barChartLegend"
+          [colors]="planChartColors"
           [chartType]="barChartType">
         </canvas> 
       </mat-tab>

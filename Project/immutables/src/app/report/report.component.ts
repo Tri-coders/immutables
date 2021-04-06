@@ -111,86 +111,160 @@ export class ReportComponent implements OnInit {
   //knwoledge of cognition graph
     public kocbarChartOptions = {        
       scaleShowVerticalLines: false,
-      responsive: true
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {min: 0, max: 100},
+          scaleLabel: {
+            display: true,
+            labelString: "Total Score",
+            fontColor: "#0165FF",
+            fontstyle: 'bold'
+           }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Sub-Component",
+            fontColor: "#0165FF"
+           }
+        }]
+      }
     };
   
-    public kocbarChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public kocbarChartLabels = ['Declarative Knowledge', 'Procedural knowledge', 'Conditional knowledge'];
     public kocbarChartType = 'bar';
     public kocbarChartLegend = true;
   
     public kocbarChartData = [
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A'},
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series B'}
+      {data: [0, 0, 0], label: 'LBS'},
+      {data: [0, 0, 0], label: 'PBS'}
     ];
     
     //regulation of cognition groph
     public rocbarChartOptions = {        
       scaleShowVerticalLines: false,
-      responsive: true
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {min: 0, max: 100},
+          scaleLabel: {
+            display: true,
+            labelString: "Total Score",
+            fontColor: "#0165FF",
+            fontstyle: 'bold'
+           }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Sub-Component",
+            fontColor: "#0165FF"
+           }
+        }]
+      }
     };
   
-    public rocbarChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public rocbarChartLabels = ['Planning', 'Information Management Strategies', 'Comprehension Monitoring', 'Debugging Strategies', 'Evaluation'];
     public rocbarChartType = 'bar';
     public rocbarChartLegend = true;
   
     public rocbarChartData = [
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A'},
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series B'}
+      {data: [0, 0, 0, 0, 0], label: 'LBS'},
+      {data: [0, 0, 0, 0, 0], label: 'PBS'}
     ];
 
     //planning component graph
     public barChartOptions = {        
       scaleShowVerticalLines: false,
-      responsive: true
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {min: 0},
+          scaleLabel: {
+            display: true,
+            labelString: "Total Hours",
+            fontColor: "#0165FF",
+           }
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Sub Topics",
+            fontColor: "#0165FF"
+           }
+        }]
+      }
     };
-    public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public barChartLabels = ['Classes and objects', 'Classes Methods', 'Method Overloading', 'Method Overriding', 'Inheritance', 'Polymorphism'];
     public barChartType = 'bar';
     public barChartLegend = true;
+    public planChartColors = [
+      {
+        borderColor: 'black',
+        backgroundColor: 'rgba(54, 162, 235, 0.4)'
+      },
+      {
+        borderColor: 'red',
+        backgroundColor: 'rgba(153, 102, 255, 0.4)'
+      },
+    ];
   
     public barChartData = [
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A'},
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series B'}
+      {data: [0, 0, 0, 0, 0, 0], label: 'Planned'},
+      {data: [0, 0, 0, 0, 0, 0], label: 'Executed'}
     ];
 
 
     kocGraphStartAnimate(){
-      this.kocbarChartOptions = {
-        scaleShowVerticalLines: false,
-        responsive: true
-      };
-    
-      this.kocbarChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-      this.kocbarChartType = 'bar';
-      this.kocbarChartLegend = true;
       this.kocbarChartData = [
-        {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-        {data: [48, 41, 20, 50, 90, 37, 30], label: 'Series C'}
+        {data: [65, 59, 80], label: 'LBS'},
+        {data: [8, 48, 40], label: 'PBS'}
       ];
     }
 
     rocGraphStartAnimate(){
-      this.rocbarChartOptions = {
-        scaleShowVerticalLines: false,
-        responsive: true
-      };
-    
-      this.rocbarChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-      this.rocbarChartType = 'bar';
-      this.rocbarChartLegend = true;
       this.rocbarChartData = [
-        {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-        {data: [48, 41, 20, 50, 90, 37, 30], label: 'Series C'}
+        {data: [65, 59, 80, 81, 56], label: 'LBS'},
+        {data: [28, 48, 40, 19, 86], label: 'PBS'}
       ];
     }
 
     //ng pie chart
+    //main topics
 
-    public pieChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
-    public pieChartData = [0, 0, 0, 0];
+    public pieChartLabels = ['Introduction of Classes and Objects', 'Classes and Objects: Method', 'Advanced concept of OOPs'];
+    public pieChartData = [0, 0, 0];
     public pieChartType = 'pie';
-
+    
+    //sub topics
+    public subpieChartLabels = ['Classes Methods', 'Method Overloading', 'Method Overriding'];
+    public subpieChartData = [0, 0, 0];
+    public subpieChartType = 'pie';
+    public subpieChartColors = [
+      {
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(153, 102, 255, 0.6)',
+          'rgba(255, 159, 64, 0.6)'
+        ]}
+    ];
+    
+    
+    //resources
+    public respieChartLabels = ['Notes', 'Videos', 'Quizzes'];
+    public respieChartData = [0, 0, 0];
+    public respieChartType = 'pie';
+    public respieChartColors = [
+      {
+        backgroundColor: [
+          'rgba(5, 102, 141, .6)',
+          'rgba(209, 242, 250, .6)',
+          'rgba(165, 190, 0, .6)',
+      ]}
+    ];
+    
+    
     //ng line chart
     public lineChartData = [
       {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A'},
@@ -208,11 +282,11 @@ export class ReportComponent implements OnInit {
     public lineChartColors = [
       {
         borderColor: 'black',
-        backgroundColor: 'rgba(255,0,0,0.0)',
+        backgroundColor: 'rgba(255,0,0,0)',
       },
       {
         borderColor: 'red',
-        backgroundColor: 'rgba(255,0,0,0.0)',
+        backgroundColor: 'rgba(255,0,0,0)',
       },
     ];
 
@@ -220,24 +294,26 @@ export class ReportComponent implements OnInit {
         console.log(tab);
         if(tab.index == 1){
           setTimeout(()=>{                           //<<<---using ()=> syntax
-            this.pieChartData = [120, 150, 180, 90];
+            this.pieChartData = [120, 150, 180];
+            this.subpieChartData = [100, 110, 150];
+            this.respieChartData = [100, 90, 50];
           }, 500);
         }
         else if(tab.index == 2){
           setTimeout(()=>{   
-          this.lineChartData = [
-            {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-            {data: [85, 48, 66, 52, 78, 90, 85], label: 'Series B'}
-          ];
-        }, 500);
+            this.lineChartData = [
+              {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+              {data: [85, 48, 66, 52, 78, 90, 85], label: 'Series B'}
+            ];
+          }, 500);
         }
         else if(tab.index == 3){
           setTimeout(()=>{   
-          this.barChartData = [
-            {data: [32, 67, 23, 98, 45, 76, 87], label: 'Series A'},
-            {data: [56, 23, 76, 87, 98, 34, 78], label: 'Series B'}
-          ];
-        }, 500);
+            this.barChartData = [
+              {data: [3, 2, 3, 2, 3, 3], label: 'Planned'},
+              {data: [1.6, 2.3, 1.6, 1.7, 3.8, 3.4], label: 'Executed'}
+            ];
+          }, 500);
         }
     }
 
