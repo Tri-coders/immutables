@@ -268,8 +268,8 @@ export class AuthenticationService {
       } 
     }
 
-    public report(){
-      const base = this.http.get('/report/report')
+    public report(data: any): Observable<any>{
+      const base = this.http.post('/report/report',[data])
       const request = base.pipe(
         map((data: any)=>{
           return data

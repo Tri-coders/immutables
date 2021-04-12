@@ -34,7 +34,7 @@ export class ReportComponent implements OnInit {
   }
 
   setValuesPBS(){
-    this.auth.report()
+    this.auth.report("PBSscore")
     .subscribe(
       (data) => {
         if (data.error) {
@@ -193,11 +193,10 @@ export class ReportComponent implements OnInit {
 
     //ng line chart
     public lineChartData = [
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A'},
-      {data: [0, 0, 0, 0, 0, 0, 0], label: 'Series B'}
+      {data: [0,0,0,0,0,0], label: 'Series A',axis:"y"}
     ];
 
-    public lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    public lineChartLabels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
     public lineChartOptions =  {
       responsive: true,
     };
@@ -224,12 +223,30 @@ export class ReportComponent implements OnInit {
           }, 500);
         }
         else if(tab.index == 2){
-          setTimeout(()=>{   
-          this.lineChartData = [
-            {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-            {data: [85, 48, 66, 52, 78, 90, 85], label: 'Series B'}
-          ];
-        }, 500);
+          
+          this.auth.report("ResourcesReport")
+            .subscribe(
+              (data) => {
+                if (data.error) {
+                  console.log(data.error)
+                } else {
+                  this.lineChartLabels=[]
+                  for(var i =0;i<data.length;i++){
+                    this.lineChartLabels.push(i)
+                  }
+                  setTimeout(()=>{   
+                    this.lineChartData = [
+                      {data: data, label: 'Series A',axis:"y"}
+                      // {1:"Classes and Object",2:"Classes Methods",3:"Method Overlloading",4:"Method Overriding",5:"Inheritance",6:"Polymorphism"}
+                    ];
+                  }, 500);
+                }
+            },
+            error => {
+              console.error(error)
+            }
+          )
+          
         }
         else if(tab.index == 3){
           setTimeout(()=>{   
