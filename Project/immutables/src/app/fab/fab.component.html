@@ -30,12 +30,13 @@
                 <h1>Plan your Schedule</h1>
             </div>
             <div class="content">
-
+                <mat-slide-toggle id="history" (change)="onToggle($event)">History</mat-slide-toggle>
                 <p class="headings first">Introduction</p>
                 <div class="topic">
                     <div class="subtopic">
                     <p>Classes and objects</p>
                     <input id="1" placeholder="Enter No of hours" type="number" (input)="totaldaysChange($event)" min="0">
+                    <p class="history-data hide">Prev Plan: 2 Hours</p>
                 </div>
             </div>
             <hr>
@@ -44,14 +45,17 @@
                 <div class="subtopic">
                     <p>Methods</p>
                     <input id="2" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
+                    <p class="history-data hide">Prev Plan: 1 Hours</p>
                 </div>
                 <div class="subtopic"> 
                     <p>Overloading</p>
                     <input id="3" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
+                    <p class="history-data hide">Prev Plan: 1 Hours</p>
                 </div>
                 <div class="subtopic"> 
                     <p>Overriding</p>
                     <input id="4" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
+                    <p class="history-data hide">Prev Plan: 3 Hours</p>
                 </div>
             </div>
             <hr>
@@ -60,10 +64,12 @@
                 <div class="subtopic">
                     <p>Inheritance</p>
                     <input id="5" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
+                    <p class="history-data hide">Prev Plan: 2 Hours</p>
                 </div>
                 <div class="subtopic"> 
                     <p>Polymorphism</p>
                     <input id="6" placeholder="Enter No of hours" type="number" min="0" (input)="totaldaysChange($event)">
+                    <p class="history-data hide">Prev Plan: 1 Hours</p>
                 </div>
             </div>
             <hr>

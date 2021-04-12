@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener,ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
@@ -94,4 +94,19 @@ export class FabComponent implements OnInit {
         }
       )
   }
+
+  onToggle(event){
+    var x = document.getElementsByClassName('history-data');
+    var i = 0;
+
+    if(event.checked == false){
+      for(i = 0; i < x.length; i++)
+        x[i].classList.add('hide')      
+      }
+    else
+      for(i = 0; i < x.length; i++)
+        x[i].classList.remove('hide')      
+  }
+  
 }
+

@@ -159,7 +159,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin:  20px auto;
+            margin:  20px auto 10px;
             .subtopic{
                 
                 p{
@@ -168,7 +168,7 @@
 
                 input{
                     padding: 5px;
-                    border-radius: 5px;
+                    border-radius: 4px;
                     outline: none;
                     border: 1px solid $main-color;   
                 }
@@ -180,7 +180,25 @@
                     margin: 0;
                 }
             }
+
+            .history-data{
+                margin-top: 5px !important;
+            }
+            .hide{
+                display: none;
+            }
         }
+        mat-slide-toggle{
+            float: right;
+        }
+        .mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+            background-color: $bg !important;
+        }
+
+          .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+            background-color: $main-color !important;
+        }
+          
     }
 
     .footer{

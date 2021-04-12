@@ -140,8 +140,17 @@ google-chart{
     width: 100%;
     margin: auto;
 }
-
+.mainTopicPie{
+    margin-top: 40px;
+    h1{
+        color: $main-color;
+    }
+}
 .SubPieCharts{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    margin: 40px 0;
+    h1{
+        color: $main-color;
+    }
 }
