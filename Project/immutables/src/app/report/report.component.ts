@@ -267,12 +267,22 @@ export class ReportComponent implements OnInit {
     
     //ng line chart
     public lineChartData = [
-      {data: [0,0,0,0,0,0], label: 'Series A',axis:"y"}
+      {data: [0,0,0,0,0,0], label: 'Series A',axis:"y",tension:0},
+      {data: [0,0,0,0,0,0], label: 'Series B',axis:"y",tension:0},
     ];
 
     public lineChartLabels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
     public lineChartOptions =  {
       responsive: true,
+      bezierCurve: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1,
+            beginAtZero: true
+         }        
+        }]
+      }
     };
 
     public lineChartLegend = true;
@@ -299,29 +309,43 @@ export class ReportComponent implements OnInit {
           }, 500);
         }
         else if(tab.index == 2){
+          this.lineChartLabels=[]
+          for(var i =0;i<10;i++){
+            this.lineChartLabels.push(i)
+          }
+          setTimeout(()=>{
+            this.lineChartData = [
+              {data: [2,3,1,5,6,2,1,3,2,5], label: 'Current Pattern',axis:"y",tension:0},
+              {data: [6,1,2,1,5,4,3,2,4,3], label: 'Previous Pattern',axis:"y",tension:0},
+              // {1:"Classes and Objects",2:"Classes Methods",3:"Method Overlloading",4:"Method Overriding",5:"Inheritance",6:"Polymorphism"}
+            ];
+          }, 500);
           
-          this.auth.report("ResourcesReport")
-            .subscribe(
-              (data) => {
-                if (data.error) {
-                  console.log(data.error)
-                } else {
-                  this.lineChartLabels=[]
-                  for(var i =0;i<data.length;i++){
-                    this.lineChartLabels.push(i)
-                  }
-                  setTimeout(()=>{   
-                    this.lineChartData = [
-                      {data: data, label: 'Series A',axis:"y"}
-                      // {1:"Classes and Object",2:"Classes Methods",3:"Method Overlloading",4:"Method Overriding",5:"Inheritance",6:"Polymorphism"}
-                    ];
-                  }, 500);
-                }
-            },
-            error => {
-              console.error(error)
-            }
-          )
+          // this.auth.report("ResourcesReport")
+          //   .subscribe(
+          //     (data) => {
+          //       if (data.error) {
+          //         console.log(data.error)
+          //       } else {
+          //         var currdata = data[0]
+          //         var prevdata = data[1]
+          //         this.lineChartLabels=[]
+          //         for(var i =0;i<data.length;i++){
+          //           this.lineChartLabels.push(i)
+          //         }
+          //         setTimeout(()=>{   
+          //           this.lineChartData = [
+          //             {data: currdata, label: 'Current Pattern',axis:"y",tension:0},
+          //             {data: prevdata, label: 'Previous Pattern',axis:"y",tension:0},
+          //             // {1:"Classes and Object",2:"Classes Methods",3:"Method Overlloading",4:"Method Overriding",5:"Inheritance",6:"Polymorphism"}
+          //           ];
+          //         }, 500);
+          //       }
+          //   },
+          //   error => {
+          //     console.error(error)
+          //   }
+          // )
           
         }
         else if(tab.index == 3){
