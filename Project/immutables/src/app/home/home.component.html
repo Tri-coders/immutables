@@ -4,8 +4,14 @@
             <h1>MetaCognition</h1>
             <p>An increasingly useful mechanism to enhance student learning, both for immediate outcomes and for helping students to understand their own learning processes.
             </p>
-            <button (click) = "login()">Login</button>
-            <button>Know More</button>
+            <div *ngIf="!auth.isLoggedIn();else elseBlock">
+                <button (click) = "login()">Login</button>
+                <button>Know More</button>
+            </div>
+            <ng-template #elseBlock>
+                <button (click) = "logout()">Logout</button>
+                <button>Know More</button>
+            </ng-template>
             <div class="social-icons">
                 <a href=""></a>
                 <a href=""></a>
