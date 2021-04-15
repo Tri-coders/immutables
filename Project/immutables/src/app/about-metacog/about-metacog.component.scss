@@ -1,0 +1,19 @@
+@import '../base';
+
+.diagram{
+    text-align: center;
+    img{
+        width: 100%;
+        max-width: 900px;
+        margin: auto;
+    }
+    p{
+        margin: auto;
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-top: 40px;
+        text-align: left;
+        max-width: 115ch;
+        text-align: justify;
+    }
+}

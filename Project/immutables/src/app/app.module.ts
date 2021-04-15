@@ -30,6 +30,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { ReportComponent } from './report/report.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { ChartsModule } from 'ng2-charts';
+import { AboutMetacogComponent } from './about-metacog/about-metacog.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ChartsModule } from 'ng2-charts';
     TopicsComponent,
     SelfAssessComponent,
     ActivityComponent,
-    ReportComponent
+    ReportComponent,
+    AboutMetacogComponent
   ],
   imports: [
     BrowserModule,
