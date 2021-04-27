@@ -15,7 +15,7 @@ import { TopicsComponent} from './topics/topics.component';
 import { SelfAssessComponent } from './self-assess/self-assess.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ReportComponent } from './report/report.component';
-
+import { AboutMetacogComponent } from './about-metacog/about-metacog.component';
 
 const routes: Routes = [
   {path: 'Home', component: HomeComponent},
@@ -32,6 +32,7 @@ const routes: Routes = [
   {path: 'SelfAssess', component:SelfAssessComponent},
   {path: 'Activity', component:ActivityComponent},
   {path: 'Report', component:ReportComponent},
+  {path: 'About', component:AboutMetacogComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
@@ -40,4 +41,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent, SidebarComponent, Quiz2Component, StudyroomComponent, TopicsComponent]
+export const routingcomponents = [HomeComponent, LoginappComponent, RegistrationappComponent, QuizComponent, SidebarComponent, Quiz2Component, StudyroomComponent, TopicsComponent, AboutMetacogComponent]
