@@ -147,6 +147,7 @@ export class AuthenticationService {
       window.localStorage.removeItem("userToken")
       this.sendtoserver();
       this.userExsist = false;
+      document.exitFullscreen();
       this.router.navigateByUrl('/Home')
     }
 
