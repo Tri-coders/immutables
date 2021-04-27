@@ -60,7 +60,7 @@ export class QuizComponent implements OnInit {
   ngDoCheck(){
     try{
       for(var i=0;i<this.ques.length;i++){
-        console.log(document.getElementById("question_no_link"+(i+1)).className)
+        //console.log(document.getElementById("question_no_link"+(i+1)).className)
         if(this.attempted[i]==1)
           document.getElementById("question_no_link"+(i+1)).className="done"
         else{
@@ -84,7 +84,6 @@ export class QuizComponent implements OnInit {
     
   }
   ngOnDestroy(){
-    alert("End Test")
     var current = new Date();
     this.endTime = current.getTime();
     this.data.addlogs((this.endTime-this.startTime))
