@@ -28,7 +28,7 @@ planning.post('/planning', (req, res)=>{
         }
     data+="\n"
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/planning.csv'), data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/planning.csv'), data)
     }catch(err){
         console.log(err)
     }   

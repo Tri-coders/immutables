@@ -66,7 +66,7 @@ function quiz(logs){
     }
     console.log("ALA")
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/question_switch_log.csv') ,data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'question_switch_log.csv') ,data)
     }catch(err){
         console.log(err)
     }
@@ -79,7 +79,7 @@ function quizScore(logs){
     }
     data+="\n"
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/quiz_log.csv'), data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'quiz_log.csv'), data)
     }catch(err){
         console.log(err)
     }   
@@ -92,7 +92,7 @@ function session(logs){
     }
     data+="\n"
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/session.csv'),data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'session.csv'),data)
     }catch(err){
         console.log(err)
     }   
@@ -109,7 +109,7 @@ function document(logs){
     }
     console.log(data)
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/document_log.csv'),data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'document_log.csv'),data)
     }catch(err){
         console.log(err)
     } 
@@ -127,7 +127,7 @@ function resources(logs){
     }
 
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/resource_log.csv'),data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'resource_log.csv'),data)
     }catch(err){
         console.log(err)
     } 
@@ -144,7 +144,7 @@ function topicTime(logs){
     }
 
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/topic_time_log.csv'),data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'topic_time_log.csv'),data)
     }catch(err){
         console.log(err)
     } 
@@ -161,7 +161,7 @@ function topicSwitch(logs){
     }
 
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/topic_switch_log.csv'),data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/topic_switch_log.csv'),data)
     }catch(err){
         console.log(err)
     } 

@@ -618,8 +618,8 @@ export class DocumentComponent implements OnInit {
     /////////////////Document Csv//////////////////////
     /////////////////Resources Csv///////////////////////
     
-    var tempForResource=["this.sessionID",this.dicForDoc[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
-    var tempForTopicSwitch=["this.sessionID",this.dicForDoc[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
+    var tempForResource=[this.sessionID,this.dicForDoc[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
+    var tempForTopicSwitch=[this.sessionID,this.dicForDoc[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
     if(this.logsForResources.length!=0){
       var prev=this.logsForResources.length-1
       this.logsForResources[prev][3]=document.getElementById(id).textContent
@@ -650,7 +650,7 @@ export class DocumentComponent implements OnInit {
     ////////////////Topic_time csv////////////////////////
     if(this.subtopic!=this.dicForDoc[document.getElementById(id).textContent][1]){
       this.subtopic=this.dicForDoc[document.getElementById(id).textContent][1]
-      var tempForTopicTime = ["this.sessionID",this.subtopic,startTime,"NAN","NAN"]
+      var tempForTopicTime = [this.sessionID,this.subtopic,startTime,"NAN","NAN"]
       if(this.logsForTopicTime.length!=0){
         this.logsForTopicTime[this.logsForTopicTime.length-1][4]=this.docStartTime-this.startTopicTime
       }
@@ -673,8 +673,8 @@ export class DocumentComponent implements OnInit {
     this.docStartTime = current.getTime()
     var startTime = current.getHours().toString()+":"+current.getMinutes().toString()+":"+current.getSeconds().toString()
     
-    var tempForResource=["this.sessionID",this.dicForVideo[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
-    var tempForTopicSwitch=["this.sessionID",this.dicForVideo[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
+    var tempForResource=[this.sessionID,this.dicForVideo[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
+    var tempForTopicSwitch=[this.sessionID,this.dicForVideo[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
     if(this.logsForResources.length!=0){
       var prev=this.logsForResources.length-1
       this.logsForResources[prev][3]=document.getElementById(id).textContent
@@ -706,7 +706,7 @@ export class DocumentComponent implements OnInit {
      ////////////////Topic_time csv////////////////////////
      if(this.subtopic!=this.dicForVideo[document.getElementById(id).textContent][1]){
       this.subtopic=this.dicForVideo[document.getElementById(id).textContent][1]
-      var tempForTopicTime = ["this.sessionID",this.subtopic,startTime,"NAN","NAN"]
+      var tempForTopicTime = [this.sessionID,this.subtopic,startTime,"NAN","NAN"]
       if(this.logsForTopicTime.length!=0){
         this.logsForTopicTime[this.logsForTopicTime.length-1][4]=this.docStartTime-this.startTopicTime
       }

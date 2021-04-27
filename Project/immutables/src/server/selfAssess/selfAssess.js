@@ -24,7 +24,7 @@ selfAssess.post('/answer', (req,res)=>{
     var eval = (ansArr[7] + ansArr[18] + ansArr[24] + ansArr[36] + ansArr[38] + ansArr[49]).toString()
     data=decl_know+","+proc_know+","+cond_know+","+plan+","+info+","+comp+","+debug+","+eval+"\n"
     try{
-        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/selfAssesment.csv'), data)
+        fs.appendFileSync(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/selfAssesment.csv'), data)
     }catch(err){
         console.log(err)
     }

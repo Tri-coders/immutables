@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const { sendWelcomeEmail } = require('../email/account')
 const User = require('../models/User')
 users.use(cors())
+const fs = require('fs');
+const path = require('path');
 
 process.env.SECRET_KEY = 'secret'
 
@@ -31,6 +33,27 @@ users.post('/register', async (req, res) => {
     userData.password = hash
     User.create(userData)
       .then(user => {
+        
+        prabodh= user.id.toString()+user.name.toString();
+          
+        fs.mkdir(path.join(path.resolve(__dirname, '../../../../../Logs FIles'), prabodh), (err) => {
+            if (err) {
+                return console.error(err);
+            }
+            console.log("Created");
+        });
+        var ps = require('fs-extra');
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/document_log.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/document_log.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/planning.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/planning.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/question_switch_log.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/question_switch_log.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/quiz_log.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/quiz_log.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/resource_log.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/resource_log.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/selfAssesment.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/selfAssesment.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/session.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/session.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/topic_switch_log.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/topic_switch_log.csv'));
+        ps.copySync(path.resolve(__dirname,'../../../../../EveryStudentDataFiles/topic_time_log.csv'), path.resolve(__dirname,'../../../../../Logs FIles/'+prabodh+'/topic_time_log.csv'));
+
+
         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
           expiresIn: 1440
         })
@@ -66,7 +89,7 @@ users.post('/login', async (req, res) => {
         expiresIn: 1440
       })
       console.log("Login ")
-      console.log(typeof(user.name))
+      prabodh = user.id.toString()+user.name.toString();
       res.json({
         token: token,
         userName: user.name

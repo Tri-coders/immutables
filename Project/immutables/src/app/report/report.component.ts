@@ -40,7 +40,7 @@ export class ReportComponent implements OnInit {
         if (data.error) {
           console.log(data.error)
         } else {
-          console.log(data)
+          //console.log(data)
           // ["decl_know","proc_know","cond_know","plan","info","comp","debug","eval"]
           // [8,4,5,7,10,7,5,6]
           var koc=(((data[0]*8/100) + (data[1]*4/100) + (data[2]*5/100) )*100/17)
@@ -356,6 +356,33 @@ export class ReportComponent implements OnInit {
               {data: [1.6, 2.3, 1.6, 1.7, 3.8, 3.4], label: 'Executed'}
             ];
           }, 500);
+          this.auth.report("PlanningReport")
+            .subscribe(
+              (data) => {
+                if (data.error) {
+                  console.log(data.error)
+                } else {
+                  var Planned = data['ans']
+                  var actual = data['ans1']
+                  this.lineChartLabels=[]
+                  // var maxLenght=(Planned.length>actual.length)?currdata.length:prevdata.length
+                  // for(var i =0;i<maxLenght;i++){
+                  //   this.lineChartLabels.push(i)
+                  // }
+                  console.log(Planned)
+                  console.log(actual)
+                  setTimeout(()=>{   
+                    this.barChartData = [
+                      {data: Planned, label: 'Planned'},
+                      {data: actual, label: 'Executed'}
+                    ];
+                  }, 500);
+                }
+            },
+            error => {
+              console.error(error)
+            }
+          )
         }
     }
 
