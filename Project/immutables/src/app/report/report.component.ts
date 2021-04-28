@@ -350,12 +350,12 @@ export class ReportComponent implements OnInit {
           
         }
         else if(tab.index == 3){
-          setTimeout(()=>{   
-            this.barChartData = [
-              {data: [3, 2, 3, 2, 3, 3], label: 'Planned'},
-              {data: [1.6, 2.3, 1.6, 1.7, 3.8, 3.4], label: 'Executed'}
-            ];
-          }, 500);
+          // setTimeout(()=>{   
+          //   this.barChartData = [
+          //     {data: [3, 2, 3, 2, 3, 3], label: 'Planned'},
+          //     {data: [1.6, 2.3, 1.6, 1.7, 3.8, 3.4], label: 'Executed'}
+          //   ];
+          // }, 500);
           this.auth.report("PlanningReport")
             .subscribe(
               (data) => {

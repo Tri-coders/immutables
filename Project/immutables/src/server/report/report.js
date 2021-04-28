@@ -61,13 +61,19 @@ report.post('/report',(req,res)=>{
                         if(found1==0){
                             try{
                                 if(found1==0){
-                                    var dateParts = data['2'].split('/')
-        
+                                    var dateParts
+                                    if(data['2']!=undefined)
+                                        dateParts = data['2'].split('/')
+                                    else
+                                        dateParts = data['date'].split('/')
                                     var date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0]);
                                     date = date.getTime();
                                     
                                     if(date>=oneWeekBefore){
-                                        session1=data['0']
+                                        if(data['0']!=undefined)
+                                            session1=data['0']
+                                        else
+                                            session1=data['session_id']
                                         found1=1
                                     }
                                 }

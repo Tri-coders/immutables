@@ -5,6 +5,7 @@ import { MustMatch } from './_helpers/must-match.validator'
 import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router'
 
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-registrationapp',
   templateUrl: './registrationapp.component.html',
@@ -46,7 +47,15 @@ export class RegistrationappComponent implements OnInit {
         this.auth.register(this.credentials).subscribe(
             (data)=>{
                 if(data.error){
-                    alert(data.error)
+                    Swal.fire({
+                        title: data.error.toString(),
+                        icon: 'warning',
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ok'
+                    }).then((result) => {
+                        return (true)
+                    })
                 }else{
                     this.fullscreen()
                     this.router.navigateByUrl('/Home')
