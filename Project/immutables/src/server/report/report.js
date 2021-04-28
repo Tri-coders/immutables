@@ -102,7 +102,7 @@ report.post('/report',(req,res)=>{
                                             time=parseFloat(data['7'])/3.6e+6
                                         else
                                             time=parseFloat(data['time_spent'])/3.6e+6
-                                        console.log(time)
+                                        //console.log(time)
                                         if(data['1']!=undefined && !isNaN(time))
                                             ans1[dic[data['1']]-1]+=time
                                         else
@@ -116,7 +116,7 @@ report.post('/report',(req,res)=>{
                                 }
                             })
                             .on('end', () => {
-                                console.log(ans1)
+                                //console.log(ans1)
                                 res.send({ans1:ans1,ans:ans})
                             });
                     });
@@ -135,7 +135,11 @@ report.post('/report',(req,res)=>{
             .on('data', (data) => {
                 if(found1==0 || found2==0){
                     try{
-                        var dateParts = data['date'].split('/')
+                        var dateParts
+                        if(data['2']!=undefined)
+                            dateParts = data['2'].split('/')
+                        else
+                            dateParts = data['date'].split('/')
                         var date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0]);
                         date = date.getTime();
                         // console.log(date)
@@ -145,10 +149,16 @@ report.post('/report',(req,res)=>{
                         // console.log(session2)
                         // console.log("")
                         if(found1==0 && date>=twoWeekBefore && date<oneWeekBefore){
-                            session1=data['session_id']
+                            if(data['0']!=undefined)
+                                session1=data['0']
+                            else
+                                session1=data['session_id']
                             found1=1
                         }else if(found2==0 && date>=oneWeekBefore){
-                            session2=data['session_id']
+                            if(data['0']!=undefined)
+                                session2=data['0']
+                            else
+                                session2=data['session_id']
                             found2=1
                         }
                     }catch(e){
@@ -159,8 +169,8 @@ report.post('/report',(req,res)=>{
             .on('end', () => {
                 //search for session id in topic switch logs for 2 week before and one week before and gather data in two diff variable
                 var flag1=0,flag2=0,ans1=[],ans2=[]
-                console.log(session1)
-                console.log(session2)
+                // console.log(session1)
+                // console.log(session2)
                 fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/topic_switch_log.csv'))
                     .pipe(csv())
                     .on('data', (data) => {
