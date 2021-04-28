@@ -27,7 +27,10 @@ report.post('/report',(req,res)=>{
                 var subcomponent = ["decl_know","proc_know","cond_know","plan","info","comp","debug","eval"]
                 var size = [8,4,5,7,10,7,5,6]
                 for(var i=0;i<subcomponent.length;i++){
-                    result.push(parseInt(ans[0][subcomponent[i]])*100/size[i])
+                    if(ans[0][subcomponent[i]]!=undefined)
+                        result.push(parseInt(ans[0][subcomponent[i]])*100/size[i])
+                    else
+                    result.push(parseInt(ans[0][i.toString()])*100/size[i])
                 }
                 res.send(result)
             });
