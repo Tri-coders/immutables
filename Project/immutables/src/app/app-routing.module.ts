@@ -18,40 +18,40 @@ import { ReportComponent } from './report/report.component';
 import { AboutMetacogComponent } from './about-metacog/about-metacog.component';
 
 const routes: Routes = [
+    // {path: 'Home', component: HomeComponent},
+    // {path: 'Login', component: LoginappComponent},
+    // {path: 'Register', component: RegistrationappComponent},
+    // //{path: 'Quiz', component: QuizComponent,canActivate: [AuthGuardService]},
+    // {path: 'Quiz', component: QuizComponent, canDeactivate: [CanDeactivateGuardService]},
+    // {path: 'Quiz2', component: Quiz2Component},
+    // {path: 'ContactUs', component: ContactusComponent,canActivate: [AuthGuardService]},
+    // {path: 'Sidebar', component:SidebarComponent},
+    // {path: 'Studyroom', component:DocumentComponent,canActivate: [AuthGuardService]},
+    // {path: 'Doc', component:StudyroomComponent},
+    // {path: 'Topics', component:TopicsComponent,canActivate: [AuthGuardService]},
+    // {path: 'SelfAssess', component:SelfAssessComponent,canActivate: [AuthGuardService]},
+    // {path: 'Activity', component:ActivityComponent,canActivate: [AuthGuardService]},
+    // {path: 'Report', component:ReportComponent,canActivate: [AuthGuardService]},
+    // {path: 'About', component:AboutMetacogComponent},
+    // {path: '', redirectTo: '/Home', pathMatch: 'full'}
+    
+  
   {path: 'Home', component: HomeComponent},
   {path: 'Login', component: LoginappComponent},
   {path: 'Register', component: RegistrationappComponent},
   //{path: 'Quiz', component: QuizComponent,canActivate: [AuthGuardService]},
   {path: 'Quiz', component: QuizComponent, canDeactivate: [CanDeactivateGuardService]},
   {path: 'Quiz2', component: Quiz2Component},
-  {path: 'ContactUs', component: ContactusComponent,canActivate: [AuthGuardService]},
+  {path: 'ContactUs', component: ContactusComponent},
   {path: 'Sidebar', component:SidebarComponent},
-  {path: 'Studyroom', component:DocumentComponent,canActivate: [AuthGuardService]},
+  {path: 'Studyroom', component:DocumentComponent},
   {path: 'Doc', component:StudyroomComponent},
-  {path: 'Topics', component:TopicsComponent,canActivate: [AuthGuardService]},
-  {path: 'SelfAssess', component:SelfAssessComponent,canActivate: [AuthGuardService]},
-  {path: 'Activity', component:ActivityComponent,canActivate: [AuthGuardService]},
-  {path: 'Report', component:ReportComponent,canActivate: [AuthGuardService]},
+  {path: 'Topics', component:TopicsComponent},
+  {path: 'SelfAssess', component:SelfAssessComponent},
+  {path: 'Activity', component:ActivityComponent},
+  {path: 'Report', component:ReportComponent},
   {path: 'About', component:AboutMetacogComponent},
   {path: '', redirectTo: '/Home', pathMatch: 'full'}
-  
-  
-  // {path: 'Home', component: HomeComponent},
-  // {path: 'Login', component: LoginappComponent},
-  // {path: 'Register', component: RegistrationappComponent},
-  // //{path: 'Quiz', component: QuizComponent,canActivate: [AuthGuardService]},
-  // {path: 'Quiz', component: QuizComponent, canDeactivate: [CanDeactivateGuardService]},
-  // {path: 'Quiz2', component: Quiz2Component},
-  // {path: 'ContactUs', component: ContactusComponent},
-  // {path: 'Sidebar', component:SidebarComponent},
-  // {path: 'Studyroom', component:DocumentComponent},
-  // {path: 'Doc', component:StudyroomComponent},
-  // {path: 'Topics', component:TopicsComponent},
-  // {path: 'SelfAssess', component:SelfAssessComponent},
-  // {path: 'Activity', component:ActivityComponent},
-  // {path: 'Report', component:ReportComponent},
-  // {path: 'About', component:AboutMetacogComponent},
-  // {path: '', redirectTo: '/Home', pathMatch: 'full'}
 ];
 
 @NgModule({

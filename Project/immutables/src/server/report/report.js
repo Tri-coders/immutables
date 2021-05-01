@@ -34,6 +34,74 @@ report.post('/report',(req,res)=>{
                 }
                 res.send(result)
             });
+    }else if(data[0]=="TimeReport"){
+        var dic ={"Classes and Objects":1,"Classes Methods":2,"Method Overloading":3,"Method Overriding":4,"Inheritance":5,"Polymorphism":6}
+        ans=[0,0,0]
+        ans1=[0,0,0,0,0,0]
+        ans2=[0,0,0]
+        var time,topic
+        fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/resource_log.csv'))
+            .pipe(csv())
+            .on('data', (data) => {
+                topic=""
+                time=0
+                if(data['1'] in dic){
+                    topic=data['1']
+                    time=parseFloat(data['7'])/3.6e+6
+                }else if(data['sub_topic_id'] in dic){
+                    topic=data['sub_topic_id']
+                    time=parseFloat(data['time_spent'])/3.6e+6
+                }
+                if(topic=="Classes and Objects"){
+                    ans[0]+=time
+                    ans1[0]+=time
+                }else if(topic=="Classes Methods" || topic=="Method Overloading" || topic=="Method Overriding"){
+                    ans[1]+=time
+                    if(topic=="Classes Methods")
+                        ans1[1]+=time
+                    else if(topic=="Method Overloading")
+                        ans1[2]+=time
+                    else if (topic=="Method Overriding")
+                        ans1[3]+=time
+                }else if(topic=="Inheritance" || topic=="Polymorphism"){
+                    ans[2]+=time
+                    if(topic=="Inheritance")
+                        ans1[4]+=time
+                    else if (topic=="Polymorphism")
+                        ans1[5]+=time
+                }
+                if(data['4']!=undefined){
+                    if(data['4']=='1' || data['4']=='2' || data['4']=='5'){
+                        ans2[0]+=time
+                    }else if(data['4']=='3' || data['4']=='4' || data['4']=='6'){
+                        ans2[1]+=time
+                    }
+                }else if(data['flag']!=undefined){
+                    if(data['flag']=='1' || data['flag']=='2' || data['flag']=='5'){
+                        ans2[0]+=time
+                    }else if(data['flag']=='3' || data['flag']=='4' || data['flag']=='6'){
+                        ans2[1]+=time
+                    }
+                }
+            })
+            .on('end', () => {
+                // console.log(ans);
+                fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/quiz_log.csv'))
+                    .pipe(csv())
+                    .on('data', (data) => {
+                        if(data['6']!=undefined){
+                            ans2[2]+=parseFloat(data['6'])/3.6e+6
+                        }else if(data['time_spent']!=undefined){
+                            ans2[2]+=parseFloat(data['time_spent'])/3.6e+6
+                        }
+                    })
+                    .on('end', () => {
+                        // console.log(ans);
+                       res.send({ans:ans,ans1:ans1,ans2:ans2})
+                    });
+                
+            });
+
     }else if(data[0]=="PlanningReport"){
         var ans=[],ans0
         fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/planning.csv'))

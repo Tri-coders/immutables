@@ -302,11 +302,33 @@ export class ReportComponent implements OnInit {
     tabClick(tab) {
         console.log(tab);
         if(tab.index == 1){
-          setTimeout(()=>{                           //<<<---using ()=> syntax
-            this.pieChartData = [120, 150, 180];
-            this.subpieChartData = [100, 110, 150];
-            this.respieChartData = [100, 90, 50];
-          }, 500);
+          // setTimeout(()=>{                           //<<<---using ()=> syntax
+          //   this.pieChartData = [120, 150, 180];
+          //   this.subpieChartData = [100, 110, 150];
+          //   this.respieChartData = [100, 90, 50];
+          // }, 500);
+
+          this.auth.report("TimeReport")
+            .subscribe(
+              (data) => {
+                if (data.error) {
+                  console.log(data.error)
+                } else {
+                  var topic = data['ans']
+                  var subtopic = data['ans1']
+                  var doctype = data['ans2']
+                  
+                  setTimeout(()=>{                           //<<<---using ()=> syntax
+                    this.pieChartData = topic;
+                    this.subpieChartData = subtopic;
+                    this.respieChartData = doctype;
+                  }, 500);
+                }
+            },
+            error => {
+              console.error(error)
+            }
+          )
         }
         else if(tab.index == 2){
           // this.lineChartLabels=[]
