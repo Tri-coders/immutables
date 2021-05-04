@@ -93,27 +93,33 @@ export class QuizComponent implements OnInit {
     var quizEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
 
     var score = 0;
-    for(var i=0; i<3;i++){
-      var tempans=0
-      // alert("tempans" +tempans)
-      // alert("score "+ score)
-      var temp = this.scqAnsSelected.get(i+1)
+    // for(var i=0; i<3;i++){
+    //   var tempans=0
+    //   // alert("tempans" +tempans)
+    //   // alert("score "+ score)
+    //   var temp = this.scqAnsSelected.get(i+1)
       
-      var dic = new Map()
+    //   var dic = new Map()
       
-      for(var k=0;k<qConst[i]["ans"].length;k++){
-        //option numbers selected
-        dic.set(qConst[i]["ans"][k],0)
-      }
-      //alert(qConst[i]["o1"][temp[0]])
-      console.log(dic)
-      if(temp){
-        for(var j=0;j<qConst[i]["o1"].length;j++){
-          if(temp[j]!=0 && dic.has(qConst[i]["o1"][temp[j]-1]))
-            tempans+=1
-        }
-      }
-      score+=(tempans/qConst[i]["ans"].length)
+    //   for(var k=0;k<qConst[i]["ans"].length;k++){
+    //     //option numbers selected
+    //     dic.set(qConst[i]["ans"][k],0)
+    //   }
+    //   //alert(qConst[i]["o1"][temp[0]])
+    //   console.log(dic)
+    //   if(temp){
+    //     for(var j=0;j<qConst[i]["o1"].length;j++){
+    //       if(temp[j]!=0 && dic.has(qConst[i]["o1"][temp[j]-1]))
+    //         tempans+=1
+    //     }
+    //   }
+    //   score+=(tempans/qConst[i]["ans"].length)
+    // }
+    for(var i=0;i<qConst.length;i++){
+      console.log(this.scqAnsSelected.get(i+1))
+      console.log(qConst[i]["ans"][0])
+      if(this.scqAnsSelected.get(i+1)==qConst[i]["ans"][0])
+        score+=1
     }
     this.data.sendtoserverQuizScore(["QuizScore",this.auth.getSession(),this.data.getQuizType(),score,this.Quizstatus,this.quizStartTime,quizEndTime,this.endTime-this.startTime])
   }
@@ -383,6 +389,7 @@ export class QuizComponent implements OnInit {
       this.data.addlogs((this.endTime-this.startTime))
       this.startTime=this.endTime;
       this.data.addlogs([this.que_no,this.sques.Question_Type])
+      console.log(this.sques.ans)
       // document.getElementById("question_no_link"+this.que_no).className="active"
 
     }
@@ -426,6 +433,8 @@ export class QuizComponent implements OnInit {
   //Options changes
   handleChange(evt){ 
     //this.optionchanges[this.optionchanges.length-1].push(evt);
+    var option=["A","B","C","D"]
+    var option2=["TRUE","FALSE"]
     this.data.addlogsAtPosition(this.data.getlength()-1,evt)
     if(this.sques.Question_Type=="MCQ"){
       try{
@@ -444,8 +453,11 @@ export class QuizComponent implements OnInit {
         }
         this.scqAnsSelected.set(this.que_no,temp)
       }
+    }else if(this.sques.Question_Type=="SCQ"){
+      this.scqAnsSelected.set(this.que_no,option[evt-1])
+      console.log(this.scqAnsSelected)
     }else{
-      this.scqAnsSelected.set(this.que_no,evt)
+      this.scqAnsSelected.set(this.que_no,option2[evt-1])
     }
     console.log(this.scqAnsSelected.get(this.que_no))
     var c=0
@@ -465,11 +477,23 @@ export class QuizComponent implements OnInit {
       }else{
         return -1
       }
+    }else if(this.sques.Question_Type=="SCQ"){
+      if(this.scqAnsSelected.has(que)){
+        if(this.scqAnsSelected.get(que)=="A") return 1
+        if(this.scqAnsSelected.get(que)=="B") return 2
+        if(this.scqAnsSelected.get(que)=="C") return 3
+        if(this.scqAnsSelected.get(que)=="D") return 4
+      }else{
+        return -1
+      }
+      
     }else{
       if(this.scqAnsSelected.has(que)){
-        return this.scqAnsSelected.get(que)
+        if(this.scqAnsSelected.get(que)=="TRUE") return 1
+        if(this.scqAnsSelected.get(que)=="FALSE") return 2
+      }else{
+        return -1
       }
-      return -1
     }
   }
 

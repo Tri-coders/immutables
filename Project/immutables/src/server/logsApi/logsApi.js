@@ -57,9 +57,9 @@ function quiz(logs){
             for(var j=2;j<logs[i].length;j++){
                 temp+=logs[i][j]+'-'
             }
-            data+=temp.slice(0,-1)+","
+            data+=temp.slice(0,-1)
         }else{
-            data+="NAN,"
+            data+="NAN"
         }
         data+=logs[i+1]+"\n"
         console.log(data)
@@ -75,7 +75,10 @@ function quiz(logs){
 function quizScore(logs){
     var data = ""
     for(var i=1;i<8;i++){
-        data+=logs[i]+','
+        if(i<7)
+            data+=logs[i]+','
+        else
+            data+=logs[i]
     }
     data+="\n"
     try{
@@ -88,7 +91,10 @@ function quizScore(logs){
 function session(logs){
     var data = ""
     for(var i=1;i<7;i++){
-        data+=logs[i]+','
+        if(i<6)
+            data+=logs[i]+','
+        else
+            data+=logs[i]
     }
     data+="\n"
     try{
@@ -102,8 +108,10 @@ function document(logs){
     var data = ""
     for(var i=0;i<logs.length-1;i++){
         for(var j=0;j<logs[0].length;j++){
-            data+=logs[i][j]
-            data+=","
+            if(j<logs[0].length-1)
+                data+=logs[i][j]+","
+            else
+                data+=logs[i][j]
         }
         data+="\n"
     }
@@ -120,8 +128,10 @@ function resources(logs){
     var data=""
     for(var i=0;i<logs.length-1;i++){
         for(var j=0;j<logs[0].length;j++){
-            data+=logs[i][j]
-            data+=","
+            if(j<logs[0].length-1)
+                data+=logs[i][j]+","
+            else
+                data+=logs[i][j]
         }
         data+="\n"
     }
@@ -137,8 +147,10 @@ function topicTime(logs){
     var data=""
     for(var i=0;i<logs.length-1;i++){
         for(var j=0;j<logs[0].length;j++){
-            data+=logs[i][j]
-            data+=","
+            if(j<logs[0].length-1)
+                data+=logs[i][j]+","
+            else
+                data+=logs[i][j]
         }
         data+="\n"
     }
@@ -154,8 +166,10 @@ function topicSwitch(logs){
     var data=""
     for(var i=0;i<logs.length-1;i++){
         for(var j=0;j<logs[0].length;j++){
-            data+=logs[i][j]
-            data+=","
+            if(j<logs[0].length-1)
+                data+=logs[i][j]+","
+            else
+                data+=logs[i][j]
         }
         data+="\n"
     }
