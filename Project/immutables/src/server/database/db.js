@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = {}
-const sequelize = new Sequelize("metacognition","root","",{
+const sequelize = new Sequelize("metacognition","root","immutables@2021",{
     host: "localhost",
     dialect: "mysql",
     operatorsAliases: false,
