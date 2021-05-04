@@ -92,7 +92,7 @@ export class QuizComponent implements OnInit {
     var current = new Date();
     var quizEndTime = current.getHours()+":"+current.getMinutes()+":"+current.getSeconds();
 
-    var score = 0;
+    var s = 0;
     // for(var i=0; i<3;i++){
     //   var tempans=0
     //   // alert("tempans" +tempans)
@@ -119,8 +119,9 @@ export class QuizComponent implements OnInit {
       console.log(this.scqAnsSelected.get(i+1))
       console.log(qConst[i]["ans"][0])
       if(this.scqAnsSelected.get(i+1)==qConst[i]["ans"][0])
-        score+=1
+        s+=1
     }
+    var score = (s*100/qConst.length).toString()
     this.data.sendtoserverQuizScore(["QuizScore",this.auth.getSession(),this.data.getQuizType(),score,this.Quizstatus,this.quizStartTime,quizEndTime,this.endTime-this.startTime])
   }
 
