@@ -26,8 +26,8 @@ const dic = {
 export class DocumentComponent implements OnInit {
 
   dic2={
-    "11": "http://142.93.210.1:3000/pdf/video?video_name=Inheritance.mp4",
-  "12": "http://142.93.210.1:3000/pdf/video?video_name=Inheritance.mp4",
+    "11": "http://142.93.210.1:3000/pdf/video?video_name=Classes and Objects.mp4",
+  "12": "http://142.93.210.1:3000/pdf/video?video_name=Classes Methods.mp4",
   "13": "http://142.93.210.1:3000/pdf/video?video_name=Method Overloading.mp4",
   "14": "http://142.93.210.1:3000/pdf/video?video_name=Method Overriding.mp4",
   "150": "http://142.93.210.1:3000/pdf/video?video_name=Inheritance.mp4",
@@ -57,10 +57,10 @@ export class DocumentComponent implements OnInit {
     "Polymorphism.pdf":["Advanced concept of OOPs","Polymorphism"]
   }
   dicForVideo={
-    "Video1":["Introduction of Classes and Objects","Classes and Objects"],
-    "Video Materials": ["Classes and Objects: Method","Classes Methods"],
+    "Classes and Objects.mp4":["Introduction of Classes and Objects","Classes and Objects"],
+    "Classes Methods.mp4": ["Classes and Objects: Method","Classes Methods"],
     "Method Overloading.mp4": ["Classes and Objects: Method","Method Overloading"],
-    "Method Overrinding.mp4": ["Classes and Objects: Method","Method Overriding"],
+    "Method Overriding.mp4": ["Classes and Objects: Method","Method Overriding"],
     "Inheritance.mp4": ["Advanced concept of OOPs","Inheritance"],
     "Single Level Inheritance.mp4": ["Advanced concept of OOPs","Inheritance"],
     "Multi Level Inheritance.mp4": ["Advanced concept of OOPs","Inheritance"],
@@ -116,9 +116,16 @@ export class DocumentComponent implements OnInit {
         var time = current.getTime()
         this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
         var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
+        
         var current = new Date
-        this.pageStartTime = current.getTime()
+        this.docStartTime = current.getTime()
+        if(this.logsForDocument.length!=0){
+          this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
+          this.pdfPageNumber=1
+          this.pageStartTime=current.getTime()
+        }
         this.logsForDocument.push(temp)
+        this.pageStartTime = current.getTime()
       }
 
       if(event.key=="ArrowLeft"){
@@ -131,8 +138,14 @@ export class DocumentComponent implements OnInit {
         this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
         var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
         var current = new Date
-        this.pageStartTime = current.getTime()
+        this.docStartTime = current.getTime()
+        if(this.logsForDocument.length!=0){
+          this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
+          this.pdfPageNumber=1
+          this.pageStartTime=current.getTime()
+        }
         this.logsForDocument.push(temp)
+        this.pageStartTime = current.getTime()
       }
     }
   }
@@ -164,8 +177,14 @@ export class DocumentComponent implements OnInit {
     this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
     var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
     var current = new Date
-    this.pageStartTime = current.getTime()
+    this.docStartTime = current.getTime()
+    if(this.logsForDocument.length!=0){
+      this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
+      this.pdfPageNumber=1
+      this.pageStartTime=current.getTime()
+    }
     this.logsForDocument.push(temp)
+    this.pageStartTime = current.getTime()
 
   }
   Previous(){
@@ -178,8 +197,14 @@ export class DocumentComponent implements OnInit {
     this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
     var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
     var current = new Date
-    this.pageStartTime = current.getTime()
+    this.docStartTime = current.getTime()
+    if(this.logsForDocument.length!=0){
+      this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
+      this.pdfPageNumber=1
+      this.pageStartTime=current.getTime()
+    }
     this.logsForDocument.push(temp)
+    this.pageStartTime = current.getTime()
   }
   jumpPagePdf(evt){
     if(evt.target.value<=this.totalPages && evt.target.value>0){
@@ -189,8 +214,14 @@ export class DocumentComponent implements OnInit {
       this.logsForDocument[this.logsForDocument.length - 1][3]=time-this.pageStartTime
       var temp = [this.auth.getSession(),this.logsForDocument[this.logsForDocument.length - 1][1],this.pdfPageNumber,"NAN"]
       var current = new Date
-      this.pageStartTime = current.getTime()
+      this.docStartTime = current.getTime()
+      if(this.logsForDocument.length!=0){
+        this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
+        this.pdfPageNumber=1
+        this.pageStartTime=current.getTime()
+      }
       this.logsForDocument.push(temp)
+      this.pageStartTime = current.getTime()
     }
     
     }
@@ -672,7 +703,7 @@ export class DocumentComponent implements OnInit {
     var current = new Date
     this.docStartTime = current.getTime()
     var startTime = current.getHours().toString()+":"+current.getMinutes().toString()+":"+current.getSeconds().toString()
-    
+    console.log(document.getElementById(id).textContent)
     var tempForResource=[this.sessionID,this.dicForVideo[document.getElementById(id).textContent][1],document.getElementById(id).textContent,"NAN","NAN",startTime,"NAN","NAN"]
     var tempForTopicSwitch=[this.sessionID,this.dicForVideo[document.getElementById(id).textContent][1],"NAN","NAN",startTime,"NAN","NAN"]
     if(this.logsForResources.length!=0){
@@ -714,7 +745,7 @@ export class DocumentComponent implements OnInit {
       this.logsForTopicTime.push(tempForTopicTime)
     }
     ////////////////Topic_time csv////////////////////////
-
+    console.log(id)
     try{
       f['src'] = this.dic2[id]
     }catch{
