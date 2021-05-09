@@ -121,9 +121,8 @@ export class DocumentComponent implements OnInit {
         this.docStartTime = current.getTime()
         if(this.logsForDocument.length!=0){
           this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
-          this.pdfPageNumber=1
-          this.pageStartTime=current.getTime()
         }
+        this.pageStartTime=current.getTime()
         this.logsForDocument.push(temp)
         this.pageStartTime = current.getTime()
       }
@@ -141,9 +140,8 @@ export class DocumentComponent implements OnInit {
         this.docStartTime = current.getTime()
         if(this.logsForDocument.length!=0){
           this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
-          this.pdfPageNumber=1
-          this.pageStartTime=current.getTime()
         }
+        this.pageStartTime=current.getTime()
         this.logsForDocument.push(temp)
         this.pageStartTime = current.getTime()
       }
@@ -180,9 +178,9 @@ export class DocumentComponent implements OnInit {
     this.docStartTime = current.getTime()
     if(this.logsForDocument.length!=0){
       this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
-      this.pdfPageNumber=1
-      this.pageStartTime=current.getTime()
     }
+    
+    this.pageStartTime=current.getTime()
     this.logsForDocument.push(temp)
     this.pageStartTime = current.getTime()
 
@@ -200,9 +198,8 @@ export class DocumentComponent implements OnInit {
     this.docStartTime = current.getTime()
     if(this.logsForDocument.length!=0){
       this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
-      this.pdfPageNumber=1
-      this.pageStartTime=current.getTime()
     }
+    this.pageStartTime=current.getTime()
     this.logsForDocument.push(temp)
     this.pageStartTime = current.getTime()
   }
@@ -217,9 +214,8 @@ export class DocumentComponent implements OnInit {
       this.docStartTime = current.getTime()
       if(this.logsForDocument.length!=0){
         this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
-        this.pdfPageNumber=1
-        this.pageStartTime=current.getTime()
       }
+      this.pageStartTime=current.getTime()
       this.logsForDocument.push(temp)
       this.pageStartTime = current.getTime()
     }
@@ -642,9 +638,9 @@ export class DocumentComponent implements OnInit {
     var tempForDoc=[this.auth.getSession(),document.getElementById(id).textContent,this.pdfPageNumber,"NAN"]
     if(this.logsForDocument.length!=0){
       this.logsForDocument[this.logsForDocument.length-1][3]=this.docStartTime-this.pageStartTime
-      this.pdfPageNumber=1
-      this.pageStartTime=startTime
     }
+    this.pdfPageNumber=1
+    this.pageStartTime=startTime
     this.logsForDocument.push(tempForDoc)
     /////////////////Document Csv//////////////////////
     /////////////////Resources Csv///////////////////////
