@@ -16,6 +16,7 @@ report.post('/report',(req,res)=>{
     console.log(req.body)
     if(data[0]=="PBSscore"){
         var ans=[]
+        var ans1=[]
         fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/selfAssesment.csv'))
             .pipe(csv())
             .on('data', (data) => {
@@ -32,7 +33,30 @@ report.post('/report',(req,res)=>{
                     else
                     result.push(parseInt(ans[0][i.toString()])*100/size[i])
                 }
-                res.send(result)
+                fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/result.csv'))
+                    .pipe(csv())
+                    .on('data', (data) => {
+                        ans1.push(data)
+                    })
+                    .on('end', () => {
+                        var a=[]
+                        console.log(ans1)
+                        var n=ans1.length
+                        if(n>0){
+                            a.push(parseFloat(ans1[n-1]['KnowledgeaboutCognition']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['RegulationofCognition']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['DeclarativeKnowledge']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['ProceduralKnowledge']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['ConditionalKnowledge']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['Planning']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['Information']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['Comprehension']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['Debugging']).toFixed(2))
+                            a.push(parseFloat(ans1[n-1]['Evaluation']).toFixed(2))
+                        }
+                            
+                        res.send({result:result,ans:a})
+                    });
             });
     }else if(data[0]=="TimeReport"){
         var dic ={"Classes and Objects":1,"Classes Methods":2,"Method Overloading":3,"Method Overriding":4,"Inheritance":5,"Polymorphism":6}
@@ -40,6 +64,9 @@ report.post('/report',(req,res)=>{
         ans1=[0,0,0,0,0,0]
         ans2=[0,0,0]
         var time,topic
+        pdf=["Introduction.pdf","Classes Variables.pdf","Initialization Block.pdf","Methods.pdf","Constructor.pdf","Method Overloading.pdf","Method Overriding.pdf","Inheritance.pdf","Polymorphism.pdf"]
+        vdo=["Classes and Objects.mp4","Classes Methods.mp4","Method Overloading.mp4","Method Overriding.mp4","Inheritance.mp4","Single Level Inheritance.mp4","Multi Level Inheritance.mp4","Polymorphism.mp4","Polymorphism example.mp4",]
+        // quiz=["Classes and Objectsquiz","Classes Methodsquiz","Inheritancequiz","Polymorphismquiz"]
         fs.createReadStream(path.resolve(__dirname, '../../../../../Logs FIles/'+prabodh+'/resource_log.csv'))
             .pipe(csv())
             .on('data', (data) => {
@@ -70,19 +97,23 @@ report.post('/report',(req,res)=>{
                     else if (topic=="Polymorphism")
                         ans1[5]+=time
                 }
-                if(data['4']!=undefined){
-                    if(data['4']=='1' || data['4']=='2' || data['4']=='5'){
+                if(data['2']!=undefined){
+                    if(data['2'] in pdf){
                         ans2[0]+=time
-                    }else if(data['4']=='3' || data['4']=='4' || data['4']=='6'){
+                    }else if(data['2'] in vdo){
                         ans2[1]+=time
                     }
-                }else if(data['flag']!=undefined){
-                    if(data['flag']=='1' || data['flag']=='2' || data['flag']=='5'){
+                }else if(data['doc1_id']!=undefined){
+                    // console.log(data['doc1_id'] in pdf)
+                    // console.log(time)
+                    // console.log(ans2)
+                    if(pdf.includes(data['doc1_id'])){
                         ans2[0]+=time
-                    }else if(data['flag']=='3' || data['flag']=='4' || data['flag']=='6'){
+                    }else if(vdo.includes(data['doc1_id'])){
                         ans2[1]+=time
                     }
                 }
+                
             })
             .on('end', () => {
                 // console.log(ans);
@@ -96,7 +127,7 @@ report.post('/report',(req,res)=>{
                         }
                     })
                     .on('end', () => {
-                        // console.log(ans);
+                        console.log(ans2);
                        res.send({ans:ans,ans1:ans1,ans2:ans2})
                     });
                 
@@ -243,17 +274,23 @@ report.post('/report',(req,res)=>{
                     .pipe(csv())
                     .on('data', (data) => {
                         try{
-                            if(flag2=0 || data['0']==session2 || data['session_id']==session2){
+                            
+                            if(flag2=1 || data['0']==session2 || data['session_id']==session2){
                                 flag1=0
                                 flag2=1
+                                console.log(data['current_topic_id'])
+                                console.log(2)
                                 if(data['1'] in dic){
                                     ans2.push(dic[data["1"]])
                                 }else if(data['current_topic_id'] in dic){
                                     ans2.push(dic[data['current_topic_id']])
                                 }
+                                
                             }
-                            if(flag1=0 || data['0']==session1 || data['session_id']==session1){
+                            if(flag1=1 || data['0']==session1 || data['session_id']==session1){
                                 flag1=1
+                                console.log(data['current_topic_id'])
+                                console.log(1)
                                 if(data['1'] in dic){
                                     ans1.push(dic[data["1"]])
                                 }else if(data['current_topic_id'] in dic){

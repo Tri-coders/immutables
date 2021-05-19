@@ -39,6 +39,7 @@ def usecases10_20_21(prabodh,BENCHMARK):
     lowtimecase21=TIME.mktime(TIME.strptime(" ".join(session[initialplanning['session_id']]), "%d/%m/%Y %H:%M:%S"))
     uptimecase21 = TIME.mktime(TIME.strptime(" ".join(session[finalplanning['session_id']]), "%d/%m/%Y %H:%M:%S"))
     ans21=0
+    lessScoreDic={}
     for i in range(len(quiz_log)):        
         if(found==0 and session.get(quiz_log['session_id'][i])):
             found=1
@@ -51,7 +52,37 @@ def usecases10_20_21(prabodh,BENCHMARK):
             if(lowtimecase21<=timecase21 and timecase21<=uptimecase21 and quiz_log['score'][i]<BENCHMARK):
                 ans21=1
                 break
+
+            ############USE CASE 23
+            if(quiz_log['score'][i]<BENCHMARK):
+                if(lessScoreDic.get(quiz_log['topic_id'][i])):
+                    continue
+                else:
+                    lessScoreDic[quiz_log['topic_id'][i]]=1
+    found=0
+    dic ={"Classes and Objects":1,"Classes Methods":2,"Method Overloading":3,"Method Overriding":4,"Inheritance":5,"Polymorphism":6}
+    for i in range(len(planning)):        
+        if(found==0 and session.get(planning['session_id'][i])):
+            found=i+1
+        if(found):
+            break
+    ans23=0
+    ans27=1
+    if(found>=2):
+        flag=0
+        for xx in lessScoreDic:
+            if(list(planning.loc[len(planning)-1])[dic[xx]]>list(planning.loc[len(planning)-2])[dic[xx]]):
+                flag=1
+            else:
+                flag=0
+                break
+        if(flag):
+            ans23=1
+        else:
+            ans23=0
+                
     ############### Use Case 28
+    ans32=ans21
     found=0
     order=[]
     ans28=1
@@ -74,6 +105,7 @@ def usecases10_20_21(prabodh,BENCHMARK):
             continue
         ans28=0
         break
+    ans22=ans21
     ############### USE Case 10 
     if(ans10):
         temp=session[planning['session_id'][len(planning)-1]][0].split('/')
@@ -105,11 +137,17 @@ def usecases10_20_21(prabodh,BENCHMARK):
         else:
             ans20=0
 
-    return [ans10,ans20,ans21,ans28]
+    return [ans10,ans20,ans21,ans28,ans32,ans22,ans23,ans27]
+def main():
+    ans=usecases10_20_21("11prabodh",BENCHMARK)
+    usecase10=ans[0]
+    usecase20=ans[1]
+    usecase21=ans[2]
+    usecase28=ans[3]
+    usecase32=ans[4]
+    usecase22=ans[5]
+    usecase23=ans[6]
+    usecase27=ans[7]
+    #print(usecase10,usecase20,usecase21,usecase28,usecase32,usecase22,usecase23)
+    return ans
 
-ans=usecases10_20_21("11prabodh",BENCHMARK)
-usecase10=ans[0]
-usecase20=ans[1]
-usecase21=ans[2]
-usecase28=ans[3]
-print(usecase10,usecase20,usecase21,usecase28)

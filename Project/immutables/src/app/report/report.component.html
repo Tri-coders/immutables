@@ -10,11 +10,11 @@
       </div>
       <div class="score main">
         <div class="lbs">
-          <p>78%</p>
+          <p><span [innerHTML]="MetaLog"></span>%</p>
           <small>LBS</small>
         </div>
         <div class="pbs">
-          <p>98%</p>
+          <p><span [innerHTML]="MetaPBS"></span>%</p>
           <small>PBS</small>
         </div>
       </div>
@@ -31,8 +31,8 @@
           </mat-expansion-panel-header>
           <div class="actionBar">  
             <mat-chip-list>
-              <mat-chip selected>Total LBS: 70%</mat-chip>
-              <mat-chip selected>Total PBS: 76%<span [innerHTML]="kocPBS"></span>%</mat-chip>
+              <mat-chip selected>Total LBS: <span [innerHTML]="kocLog"></span>%</mat-chip>
+              <mat-chip selected>Total PBS: <span [innerHTML]="kocPBS"></span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="kocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="kocToggle()">assessment</mat-icon>
           </div>
@@ -44,7 +44,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>100%</p>
+                  <p><span  [innerHTML]="declarativeLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -62,7 +62,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span [innerHTML]="proceduralLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -80,7 +80,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span  [innerHTML]="conditionalLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -109,8 +109,8 @@
           </mat-expansion-panel-header>
           <div class="actionBar">
             <mat-chip-list>
-              <mat-chip selected>Total LBS: 82%</mat-chip>
-              <mat-chip selected>Total PBS: 79%<span [innerHTML]="rocPBS">100</span>%</mat-chip>
+              <mat-chip selected>Total LBS: <span [innerHTML]="rocLog">100</span>%</mat-chip>
+              <mat-chip selected>Total PBS: <span [innerHTML]="rocPBS">100</span>%</mat-chip>
             </mat-chip-list>
             <mat-icon id="rocGraphIcon" matTooltip="Toggle Graph" matTooltipPosition="left" (click)="rocToggle()">assessment</mat-icon>
           </div>
@@ -122,7 +122,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span  [innerHTML]="planningLog"></span>%%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -140,7 +140,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span  [innerHTML]="infoMgmtLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -158,7 +158,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span  [innerHTML]="coMonitoringLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -176,7 +176,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span  [innerHTML]="debugStratLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">
@@ -194,7 +194,7 @@
               </div>
               <div class="score">
                 <div class="lbs">
-                  <p>78%</p>
+                  <p><span  [innerHTML]="evaluationLog"></span>%</p>
                   <small>LBS</small>
                 </div>
                 <div class="pbs">

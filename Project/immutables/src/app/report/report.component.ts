@@ -15,6 +15,21 @@ export class ReportComponent implements OnInit {
   iskocOpen = false
   isrocOpen = false
 
+  MetaPBS=0
+  MetaLog=0
+
+  declarativeLog=0
+  proceduralLog=0
+  conditionalLog=0
+  kocLog=0
+
+  evaluationLog=0
+  coMonitoringLog=0
+  infoMgmtLog=0
+  planningLog=0
+  debugStratLog=0
+  rocLog=0
+  
   declarativePBS=0
   proceduralPBS=0
   conditionalPBS=0
@@ -43,25 +58,40 @@ export class ReportComponent implements OnInit {
           //console.log(data)
           // ["decl_know","proc_know","cond_know","plan","info","comp","debug","eval"]
           // [8,4,5,7,10,7,5,6]
-          var koc=(((data[0]*8/100) + (data[1]*4/100) + (data[2]*5/100) )*100/17)
+          var data1=data['ans']
+          var data2=data['result']
+          console.log(data2)
+          var koc=((data2[0]*8/100) + (data2[1]*4/100) + (data2[2]*5/100))*100 / 17
           this.kocPBS=parseFloat(koc.toFixed(2))
 
-          var roc = (data[3]*7/100)+(data[4]*10/100)+(data[5]*7/100)+(data[6]*5/100)+(data[7]*6/100)
+          var roc = ((data2[3]*7/100)+(data2[4]*10/100)+(data2[5]*7/100)+(data2[6]*5/100)+(data2[7]*6/100))*100/35
           this.rocPBS=parseFloat(roc.toFixed(2))
-          
-          this.declarativePBS=data[0].toFixed(2)
-          this.proceduralPBS=data[1].toFixed(2)
-          this.conditionalPBS=data[2].toFixed(2)
-          this.planningPBS=data[3].toFixed(2)
-          this.infoMgmtPBS=data[4].toFixed(2)
-          this.coMonitoringPBS=data[5].toFixed(2)
-          this.debugStratPBS=data[6].toFixed(2)
-          this.evaluationPBS=data[7].toFixed(2)
 
+          this.declarativePBS=data2[0].toFixed(2)
+          this.proceduralPBS=data2[1].toFixed(2)
+          this.conditionalPBS=data2[2].toFixed(2)
+          this.planningPBS=data2[3].toFixed(2)
+          this.infoMgmtPBS=data2[4].toFixed(2)
+          this.coMonitoringPBS=data2[5].toFixed(2)
+          this.debugStratPBS=data2[6].toFixed(2)
+          this.evaluationPBS=data2[7].toFixed(2)
+
+          this.kocLog = data1[0]
+          this.rocLog = data1[1]
+          this.declarativeLog = data1[2]
+          this.proceduralLog = data1[3]
+          this.conditionalLog = data1[4]
+          this.planningLog = data1[5]
+          this.infoMgmtLog = data1[6]
+          this.coMonitoringLog = data1[7]
+          this.debugStratLog = data1[8]
+          this.evaluationLog = data1[9]
           //declarativePBS
           // proceduralPBS
           // conditionalPBS
 
+          this.MetaLog=(this.kocLog*30/100+this.rocLog*70/100).toFixed(2)
+          this.MetaPBS=(this.kocPBS*30/100+this.rocPBS*70/100).toFixed(2)
           
           //alert(data)
         }
@@ -218,15 +248,15 @@ export class ReportComponent implements OnInit {
 
     kocGraphStartAnimate(){
       this.kocbarChartData = [
-        {data: [65, 59, 80], label: 'LBS'},
-        {data: [8, 48, 40], label: 'PBS'}
+        {data: [this.declarativeLog, this.proceduralLog, this.conditionalLog], label: 'LBS'},
+        {data: [this.declarativePBS, this.proceduralPBS, this.conditionalPBS], label: 'PBS'}
       ];
     }
 
     rocGraphStartAnimate(){
       this.rocbarChartData = [
-        {data: [65, 59, 80, 81, 56], label: 'LBS'},
-        {data: [28, 48, 40, 19, 86], label: 'PBS'}
+        {data: [this.planningLog, this.infoMgmtLog, this.coMonitoringLog, this.debugStratLog, this.evaluationLog], label: 'LBS'},
+        {data: [this.planningPBS, this.infoMgmtPBS, this.coMonitoringPBS, this.debugStratPBS, this.evaluationPBS], label: 'PBS'}
       ];
     }
 
@@ -349,8 +379,41 @@ export class ReportComponent implements OnInit {
                 if (data.error) {
                   console.log(data.error)
                 } else {
-                  var currdata = data['ans2']
-                  var prevdata = data['ans1']
+                  var currdata1 = data['ans2']
+                  var prevdata1 = data['ans1']
+                  var currdata = []
+                  var prevdata = []
+                  if(currdata1.length){
+                    currdata=[currdata1[0]]
+                    var k=1
+                    var n=currdata1.length
+                    while(k<n){
+                        if(currdata1[k]==currdata1[k-1]){
+                            while(k<n && currdata1[k]==currdata1[k-1]){
+                                k++;
+                            }
+                        }else{
+                            currdata.push(currdata1[k])
+                            k++
+                        }
+                    }
+                  }
+
+                  if(prevdata1.length){
+                    prevdata=[prevdata1[0]]
+                    var k=1
+                    var n=prevdata1.length
+                    while(k<n){
+                        if(prevdata1[k]==prevdata1[k-1]){
+                            while(k<n && prevdata1[k]==prevdata1[k-1]){
+                                k++;
+                            }
+                        }else{
+                            prevdata.push(prevdata1[k])
+                            k++
+                        }
+                    }
+                  }
                   this.lineChartLabels=[]
                   var maxLenght=(currdata.length>prevdata.length)?currdata.length:prevdata.length
                   for(var i =0;i<maxLenght;i++){
