@@ -383,10 +383,12 @@ export class ReportComponent implements OnInit {
                   var prevdata1 = data['ans1']
                   var currdata = []
                   var prevdata = []
+                  var n=0
+                  var k=1
                   if(currdata1.length){
                     currdata=[currdata1[0]]
-                    var k=1
-                    var n=currdata1.length
+                    k=1
+                    n=currdata1.length
                     while(k<n){
                         if(currdata1[k]==currdata1[k-1]){
                             while(k<n && currdata1[k]==currdata1[k-1]){
@@ -401,8 +403,8 @@ export class ReportComponent implements OnInit {
 
                   if(prevdata1.length){
                     prevdata=[prevdata1[0]]
-                    var k=1
-                    var n=prevdata1.length
+                    k=1
+                    n=prevdata1.length
                     while(k<n){
                         if(prevdata1[k]==prevdata1[k-1]){
                             while(k<n && prevdata1[k]==prevdata1[k-1]){
