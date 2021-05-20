@@ -153,7 +153,8 @@ report.post('/report',(req,res)=>{
                 var session1;
                 //session id before 2 weeks and 1 week 
                 //var twoWeekBefore = new Date(Date.now() - 12096e5).getTime();
-                var oneWeekBefore = new Date(Date.now() - 6.048e8).getTime();
+                // var oneWeekBefore = new Date(Date.now() - 6.048e8).getTime();
+                var oneWeekBefore = new Date(Date.now() - 12096e5).getTime();
                 // var twoWeekBefore = new Date(Date.now() - 259200000).getTime(); //3 days before for testing
                 // var oneWeekBefore = new Date(Date.now() - 172800000).getTime(); //2 days before for testing
                 var found1=0
@@ -224,8 +225,9 @@ report.post('/report',(req,res)=>{
         var dic ={"Classes and Objects":1,"Classes Methods":2,"Method Overloading":3,"Method Overriding":4,"Inheritance":5,"Polymorphism":6}
         var session1,session2;
         //session id before 2 weeks and 1 week 
-        var twoWeekBefore = new Date(Date.now() - 12096e5).getTime();
-        var oneWeekBefore = new Date(Date.now() - 6.048e8).getTime();
+        var twoWeekBefore = new Date(Date.now() - 1.8144e9).getTime();
+        // var oneWeekBefore = new Date(Date.now() - 6.048e8).getTime();
+        var oneWeekBefore = new Date(Date.now() - 12096e5).getTime();
         // var twoWeekBefore = new Date(Date.now() - 259200000).getTime(); //3 days before for testing
         // var oneWeekBefore = new Date(Date.now() - 172800000).getTime(); //2 days before for testing
         var found1=0,found2=0
