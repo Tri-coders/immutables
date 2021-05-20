@@ -86,7 +86,7 @@ users.post('/login', async (req, res) => {
       res.json({error: 'Invalid Crediential password'})
     }else{
       let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-        expiresIn: 1440
+        expiresIn: 86400
       })
       console.log("Login ")
       prabodh = user.id.toString()+user.name.toString();
