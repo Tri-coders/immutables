@@ -249,6 +249,11 @@
         </div>
       </mat-tab>
       <mat-tab label="Resources usage"> 
+<pre><b>Data on Y axis: Represents Topic’s names</b>
+1. Classes and Objects	2. Classes and Methods
+3. Method Overloading   4. Method Overriding
+5. Inheritance          6. Polymorphism
+        </pre>
         <div style="display: block;">
           <canvas baseChart
             [datasets]="lineChartData"
@@ -262,11 +267,7 @@
         </div>
       </mat-tab>
       <mat-tab label="Planning">
-        <pre><b>Data on Y axis: Represents Topic’s names</b>
-1. Classes and Objects	2. Classes and Methods
-3. Method Overloading   4. Method Overriding
-5. Inheritance          6. Polymorphism
-        </pre>
+        
         <canvas baseChart
           [datasets]="barChartData"
           [labels]="barChartLabels"
