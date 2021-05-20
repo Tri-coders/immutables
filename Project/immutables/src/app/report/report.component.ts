@@ -313,7 +313,19 @@ export class ReportComponent implements OnInit {
           ticks: {
             stepSize: 1,
             beginAtZero: true
+         },
+         scaleLabel: {
+          display: true,
+          labelString: "Topic Name",
+          fontColor: "#0165FF",
          }        
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Attempt Number",
+            fontColor: "#0165FF"
+           }
         }]
       }
     };
