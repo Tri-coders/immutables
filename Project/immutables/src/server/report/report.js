@@ -302,7 +302,7 @@ report.post('/report',(req,res)=>{
                         }
                     })
                     .on('end', () => {
-                        res.send({ans1:ans1,ans2:ans2})
+                        res.send({ans1:ans1,ans2:ans2,name:prabodh})
                     });
             });
         

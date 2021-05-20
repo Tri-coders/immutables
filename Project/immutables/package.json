@@ -32,7 +32,7 @@
     "ng2-charts": "^2.4.2",
     "ng2-pdf-viewer": "^6.4.0",
     "rxjs": "~6.5.4",
-    "sweetalert2": "^10.16.6",
+    "sweetalert2": "^11.0.8",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

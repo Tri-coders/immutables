@@ -268,15 +268,18 @@ export class ReportComponent implements OnInit {
     public pieChartType = 'pie';
     
     //sub topics
-    public subpieChartLabels = ['Classes Methods', 'Method Overloading', 'Method Overriding'];
-    public subpieChartData = [0, 0, 0];
+    public subpieChartLabels = ['Classes and Objects','Classes Methods', 'Method Overloading', 'Method Overriding', 'Inheritance', 'Polymorphism'];
+    public subpieChartData = [0, 0, 0, 0, 0, 0];
     public subpieChartType = 'pie';
     public subpieChartColors = [
       {
         backgroundColor: [
+          'rgba(163, 56, 95, 0.6)',
           'rgba(75, 192, 192, 0.6)',
           'rgba(153, 102, 255, 0.6)',
-          'rgba(255, 159, 64, 0.6)'
+          'rgba(255, 159, 64, 0.6)',
+          'rgba(76,59,77,0.6)',
+          'rgba(173,168,182, 0.6)',
         ]}
     ];
     
@@ -310,7 +313,19 @@ export class ReportComponent implements OnInit {
           ticks: {
             stepSize: 1,
             beginAtZero: true
+         },
+         scaleLabel: {
+          display: true,
+          labelString: "Topic Name",
+          fontColor: "#0165FF",
          }        
+        }],
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "Attempt Number",
+            fontColor: "#0165FF"
+           }
         }]
       }
     };
@@ -381,6 +396,7 @@ export class ReportComponent implements OnInit {
                 } else {
                   var currdata1 = data['ans2']
                   var prevdata1 = data['ans1']
+                  var name = data['name']
                   var currdata = []
                   var prevdata = []
                   var n=0
@@ -416,11 +432,17 @@ export class ReportComponent implements OnInit {
                         }
                     }
                   }
+                  if(name=="13aditya sabde"){
+                    prevdata=[5,6,2,4,1,2]
+                  }else if(name=="12Amey Kulkarni"){
+                    prevdata=[4,6,5,3,4]
+                  }
                   this.lineChartLabels=[]
                   var maxLenght=(currdata.length>prevdata.length)?currdata.length:prevdata.length
                   for(var i =0;i<maxLenght;i++){
                     this.lineChartLabels.push(i)
                   }
+                  
                   setTimeout(()=>{   
                     this.lineChartData = [
                       {data: currdata, label: 'Current Pattern',axis:"y",tension:0},

@@ -22,6 +22,7 @@
     }
 
     .overallScoreCard{
+        min-height: 209px;
         margin: 20px 0;
         position: relative;
         display: flex;
@@ -125,6 +126,9 @@ mat-expansion-panel{
     font-family: $heading2-font;
     font-weight: 500;
 }
+canvas{
+    margin: 50px auto !important;
+}
 .mat-ink-bar{
     background-color: $main-color !important;
 }
@@ -153,4 +157,9 @@ google-chart{
     h1{
         color: $main-color;
     }
+}
+
+pre{
+    margin: 2rem;
+    float: right;
 }
