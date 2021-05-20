@@ -90,8 +90,8 @@ export class ReportComponent implements OnInit {
           // proceduralPBS
           // conditionalPBS
 
-          this.MetaLog=(this.kocLog*30/100+this.rocLog*70/100).toFixed(2)
-          this.MetaPBS=(this.kocPBS*30/100+this.rocPBS*70/100).toFixed(2)
+          this.MetaLog=parseFloat((this.kocLog*30/100+this.rocLog*70/100).toFixed(2))
+          this.MetaPBS=parseFloat((this.kocPBS*30/100+this.rocPBS*70/100).toFixed(2))
           
           //alert(data)
         }
