@@ -51,7 +51,7 @@
     "codelyzer": "^5.1.2",
     "cors": "^2.8.5",
     "csv-parser": "^2.3.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fs": "0.0.1-security",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
